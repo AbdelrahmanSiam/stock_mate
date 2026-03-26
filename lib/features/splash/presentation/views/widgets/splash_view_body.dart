@@ -92,7 +92,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
             mainAxisSize: MainAxisSize.min,
             children: [
               SplashLogoWidget(logoAnimation: logoAnimation),
-              TaglineWidget(taglineAnimation: taglineAnimation),
+              TaglineWidget(taglineAnimation: taglineAnimation),// late 800 ms than Logo and App name
             ],
           ),
         ),

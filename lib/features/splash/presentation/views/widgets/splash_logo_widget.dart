@@ -16,7 +16,7 @@ final Animation <double> logoAnimation;
         return Opacity(
           opacity: logoAnimation.value,
           child: Transform.scale(
-            scale: 0.8 + (logoAnimation.value * 0.2),
+            scale: 0.8 + (logoAnimation.value * 0.2), // control on animation speed
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

@@ -14,7 +14,7 @@ class ForegroundAnimatedController extends StatelessWidget {
     return Container(
       width: width * 0.2,
       height: 4,
-      color: AppColorsDarkMode.primary,
+      color: AppColorsDarkMode.secondary,
     );
   }
 }
