@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-abstract class AppColors {
+abstract class AppColorsDarkMode {
   static const Color background    = Color(0xFF0A0E1A); // Main screen background
   static const Color surface       = Color(0xFF141829); // Cards, bottom nav, modals
   static const Color border        = Color(0xFF252A3D); // Input borders, dividers

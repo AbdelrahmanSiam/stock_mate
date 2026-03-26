@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/core/utils/app_colors.dart';
+import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
   final double width = MediaQuery.sizeOf(context).width;
@@ -17,7 +17,7 @@ abstract class AppStyles {
   static TextStyle appNameBold32(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 32),
     fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     letterSpacing: 1.2,
     fontFamily: 'Inter',
   );
@@ -26,7 +26,7 @@ abstract class AppStyles {
   static TextStyle taglineRegular11(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 11),
     fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
+    color: AppColorsDarkMode.textSecondary,
     letterSpacing: 3.0,
     fontFamily: 'Inter',
   );
@@ -35,7 +35,7 @@ abstract class AppStyles {
   static TextStyle captionRegular10(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 10),
     fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
+    color: AppColorsDarkMode.textSecondary,
     letterSpacing: 1.5,
     fontFamily: 'Inter',
   );
@@ -44,14 +44,14 @@ abstract class AppStyles {
   static TextStyle h1Bold28(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 28),
     fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 
   static TextStyle h2Bold22(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 22),
     fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 
@@ -60,7 +60,7 @@ abstract class AppStyles {
   static TextStyle bodyMediumRegular14(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 14),
     fontWeight: FontWeight.w400,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 
@@ -68,7 +68,7 @@ abstract class AppStyles {
   static TextStyle bodySmallRegular12(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 12),
     fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
+    color: AppColorsDarkMode.textSecondary,
     fontFamily: 'Inter',
   );
 
@@ -77,7 +77,7 @@ abstract class AppStyles {
   static TextStyle labelSemiBold13(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 13),
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 
@@ -86,7 +86,7 @@ abstract class AppStyles {
   static TextStyle priceBold16(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 16),
     fontWeight: FontWeight.w700,
-    color: AppColors.primary,
+    color: AppColorsDarkMode.primary,
     fontFamily: 'Inter',
   );
 
@@ -94,7 +94,7 @@ abstract class AppStyles {
   static TextStyle statValueBold24(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 24),
     fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 
@@ -102,7 +102,7 @@ abstract class AppStyles {
   static TextStyle buttonSemiBold15(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 15),
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 
@@ -111,7 +111,7 @@ abstract class AppStyles {
   static TextStyle errorTextRegular11(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 11),
     fontWeight: FontWeight.w400,
-    color: AppColors.error,
+    color: AppColorsDarkMode.error,
     fontFamily: 'Inter',
   );
 
@@ -120,7 +120,7 @@ abstract class AppStyles {
   static TextStyle sectionTitleSemiBold16(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 16),
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 
@@ -129,7 +129,7 @@ abstract class AppStyles {
   static TextStyle cardTitleSemiBold14(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 14),
     fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
+    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 }

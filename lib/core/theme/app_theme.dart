@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stock_mate/core/utils/app_colors.dart';
+import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 
 abstract class AppTheme {
 
@@ -8,21 +8,21 @@ abstract class AppTheme {
         // ── General ───────────────────────────────────────
         brightness: Brightness.dark,
         fontFamily: 'Inter',
-        scaffoldBackgroundColor: AppColors.background,
-        primaryColor: AppColors.primary,
+        scaffoldBackgroundColor: AppColorsDarkMode.background,
+        primaryColor: AppColorsDarkMode.primary,
 
         // ── ColorScheme ───────────────────────────────────
         // الـ colorScheme هو المرجع الأساسي لكل الـ widgets
         // في Material 3
         colorScheme: const ColorScheme.dark(
-          primary: AppColors.primary,
-          secondary: AppColors.secondary,
-          surface: AppColors.surface,
-          error: AppColors.error,
-          onPrimary: AppColors.textPrimary,
-          onSecondary: AppColors.textPrimary,
-          onSurface: AppColors.textPrimary,
-          onError: AppColors.textPrimary,
+          primary: AppColorsDarkMode.primary,
+          secondary: AppColorsDarkMode.secondary,
+          surface: AppColorsDarkMode.surface,
+          error: AppColorsDarkMode.error,
+          onPrimary: AppColorsDarkMode.textPrimary,
+          onSecondary: AppColorsDarkMode.textPrimary,
+          onSurface: AppColorsDarkMode.textPrimary,
+          onError: AppColorsDarkMode.textPrimary,
         ),
 
         // ── AppBar ────────────────────────────────────────
@@ -35,16 +35,16 @@ abstract class AppTheme {
           titleTextStyle: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
+            color: AppColorsDarkMode.textPrimary,
             fontFamily: 'Inter',
           ),
-          iconTheme: IconThemeData(color: AppColors.textPrimary),
+          iconTheme: IconThemeData(color: AppColorsDarkMode.textPrimary),
           systemOverlayStyle: SystemUiOverlayStyle(
             // status bar فوق الشاشة
             statusBarColor: Colors.transparent,
             statusBarIconBrightness: Brightness.light,
             // navigation bar تحت الشاشة
-            systemNavigationBarColor: AppColors.background,
+            systemNavigationBarColor: AppColorsDarkMode.background,
             systemNavigationBarIconBrightness: Brightness.light,
           ),
         ),
@@ -53,10 +53,10 @@ abstract class AppTheme {
         // ده الـ style الافتراضي لكل ElevatedButton في الـ app
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primary,
-            foregroundColor: AppColors.textPrimary,
-            disabledBackgroundColor: AppColors.border,
-            disabledForegroundColor: AppColors.textSecondary,
+            backgroundColor: AppColorsDarkMode.primary,
+            foregroundColor: AppColorsDarkMode.textPrimary,
+            disabledBackgroundColor: AppColorsDarkMode.border,
+            disabledForegroundColor: AppColorsDarkMode.textSecondary,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
@@ -73,8 +73,8 @@ abstract class AppTheme {
         // ── OutlinedButton ────────────────────────────────
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
-            foregroundColor: AppColors.primary,
-            side: const BorderSide(color: AppColors.primary, width: 1.5),
+            foregroundColor: AppColorsDarkMode.primary,
+            side: const BorderSide(color: AppColorsDarkMode.primary, width: 1.5),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
             ),
@@ -90,7 +90,7 @@ abstract class AppTheme {
         // ── TextButton ────────────────────────────────────
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
-            foregroundColor: AppColors.primary,
+            foregroundColor: AppColorsDarkMode.primary,
             textStyle: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -102,9 +102,9 @@ abstract class AppTheme {
         // ── InputDecoration (TextFields) ──────────────────
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: AppColors.surface,
+          fillColor: AppColorsDarkMode.surface,
           hintStyle: const TextStyle(
-            color: AppColors.textSecondary,
+            color: AppColorsDarkMode.textSecondary,
             fontSize: 14,
             fontFamily: 'Inter',
           ),
@@ -116,7 +116,7 @@ abstract class AppTheme {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.border,
+              color: AppColorsDarkMode.border,
               width: 1,
             ),
           ),
@@ -124,7 +124,7 @@ abstract class AppTheme {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.primary,
+              color: AppColorsDarkMode.primary,
               width: 1.5,
             ),
           ),
@@ -132,19 +132,19 @@ abstract class AppTheme {
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.error,
+              color: AppColorsDarkMode.error,
               width: 1.5,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.error,
+              color: AppColorsDarkMode.error,
               width: 1.5,
             ),
           ),
           errorStyle: const TextStyle(
-            color: AppColors.error,
+            color: AppColorsDarkMode.error,
             fontSize: 11,
             fontFamily: 'Inter',
           ),
@@ -152,12 +152,12 @@ abstract class AppTheme {
 
         // ── Card ──────────────────────────────────────────
         cardTheme: CardThemeData(
-          color: AppColors.surface,
+          color: AppColorsDarkMode.surface,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
             side: const BorderSide(
-              color: AppColors.border,
+              color: AppColorsDarkMode.border,
               width: 1,
             ),
           ),
@@ -166,9 +166,9 @@ abstract class AppTheme {
 
         // ── BottomNavigationBar ───────────────────────────
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: AppColors.surface,
-          selectedItemColor: AppColors.primary,
-          unselectedItemColor: AppColors.textSecondary,
+          backgroundColor: AppColorsDarkMode.surface,
+          selectedItemColor: AppColorsDarkMode.primary,
+          unselectedItemColor: AppColorsDarkMode.textSecondary,
           type: BottomNavigationBarType.fixed,
           elevation: 0,
           selectedLabelStyle: TextStyle(
@@ -184,9 +184,9 @@ abstract class AppTheme {
 
         // ── SnackBar ──────────────────────────────────────
         snackBarTheme: SnackBarThemeData(
-          backgroundColor: AppColors.surface,
+          backgroundColor: AppColorsDarkMode.surface,
           contentTextStyle: const TextStyle(
-            color: AppColors.textPrimary,
+            color: AppColorsDarkMode.textPrimary,
             fontSize: 13,
             fontFamily: 'Inter',
           ),
@@ -198,14 +198,14 @@ abstract class AppTheme {
 
         // ── Divider ───────────────────────────────────────
         dividerTheme: const DividerThemeData(
-          color: AppColors.border,
+          color: AppColorsDarkMode.border,
           thickness: 1,
           space: 1,
         ),
 
         // ── ProgressIndicator ─────────────────────────────
         progressIndicatorTheme: const ProgressIndicatorThemeData(
-          color: AppColors.primary,
+          color: AppColorsDarkMode.primary,
         ),
       );
 }
