@@ -14,7 +14,7 @@ double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
 abstract class AppStyles {
   // ── Splash ───────────────────────────────────────────────
   // AppName into splash screen
-  static TextStyle appName(BuildContext context) => TextStyle(
+  static TextStyle appNameBold32(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 32),
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
@@ -23,7 +23,7 @@ abstract class AppStyles {
   );
 
   // tagline under app name "PREMIUM INVENTORY & SALES"
-  static TextStyle tagline(BuildContext context) => TextStyle(
+  static TextStyle taglineRegular11(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 11),
     fontWeight: FontWeight.w400,
     color: AppColors.textSecondary,
@@ -32,7 +32,7 @@ abstract class AppStyles {
   );
 
   // splash "VERSION" و "ENTERPRISE SECURE"
-  static TextStyle caption(BuildContext context) => TextStyle(
+  static TextStyle captionRegular10(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 10),
     fontWeight: FontWeight.w400,
     color: AppColors.textSecondary,
@@ -41,14 +41,14 @@ abstract class AppStyles {
   );
 
   // ── Headlines ─────────────────────────────────────────────
-  static TextStyle h1(BuildContext context) => TextStyle(
+  static TextStyle h1Bold28(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 28),
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
     fontFamily: 'Inter',
   );
 
-  static TextStyle h2(BuildContext context) => TextStyle(
+  static TextStyle h2Bold22(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 22),
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
@@ -57,7 +57,7 @@ abstract class AppStyles {
 
   // ── Body ──────────────────────────────────────────────────
   // card content and descriptions
-  static TextStyle bodyMedium(BuildContext context) => TextStyle(
+  static TextStyle bodyMediumRegular14(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 14),
     fontWeight: FontWeight.w400,
     color: AppColors.textPrimary,
@@ -65,7 +65,7 @@ abstract class AppStyles {
   );
 
   //  hints and sublabels
-  static TextStyle bodySmall(BuildContext context) => TextStyle(
+  static TextStyle bodySmallRegular12(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 12),
     fontWeight: FontWeight.w400,
     color: AppColors.textSecondary,
@@ -74,7 +74,7 @@ abstract class AppStyles {
 
   // ── Labels ────────────────────────────────────────────────
   // form field labels
-  static TextStyle label(BuildContext context) => TextStyle(
+  static TextStyle labelSemiBold13(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 13),
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
@@ -83,7 +83,7 @@ abstract class AppStyles {
 
   // ── Prices & Values ───────────────────────────────────────
   // product prices and totals in Reports
-  static TextStyle price(BuildContext context) => TextStyle(
+  static TextStyle priceBold16(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 16),
     fontWeight: FontWeight.w700,
     color: AppColors.primary,
@@ -91,7 +91,7 @@ abstract class AppStyles {
   );
 
   // dashboard summary cards (Large numbers)
-  static TextStyle statValue(BuildContext context) => TextStyle(
+  static TextStyle statValueBold24(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 24),
     fontWeight: FontWeight.w700,
     color: AppColors.textPrimary,
@@ -99,7 +99,7 @@ abstract class AppStyles {
   );
 
   // ── Buttons ───────────────────────────────────────────────
-  static TextStyle button(BuildContext context) => TextStyle(
+  static TextStyle buttonSemiBold15(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 15),
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
@@ -108,7 +108,7 @@ abstract class AppStyles {
 
   // ── Error ─────────────────────────────────────────────────
   // validation under fields
-  static TextStyle errorText(BuildContext context) => TextStyle(
+  static TextStyle errorTextRegular11(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 11),
     fontWeight: FontWeight.w400,
     color: AppColors.error,
@@ -117,7 +117,7 @@ abstract class AppStyles {
 
   // ── Section Titles ────────────────────────────────────────
   // Like "Sales This Week" in dashboard
-  static TextStyle sectionTitle(BuildContext context) => TextStyle(
+  static TextStyle sectionTitleSemiBold16(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 16),
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
@@ -126,7 +126,7 @@ abstract class AppStyles {
 
   // ── Card Title ────────────────────────────────────────────
   // Product name in product card
-  static TextStyle cardTitle(BuildContext context) => TextStyle(
+  static TextStyle cardTitleSemiBold14(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 14),
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
