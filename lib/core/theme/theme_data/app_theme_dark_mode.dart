@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 
-abstract class AppTheme {
+abstract class AppThemeDarkMode {
 
-  static ThemeData get darkTheme => ThemeData(
+  static ThemeData getDarkTheme() => ThemeData(
         // ── General ───────────────────────────────────────
         brightness: Brightness.dark,
         fontFamily: 'Inter',
@@ -12,8 +12,7 @@ abstract class AppTheme {
         primaryColor: AppColorsDarkMode.primary,
 
         // ── ColorScheme ───────────────────────────────────
-        // الـ colorScheme هو المرجع الأساسي لكل الـ widgets
-        // في Material 3
+        // colorScheme is the main for all widgets
         colorScheme: const ColorScheme.dark(
           primary: AppColorsDarkMode.primary,
           secondary: AppColorsDarkMode.secondary,
@@ -26,7 +25,7 @@ abstract class AppTheme {
         ),
 
         // ── AppBar ────────────────────────────────────────
-        // transparent بدون shadow عشان الـ design بتاعنا
+        // transparent without shadow
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -40,17 +39,17 @@ abstract class AppTheme {
           ),
           iconTheme: IconThemeData(color: AppColorsDarkMode.textPrimary),
           systemOverlayStyle: SystemUiOverlayStyle(
-            // status bar فوق الشاشة
+            // status bar over screen
             statusBarColor: Colors.transparent,
             statusBarIconBrightness: Brightness.light,
-            // navigation bar تحت الشاشة
+            // navigation bar under screen
             systemNavigationBarColor: AppColorsDarkMode.background,
             systemNavigationBarIconBrightness: Brightness.light,
           ),
         ),
 
         // ── ElevatedButton ────────────────────────────────
-        // ده الـ style الافتراضي لكل ElevatedButton في الـ app
+        // default ElevatedButton style
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColorsDarkMode.primary,
@@ -112,7 +111,7 @@ abstract class AppTheme {
             horizontal: 16,
             vertical: 14,
           ),
-          // الـ border الافتراضي
+          // default Border 
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
@@ -120,7 +119,7 @@ abstract class AppTheme {
               width: 1,
             ),
           ),
-          // لما الـ field يبقى focused
+          // focused field
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
@@ -128,7 +127,7 @@ abstract class AppTheme {
               width: 1.5,
             ),
           ),
-          // لما فيه error
+          // error style
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
