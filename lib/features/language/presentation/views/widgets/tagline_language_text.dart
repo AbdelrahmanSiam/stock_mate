@@ -11,7 +11,7 @@ class TaglineLanguageText extends StatelessWidget {
     return Column(
       children: [
         Text("Choose your language",style: AppStyles.languageRegular18(context),),
-        SizedBox(height: 10,),
+        SizedBox(height: 4,),
         Text("اختر لغتك",style: AppStyles.languageRegular18(context),),
       ],
     );

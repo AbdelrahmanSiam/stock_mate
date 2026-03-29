@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/language_card_widget.dart';
+import 'package:stock_mate/features/language/presentation/views/widgets/language_hint_widget.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/tagline_language_text.dart';
 import 'package:stock_mate/features/splash/presentation/views/widgets/app_logo_widget.dart';
 
@@ -16,9 +17,9 @@ class LanguageViewBody extends StatelessWidget {
         children: [
           SizedBox(height: 80),
           AppLogoWidget(),
-          SizedBox(height: 10),
+          SizedBox(height: 12),
           TaglineLanguageText(),
-          SizedBox(height: 20),
+          SizedBox(height: 40),
           LanguageCardWidget(
             languageName: "English",
             languageTagline: "Continue in English",
@@ -30,7 +31,8 @@ class LanguageViewBody extends StatelessWidget {
             languageTagline: "تابع بالعربية",
             isSelected: true,
           ),
-          
+          SizedBox(height: 16),
+          LanguageHintWidget(),
         ],
       ),
     );
