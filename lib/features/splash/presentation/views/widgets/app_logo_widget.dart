@@ -10,13 +10,15 @@ class AppLogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SvgPicture.asset(AppAssets.logo, height: 120, width: 120),
-        SizedBox(height: 20),
-        Text("StockMate", style: AppStyles.appNameBold32(context)),
-        SizedBox(height: 8),
-      ],
+    return Center(
+      child: Column(
+        children: [
+          SvgPicture.asset(AppAssets.logo, height: 120, width: 120),
+          SizedBox(height: 20),
+          Text("StockMate", style: AppStyles.appNameBold32(context)),
+          SizedBox(height: 8),
+        ],
+      ),
     );
   }
 }
