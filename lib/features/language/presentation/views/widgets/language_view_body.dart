@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/language/domain/entity/language_card_entity.dart';
+import 'package:stock_mate/features/language/presentation/views/widgets/continue_button_section.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/language_card_widget.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/language_cards_section.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/language_header_section.dart';
@@ -15,18 +17,19 @@ class LanguageViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 80),
+          const Spacer(),
           LanguageHeaderSection(),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           LanguageCardsSection(),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           LanguageHintWidget(),
+          const Spacer(),
+          ContinueButtonSection(isEnabled: true,),
+          const SizedBox(height: 32),
         ],
       ),
     );
   }
 }
-
-
 
 
