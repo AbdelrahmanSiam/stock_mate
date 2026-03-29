@@ -30,6 +30,7 @@ class LanguageViewBody extends StatelessWidget {
             languageTagline: "تابع بالعربية",
             isSelected: true,
           ),
+          
         ],
       ),
     );
