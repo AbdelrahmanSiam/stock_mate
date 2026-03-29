@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/core/styles/app_styles.dart';
+import 'package:stock_mate/features/language/presentation/views/widgets/tagline_language_text.dart';
 import 'package:stock_mate/features/splash/presentation/views/widgets/app_logo_widget.dart';
 
 class LanguageViewBody extends StatelessWidget {
@@ -10,7 +12,10 @@ class LanguageViewBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         AppLogoWidget(),
+        SizedBox(height: 10,),
+        TaglineLanguageText()
       ],
     );
   }
 }
+

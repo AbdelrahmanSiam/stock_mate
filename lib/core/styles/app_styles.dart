@@ -30,7 +30,14 @@ abstract class AppStyles {
     letterSpacing: 3.0,
     fontFamily: 'Inter',
   );
-
+// tagline under app name "PREMIUM INVENTORY & SALES"
+  static TextStyle languageRegular18(BuildContext context) => TextStyle(
+    fontSize: getResponsiveFontSize(context, fontSize: 18),
+    fontWeight: FontWeight.w400,
+    color: Color(0XFFE2BFB3),
+    letterSpacing: 3.0,
+    fontFamily: 'Inter',
+  );
   // splash "VERSION" و "ENTERPRISE SECURE"
   static TextStyle captionRegular10(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 10),
