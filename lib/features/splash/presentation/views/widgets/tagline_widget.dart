@@ -17,7 +17,7 @@ class TaglineWidget extends StatelessWidget {
         return Opacity(
           opacity: taglineAnimation.value,
           child: Transform.scale(
-            scale: 0.8 + (taglineAnimation.value * 0.2),
+            scale: 0.8 + (taglineAnimation.value * 0.2), // control animation speed
             child: Text(
               "PREMIUM INVENTORY & SALES",
               style: AppStyles.taglineRegular11(context),

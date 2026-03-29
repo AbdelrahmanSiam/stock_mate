@@ -27,7 +27,7 @@ class LoadingBarWidget extends StatelessWidget {
                 startX + ((backgroundWidth - barWidth) * loadingBarAnimation.value),
                 0,
               ),
-              child: ForegroundAnimatedController(width: width),
+              child: ForegroundAnimatedController(barWidth: barWidth),
             ),
           ],
         );

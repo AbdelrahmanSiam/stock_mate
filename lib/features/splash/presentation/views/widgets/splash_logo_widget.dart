@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:stock_mate/core/styles/app_styles.dart';
-import 'package:stock_mate/core/utils/app_assets.dart';
+import 'package:stock_mate/features/splash/presentation/views/widgets/app_logo_widget.dart';
 
 class SplashLogoWidget extends StatelessWidget {
   const SplashLogoWidget({
@@ -20,10 +18,7 @@ final Animation <double> logoAnimation;
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SvgPicture.asset(AppAssets.logo, height: 150, width: 150),
-                SizedBox(height: 20),
-                Text("StockMate", style: AppStyles.appNameBold32(context)),
-                SizedBox(height: 8),
+                AppLogoWidget(),
                 
               ],
             ),
@@ -33,3 +28,4 @@ final Animation <double> logoAnimation;
     );
   }
 }
+
