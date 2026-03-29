@@ -7,7 +7,7 @@ part 'splash_state.dart';
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit(this.checkAuthUseCase) : super(SplashInitialState());
   final CheckAuthUseCase checkAuthUseCase;
-  Future<void> checkUserLogin() async {
+  Future<void> checkAuthentication() async {
     emit(SplashLoadingState());
     final result = await checkAuthUseCase.call();
     result.fold(

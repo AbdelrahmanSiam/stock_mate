@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock_mate/features/language/presentation/views/language_view.dart';
+import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
 import 'package:stock_mate/features/splash/presentation/views/widgets/loading_bar_widget.dart';
 import 'package:stock_mate/features/splash/presentation/views/widgets/splash_logo_widget.dart';
 import 'package:stock_mate/features/splash/presentation/views/widgets/tagline_widget.dart';
@@ -28,6 +30,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.initState();
     initAnimations();
     startNavigation();
+    startAuthCheck();
   }
 
   void initAnimations() {
@@ -73,6 +76,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
         );
       }
     });
+  }
+  void startAuthCheck(){
+    context.read<SplashCubit>().checkAuthentication();
   }
 
   @override
