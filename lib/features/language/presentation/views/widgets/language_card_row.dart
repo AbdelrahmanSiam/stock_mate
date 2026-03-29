@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/features/language/domain/entity/language_card_entity.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/language_card_text.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/radio_button.dart';
 
 class LanguageCardRow extends StatelessWidget {
   const LanguageCardRow({
     super.key,
-    required this.languageName,
-    required this.languageTagline,
-    required this.isSelected,
+    required this.languageCardEntity
   });
 
-  final String languageName;
-  final String languageTagline;
-  final bool isSelected;
+  final LanguageCardEntity languageCardEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +19,12 @@ class LanguageCardRow extends StatelessWidget {
         SizedBox(width: 16),
         Expanded(
           child: LanguageCardText(
-            languageName: languageName,
-            languageTagline: languageTagline,
+            languageName: languageCardEntity.languageName,
+            languageTagline: languageCardEntity.languageTagline,
           ),
         ),
         Spacer(),
-        RadioButton(isSelected: isSelected),
+        RadioButton(isSelected: languageCardEntity.isSelected),
       ],
     );
   }

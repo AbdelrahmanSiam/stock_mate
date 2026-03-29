@@ -8,6 +8,6 @@ class LanguageCardEntity {
     required this.languageName,
     required this.languageTagline,
     required this.isSelected,
-    required this.onTap,
+    this.onTap,
   });
 }

@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/features/language/domain/entity/language_card_entity.dart';
 import 'package:stock_mate/features/language/presentation/views/widgets/language_card_row.dart';
 
 class LanguageCardWidget extends StatelessWidget {
   const LanguageCardWidget({
-    super.key,
-    required this.languageName,
-    required this.languageTagline,
-    required this.isSelected,
-    this.onTap,
+    super.key, required this.languageCardEntity,
   });
-  final String languageName;
-  final String languageTagline;
-  final bool isSelected;
-  final void Function()? onTap;
+  final LanguageCardEntity languageCardEntity;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: languageCardEntity.onTap,
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 18.0),
@@ -25,16 +19,14 @@ class LanguageCardWidget extends StatelessWidget {
           color: AppColorsDarkMode.surface,
           borderRadius: BorderRadius.circular(12),
           border: BoxBorder.all(
-            color: isSelected
+            color: languageCardEntity.isSelected
                 ? AppColorsDarkMode.primary
                 : AppColorsDarkMode.border,
-            width: isSelected ? 1.5 : 1,
+            width: languageCardEntity.isSelected ? 1.5 : 1,
           ),
         ),
         child: LanguageCardRow(
-          languageName: languageName,
-          languageTagline: languageTagline,
-          isSelected: isSelected,
+          languageCardEntity: languageCardEntity,
         ),
       ),
     );
