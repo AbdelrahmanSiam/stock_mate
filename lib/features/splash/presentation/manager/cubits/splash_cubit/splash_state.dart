@@ -7,6 +7,6 @@ final class SplashInitialState extends SplashState {}
 
 final class SplashLoadingState extends SplashState {}
 
-final class SplashAuthenticated extends SplashState {} // go to Dashboard View
+final class SplashAuthenticatedState extends SplashState {} // go to Dashboard View
 
-final class SplashUnauthenticated extends SplashState {} // go to Login View
+final class SplashUnauthenticatedState extends SplashState {} // go to Login View
