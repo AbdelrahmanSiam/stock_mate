@@ -6,28 +6,30 @@ import 'package:stock_mate/features/language/presentation/views/widgets/radio_bu
 class LanguageCardRow extends StatelessWidget {
   const LanguageCardRow({
     super.key,
-    required this.languageCardEntity
+    required this.languageName,
+    required this.languageTagline,
+    required this.isSelected,
   });
 
-  final LanguageCardEntity languageCardEntity;
+  final String languageName;
+  final String languageTagline;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(Icons.translate),
+        Icon(isSelected ? Icons.play_arrow : Icons.pause),
         SizedBox(width: 16),
         Expanded(
           child: LanguageCardText(
-            languageName: languageCardEntity.languageName,
-            languageTagline: languageCardEntity.languageTagline,
+            languageName: languageName,
+            languageTagline: languageTagline,
           ),
         ),
         Spacer(),
-        RadioButton(code: languageCardEntity.code),
+        RadioButton(isSelected: isSelected),
       ],
     );
   }
 }
-
-

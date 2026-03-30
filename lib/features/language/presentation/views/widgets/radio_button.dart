@@ -4,10 +4,10 @@ import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 class RadioButton extends StatelessWidget {
   const RadioButton({
     super.key,
-    required this.code,
+    required this.isSelected,
   });
 
-  final String code;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,13 @@ class RadioButton extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: code == "ar"
+          color: isSelected
               ? AppColorsDarkMode.primary
               : AppColorsDarkMode.border,
           width: 2,
         ),
       ),
-      child: code == "ar"
+      child: isSelected
           ? const Icon(Icons.circle, color: Colors.white, size: 12)
           : null,
     );

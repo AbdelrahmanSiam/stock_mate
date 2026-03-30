@@ -21,7 +21,7 @@ class LanguageViewBody extends StatelessWidget {
           const SizedBox(height: 16),
           LanguageHintWidget(),
           const Spacer(),
-          ContinueButtonSection(isEnabled: true,code: "ar",),
+          ContinueButtonSection(),
           const SizedBox(height: 32),
         ],
       ),

@@ -16,23 +16,24 @@ class LanguageCubit extends Cubit<LanguageState> {
     // emit state with selected language
     // UI update (border + radio)
     emit(LanguageSelectedState(selectedCode: code));
-    //2- confirm language
-    Future<void> confirmLanguage() async {
-      if (state is! LanguageSelectedState)
-        return; // to ensure that user select one card
-      final selectedCode = (state as LanguageSelectedState).selectedCode;
-      emit(LanguageSaveLoadingState());
-      final result = await saveLanguageUseCase(
-        SaveLanguageParameters(languageCode: selectedCode),
-      );
-      return result.fold(
-        (error) {
-          emit(LanguageSaveFailureState(errMessage: error.toString()));
-        },
-        (_) {
-          emit(LanguageSaveSuccessState());
-        },
-      );
-    }
+  }
+
+  //2- confirm language
+  Future<void> confirmLanguage() async {
+    if (state is! LanguageSelectedState)
+      return; // to ensure that user select one card
+    final selectedCode = (state as LanguageSelectedState).selectedCode;
+    emit(LanguageSaveLoadingState());
+    final result = await saveLanguageUseCase(
+      SaveLanguageParameters(languageCode: selectedCode),
+    );
+    return result.fold(
+      (error) {
+        emit(LanguageSaveFailureState(errMessage: error.toString()));
+      },
+      (_) {
+        emit(LanguageSaveSuccessState());
+      },
+    );
   }
 }
