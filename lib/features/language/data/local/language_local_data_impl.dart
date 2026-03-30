@@ -9,12 +9,12 @@ class LanguageLocalDataImpl implements LanguageLocalData {
   LanguageLocalDataImpl({required this.box});
 
   @override
-  Future<String> getSavedLanguage() {
+  Future<String> getSavedLanguage()async {
     return box.get(kLanguageKey);
   }
 
   @override
-  Future<void> saveLanguage({required String languageCode}) {
-   return box.put(kLanguageKey, languageCode);
+  Future<void> saveLanguage({required String languageCode}) async{
+   return await box.put(kLanguageKey, languageCode);
   }
 }
