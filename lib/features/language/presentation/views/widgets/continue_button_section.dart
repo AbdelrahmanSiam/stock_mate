@@ -3,9 +3,10 @@ import 'package:stock_mate/core/styles/app_styles.dart';
 
 class ContinueButtonSection extends StatelessWidget {
   const ContinueButtonSection({
-    super.key, required this.isEnabled,
+    super.key, required this.isEnabled, required this.code,
   });
 final bool isEnabled;
+final String code;
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
@@ -14,7 +15,7 @@ final bool isEnabled;
       child: ElevatedButton(
         onPressed: () {},
         child: Text(
-          "Continue",
+          code == "ar" ? " متابعه" : "Continue",
           style: AppStyles.buttonSemiBold15(
             context,
           ).copyWith(color: Colors.black),
