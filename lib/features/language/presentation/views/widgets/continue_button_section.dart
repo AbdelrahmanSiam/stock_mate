@@ -4,26 +4,27 @@ import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 
 class ContinueButtonSection extends StatelessWidget {
-  ContinueButtonSection({super.key});
-  late bool isEnabled;
+  const ContinueButtonSection({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: isEnabled ? 1.0 : 0.4,
-      duration: Duration(milliseconds: 200),
-      child: BlocBuilder<LanguageCubit, LanguageState>(
-        builder: (context, state) {
-          final bool isLoading = state is LanguageSaveLoadingState;
-          final selectedCode = state is LanguageSelectedState
-              ? state.selectedCode
-              : null;
-          // disabled if no choice to save
-          isEnabled = selectedCode != null && !isLoading;
-          return ElevatedButton(
+    return BlocBuilder<LanguageCubit, LanguageState>(
+      builder: (context, state) {
+        final bool isLoading = state is LanguageSaveLoadingState;
+        final selectedCode = state is LanguageSelectedState
+            ? state.selectedCode
+            : null;
+
+        final bool isEnabled = selectedCode != null && !isLoading;
+
+        return AnimatedOpacity(
+          opacity: isEnabled ? 1.0 : 0.4,
+          duration: const Duration(milliseconds: 200),
+          child: ElevatedButton(
             onPressed: isEnabled
                 ? () => context.read<LanguageCubit>().confirmLanguage()
                 : null,
-            child: state is LanguageSaveLoadingState
+            child: isLoading
                 ? const SizedBox(
                     width: 20,
                     height: 20,
@@ -33,14 +34,13 @@ class ContinueButtonSection extends StatelessWidget {
                     ),
                   )
                 : Text(
-                    selectedCode == "ar" ? " متابعه" : "Continue",
-                    style: AppStyles.buttonSemiBold15(
-                      context,
-                    ).copyWith(color: Colors.black),
+                    selectedCode == "ar" ? "متابعة" : "Continue",
+                    style: AppStyles.buttonSemiBold15(context)
+                        .copyWith(color: Colors.black),
                   ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

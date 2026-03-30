@@ -1,5 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
+import 'package:stock_mate/features/language/data/local/language_local_data.dart';
+import 'package:stock_mate/features/language/data/local/language_local_data_impl.dart';
+import 'package:stock_mate/features/language/data/repo/language_repo_impl.dart';
+import 'package:stock_mate/features/language/domain/repo/language_repo.dart';
+import 'package:stock_mate/features/language/domain/usecases/get_saved_language_use_case.dart';
+import 'package:stock_mate/features/language/domain/usecases/save_language_use_case.dart';
+import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
 import 'package:stock_mate/features/splash/data/repo/splash_repo_impl.dart';
@@ -22,5 +30,39 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<SplashCubit>(
     () => SplashCubit(getIt<CheckAuthUseCase>()),
+  );
+
+  // ── Hive Box ──────────────────────────────────────────
+  // لازم تفتح الـ box في main قبل ما تسجله هنا
+  getIt.registerLazySingleton<Box>(
+    () => Hive.box(kLanguageBox),
+    instanceName: 'languageBox', // اسم عشان نفرق بين الـ boxes
+  );
+
+  // ── Language DataSources ───────────────────────────────
+  getIt.registerLazySingleton<LanguageLocalData>(
+    () => LanguageLocalDataImpl(box: getIt<Box>(instanceName: 'languageBox')),
+  );
+
+  // ── Language Repository ────────────────────────────────
+  getIt.registerLazySingleton<LanguageRepo>(
+    () => LanguageRepoImpl(languageLocalData: getIt<LanguageLocalData>()),
+  );
+
+  // ── Language UseCases ──────────────────────────────────
+  getIt.registerLazySingleton<SaveLanguageUseCase>(
+    () => SaveLanguageUseCase(languageRepo: getIt<LanguageRepo>()),
+  );
+
+  getIt.registerLazySingleton<GetSavedLanguageUseCase>(
+    () => GetSavedLanguageUseCase(languageRepo: getIt<LanguageRepo>()),
+  );
+
+  // ── Language Cubit ─────────────────────────────────────
+  getIt.registerFactory<LanguageCubit>(
+    () => LanguageCubit(
+      getIt<SaveLanguageUseCase>(),
+      getIt<GetSavedLanguageUseCase>(),
+    ),
   );
 }
