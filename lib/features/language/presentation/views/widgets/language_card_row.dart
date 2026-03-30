@@ -24,7 +24,7 @@ class LanguageCardRow extends StatelessWidget {
           ),
         ),
         Spacer(),
-        RadioButton(isSelected: languageCardEntity.isSelected),
+        RadioButton(code: languageCardEntity.code),
       ],
     );
   }

@@ -8,12 +8,12 @@ class LanguageCardsSection extends StatelessWidget {
     LanguageCardEntity(
       languageName: "English",
       languageTagline: "Continue in English",
-      isSelected: true,
+      code: "en",
     ),
     LanguageCardEntity(
       languageName: "العربية",
       languageTagline: "تابع بالعربية",
-      isSelected: false,
+      code: "ar",
     ),
   ];
   @override

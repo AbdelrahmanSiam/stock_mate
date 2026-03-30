@@ -19,10 +19,10 @@ class LanguageCardWidget extends StatelessWidget {
           color: AppColorsDarkMode.surface,
           borderRadius: BorderRadius.circular(12),
           border: BoxBorder.all(
-            color: languageCardEntity.isSelected
+            color: languageCardEntity.code == "ar"
                 ? AppColorsDarkMode.primary
                 : AppColorsDarkMode.border,
-            width: languageCardEntity.isSelected ? 1.5 : 1,
+            width: languageCardEntity.code == "ar" ? 1.5 : 1,
           ),
         ),
         child: LanguageCardRow(
