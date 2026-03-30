@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:stock_mate/core/errors/failure.dart';
-import 'package:stock_mate/core/usecases/usecase.dart';
+import 'package:stock_mate/core/usecases/use_case.dart';
 import 'package:stock_mate/features/language/domain/repo/language_repo.dart';
 
 class SaveLanguageParameters {
