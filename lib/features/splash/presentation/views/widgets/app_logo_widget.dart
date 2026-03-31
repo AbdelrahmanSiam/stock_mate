@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/utils/app_assets.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 class AppLogoWidget extends StatelessWidget {
   const AppLogoWidget({
@@ -14,7 +15,7 @@ class AppLogoWidget extends StatelessWidget {
       child: Column(
         children: [
           SvgPicture.asset(AppAssets.logo, height: 120, width: 120),
-          Text("StockMate", style: AppStyles.appNameBold32(context)),
+          Text(S.of(context).app_name, style: AppStyles.appNameBold32(context)),
           SizedBox(height: 8),
         ],
       ),

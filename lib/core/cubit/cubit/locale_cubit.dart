@@ -15,18 +15,17 @@ class LocaleCubit extends Cubit<LocaleState> {
   // call it main to return saved language when open app every time
   Future<void> loadSavedLanguage() async {
     final result = await getSavedLanguageUseCase();
-    result.fold((_) => emit(LocaleLoadedState(locale: Locale("ar"))), (
-      languageCode,
-    ) {
+    result.fold((_) => emit(LocaleLoadedState(locale: Locale("ar"))), (languageCode) {
       if (languageCode == null) {
-        // first time to visit app
+        // No saved language at first time will navigate to language screen
         emit(LocaleInitialState());
       } else {
-        emit(LocaleLoadedState(locale: Locale(languageCode)));
+        emit(LocaleLoadedState(locale:Locale(languageCode)));
       }
     });
   }
-        // Called when user use language screen from app to change it
+
+  // Called when user use language screen from app to change it
   Future<void> changeLocal(String languageCode) async {
     final result = await saveLanguageUseCase();
     result.fold(

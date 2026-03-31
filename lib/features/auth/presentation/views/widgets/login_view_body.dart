@@ -7,7 +7,7 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        
+        Text("Login")
       ],
     );
   }

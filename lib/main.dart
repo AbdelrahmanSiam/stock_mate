@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
+import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/theme/theme_data/app_theme_dark_mode.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
 import 'package:stock_mate/features/splash/presentation/views/splash_view.dart';
@@ -38,7 +39,7 @@ class StockMate extends StatelessWidget {
           final locale = state is LocaleLoadedState
               ? state.locale
               : const Locale('ar'); // default language is arabic
-          return MaterialApp(
+          return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             locale: locale,
             localizationsDelegates: [
@@ -49,7 +50,7 @@ class StockMate extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             theme: AppThemeDarkMode.getDarkTheme(),
-            home: const SplashView(),
+            routerConfig: appRouter,
           );
         },
       ),

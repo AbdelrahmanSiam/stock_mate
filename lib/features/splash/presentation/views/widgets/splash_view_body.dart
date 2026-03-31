@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
+import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/features/language/presentation/views/language_view.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
@@ -77,13 +79,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
             .state; // get current state to check it
         if (localeState is LocaleInitialState) {
           // this is first time to visit app so go to language View
-          Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => BlocProvider(
-            create: (_) => getIt<LanguageCubit>(),
-            child: const LanguageView(),
-          )),
-        );
+          context.go(AppRoutes.language);
         }
       }
     });
