@@ -8,8 +8,6 @@ import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
 import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/theme/theme_data/app_theme_dark_mode.dart';
-import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
-import 'package:stock_mate/features/splash/presentation/views/splash_view.dart';
 import 'package:stock_mate/firebase_options.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -27,18 +25,13 @@ class StockMate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<LocaleCubit>()..loadSavedLanguage(),
-        ),
-        BlocProvider(create: (context) => getIt<SplashCubit>()),
-      ],
+    return BlocProvider(
+      create: (context) => getIt<LocaleCubit>()..loadSavedLanguage(),
       child: BlocBuilder<LocaleCubit, LocaleState>(
         builder: (context, state) {
           final locale = state is LocaleLoadedState
               ? state.locale
-              : const Locale('ar'); // default language is arabic
+              : const Locale('ar');// arabic is default
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             locale: locale,

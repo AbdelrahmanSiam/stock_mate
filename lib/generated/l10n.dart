@@ -54,9 +54,19 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `StokeMate`
+  /// `StockMate`
   String get app_name {
-    return Intl.message('StokeMate', name: 'app_name', desc: '', args: []);
+    return Intl.message('StockMate', name: 'app_name', desc: '', args: []);
+  }
+
+  /// `Continue`
+  String get continue_button {
+    return Intl.message(
+      'Continue',
+      name: 'continue_button',
+      desc: '',
+      args: [],
+    );
   }
 }
 

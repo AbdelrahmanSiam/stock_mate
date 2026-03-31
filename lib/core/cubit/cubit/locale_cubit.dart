@@ -27,7 +27,9 @@ class LocaleCubit extends Cubit<LocaleState> {
 
   // Called when user use language screen from app to change it
   Future<void> changeLocal(String languageCode) async {
-    final result = await saveLanguageUseCase();
+    final result = await saveLanguageUseCase(
+    SaveLanguageParameters(languageCode: languageCode),
+  );
     result.fold(
       (_) => null,
       (_) => emit(LocaleLoadedState(locale: Locale(languageCode))),

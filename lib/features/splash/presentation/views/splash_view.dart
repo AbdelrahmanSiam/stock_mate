@@ -22,7 +22,7 @@ class SplashView extends StatelessWidget {
             context.go(AppRoutes.dashboard);
           } else {
             if (state is SplashUnauthenticatedState) {
-              context.go(AppRoutes.language);
+              context.go(AppRoutes.login);
             }
           }
         },

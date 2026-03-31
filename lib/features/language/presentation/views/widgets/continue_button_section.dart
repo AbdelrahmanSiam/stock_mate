@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 class ContinueButtonSection extends StatelessWidget {
   const ContinueButtonSection({super.key});
@@ -34,7 +35,7 @@ class ContinueButtonSection extends StatelessWidget {
                     ),
                   )
                 : Text(
-                    selectedCode == "ar" ? "متابعة" : "Continue",
+                    S.of(context).continue_button,
                     style: AppStyles.buttonSemiBold15(context)
                         .copyWith(color: Colors.black),
                   ),
