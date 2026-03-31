@@ -1,64 +1,53 @@
-// lib/core/widgets/app_card.dart
-
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 
 class AppCard extends StatelessWidget {
   final Widget child;
-  final EdgeInsetsGeometry? padding;
+
+  final EdgeInsetsGeometry padding;
   final double borderRadius;
 
-  // Gradient options
-  final bool useGradient;
-  final List<Color>? gradientColors;
+  final Alignment begin;
+  final Alignment end;
 
-  // card without gradient
-  final Color? backgroundColor;
-
-  // Border
-  final Color? borderColor;
-  final double borderWidth;
   final List<double>? stops;
 
   const AppCard({
     super.key,
     required this.child,
-    this.padding,
+    this.padding = const EdgeInsets.all(20),
     this.borderRadius = 16,
-    this.useGradient = false,
-    this.gradientColors,
-    this.backgroundColor,
-    this.borderColor,
-    this.borderWidth = 1, this.stops,
+    this.begin = Alignment.topLeft,
+    this.end = Alignment.bottomRight,
+    this.stops,
   });
 
   @override
   Widget build(BuildContext context) {
-    // If gradient use gradient background if not use default
-    final List<Color> colors =
-        gradientColors ??
-        [AppColorsDarkMode.surface, AppColorsDarkMode.surface];
-
     return Container(
-      padding: padding ?? const EdgeInsets.all(20),
+      padding: padding,
       decoration: BoxDecoration(
-        gradient: useGradient
-            ? LinearGradient(
-                // vertical
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: colors,
-                stops: stops
-              )
-            : null,
-        color: useGradient
-            ? null
-            : (backgroundColor ?? AppColorsDarkMode.surface),
+        gradient: LinearGradient(
+          begin: begin,
+          end: end,
+          stops: stops,
+          colors: [
+            const Color(0xFF2F1E21),
+            AppColorsDarkMode.surface,
+          ],
+        ),
         borderRadius: BorderRadius.circular(borderRadius),
         border: Border.all(
-          color: borderColor ?? AppColorsDarkMode.border,
-          width: borderWidth,
+          color: const Color(0xFF252A3D),
+          width: 1,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.4),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: child,
     );

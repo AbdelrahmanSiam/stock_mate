@@ -15,12 +15,8 @@ class LoginViewBody extends StatelessWidget {
           LoginViewHeader(),
           const SizedBox(height: 32),
           AppCard(
-            useGradient: true,
-            gradientColors: [
-              const Color(0xFFFF6B2C).withOpacity(0.3),
-              const Color(0xFFFFB800).withOpacity(0.3),
-            ],
-            borderColor: AppColorsDarkMode.border,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
             child: Column(
               children: [TextField(), SizedBox(height: 50), TextField()],
             ),
