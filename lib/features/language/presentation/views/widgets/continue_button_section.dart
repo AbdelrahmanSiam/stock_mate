@@ -35,7 +35,7 @@ class ContinueButtonSection extends StatelessWidget {
                     ),
                   )
                 : Text(
-                    S.of(context).continue_button,
+                    S.of(context).continueButton,
                     style: AppStyles.buttonSemiBold15(context)
                         .copyWith(color: Colors.black),
                   ),

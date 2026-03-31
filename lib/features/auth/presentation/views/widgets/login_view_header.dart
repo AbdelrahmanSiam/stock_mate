@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/features/language/presentation/views/widgets/tagline_language_text.dart';
+import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/splash/presentation/views/widgets/app_logo_widget.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 class LoginViewHeader extends StatelessWidget {
-  const LoginViewHeader({
-    super.key,
-  });
+  const LoginViewHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppLogoWidget(iconHeight: 100, iconWidth: 100),
+        SizedBox(height: 40,),
+        AppLogoWidget(iconHeight: 64, iconWidth: 64, iconColor: Colors.black),
         SizedBox(height: 12),
-        TaglineLanguageText(
-          englishText: "Sign in to manage your inventory",
-          arabicText: "سجّل دخولك لإدارة مخزونك",
+        Text(
+          S.of(context).loginTagline,
+          style: AppStyles.bodyMediumRegular14(
+            context,
+          ).copyWith(color: Color(0XFFE2BFB3)),
         ),
       ],
     );

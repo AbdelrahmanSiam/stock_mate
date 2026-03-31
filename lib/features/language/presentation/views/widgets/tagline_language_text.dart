@@ -10,9 +10,9 @@ class TaglineLanguageText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FittedBox(child: Text(englishText,style: AppStyles.languageRegular18(context),)),
+        Text(englishText,style: AppStyles.languageRegular16(context),),
         SizedBox(height: 4,),
-        FittedBox(child: Text(arabicText,style: AppStyles.languageRegular18(context),)),
+        Text(arabicText,style: AppStyles.languageRegular16(context),),
       ],
     );
   }

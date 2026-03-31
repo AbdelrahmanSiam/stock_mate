@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/login_view_header.dart';
+
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
 
@@ -10,11 +13,20 @@ class LoginViewBody extends StatelessWidget {
       child: Column(
         children: [
           LoginViewHeader(),
-          const SizedBox(height: 40),
+          const SizedBox(height: 32),
+          AppCard(
+            useGradient: true,
+            gradientColors: [
+              const Color(0xFFFF6B2C).withOpacity(0.3),
+              const Color(0xFFFFB800).withOpacity(0.3),
+            ],
+            borderColor: AppColorsDarkMode.border,
+            child: Column(
+              children: [TextField(), SizedBox(height: 50), TextField()],
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
-

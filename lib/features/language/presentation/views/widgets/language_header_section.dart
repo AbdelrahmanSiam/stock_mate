@@ -9,7 +9,7 @@ class LanguageHeaderSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppLogoWidget(iconHeight: 120, iconWidth: 120),
+        AppLogoWidget(iconHeight: 70, iconWidth: 70 , iconColor: Colors.white,),
         SizedBox(height: 12),
         TaglineLanguageText(
           englishText: "Choose your language",

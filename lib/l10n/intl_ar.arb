@@ -1,5 +1,6 @@
 {
-    "app_name":"زميل مخزنك",
-    "continue_button":"متابعة",
-    "appTagline": "إدارة المخزون والمبيعات"
+    "appName":"زميل مخزنك",
+    "continueButton":"متابعة",
+    "appTagline": "إدارة المخزون والمبيعات",
+    "loginTagline" : "سجّل دخولك لإدارة مخزونك"
 }

@@ -55,18 +55,13 @@ class S {
   }
 
   /// `StockMate`
-  String get app_name {
-    return Intl.message('StockMate', name: 'app_name', desc: '', args: []);
+  String get appName {
+    return Intl.message('StockMate', name: 'appName', desc: '', args: []);
   }
 
   /// `Continue`
-  String get continue_button {
-    return Intl.message(
-      'Continue',
-      name: 'continue_button',
-      desc: '',
-      args: [],
-    );
+  String get continueButton {
+    return Intl.message('Continue', name: 'continueButton', desc: '', args: []);
   }
 
   /// `PREMIUM INVENTORY & SALES`
@@ -74,6 +69,16 @@ class S {
     return Intl.message(
       'PREMIUM INVENTORY & SALES',
       name: 'appTagline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in to manage your inventory`
+  String get loginTagline {
+    return Intl.message(
+      'Sign in to manage your inventory',
+      name: 'loginTagline',
       desc: '',
       args: [],
     );
