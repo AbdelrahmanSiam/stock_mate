@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
+import 'package:stock_mate/core/di/service_locator.dart';
+import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/features/language/presentation/views/language_view.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
 import 'package:stock_mate/features/splash/presentation/views/widgets/loading_bar_widget.dart';
@@ -69,15 +72,24 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(const Duration(milliseconds: 2500), () {
       if (!hasNavigated && mounted) {
         hasNavigated = true;
-
-        Navigator.push(
+        final localeState = context
+            .read<LocaleCubit>()
+            .state; // get current state to check it
+        if (localeState is LocaleInitialState) {
+          // this is first time to visit app so go to language View
+          Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => const LanguageView()),
+          MaterialPageRoute(builder: (_) => BlocProvider(
+            create: (_) => getIt<LanguageCubit>(),
+            child: const LanguageView(),
+          )),
         );
+        }
       }
     });
   }
-  void startAuthCheck(){
+
+  void startAuthCheck() {
     context.read<SplashCubit>().checkAuthentication();
   }
 
@@ -98,7 +110,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
             mainAxisSize: MainAxisSize.min,
             children: [
               SplashLogoWidget(logoAnimation: logoAnimation),
-              TaglineWidget(taglineAnimation: taglineAnimation),// late 800 ms than Logo and App name
+              TaglineWidget(
+                taglineAnimation: taglineAnimation,
+              ), // late 800 ms than Logo and App name
             ],
           ),
         ),
@@ -106,9 +120,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           bottom: 40,
           left: 0,
           right: 0,
-          child: LoadingBarWidget(
-            loadingBarAnimation: loadingBarAnimation,
-          ),
+          child: LoadingBarWidget(loadingBarAnimation: loadingBarAnimation),
         ),
       ],
     );

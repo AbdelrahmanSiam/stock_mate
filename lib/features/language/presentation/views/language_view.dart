@@ -11,27 +11,24 @@ class LanguageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<LanguageCubit>(),
-      child: Scaffold(
-        body: BlocListener<LanguageCubit, LanguageState>(
-          listener: (context, state) {
-            if (state is LanguageSaveSuccessState) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const LoginView()),
-              );
-            } else if (state is LanguageSaveFailureState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.errMessage),
-                  backgroundColor: AppColorsDarkMode.error,
-                ),
-              );
-            }
-          },
-          child: LanguageViewBody(),
-        ),
+    return Scaffold(
+      body: BlocListener<LanguageCubit, LanguageState>(
+        listener: (context, state) {
+          if (state is LanguageSaveSuccessState) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const LoginView()),
+            );
+          } else if (state is LanguageSaveFailureState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errMessage),
+                backgroundColor: AppColorsDarkMode.error,
+              ),
+            );
+          }
+        },
+        child: LanguageViewBody(),
       ),
     );
   }
