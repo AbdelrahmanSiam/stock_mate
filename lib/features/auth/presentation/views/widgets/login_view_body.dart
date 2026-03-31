@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/app_card.dart';
+import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/login_view_header.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -18,7 +20,12 @@ class LoginViewBody extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             child: Column(
-              children: [TextField(), SizedBox(height: 50), TextField()],
+              children: [
+                CustomAuthTextField(
+                  label: "Email Address",
+                  hint: "mohamed@gmail.com",
+                ),
+              ],
             ),
           ),
         ],
@@ -26,3 +33,4 @@ class LoginViewBody extends StatelessWidget {
     );
   }
 }
+

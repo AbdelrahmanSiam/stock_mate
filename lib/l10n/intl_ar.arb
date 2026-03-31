@@ -1,6 +1,15 @@
 {
-    "appName":"زميل مخزنك",
-    "continueButton":"متابعة",
+    "appName": "زميل مخزنك",
+    "continueButton": "متابعة",
     "appTagline": "إدارة المخزون والمبيعات",
-    "loginTagline" : "سجّل دخولك لإدارة مخزونك"
+    "loginTagline": "سجّل دخولك لإدارة مخزونك",
+    "signIn": "تسجيل الدخول",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "fieldRequired": "هذا الحقل مطلوب",
+    "invalidEmail": "أدخل بريداً إلكترونياً صحيحاً",
+    "invalidPassword": "كلمة المرور 6 أحرف على الأقل",
+    "invalidCredentials": "البريد أو كلمة المرور غير صحيحة",
+    "checkConnection": "تحقق من اتصالك بالإنترنت",
+    "somethingWentWrong": "حدث خطأ غير متوقع"
 }

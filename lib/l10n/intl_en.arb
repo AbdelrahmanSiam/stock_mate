@@ -1,6 +1,15 @@
 {
-    "appName":"StockMate",
-    "continueButton":"Continue",
+    "appName": "StockMate",
+    "continueButton": "Continue",
     "appTagline": "PREMIUM INVENTORY & SALES",
-    "loginTagline" : "Sign in to manage your inventory"
+    "loginTagline": "Sign in to manage your inventory",
+    "signIn": "Sign In",
+    "email": "Email address",
+    "password": "Password",
+    "fieldRequired": "This field is required",
+    "invalidEmail": "Enter a valid email",
+    "invalidPassword": "Password must be at least 6 characters",
+    "invalidCredentials": "Invalid email or password",
+    "checkConnection": "Check your connection",
+    "somethingWentWrong": "Something went wrong"
 }

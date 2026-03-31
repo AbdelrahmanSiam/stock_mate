@@ -26,9 +26,28 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTagline": MessageLookupByLibrary.simpleMessage(
       "إدارة المخزون والمبيعات",
     ),
+    "checkConnection": MessageLookupByLibrary.simpleMessage(
+      "تحقق من اتصالك بالإنترنت",
+    ),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "البريد أو كلمة المرور غير صحيحة",
+    ),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "أدخل بريداً إلكترونياً صحيحاً",
+    ),
+    "invalidPassword": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور 6 أحرف على الأقل",
+    ),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
+    ),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ غير متوقع",
     ),
   };
 }

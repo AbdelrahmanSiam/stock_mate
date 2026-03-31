@@ -26,9 +26,28 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTagline": MessageLookupByLibrary.simpleMessage(
       "PREMIUM INVENTORY & SALES",
     ),
+    "checkConnection": MessageLookupByLibrary.simpleMessage(
+      "Check your connection",
+    ),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+    "email": MessageLookupByLibrary.simpleMessage("Email address"),
+    "fieldRequired": MessageLookupByLibrary.simpleMessage(
+      "This field is required",
+    ),
+    "invalidCredentials": MessageLookupByLibrary.simpleMessage(
+      "Invalid email or password",
+    ),
+    "invalidEmail": MessageLookupByLibrary.simpleMessage("Enter a valid email"),
+    "invalidPassword": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 6 characters",
+    ),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
+    ),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong",
     ),
   };
 }
