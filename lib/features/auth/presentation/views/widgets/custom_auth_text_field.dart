@@ -10,7 +10,8 @@ class CustomAuthTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
-  final TextEditingController? controller;
+  final TextEditingController controller;
+  final String? errText;
 
   const CustomAuthTextField({
     super.key,
@@ -22,7 +23,8 @@ class CustomAuthTextField extends StatelessWidget {
     this.suffixIcon,
     this.keyboardType = TextInputType.text,
     this.onChanged,
-    this.controller,
+    required this.controller,
+    this.errText,
   });
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class CustomAuthTextField extends StatelessWidget {
             prefixIcon: Icon(prefixIcon),
             hintText: hint,
             suffixIcon: suffixIcon,
+            errorText: errText,
           ),
         ),
       ],

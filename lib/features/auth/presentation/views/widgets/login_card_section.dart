@@ -1,35 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/core/styles/app_styles.dart';
-import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/core/theme/theme_data/app_theme_dark_mode.dart';
-import 'package:stock_mate/core/utils/widgets/app_card.dart';
-import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
+import 'package:stock_mate/features/auth/presentation/views/widgets/login_card_form.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
-class LoginCardSection extends StatelessWidget {
+class LoginCardSection extends StatefulWidget {
   const LoginCardSection({super.key});
 
   @override
+  State<LoginCardSection> createState() => _LoginCardFormState();
+}
+
+class _LoginCardFormState extends State<LoginCardSection> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  String? emailError;
+  String? passwordError;
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  bool validate() {
+    String? emailErr;
+    String? passwordErr;
+
+    if (emailController.text.trim().isEmpty) {
+      emailErr = S.of(context).fieldRequired;
+    } else if (!RegExp(
+      r'^[^@]+@[^@]+\.[^@]+',
+    ).hasMatch(emailController.text.trim())) {
+      emailErr = S.of(context).invalidEmail;
+    }
+
+    if (passwordController.text.isEmpty) {
+      passwordErr = S.of(context).fieldRequired;
+    } else if (passwordController.text.length < 6) {
+      passwordErr = S.of(context).invalidPassword;
+    }
+
+    setState(() {
+      emailErr = emailErr;
+      passwordErr = passwordErr;
+    });
+
+    // if both are null so validate is ok
+    return emailErr == null && passwordErr == null;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return AppCard(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      child: Column(
-        children: [
-          CustomAuthTextField(
-            label: S.of(context).email,
-            hint: "mohamed@gmail.com",
-            prefixIcon: Icons.email_outlined,
-          ),
-          const SizedBox(height: 16),
-          CustomAuthTextField(
-            label: S.of(context).password,
-            hint: '••••••••',
-            prefixIcon: Icons.lock_outlined,
-            widget:Text("Forget?", style: AppStyles.priceBold16(context)),
-          ),
-        ],
-      ),
+    return LoginCardForm(
+      emailController: emailController,
+      passwordController: passwordController,
     );
   }
 }
