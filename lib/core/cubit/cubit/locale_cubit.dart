@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:stock_mate/features/language/domain/usecases/get_saved_language_use_case.dart';
 import 'package:stock_mate/features/language/domain/usecases/save_language_use_case.dart';
@@ -15,7 +15,7 @@ class LocaleCubit extends Cubit<LocaleState> {
   // call it main to return saved language when open app every time
   Future<void> loadSavedLanguage() async {
     final result = await getSavedLanguageUseCase();
-    result.fold((_) => emit(LocaleLoadedState(locale: Locale("ar"))), (languageCode) {
+    result.fold((_) => emit(LocaleInitialState()), (languageCode) {
       if (languageCode == null) {
         // No saved language at first time will navigate to language screen
         emit(LocaleInitialState());

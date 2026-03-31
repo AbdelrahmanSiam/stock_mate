@@ -31,7 +31,7 @@ class StockMate extends StatelessWidget {
         builder: (context, state) {
           final locale = state is LocaleLoadedState
               ? state.locale
-              : const Locale('ar');// arabic is default
+              : const Locale('en');// english is default language
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             locale: locale,

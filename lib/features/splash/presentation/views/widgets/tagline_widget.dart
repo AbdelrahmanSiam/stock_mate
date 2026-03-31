@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 class TaglineWidget extends StatelessWidget {
   const TaglineWidget({
@@ -19,7 +20,7 @@ class TaglineWidget extends StatelessWidget {
           child: Transform.scale(
             scale: 0.8 + (taglineAnimation.value * 0.2), // control animation speed
             child: Text(
-              "PREMIUM INVENTORY & SALES",
+              S.of(context).appTagline,
               style: AppStyles.taglineRegular11(context),
             ),
           ),

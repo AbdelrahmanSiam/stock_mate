@@ -68,6 +68,16 @@ class S {
       args: [],
     );
   }
+
+  /// `PREMIUM INVENTORY & SALES`
+  String get appTagline {
+    return Intl.message(
+      'PREMIUM INVENTORY & SALES',
+      name: 'appTagline',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

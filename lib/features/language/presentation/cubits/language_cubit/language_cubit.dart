@@ -22,7 +22,7 @@ class LanguageCubit extends Cubit<LanguageState> {
       return; // to ensure that user select one card
     final selectedCode = (state as LanguageSelectedState).selectedCode;
     emit(LanguageSaveLoadingState());
-    await localeCubit.changeLocal(selectedCode); // will give this function the code that user choice
+    await localeCubit.changeLocal(selectedCode); // will give this function the code that user choice to change and save it
     emit(LanguageSaveSuccessState());
   }
 }

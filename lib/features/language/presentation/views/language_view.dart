@@ -15,7 +15,7 @@ class LanguageView extends StatelessWidget {
       body: BlocListener<LanguageCubit, LanguageState>(
         listener: (context, state) {
           if (state is LanguageSaveSuccessState) {
-            context.go(AppRoutes.language);
+            context.go(AppRoutes.login);
           } else if (state is LanguageSaveFailureState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

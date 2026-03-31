@@ -68,7 +68,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void startNavigation() {
-    Future.delayed(const Duration(milliseconds: 2500), () {
+    Future.delayed(const Duration(milliseconds: 3000), () {
       if (!hasNavigated && mounted) {
         hasNavigated = true;
         final localeState = context

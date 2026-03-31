@@ -1,4 +1,5 @@
 {
     "app_name":"StockMate",
-    "continue_button":"Continue"
+    "continue_button":"Continue",
+    "appTagline": "PREMIUM INVENTORY & SALES"
 }
