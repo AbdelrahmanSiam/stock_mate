@@ -6,15 +6,15 @@ import 'package:stock_mate/generated/l10n.dart';
 
 class AppLogoWidget extends StatelessWidget {
   const AppLogoWidget({
-    super.key,
+    super.key, required this.iconHeight, required this.iconWidth,
   });
-
+ final double iconHeight , iconWidth;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          SvgPicture.asset(AppAssets.logo, height: 120, width: 120),
+          SvgPicture.asset(AppAssets.logo, height: iconHeight, width: iconWidth),
           Text(S.of(context).app_name, style: AppStyles.appNameBold32(context)),
           SizedBox(height: 8),
         ],

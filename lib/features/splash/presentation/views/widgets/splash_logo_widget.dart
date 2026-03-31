@@ -18,7 +18,7 @@ final Animation <double> logoAnimation;
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppLogoWidget(),
+                AppLogoWidget(iconHeight: 150,iconWidth: 150,),
                 
               ],
             ),

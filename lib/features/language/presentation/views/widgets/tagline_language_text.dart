@@ -3,16 +3,16 @@ import 'package:stock_mate/core/styles/app_styles.dart';
 
 class TaglineLanguageText extends StatelessWidget {
   const TaglineLanguageText({
-    super.key,
+    super.key, required this.englishText, required this.arabicText,
   });
-
+  final String englishText , arabicText;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Choose your language",style: AppStyles.languageRegular18(context),),
+        FittedBox(child: Text(englishText,style: AppStyles.languageRegular18(context),)),
         SizedBox(height: 4,),
-        Text("اختر لغتك",style: AppStyles.languageRegular18(context),),
+        FittedBox(child: Text(arabicText,style: AppStyles.languageRegular18(context),)),
       ],
     );
   }
