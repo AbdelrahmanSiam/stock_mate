@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:stock_mate/core/constants/constants.dart';
+import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
 import 'package:stock_mate/features/language/data/local/language_local_data.dart';
 import 'package:stock_mate/features/language/data/local/language_local_data_impl.dart';
 import 'package:stock_mate/features/language/data/repo/language_repo_impl.dart';
@@ -32,16 +33,18 @@ void setupServiceLocator() {
   getIt.registerFactory<SplashCubit>(
     () => SplashCubit(getIt<CheckAuthUseCase>()),
   );
-//              Language Feature
+  //              Language Feature
   // ── Hive Box ──────────────────────────────────────────
   getIt.registerLazySingleton<Box>(
     () => Hive.box(kLanguageBox),
-    instanceName: kLanguageInstanceName, 
+    instanceName: kLanguageInstanceName,
   );
 
   // ── Language DataSources ───────────────────────────────
   getIt.registerLazySingleton<LanguageLocalData>(
-    () => LanguageLocalDataImpl(box: getIt<Box>(instanceName: kLanguageInstanceName)),
+    () => LanguageLocalDataImpl(
+      box: getIt<Box>(instanceName: kLanguageInstanceName),
+    ),
   );
 
   // ── Language Repository ────────────────────────────────
@@ -57,12 +60,18 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<GetSavedLanguageUseCase>(
     () => GetSavedLanguageUseCase(languageRepo: getIt<LanguageRepo>()),
   );
+  // ── Local Cubit ─────────────────────────────────────
+  getIt.registerFactory<LocaleCubit>(
+    () => LocaleCubit(
+      getIt<SaveLanguageUseCase>(),
+      getIt<GetSavedLanguageUseCase>(),
+    ),
+  );
 
   // ── Language Cubit ─────────────────────────────────────
   getIt.registerFactory<LanguageCubit>(
     () => LanguageCubit(
-      getIt<SaveLanguageUseCase>(),
-      getIt<GetSavedLanguageUseCase>(),
+      getIt<LocaleCubit>(),
     ),
   );
 }
