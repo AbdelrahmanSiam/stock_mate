@@ -1,8 +1,6 @@
 import 'package:hive/hive.dart';
+import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/language/data/local/language_local_data.dart';
-
-const String kLanguageBox = 'language_box';
-const String kLanguageKey = 'selected_language';
 
 class LanguageLocalDataImpl implements LanguageLocalData {
   final Box box;
@@ -10,7 +8,7 @@ class LanguageLocalDataImpl implements LanguageLocalData {
 
   @override
   Future<String> getSavedLanguage()async {
-    return box.get(kLanguageKey);
+    return await box.get(kLanguageKey);
   }
 
   @override

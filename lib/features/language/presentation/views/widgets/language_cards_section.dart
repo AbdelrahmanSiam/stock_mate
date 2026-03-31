@@ -24,7 +24,7 @@ class LanguageCardsSection extends StatelessWidget {
       builder: (context, state) {
         final selectedCode = state is LanguageSelectedState
             ? state.selectedCode
-            : null; // to get selected code from state first
+            : null; // to get selected code from state first if found
         return Column(
           children: cardsList.asMap().entries.map((e) {
             var value = e.value;

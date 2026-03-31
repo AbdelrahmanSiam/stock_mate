@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class LanguageCardEntity {
   final String languageName;
   final String languageTagline;

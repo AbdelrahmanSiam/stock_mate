@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
+import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/language/data/local/language_local_data.dart';
 import 'package:stock_mate/features/language/data/local/language_local_data_impl.dart';
 import 'package:stock_mate/features/language/data/repo/language_repo_impl.dart';
@@ -31,17 +32,16 @@ void setupServiceLocator() {
   getIt.registerFactory<SplashCubit>(
     () => SplashCubit(getIt<CheckAuthUseCase>()),
   );
-
+//              Language Feature
   // ── Hive Box ──────────────────────────────────────────
-  // لازم تفتح الـ box في main قبل ما تسجله هنا
   getIt.registerLazySingleton<Box>(
     () => Hive.box(kLanguageBox),
-    instanceName: 'languageBox', // اسم عشان نفرق بين الـ boxes
+    instanceName: kLanguageInstanceName, 
   );
 
   // ── Language DataSources ───────────────────────────────
   getIt.registerLazySingleton<LanguageLocalData>(
-    () => LanguageLocalDataImpl(box: getIt<Box>(instanceName: 'languageBox')),
+    () => LanguageLocalDataImpl(box: getIt<Box>(instanceName: kLanguageInstanceName)),
   );
 
   // ── Language Repository ────────────────────────────────
