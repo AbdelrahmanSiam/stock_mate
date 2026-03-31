@@ -1,15 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:stock_mate/features/language/domain/usecases/get_saved_language_use_case.dart';
-import 'package:stock_mate/features/language/domain/usecases/save_language_use_case.dart';
+import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
 
 part 'language_state.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {
-  LanguageCubit(this.saveLanguageUseCase, this.getSavedLanguageUseCase)
+  LanguageCubit(this.localeCubit)
     : super(LanguageInitialState());
-  final SaveLanguageUseCase saveLanguageUseCase;
-  final GetSavedLanguageUseCase getSavedLanguageUseCase;
+  final LocaleCubit localeCubit;
 
   //1- When user click on language card
   void selectLanguage(String code) {
@@ -24,16 +22,7 @@ class LanguageCubit extends Cubit<LanguageState> {
       return; // to ensure that user select one card
     final selectedCode = (state as LanguageSelectedState).selectedCode;
     emit(LanguageSaveLoadingState());
-    final result = await saveLanguageUseCase(
-      SaveLanguageParameters(languageCode: selectedCode),
-    );
-    return result.fold(
-      (error) {
-        emit(LanguageSaveFailureState(errMessage: error.toString()));
-      },
-      (_) {
-        emit(LanguageSaveSuccessState());
-      },
-    );
+    await localeCubit.changeLocal(selectedCode); // will give this function the code that user choice
+    emit(LanguageSaveSuccessState());
   }
 }
