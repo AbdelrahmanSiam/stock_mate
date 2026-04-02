@@ -14,5 +14,6 @@
     "somethingWentWrong": "Something went wrong",
     "haveNoAccount" : "Don't have an account? ",
     "registerHere" : "Register here",
-    "register" : "Register"
+    "register" : "Register",
+    "orContactWith" : "OR CONTINUE WITH"
 }

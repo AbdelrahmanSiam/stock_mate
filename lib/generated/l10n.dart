@@ -183,6 +183,16 @@ class S {
   String get register {
     return Intl.message('Register', name: 'register', desc: '', args: []);
   }
+
+  /// `OR CONTINUE WITH`
+  String get orContactWith {
+    return Intl.message(
+      'OR CONTINUE WITH',
+      name: 'orContactWith',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

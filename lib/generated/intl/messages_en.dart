@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
     ),
+    "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),

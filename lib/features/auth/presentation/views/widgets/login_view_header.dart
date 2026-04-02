@@ -11,7 +11,6 @@ class LoginViewHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 40),
         AppLogoWidget(iconHeight: 64, iconWidth: 64, iconColor: Colors.black),
         SizedBox(height: 12),
         Text(

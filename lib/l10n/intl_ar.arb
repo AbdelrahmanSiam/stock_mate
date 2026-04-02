@@ -12,7 +12,8 @@
     "invalidCredentials": "البريد أو كلمة المرور غير صحيحة",
     "checkConnection": "تحقق من اتصالك بالإنترنت",
     "somethingWentWrong": "حدث خطأ غير متوقع",
-    "don'haveNoAccount" : " ليس لديك حساب؟",
-    "registerHere" : "سجل هنا",
-    "register" : "تسجيل"
+    "don'haveNoAccount": " ليس لديك حساب؟",
+    "registerHere": "سجل هنا",
+    "register": "تسجيل",
+    "orContactWith": "أو تابع مع"
 }

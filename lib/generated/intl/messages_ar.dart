@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
     ),
+    "orContactWith": MessageLookupByLibrary.simpleMessage("أو تابع مع"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),

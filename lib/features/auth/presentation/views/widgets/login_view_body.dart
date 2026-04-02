@@ -11,9 +11,11 @@ class LoginViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
         children: [
+          Spacer(),
           LoginViewHeader(),
           const SizedBox(height: 32),
           LoginCardSection(),
+          Spacer(),
         ],
       ),
     );
