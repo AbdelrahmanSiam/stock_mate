@@ -36,6 +36,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "This field is required",
     ),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget?"),
+    "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "fullNameExample": MessageLookupByLibrary.simpleMessage(
+      "Abdelrahman Ahmed",
+    ),
+    "haveAccount": MessageLookupByLibrary.simpleMessage(
+      "Do you already have an account? ",
+    ),
     "haveNoAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
@@ -51,12 +58,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
-    "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "registerButton": MessageLookupByLibrary.simpleMessage("REGISTER"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
       "Set up your shop and admin account",
     ),
-    "signIn": MessageLookupByLibrary.simpleMessage("SIGN IN"),
+    "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah "),
+    "shopeName": MessageLookupByLibrary.simpleMessage("Shop Name"),
+    "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),

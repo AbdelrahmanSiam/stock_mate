@@ -6,15 +6,16 @@ import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class AuthNavigateRow extends StatelessWidget {
-  const AuthNavigateRow({super.key});
-
+  const AuthNavigateRow({super.key, required this.text, required this.navName});
+  final String text;
+  final String navName;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          S.of(context).haveNoAccount,
+          text,
           style: AppStyles.bodySmallRegular12(context),
         ),
         GestureDetector(
@@ -22,7 +23,7 @@ class AuthNavigateRow extends StatelessWidget {
             GoRouter.of(context).push(AppRoutes.register);
           },
           child: Text(
-            S.of(context).registerHere,
+            navName,
             style: AppStyles.cardTitleSemiBold14(
               context,
             ).copyWith(color: AppColorsDarkMode.primary),

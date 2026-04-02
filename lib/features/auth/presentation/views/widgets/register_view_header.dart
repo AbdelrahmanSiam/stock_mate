@@ -10,15 +10,6 @@ class RegisterViewHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            S.of(context).appName,
-            style: AppStyles.h2Bold22(
-              context,
-            ).copyWith(color: AppColorsDarkMode.primary),
-          ),
-        ),
         Text(
           S.of(context).createAccount,
           style: AppStyles.appNameBold32(context),

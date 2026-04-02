@@ -3,7 +3,7 @@
     "continueButton": "Continue",
     "appTagline": "PREMIUM INVENTORY & SALES",
     "loginTagline": "Sign in to manage your inventory",
-    "signIn": "SIGN IN",
+    "signInButton": "SIGN IN",
     "email": "Email address",
     "password": "Password",
     "fieldRequired": "This field is required",
@@ -14,9 +14,14 @@
     "somethingWentWrong": "Something went wrong",
     "haveNoAccount" : "Don't have an account? ",
     "registerHere" : "Register here",
-    "register" : "Register",
+    "registerButton" : "REGISTER",
     "orContactWith" : "OR CONTINUE WITH",
     "forgetPassword" : "Forget?",
     "createAccount" : "Create Account",
-    "registerTagline" : "Set up your shop and admin account"
+    "registerTagline" : "Set up your shop and admin account",
+    "haveAccount": "Do you already have an account? ",
+    "shopeName" : "Shop Name",
+    "fullName" : "Full Name",
+    "fullNameExample" : "Abdelrahman Ahmed",
+    "shopNameExample" : "e.g. Al-Barakah "
 }

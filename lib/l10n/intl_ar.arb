@@ -3,7 +3,7 @@
     "continueButton": "متابعة",
     "appTagline": "إدارة المخزون والمبيعات",
     "loginTagline": "سجّل دخولك لإدارة مخزونك",
-    "signIn": "تسجيل الدخول",
+    "signInButton": "تسجيل الدخول",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "fieldRequired": "هذا الحقل مطلوب",
@@ -14,9 +14,14 @@
     "somethingWentWrong": "حدث خطأ غير متوقع",
     "don'haveNoAccount": " ليس لديك حساب؟",
     "registerHere": "سجل هنا",
-    "register": "تسجيل",
+    "registerButton": "تسجيل حساب",
     "orContactWith": "أو تابع مع",
     "forgetPassword": "نسيت كلمة المرور؟",
     "createAccount": "إنشاء حساب؟",
-    "registerTagline": "قم بإعداد متجرك وحسابك الإداري"
+    "registerTagline": "قم بإعداد متجرك وحسابك الإداري",
+    "haveAccount": "هل لديك حساب بالفعل؟ ",
+    "shopeName" : "اسم المتجر",
+    "fullName" : "الاسم الكامل",
+    "fullNameExample" : "عبد الرحمن أحمد",
+    "shopNameExample" : "مثال: البركة "
 }

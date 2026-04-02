@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
-import 'package:stock_mate/features/auth/presentation/views/widgets/auth_navigate_row.dart';
-import 'package:stock_mate/features/auth/presentation/views/widgets/sign_in_fields.dart';
+import 'package:stock_mate/features/auth/presentation/views/widgets/register_field.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
-class LoginCardForm extends StatefulWidget {
-  const LoginCardForm({super.key});
+class RegisterCardForm extends StatefulWidget {
+  const RegisterCardForm({super.key});
 
   @override
-  State<LoginCardForm> createState() => _LoginCardFormState();
+  State<RegisterCardForm> createState() => _RegisterCardFormState();
 }
 
-class _LoginCardFormState extends State<LoginCardForm> {
+class _RegisterCardFormState extends State<RegisterCardForm> {
+  final shopController = TextEditingController();
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
+    shopController.dispose();
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -33,25 +37,24 @@ class _LoginCardFormState extends State<LoginCardForm> {
         end: Alignment.bottomCenter,
         child: Column(
           children: [
-            SignInFields(
+            RegisterFields(
+              shopController: shopController,
+              nameController: nameController,
               emailController: emailController,
               passwordController: passwordController,
-            ),
+          ),
+            const SizedBox(height: 16),
             const SizedBox(height: 24),
             CustomButton(
+              buttonName: S.of(context).registerButton,
+              isLoading: false,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  // Navigate to Dashboard
+                  // register logic
                 }
               },
-              isLoading: false,
-              buttonName: S.of(context).signInButton,
             ),
-            const SizedBox(height: 48),
-            AuthNavigateRow(
-              text: S.of(context).haveNoAccount,
-              navName: S.of(context).registerHere,
-            ),
+            const SizedBox(height: 24),
           ],
         ),
       ),

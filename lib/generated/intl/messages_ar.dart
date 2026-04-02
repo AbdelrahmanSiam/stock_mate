@@ -34,6 +34,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "fullNameExample": MessageLookupByLibrary.simpleMessage("عبد الرحمن أحمد"),
+    "haveAccount": MessageLookupByLibrary.simpleMessage(
+      "هل لديك حساب بالفعل؟ ",
+    ),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "البريد أو كلمة المرور غير صحيحة",
     ),
@@ -48,12 +53,14 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "orContactWith": MessageLookupByLibrary.simpleMessage("أو تابع مع"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
-    "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+    "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
       "قم بإعداد متجرك وحسابك الإداري",
     ),
-    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "shopNameExample": MessageLookupByLibrary.simpleMessage("مثال: البركة "),
+    "shopeName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),
+    "signInButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",
     ),

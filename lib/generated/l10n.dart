@@ -85,8 +85,8 @@ class S {
   }
 
   /// `SIGN IN`
-  String get signIn {
-    return Intl.message('SIGN IN', name: 'signIn', desc: '', args: []);
+  String get signInButton {
+    return Intl.message('SIGN IN', name: 'signInButton', desc: '', args: []);
   }
 
   /// `Email address`
@@ -179,9 +179,9 @@ class S {
     );
   }
 
-  /// `Register`
-  String get register {
-    return Intl.message('Register', name: 'register', desc: '', args: []);
+  /// `REGISTER`
+  String get registerButton {
+    return Intl.message('REGISTER', name: 'registerButton', desc: '', args: []);
   }
 
   /// `OR CONTINUE WITH`
@@ -214,6 +214,46 @@ class S {
     return Intl.message(
       'Set up your shop and admin account',
       name: 'registerTagline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you already have an account? `
+  String get haveAccount {
+    return Intl.message(
+      'Do you already have an account? ',
+      name: 'haveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shop Name`
+  String get shopeName {
+    return Intl.message('Shop Name', name: 'shopeName', desc: '', args: []);
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message('Full Name', name: 'fullName', desc: '', args: []);
+  }
+
+  /// `Abdelrahman Ahmed`
+  String get fullNameExample {
+    return Intl.message(
+      'Abdelrahman Ahmed',
+      name: 'fullNameExample',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. Al-Barakah `
+  String get shopNameExample {
+    return Intl.message(
+      'e.g. Al-Barakah ',
+      name: 'shopNameExample',
       desc: '',
       args: [],
     );
