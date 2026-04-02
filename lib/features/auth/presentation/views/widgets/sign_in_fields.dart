@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
+import 'package:stock_mate/features/auth/presentation/views/widgets/forget_password_button.dart';
+import 'package:stock_mate/features/auth/presentation/views/widgets/password_toggle_icon.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class SignInFields extends StatefulWidget {
@@ -42,26 +44,14 @@ class _SignInFieldsState extends State<SignInFields> {
           validator: (value) {
             return passwordVerificationMethod(value, context);
           },
-          extraWidget: GestureDetector(
-            onTap: () {
-              // enter new password from gmail
-            },
-            child: Text(
-              S.of(context).forgetPassword,
-              style: AppStyles.priceBold16(context),
-            ),
-          ),
-          suffixIcon: GestureDetector(
+          extraWidget: ForgetPasswordButton(),
+          suffixIcon: PasswordToggleIcon(
+            isObscure: isObscureText,
             onTap: () {
               setState(() {
                 isObscureText = !isObscureText;
               });
             },
-            child: Icon(
-              isObscureText
-                  ? Icons.visibility_off_outlined
-                  : Icons.visibility_outlined,
-            ),
           ),
         ),
       ],
