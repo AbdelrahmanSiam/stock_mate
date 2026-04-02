@@ -3,6 +3,7 @@ import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/back_to_login.dart';
+import 'package:stock_mate/features/auth/presentation/views/widgets/containers_row.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/forget_password_header.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/forget_password_section.dart';
@@ -21,6 +22,8 @@ class ForgetPasswordViewBody extends StatelessWidget {
           ForgetPasswordSection(),
           const SizedBox(height: 36),
           BackToLoginWidget(),
+          const SizedBox(height: 36),
+          ContainersRow(),
         ],
       ),
     );

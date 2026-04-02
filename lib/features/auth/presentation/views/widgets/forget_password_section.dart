@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
@@ -22,6 +23,7 @@ class _ForgetPasswordSectionState extends State<ForgetPasswordSection> {
         children: [
           CustomAuthTextField(
             label: S.of(context).email,
+            labelColor: AppColorsDarkMode.primary,
             hint: "admin@gmail.com",
             prefixIcon: Icons.email,
             controller: emailController,

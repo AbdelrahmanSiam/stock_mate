@@ -12,6 +12,7 @@ class CustomAuthTextField extends StatelessWidget {
   final void Function(String)? onChanged;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final Color? labelColor;
 
   const CustomAuthTextField({
     super.key,
@@ -25,6 +26,7 @@ class CustomAuthTextField extends StatelessWidget {
     this.onChanged,
     required this.controller,
     this.validator,
+    this.labelColor = AppColorsDarkMode.textSecondary,
   });
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class CustomAuthTextField extends StatelessWidget {
               label,
               style: AppStyles.labelSemiBold13(
                 context,
-              ).copyWith(color: AppColorsDarkMode.textSecondary),
+              ).copyWith(color: labelColor),
             ),
             Spacer(),
             extraWidget,
