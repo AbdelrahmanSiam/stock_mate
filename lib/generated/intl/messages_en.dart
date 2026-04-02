@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Check your connection",
     ),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
@@ -52,6 +53,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
+    "registerTagline": MessageLookupByLibrary.simpleMessage(
+      "Set up your shop and admin account",
+    ),
     "signIn": MessageLookupByLibrary.simpleMessage("SIGN IN"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",

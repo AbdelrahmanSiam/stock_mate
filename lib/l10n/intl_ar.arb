@@ -16,5 +16,7 @@
     "registerHere": "سجل هنا",
     "register": "تسجيل",
     "orContactWith": "أو تابع مع",
-    "forgetPassword": "نسيت كلمة المرور؟"
+    "forgetPassword": "نسيت كلمة المرور؟",
+    "createAccount": "إنشاء حساب؟",
+    "registerTagline": "قم بإعداد متجرك وحسابك الإداري"
 }

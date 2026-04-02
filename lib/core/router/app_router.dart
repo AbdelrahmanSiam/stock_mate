@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
+import 'package:stock_mate/features/auth/presentation/views/register_view.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/features/language/presentation/views/language_view.dart';
@@ -13,6 +14,7 @@ abstract class AppRoutes {
   static const String splash = '/';
   static const String language = '/language';
   static const String login = '/login';
+  static const String register = '/register';
   static const String dashboard = '/dashboard';
 }
 
@@ -39,6 +41,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.login,
       builder: (context, state) => const LoginView(),
+    ),
+    GoRoute(
+      path: AppRoutes.register,
+      builder: (context, state) => const RegisterView(),
     ),
     GoRoute(
       path: AppRoutes.dashboard,

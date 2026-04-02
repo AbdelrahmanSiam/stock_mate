@@ -198,6 +198,26 @@ class S {
   String get forgetPassword {
     return Intl.message('Forget?', name: 'forgetPassword', desc: '', args: []);
   }
+
+  /// `Create Account`
+  String get createAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set up your shop and admin account`
+  String get registerTagline {
+    return Intl.message(
+      'Set up your shop and admin account',
+      name: 'registerTagline',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

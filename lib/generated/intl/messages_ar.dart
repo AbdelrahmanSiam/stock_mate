@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحقق من اتصالك بالإنترنت",
     ),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -49,6 +50,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
+    "registerTagline": MessageLookupByLibrary.simpleMessage(
+      "قم بإعداد متجرك وحسابك الإداري",
+    ),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",

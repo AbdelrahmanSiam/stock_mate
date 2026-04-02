@@ -16,5 +16,7 @@
     "registerHere" : "Register here",
     "register" : "Register",
     "orContactWith" : "OR CONTINUE WITH",
-    "forgetPassword" : "Forget?"
+    "forgetPassword" : "Forget?",
+    "createAccount" : "Create Account",
+    "registerTagline" : "Set up your shop and admin account"
 }
