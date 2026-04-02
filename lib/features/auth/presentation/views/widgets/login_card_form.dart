@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/auth_navigate_row.dart';
@@ -51,6 +53,9 @@ class _LoginCardFormState extends State<LoginCardForm> {
             AuthNavigateRow(
               text: S.of(context).haveNoAccount,
               navName: S.of(context).registerHere,
+              onTap: () {
+                GoRouter.of(context).push(AppRoutes.register);
+              },
             ),
           ],
         ),

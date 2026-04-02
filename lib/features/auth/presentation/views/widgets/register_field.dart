@@ -55,7 +55,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
 
         CustomAuthTextField(
           label: S.of(context).email,
-          hint: "admin@shop.com",
+          hint: "admin@gmail.com",
           prefixIcon: Icons.email_outlined,
           controller: widget.emailController,
           keyboardType: TextInputType.emailAddress,

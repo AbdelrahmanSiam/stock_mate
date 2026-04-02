@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/forget_password_button.dart';
@@ -27,7 +26,7 @@ class _SignInFieldsState extends State<SignInFields> {
       children: [
         CustomAuthTextField(
           label: S.of(context).email,
-          hint:"admin@shop.com",
+          hint:"admin@gmail.com",
           prefixIcon: Icons.email_outlined,
           controller: widget.emailController,
           keyboardType: TextInputType.emailAddress,
