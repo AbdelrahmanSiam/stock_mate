@@ -25,5 +25,7 @@
     "fullNameExample" : "Abdelrahman Ahmed",
     "shopNameExample" : "e.g. Al-Barakah",
     "forgetPassword" : "Forgot Password?",
-    "forgetPasswordTagline" : "Enter your email address and we will send you a email to reset your password. Don't forget to check your spam folder."
+    "forgetPasswordTagline" : "Enter your email address and we will send you a email to reset your password. Don't forget to check your spam folder.",
+    "sendResetLink" : "Send Reset Link",
+    "backToLogin" : "Back to Login"
 }

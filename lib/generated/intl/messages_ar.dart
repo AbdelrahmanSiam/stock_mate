@@ -26,6 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTagline": MessageLookupByLibrary.simpleMessage(
       "إدارة المخزون والمبيعات",
     ),
+    "backToLogin": MessageLookupByLibrary.simpleMessage(
+      "العودة إلى تسجيل الدخول",
+    ),
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
@@ -63,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
       "قم بإعداد متجرك وحسابك الإداري",
+    ),
+    "sendResetLink": MessageLookupByLibrary.simpleMessage(
+      "إرسال رابط إعادة التعيين",
     ),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("مثال: البركة "),
     "shopeName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),

@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTagline": MessageLookupByLibrary.simpleMessage(
       "PREMIUM INVENTORY & SALES",
     ),
+    "backToLogin": MessageLookupByLibrary.simpleMessage("Back to Login"),
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "Check your connection",
     ),
@@ -67,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerTagline": MessageLookupByLibrary.simpleMessage(
       "Set up your shop and admin account",
     ),
+    "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),
     "shopeName": MessageLookupByLibrary.simpleMessage("Shop Name"),
     "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),
