@@ -3,7 +3,7 @@
     "continueButton": "Continue",
     "appTagline": "PREMIUM INVENTORY & SALES",
     "loginTagline": "Sign in to manage your inventory",
-    "signIn": "Sign In",
+    "signIn": "SIGN IN",
     "email": "Email address",
     "password": "Password",
     "fieldRequired": "This field is required",
@@ -15,5 +15,6 @@
     "haveNoAccount" : "Don't have an account? ",
     "registerHere" : "Register here",
     "register" : "Register",
-    "orContactWith" : "OR CONTINUE WITH"
+    "orContactWith" : "OR CONTINUE WITH",
+    "forgetPassword" : "Forget?"
 }

@@ -3,31 +3,14 @@ import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/login_card_form.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
-class LoginCardSection extends StatefulWidget {
+class LoginCardSection extends StatelessWidget {
   const LoginCardSection({super.key});
-
-  @override
-  State<LoginCardSection> createState() => _LoginCardFormState();
-}
-
-class _LoginCardFormState extends State<LoginCardSection> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        LoginCardForm(
-          emailController: emailController,
-          passwordController: passwordController,
-        ),
+        LoginCardForm(),
         const SizedBox(height: 32),
         Text(
           S.of(context).orContactWith,

@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget?"),
     "haveNoAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
@@ -51,7 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
-    "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+    "signIn": MessageLookupByLibrary.simpleMessage("SIGN IN"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),

@@ -5,7 +5,7 @@ import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 class CustomAuthTextField extends StatelessWidget {
   final String label, hint;
   final IconData prefixIcon;
-  final Widget widget;
+  final Widget extraWidget;
   final bool obscureText;
   final Widget? suffixIcon;
   final TextInputType keyboardType;
@@ -18,7 +18,7 @@ class CustomAuthTextField extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.prefixIcon,
-    this.widget = const SizedBox(),
+    this.extraWidget = const SizedBox(),
     this.obscureText = false,
     this.suffixIcon,
     this.keyboardType = TextInputType.text,
@@ -40,7 +40,7 @@ class CustomAuthTextField extends StatelessWidget {
               ).copyWith(color: AppColorsDarkMode.textSecondary),
             ),
             Spacer(),
-            widget,
+            extraWidget,
           ],
         ),
         SizedBox(height: 8),

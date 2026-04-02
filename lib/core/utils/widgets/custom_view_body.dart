@@ -12,7 +12,12 @@ class CustomViewBody extends StatelessWidget {
           return SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: Center(child: widget),
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                },
+                child: Center(child: widget),
+              ),
             ),
           );
         },

@@ -84,9 +84,9 @@ class S {
     );
   }
 
-  /// `Sign In`
+  /// `SIGN IN`
   String get signIn {
-    return Intl.message('Sign In', name: 'signIn', desc: '', args: []);
+    return Intl.message('SIGN IN', name: 'signIn', desc: '', args: []);
   }
 
   /// `Email address`
@@ -192,6 +192,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Forget?`
+  String get forgetPassword {
+    return Intl.message('Forget?', name: 'forgetPassword', desc: '', args: []);
   }
 }
 

@@ -6,39 +6,51 @@ import 'package:stock_mate/features/auth/presentation/views/widgets/sign_in_fiel
 import 'package:stock_mate/generated/l10n.dart';
 
 class LoginCardForm extends StatefulWidget {
-  const LoginCardForm({
-    super.key,
-    required this.emailController,
-    required this.passwordController,
-  });
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  
+  const LoginCardForm({super.key});
+
   @override
   State<LoginCardForm> createState() => _LoginCardFormState();
 }
 
 class _LoginCardFormState extends State<LoginCardForm> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return AppCard(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      child: Column(
-        children: [
-          SignInFields(
-            emailController: widget.emailController,
-            passwordController: widget.passwordController,
-          ),
-          const SizedBox(height: 24),
-          CustomButton(
-            onPressed: () {},
-            isLoading: false,
-            buttonName: S.of(context).signIn,
-          ),
-          const SizedBox(height: 48),
-          AuthNavigateRow(),
-        ],
+    return Form(
+      key: formKey,
+      child: AppCard(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        child: Column(
+          children: [
+            SignInFields(
+              emailController: emailController,
+              passwordController: passwordController,
+            ),
+            const SizedBox(height: 24),
+            CustomButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  // Navigate to Dashboard
+                }
+              },
+              isLoading: false,
+              buttonName: S.of(context).signIn,
+            ),
+            const SizedBox(height: 48),
+            AuthNavigateRow(),
+          ],
+        ),
       ),
     );
   }

@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "البريد أو كلمة المرور غير صحيحة",
     ),
