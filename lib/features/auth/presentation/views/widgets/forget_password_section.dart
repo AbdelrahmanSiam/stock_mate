@@ -28,7 +28,7 @@ class _ForgetPasswordSectionState extends State<ForgetPasswordSection> {
             prefixIcon: Icons.email,
             controller: emailController,
             validator: (value) {
-              emailVerificationMethod(value, context);
+              return emailVerificationMethod(value, context);
             },
           ),
           const SizedBox(height: 28),

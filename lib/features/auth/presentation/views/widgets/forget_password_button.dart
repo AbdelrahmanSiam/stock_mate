@@ -12,7 +12,7 @@ class ForgetPasswordButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRoutes.forgetPassword);
+        GoRouter.of(context).push(AppRoutes.forgetPassword );
       },
       child: Text(
         S.of(context).forget,
