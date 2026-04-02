@@ -20,9 +20,15 @@ class _LoginCardFormState extends State<LoginCardSection> {
 
   @override
   Widget build(BuildContext context) {
-    return LoginCardForm(
-      emailController: emailController,
-      passwordController: passwordController,
+    return Column(
+      children: [
+        LoginCardForm(
+          emailController: emailController,
+          passwordController: passwordController,
+        ),
+        const SizedBox(height: 24),
+        
+      ],
     );
   }
 }

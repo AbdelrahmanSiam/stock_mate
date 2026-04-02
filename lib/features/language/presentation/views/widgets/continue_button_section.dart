@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
+import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -21,24 +22,14 @@ class ContinueButtonSection extends StatelessWidget {
         return AnimatedOpacity(
           opacity: isEnabled ? 1.0 : 0.4,
           duration: const Duration(milliseconds: 200),
-          child: ElevatedButton(
-            onPressed: isEnabled
-                ? () => context.read<LanguageCubit>().confirmLanguage()
-                : null,
-            child: isLoading
-                ? const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 2,
-                    ),
-                  )
-                : Text(
-                    S.of(context).continueButton,
-                    style: AppStyles.buttonSemiBold15(context)
-                        .copyWith(color: Colors.black),
-                  ),
+          child: CustomButton(
+            onPressed: () {
+              isEnabled
+                  ? () => context.read<LanguageCubit>().confirmLanguage()
+                  : null;
+            },
+            isLoading: isLoading,
+            buttonName: S.of(context).continueButton,
           ),
         );
       },
