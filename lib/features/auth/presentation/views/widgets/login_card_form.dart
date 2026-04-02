@@ -15,7 +15,7 @@ class LoginCardForm extends StatefulWidget {
 class _LoginCardFormState extends State<LoginCardForm> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
