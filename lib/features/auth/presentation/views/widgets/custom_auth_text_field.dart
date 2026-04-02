@@ -11,7 +11,7 @@ class CustomAuthTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
   final TextEditingController controller;
-  final String? errText;
+  final String? Function(String?)? validator;
 
   const CustomAuthTextField({
     super.key,
@@ -24,7 +24,7 @@ class CustomAuthTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.onChanged,
     required this.controller,
-    this.errText,
+    this.validator,
   });
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,8 @@ class CustomAuthTextField extends StatelessWidget {
           ],
         ),
         SizedBox(height: 8),
-        TextField(
+        TextFormField(
+          validator: validator,
           controller: controller,
           obscureText: obscureText,
           keyboardType: keyboardType,
@@ -53,7 +54,6 @@ class CustomAuthTextField extends StatelessWidget {
             prefixIcon: Icon(prefixIcon),
             hintText: hint,
             suffixIcon: suffixIcon,
-            errorText: errText,
           ),
         ),
       ],

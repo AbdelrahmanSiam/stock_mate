@@ -9,13 +9,9 @@ class LoginCardForm extends StatefulWidget {
     super.key,
     required this.emailController,
     required this.passwordController,
-    this.emailError,
-    this.passwordError,
   });
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final String? emailError;
-  final String? passwordError;
   @override
   State<LoginCardForm> createState() => _LoginCardFormState();
 }
@@ -35,7 +31,9 @@ class _LoginCardFormState extends State<LoginCardForm> {
             prefixIcon: Icons.email_outlined,
             controller: widget.emailController,
             keyboardType: TextInputType.emailAddress,
-            errText: widget.emailError,
+            validator: (value) {
+              return emailVerificationMethod(value, context);
+            },
           ),
           const SizedBox(height: 16),
           CustomAuthTextField(
@@ -44,10 +42,12 @@ class _LoginCardFormState extends State<LoginCardForm> {
             prefixIcon: Icons.lock_outlined,
             controller: widget.passwordController,
             obscureText: isObscureText,
-            errText: widget.passwordError,
+            validator: (value) {
+              return passwordVerificationMethod(value, context);
+            },
             widget: Text("Forget?", style: AppStyles.priceBold16(context)),
             suffixIcon: GestureDetector(
-              onTap: (){
+              onTap: () {
                 setState(() {
                   isObscureText = !isObscureText;
                 });
@@ -62,5 +62,28 @@ class _LoginCardFormState extends State<LoginCardForm> {
         ],
       ),
     );
+  }
+
+  String? passwordVerificationMethod(String? value, BuildContext context) {
+    if (value == null || value.isEmpty) {
+      return S.of(context).fieldRequired;
+    }
+    if (value.length < 6) {
+      return S.of(context).invalidPassword;
+    }
+    
+    return null;
+  }
+
+  String? emailVerificationMethod(String? value, BuildContext context) {
+    if (value == null || value.isEmpty) {
+      return S.of(context).fieldRequired;
+    }
+    if (!RegExp(
+      r'^[^@]+@[^@]+\.[^@]+',
+    ).hasMatch(widget.emailController.text.trim())) {
+      return S.of(context).invalidEmail;
+    }
+    return null;
   }
 }
