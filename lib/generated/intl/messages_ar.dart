@@ -33,7 +33,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
-    "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "forget": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة السر؟",
+    ),
+    "forgetPasswordTagline": MessageLookupByLibrary.simpleMessage(
+      "أدخل عنوان بريدك الإلكتروني وسنرسل إليك رسالة لإعادة تعيين كلمة مرورك، لا تنسَ التحقق من Spam.",
+    ),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "fullNameExample": MessageLookupByLibrary.simpleMessage("عبد الرحمن أحمد"),
     "haveAccount": MessageLookupByLibrary.simpleMessage(

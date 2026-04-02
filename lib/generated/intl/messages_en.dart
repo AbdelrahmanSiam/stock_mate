@@ -35,7 +35,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
-    "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget?"),
+    "forget": MessageLookupByLibrary.simpleMessage("Forget?"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "forgetPasswordTagline": MessageLookupByLibrary.simpleMessage(
+      "Enter your email address and we will send you a email to reset your password. Don\'t forget to check your spam folder.",
+    ),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "fullNameExample": MessageLookupByLibrary.simpleMessage(
       "Abdelrahman Ahmed",
@@ -63,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerTagline": MessageLookupByLibrary.simpleMessage(
       "Set up your shop and admin account",
     ),
-    "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah "),
+    "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),
     "shopeName": MessageLookupByLibrary.simpleMessage("Shop Name"),
     "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(

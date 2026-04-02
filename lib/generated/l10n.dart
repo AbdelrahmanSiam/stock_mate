@@ -195,8 +195,8 @@ class S {
   }
 
   /// `Forget?`
-  String get forgetPassword {
-    return Intl.message('Forget?', name: 'forgetPassword', desc: '', args: []);
+  String get forget {
+    return Intl.message('Forget?', name: 'forget', desc: '', args: []);
   }
 
   /// `Create Account`
@@ -249,11 +249,31 @@ class S {
     );
   }
 
-  /// `e.g. Al-Barakah `
+  /// `e.g. Al-Barakah`
   String get shopNameExample {
     return Intl.message(
-      'e.g. Al-Barakah ',
+      'e.g. Al-Barakah',
       name: 'shopNameExample',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgetPassword {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email address and we will send you a email to reset your password. Don't forget to check your spam folder.`
+  String get forgetPasswordTagline {
+    return Intl.message(
+      'Enter your email address and we will send you a email to reset your password. Don\'t forget to check your spam folder.',
+      name: 'forgetPasswordTagline',
       desc: '',
       args: [],
     );

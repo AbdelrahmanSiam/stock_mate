@@ -15,7 +15,7 @@ class ForgetPasswordButton extends StatelessWidget {
         GoRouter.of(context).push(AppRoutes.forgetPassword);
       },
       child: Text(
-        S.of(context).forgetPassword,
+        S.of(context).forget,
         style: AppStyles.cardTitleSemiBold14(
           context,
         ).copyWith(color: AppColorsDarkMode.primary),

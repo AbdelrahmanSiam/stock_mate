@@ -16,12 +16,14 @@
     "registerHere": "سجل هنا",
     "registerButton": "تسجيل حساب",
     "orContactWith": "أو تابع مع",
-    "forgetPassword": "نسيت كلمة المرور؟",
+    "forget": "نسيت كلمة المرور؟",
     "createAccount": "إنشاء حساب؟",
     "registerTagline": "قم بإعداد متجرك وحسابك الإداري",
     "haveAccount": "هل لديك حساب بالفعل؟ ",
-    "shopeName" : "اسم المتجر",
-    "fullName" : "الاسم الكامل",
-    "fullNameExample" : "عبد الرحمن أحمد",
-    "shopNameExample" : "مثال: البركة "
+    "shopeName": "اسم المتجر",
+    "fullName": "الاسم الكامل",
+    "fullNameExample": "عبد الرحمن أحمد",
+    "shopNameExample": "مثال: البركة ",
+    "forgetPassword": "هل نسيت كلمة السر؟",
+    "forgetPasswordTagline": "أدخل عنوان بريدك الإلكتروني وسنرسل إليك رسالة لإعادة تعيين كلمة مرورك، لا تنسَ التحقق من Spam."
 }
