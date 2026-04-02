@@ -36,7 +36,7 @@ class _LoginCardFormState extends State<LoginCardForm> {
             isLoading: false,
             buttonName: S.of(context).signIn,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 48),
           AuthNavigateRow(),
         ],
       ),

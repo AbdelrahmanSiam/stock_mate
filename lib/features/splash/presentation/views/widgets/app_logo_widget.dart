@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
-import 'package:stock_mate/core/utils/app_assets.dart';
 import 'package:stock_mate/core/utils/widgets/app_logo.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -17,8 +15,8 @@ class AppLogoWidget extends StatelessWidget {
       child: Column(
         children: [
           AppLogo(iconHeight: iconHeight, iconWidth: iconWidth, iconColor: iconColor),
+          const SizedBox(height: 16),
           Text(S.of(context).appName, style: AppStyles.appNameBold32(context)),
-          SizedBox(height: 8),
         ],
       ),
     );
