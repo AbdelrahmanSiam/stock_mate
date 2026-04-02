@@ -158,6 +158,31 @@ class S {
       args: [],
     );
   }
+
+  /// `Don't have an account? `
+  String get haveNoAccount {
+    return Intl.message(
+      'Don\'t have an account? ',
+      name: 'haveNoAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register here`
+  String get registerHere {
+    return Intl.message(
+      'Register here',
+      name: 'registerHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

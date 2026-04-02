@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
+    "haveNoAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account? ",
+    ),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Invalid email or password",
     ),
@@ -45,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sign in to manage your inventory",
     ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",

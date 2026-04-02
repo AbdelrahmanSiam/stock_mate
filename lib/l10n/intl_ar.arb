@@ -11,5 +11,8 @@
     "invalidPassword": "كلمة المرور 6 أحرف على الأقل",
     "invalidCredentials": "البريد أو كلمة المرور غير صحيحة",
     "checkConnection": "تحقق من اتصالك بالإنترنت",
-    "somethingWentWrong": "حدث خطأ غير متوقع"
+    "somethingWentWrong": "حدث خطأ غير متوقع",
+    "don'haveNoAccount" : " ليس لديك حساب؟",
+    "registerHere" : "سجل هنا",
+    "register" : "تسجيل"
 }

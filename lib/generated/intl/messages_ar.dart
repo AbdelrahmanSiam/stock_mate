@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
       "سجّل دخولك لإدارة مخزونك",
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+    "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",

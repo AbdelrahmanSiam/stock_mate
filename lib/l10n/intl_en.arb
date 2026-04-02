@@ -11,5 +11,8 @@
     "invalidPassword": "Password must be at least 6 characters",
     "invalidCredentials": "Invalid email or password",
     "checkConnection": "Check your connection",
-    "somethingWentWrong": "Something went wrong"
+    "somethingWentWrong": "Something went wrong",
+    "haveNoAccount" : "Don't have an account? ",
+    "registerHere" : "Register here",
+    "register" : "Register"
 }
