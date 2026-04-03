@@ -10,7 +10,6 @@ class EmailVerificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         centerTitle: false,
         title: Text(
           S.of(context).appName,

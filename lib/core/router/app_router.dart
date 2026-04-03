@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
+import 'package:stock_mate/features/auth/presentation/views/email_verification_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/forget_password_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/register_view.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/dashboard_view.dart';
@@ -17,6 +18,7 @@ abstract class AppRoutes {
   static const String login = '/login';
   static const String register = '/register';
   static const String forgetPassword = '/forgetPassword';
+  static const String emailVerification = '/emailVerification';
   static const String dashboard = '/dashboard';
 }
 
@@ -51,6 +53,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.forgetPassword,
       builder: (context, state) => const ForgetPasswordView(),
+    ),
+    GoRoute(
+      path: AppRoutes.emailVerification,
+      builder: (context, state) => const EmailVerificationView(),
     ),
     GoRoute(
       path: AppRoutes.dashboard,

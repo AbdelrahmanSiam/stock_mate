@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/register_field.dart';
@@ -42,7 +44,7 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
               nameController: nameController,
               emailController: emailController,
               passwordController: passwordController,
-          ),
+            ),
             const SizedBox(height: 16),
             const SizedBox(height: 24),
             CustomButton(
@@ -50,7 +52,10 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
               isLoading: false,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  // register logic
+                  GoRouter.of(context).push(
+                    AppRoutes.emailVerification,
+                    extra: emailController.text,
+                  );
                 }
               },
             ),
