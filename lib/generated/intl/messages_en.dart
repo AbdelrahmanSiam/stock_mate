@@ -33,6 +33,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),
+    "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
+      "We\'ve sent a verification link to",
+    ),
+    "emailVerificationHeader2": MessageLookupByLibrary.simpleMessage(
+      ". Please click the link in your email to continue.",
+    ),
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
@@ -74,6 +80,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
+    ),
+    "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
+      "Verify Your Email",
     ),
   };
 }

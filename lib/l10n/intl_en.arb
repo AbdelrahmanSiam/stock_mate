@@ -27,5 +27,8 @@
     "forgetPassword" : "Forgot Password?",
     "forgetPasswordTagline" : "Enter your email address and we will send you a email to reset your password. Don't forget to check your spam folder.",
     "sendResetLink" : "Send Reset Link",
-    "backToLogin" : "Back to Login"
+    "backToLogin" : "Back to Login",
+    "verifyYourEmail" : "Verify Your Email",
+    "emailVerificationHeader1" : "We've sent a verification link to" ,
+    "emailVerificationHeader2" : ". Please click the link in your email to continue."
 }

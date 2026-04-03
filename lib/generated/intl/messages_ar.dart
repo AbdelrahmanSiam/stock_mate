@@ -35,6 +35,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
+      "لقد أرسلنا رابط تأكيد إلى",
+    ),
+    "emailVerificationHeader2": MessageLookupByLibrary.simpleMessage(
+      "يرجى النقر على الرابط الموجود في بريدك الإلكتروني للمتابعة.",
+    ),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "forget": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
@@ -75,6 +81,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "signInButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",
+    ),
+    "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
+      "أكّد بريدك الإلكتروني",
     ),
   };
 }

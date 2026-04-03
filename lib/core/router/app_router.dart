@@ -56,7 +56,10 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.emailVerification,
-      builder: (context, state) => const EmailVerificationView(),
+      builder: (context, state) {
+        final enteredEmail = state.extra as String;
+        return EmailVerificationView(enteredEmail: enteredEmail);
+      },
     ),
     GoRoute(
       path: AppRoutes.dashboard,

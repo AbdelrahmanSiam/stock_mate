@@ -298,6 +298,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Verify Your Email`
+  String get verifyYourEmail {
+    return Intl.message(
+      'Verify Your Email',
+      name: 'verifyYourEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We've sent a verification link to`
+  String get emailVerificationHeader1 {
+    return Intl.message(
+      'We\'ve sent a verification link to',
+      name: 'emailVerificationHeader1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `. Please click the link in your email to continue.`
+  String get emailVerificationHeader2 {
+    return Intl.message(
+      '. Please click the link in your email to continue.',
+      name: 'emailVerificationHeader2',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
