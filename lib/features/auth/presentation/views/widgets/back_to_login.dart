@@ -16,7 +16,6 @@ class BackToLoginWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.arrow_back, color: AppColorsDarkMode.primary),
           Text(
             S.of(context).backToLogin,
             style: AppStyles.languageRegular16(

@@ -66,12 +66,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
     ),
+    "openEmailApp": MessageLookupByLibrary.simpleMessage(
+      "افتح تطبيق البريد الإلكتروني",
+    ),
     "orContactWith": MessageLookupByLibrary.simpleMessage("أو تابع مع"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "proTip": MessageLookupByLibrary.simpleMessage(
+      "نصيحة احترافية من ستوك ميت",
+    ),
+    "proTipTagline": MessageLookupByLibrary.simpleMessage(
+      "يضمن لك التحقق من بريدك الإلكتروني تلقي تنبيهات تلقائية بانخفاض المخزون وملخصات المبيعات اليومية.",
+    ),
     "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
       "قم بإعداد متجرك وحسابك الإداري",
+    ),
+    "resendEmailButton": MessageLookupByLibrary.simpleMessage(
+      "أعد إرسال الرابط",
+    ),
+    "resendEmailTagline": MessageLookupByLibrary.simpleMessage(
+      "لم يصلك البريد الإلكتروني؟",
     ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",

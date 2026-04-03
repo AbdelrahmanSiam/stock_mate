@@ -328,6 +328,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Do not receive the email ?`
+  String get resendEmailTagline {
+    return Intl.message(
+      'Do not receive the email ?',
+      name: 'resendEmailTagline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RESEND LINK`
+  String get resendEmailButton {
+    return Intl.message(
+      'RESEND LINK',
+      name: 'resendEmailButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `StockMate Pro Tip`
+  String get proTip {
+    return Intl.message(
+      'StockMate Pro Tip',
+      name: 'proTip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.`
+  String get proTipTagline {
+    return Intl.message(
+      'Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.',
+      name: 'proTipTagline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open Email App`
+  String get openEmailApp {
+    return Intl.message(
+      'Open Email App',
+      name: 'openEmailApp',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

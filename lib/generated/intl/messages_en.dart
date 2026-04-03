@@ -67,12 +67,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
     ),
+    "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "proTip": MessageLookupByLibrary.simpleMessage("StockMate Pro Tip"),
+    "proTipTagline": MessageLookupByLibrary.simpleMessage(
+      "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
+    ),
     "registerButton": MessageLookupByLibrary.simpleMessage("REGISTER"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
       "Set up your shop and admin account",
+    ),
+    "resendEmailButton": MessageLookupByLibrary.simpleMessage("RESEND LINK"),
+    "resendEmailTagline": MessageLookupByLibrary.simpleMessage(
+      "Do not receive the email ?",
     ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),

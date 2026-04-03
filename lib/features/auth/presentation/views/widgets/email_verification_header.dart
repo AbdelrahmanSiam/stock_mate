@@ -1,13 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class EmailVerificationHeader extends StatelessWidget {
-  const EmailVerificationHeader({
-    super.key,
-    required this.enteredEmail,
-  });
+  const EmailVerificationHeader({super.key, required this.enteredEmail});
 
   final String enteredEmail;
 
@@ -17,14 +13,14 @@ class EmailVerificationHeader extends StatelessWidget {
       children: [
         Text(
           S.of(context).verifyYourEmail,
-          style: AppStyles.appNameBold32(
-            context,
-          ).copyWith(color: Colors.white),
+          style: AppStyles.appNameBold32(context).copyWith(color: Colors.white),
         ),
+        const SizedBox(height: 24),
         Text(
           S.of(context).emailVerificationHeader1,
           style: AppStyles.languageRegular16(context),
         ),
+        const SizedBox(height: 8),
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
