@@ -18,7 +18,7 @@ class EmailVerificationViewBody extends StatelessWidget {
         children: [
           EmailVerificationIcon(),
           const SizedBox(height: 36),
-          EmailVerificationHeader(enteredEmail: enteredEmail),
+          EmailVerificationHeader(enteredEmail:enteredEmail),
           const SizedBox(height: 36),
           OpenEmailButton(),
           const SizedBox(height: 36),

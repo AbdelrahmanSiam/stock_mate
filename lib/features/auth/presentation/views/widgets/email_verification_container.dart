@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/tip_icon.dart';
