@@ -6,7 +6,7 @@ import 'package:stock_mate/features/auth/domain/entities/user_entity.dart';
 import 'package:stock_mate/features/auth/domain/repo/auth_repo.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/register_use_case/register_parameters.dart';
 
-class RegisterUseCase extends UseCase<UserEntity, RegisterParameters> {
+class RegisterUseCase implements UseCase<UserEntity, RegisterParameters> {
   AuthRepository authRepository;
   RegisterUseCase({required this.authRepository});
   @override
