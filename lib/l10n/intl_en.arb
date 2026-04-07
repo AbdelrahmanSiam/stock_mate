@@ -37,5 +37,6 @@
     "proTip": "StockMate Pro Tip",
     "proTipTagline": "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
     "openEmailApp" : "Open Email App",
-    "resetLinkSent" : "Reset password link sent successfully"
+    "resetLinkSent" : "Reset password link sent successfully",
+    "passwordNotMatch" : "Passwords do not match"
 }

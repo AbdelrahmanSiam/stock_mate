@@ -73,6 +73,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
+      "Passwords do not match",
+    ),
     "proTip": MessageLookupByLibrary.simpleMessage("StockMate Pro Tip"),
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",

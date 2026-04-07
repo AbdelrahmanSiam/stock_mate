@@ -74,6 +74,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "orContactWith": MessageLookupByLibrary.simpleMessage("أو تابع مع"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
+      "كلمات المرور غير متطابقة",
+    ),
     "proTip": MessageLookupByLibrary.simpleMessage(
       "نصيحة احترافية من ستوك ميت",
     ),

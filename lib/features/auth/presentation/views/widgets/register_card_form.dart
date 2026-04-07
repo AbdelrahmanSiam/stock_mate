@@ -21,6 +21,7 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
 
@@ -30,6 +31,7 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -65,6 +67,7 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
                   nameController: nameController,
                   emailController: emailController,
                   passwordController: passwordController,
+                  confirmPasswordController: confirmPasswordController,
                 ),
                 const SizedBox(height: 16),
                 const SizedBox(height: 24),
