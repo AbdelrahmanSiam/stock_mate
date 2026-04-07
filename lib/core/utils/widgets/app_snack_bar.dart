@@ -8,7 +8,7 @@ class AppSnackBar {
   static void show(
     BuildContext context, {
     required String message,
-    SnackBarType type = SnackBarType.info,
+    required SnackBarType type ,
     Duration duration = const Duration(seconds: 3),
   }) {
     final Color borderColor = switch (type) {

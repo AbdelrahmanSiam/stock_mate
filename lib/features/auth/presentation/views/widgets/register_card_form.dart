@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/utils/widgets/app_card.dart';
+import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/register_field.dart';
@@ -43,7 +44,11 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
             extra: emailController.text.trim(),
           );
         } else if (state is AuthErrorState) {
-          // snackbar
+          AppSnackBar.show(
+            context,
+            message: state.errMessage,
+            type: SnackBarType.error,
+          );
         }
       },
       builder: (context, state) {

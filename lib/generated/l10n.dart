@@ -309,6 +309,16 @@ class S {
     );
   }
 
+  /// `Email Verification link sent successfully`
+  String get emailVerified {
+    return Intl.message(
+      'Email Verification link sent successfully',
+      name: 'emailVerified',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `We've sent a verification link to`
   String get emailVerificationHeader1 {
     return Intl.message(
@@ -374,6 +384,16 @@ class S {
     return Intl.message(
       'Open Email App',
       name: 'openEmailApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset password link sent successfully`
+  String get resetLinkSent {
+    return Intl.message(
+      'Reset password link sent successfully',
+      name: 'resetLinkSent',
       desc: '',
       args: [],
     );

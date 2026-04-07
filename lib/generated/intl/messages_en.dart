@@ -39,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerificationHeader2": MessageLookupByLibrary.simpleMessage(
       ". Please click the link in your email to continue.",
     ),
+    "emailVerified": MessageLookupByLibrary.simpleMessage(
+      "Email Verification link sent successfully",
+    ),
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
@@ -82,6 +85,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendEmailButton": MessageLookupByLibrary.simpleMessage("RESEND LINK"),
     "resendEmailTagline": MessageLookupByLibrary.simpleMessage(
       "Do not receive the email ?",
+    ),
+    "resetLinkSent": MessageLookupByLibrary.simpleMessage(
+      "Reset password link sent successfully",
     ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),

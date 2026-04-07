@@ -41,6 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerificationHeader2": MessageLookupByLibrary.simpleMessage(
       "يرجى النقر على الرابط الموجود في بريدك الإلكتروني للمتابعة.",
     ),
+    "emailVerified": MessageLookupByLibrary.simpleMessage(
+      "تم إرسال رابط رابط تأكيد بريدك الإلكتروني بنجاح",
+    ),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "forget": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
@@ -87,6 +90,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "resendEmailTagline": MessageLookupByLibrary.simpleMessage(
       "لم يصلك البريد الإلكتروني؟",
+    ),
+    "resetLinkSent": MessageLookupByLibrary.simpleMessage(
+      "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح",
     ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",

@@ -29,11 +29,13 @@
     "sendResetLink": "Send Reset Link",
     "backToLogin": "Back to Login",
     "verifyYourEmail": "Verify Your Email",
+    "emailVerified" : "Email Verification link sent successfully",
     "emailVerificationHeader1": "We've sent a verification link to",
     "emailVerificationHeader2": ". Please click the link in your email to continue.",
     "resendEmailTagline": "Do not receive the email ?",
     "resendEmailButton": "RESEND LINK",
     "proTip": "StockMate Pro Tip",
     "proTipTagline": "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
-    "openEmailApp" : "Open Email App"
+    "openEmailApp" : "Open Email App",
+    "resetLinkSent" : "Reset password link sent successfully"
 }

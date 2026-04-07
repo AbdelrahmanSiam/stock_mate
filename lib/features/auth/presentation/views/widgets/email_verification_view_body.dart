@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/router/app_router.dart';
+import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/back_to_login.dart';
@@ -11,6 +12,7 @@ import 'package:stock_mate/features/auth/presentation/views/widgets/email_verifi
 import 'package:stock_mate/features/auth/presentation/views/widgets/email_verification_view_icon.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/open_email_button.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/resend_email_verification_widget.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 class EmailVerificationViewBody extends StatefulWidget {
   const EmailVerificationViewBody({super.key, required this.enteredEmail});
@@ -50,10 +52,18 @@ class _EmailVerificationViewBodyState extends State<EmailVerificationViewBody> {
         if (state is AuthEmailVerifiedState) {
           // email is verified stop polling and go to login view
           timer?.cancel();
-          //snackbar
+          AppSnackBar.show(
+            context,
+            message: S.of(context).emailVerified,
+            type: SnackBarType.info,
+          );
           context.go(AppRoutes.login);
         } else if (state is AuthErrorState) {
-          // snackbar
+          AppSnackBar.show(
+            context,
+            message: state.errMessage,
+            type: SnackBarType.error,
+          );
         }
       },
       child: CustomViewBody(

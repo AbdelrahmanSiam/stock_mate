@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
@@ -23,10 +24,18 @@ class _ForgetPasswordSectionState extends State<ForgetPasswordSection> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthPasswordResetSentState) {
-          // snackbar
+          AppSnackBar.show(
+            context,
+            message: S.of(context).resetLinkSent,
+            type: SnackBarType.info,
+          );
           context.pop();
         } else if (state is AuthErrorState) {
-          // snackbar
+          AppSnackBar.show(
+            context,
+            message: state.errMessage,
+            type: SnackBarType.error,
+          );
         }
       },
       builder: (context, state) {
