@@ -41,8 +41,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> sendEmailVerification() async {
-    await firebaseAuth.currentUser
-        ?.reload(); // to ensure from last reload state
+    await firebaseAuth.currentUser?.reload(); // to ensure from last reload state
     await firebaseAuth.currentUser?.sendEmailVerification();
   }
 

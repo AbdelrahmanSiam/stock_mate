@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
+import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/auth/presentation/views/email_verification_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/forget_password_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/register_view.dart';
@@ -44,21 +45,33 @@ final GoRouter appRouter = GoRouter(
 
     GoRoute(
       path: AppRoutes.login,
-      builder: (context, state) => const LoginView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => getIt<AuthCubit>(),
+        child: const LoginView(),
+      ),
     ),
     GoRoute(
       path: AppRoutes.register,
-      builder: (context, state) => const RegisterView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => getIt<AuthCubit>(),
+        child: const RegisterView(),
+      ),
     ),
     GoRoute(
       path: AppRoutes.forgetPassword,
-      builder: (context, state) => const ForgetPasswordView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => getIt<AuthCubit>(),
+        child: const ForgetPasswordView(),
+      ),
     ),
     GoRoute(
       path: AppRoutes.emailVerification,
       builder: (context, state) {
         final enteredEmail = state.extra as String;
-        return EmailVerificationView(enteredEmail: enteredEmail);
+        return BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: EmailVerificationView(enteredEmail: enteredEmail),
+        );
       },
     ),
     GoRoute(

@@ -4,8 +4,8 @@ import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class ResendEmailVerificationWidget extends StatelessWidget {
-  const ResendEmailVerificationWidget({super.key});
-
+  const ResendEmailVerificationWidget({super.key, required this.onTap});
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,21 +14,14 @@ class ResendEmailVerificationWidget extends StatelessWidget {
           S.of(context).resendEmailTagline,
           style: AppStyles.bodyMediumRegular14(context),
         ),
-        const SizedBox(height: 8,),
+        const SizedBox(height: 8),
         GestureDetector(
-          onTap: () {
-            // resend email method
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                S.of(context).resendEmailButton,
-                style: AppStyles.languageRegular16(
-                  context,
-                ).copyWith(color: AppColorsDarkMode.primary),
-              ),
-            ],
+          onTap: onTap,
+          child: Text(
+            S.of(context).resendEmailButton,
+            style: AppStyles.languageRegular16(
+              context,
+            ).copyWith(color: AppColorsDarkMode.primary),
           ),
         ),
       ],

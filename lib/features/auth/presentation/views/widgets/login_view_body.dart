@@ -17,7 +17,7 @@ class LoginViewBody extends StatelessWidget {
           const SizedBox(height: 32),
           LoginCardSection(),
           const SizedBox(height: 20),
-          SocialSignInButton(icon: Icons.g_mobiledata),
+          SocialSignInButton(icon: Icons.g_mobiledata , onTap: (){},),
         ],
       ),
     );
