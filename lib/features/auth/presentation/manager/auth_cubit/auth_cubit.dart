@@ -4,8 +4,10 @@ import 'package:stock_mate/features/auth/domain/entities/user_entity.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/check_email_verified_usecase/check_email_verified_usecase.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/login_use_case/login_parameters.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/login_use_case/login_use_case.dart';
+import 'package:stock_mate/features/auth/domain/use_cases/register_use_case/register_parameters.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/register_use_case/register_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_email_verification_usecase/send_email_verification_usecase.dart';
+import 'package:stock_mate/features/auth/domain/use_cases/send_password_reset_usecase/send_password_reset_parameters.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_password_reset_usecase/send_password_reset_usecase.dart';
 
 part 'auth_state.dart';
@@ -30,12 +32,63 @@ class AuthCubit extends Cubit<AuthState> {
       LoginParameters(email: email, password: password),
     );
     result.fold(
-      (error) {
-        emit(AuthErrorState(error.errMessage));
+      (failure) {
+        emit(AuthErrorState(failure.errMessage));
       },
       (user) {
         emit(AuthSuccessState(user));
       },
+    );
+  }
+
+  Future<void> register({
+    required String email,
+    required String password,
+    required String displayName,
+  }) async {
+    emit(AuthLoadingState());
+    final result = await registerUseCase(
+      RegisterParameters(
+        email: email,
+        password: password,
+        displayName: displayName,
+      ),
+    );
+    result.fold(
+      (failure) => emit(AuthErrorState(failure.errMessage)),
+      (user) => emit(AuthEmailVerificationSentState()),
+    );
+  }
+
+  // called each 3 sec from Email Verification screen
+  Future<void> checkEmailVerified() async {
+    final result = await checkEmailVerifiedUseCase.call();
+    result.fold((failure) => emit(AuthErrorState(failure.errMessage)), (
+      isVerified,
+    ) {
+      if (isVerified) {
+        emit(AuthEmailVerifiedState());
+      } else {
+        emit(AuthEmailNotVerifiedState());
+      }
+    });
+  }
+
+  Future<void> resendEmailVerification() async {
+    final result = await sendEmailVerificationUseCase.call();
+    result.fold((failure) => emit(AuthErrorState(failure.errMessage)), (_) {
+      emit(AuthEmailVerificationSentState());
+    });
+  }
+
+  Future<void> sendPasswordReset({required String email}) async {
+    emit(AuthLoadingState());
+    final result = await sendPasswordResetUseCase.call(
+      SendPasswordResetParams(email: email),
+    );
+    result.fold(
+      (failure) => emit(AuthErrorState(failure.errMessage)),
+      (_) => emit(AuthPasswordResetSentState()),
     );
   }
 }
