@@ -15,6 +15,7 @@ class RegisterUseCase implements UseCase<UserEntity, RegisterParameters> {
       email: param!.email,
       password: param.password,
       displayName: param.displayName,
+      shopName: param.shopName,
     );
   }
 }

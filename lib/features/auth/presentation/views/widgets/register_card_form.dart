@@ -79,6 +79,7 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
                               email: emailController.text.trim(),
                               password: passwordController.text,
                               displayName: nameController.text.trim(),
+                              shopName: shopController.text.trim(),
                             );
                           }
                         },

@@ -34,12 +34,14 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
     required String displayName,
+    required String shopName,
   }) {
     return handleRequest(
       () => remoteDataSource.register(
         email: email,
         password: password,
         displayName: displayName,
+        shopName: shopName,
       ),
     );
   }

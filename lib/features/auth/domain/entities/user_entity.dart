@@ -3,7 +3,7 @@ class UserEntity {
   final String email;
   final String displayName;
   final String shopName;
-  // final String shopLogoUrl;
+  final String shopLogoUrl;
   final bool isEmailVerified;
 
   const UserEntity({
@@ -11,7 +11,7 @@ class UserEntity {
     required this.email,
     required this.displayName,
     required this.shopName,
-    // required this.shopLogoUrl,
+    required this.shopLogoUrl,
     required this.isEmailVerified,
   });
 }

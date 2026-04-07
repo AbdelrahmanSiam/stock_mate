@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stock_mate/features/auth/data/data_sources/remote/auth_remote_datasource.dart';
 import 'package:stock_mate/features/auth/data/models/user_model.dart';
@@ -31,17 +32,29 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
     required String email,
     required String password,
     required String displayName,
+    required String shopName,
   }) async {
     final UserCredential userCredential = await firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password);
     await userCredential.user!.updateDisplayName(displayName);
+    //  Save shopName in Firestore
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userCredential.user!.uid)
+        .set({
+          'shopName': shopName,
+          'displayName': displayName,
+          'email': email,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
     await userCredential.user!.sendEmailVerification();
-    return UserModel.fromFirebase(userCredential.user!);
+    return UserModel.fromFirebase(userCredential.user!, shopName: shopName);
   }
 
   @override
   Future<void> sendEmailVerification() async {
-    await firebaseAuth.currentUser?.reload(); // to ensure from last reload state
+    await firebaseAuth.currentUser
+        ?.reload(); // to ensure from last reload state
     await firebaseAuth.currentUser?.sendEmailVerification();
   }
 

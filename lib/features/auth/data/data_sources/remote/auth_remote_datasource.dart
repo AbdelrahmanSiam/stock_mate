@@ -7,6 +7,7 @@ abstract class AuthRemoteDataSource {
     required String email,
     required String password,
     required String displayName,
+    required String shopName,
   });
 
   Future<void> sendEmailVerification();

@@ -8,15 +8,17 @@ class UserModel extends UserEntity {
     required super.displayName,
     required super.shopName,
     required super.isEmailVerified,
+    required super.shopLogoUrl,
   });
 
-  factory UserModel.fromFirebase(User user) {
+  factory UserModel.fromFirebase(User user, {String shopName = " "}) {
     return UserModel(
       id: user.uid,
       email: user.email ?? "",
       displayName: user.displayName ?? "",
-      shopName: "",
+      shopName: shopName,
       isEmailVerified: user.emailVerified,
+      shopLogoUrl: "",
     );
   }
 }

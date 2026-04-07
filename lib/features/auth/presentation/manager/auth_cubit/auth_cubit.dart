@@ -45,6 +45,7 @@ class AuthCubit extends Cubit<AuthState> {
     required String email,
     required String password,
     required String displayName,
+    required String shopName,
   }) async {
     emit(AuthLoadingState());
     final result = await registerUseCase(
@@ -52,6 +53,7 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         password: password,
         displayName: displayName,
+        shopName: shopName,
       ),
     );
     result.fold(

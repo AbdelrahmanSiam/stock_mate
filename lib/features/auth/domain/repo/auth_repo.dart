@@ -12,6 +12,7 @@ abstract class AuthRepository {
     required String email,
     required String password,
     required String displayName,
+    required String shopName,
   });
 
   Future<Either<Failure, void>> sendEmailVerification();
