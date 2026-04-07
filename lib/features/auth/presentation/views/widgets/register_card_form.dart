@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
+import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/register_field.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -32,37 +34,56 @@ class _RegisterCardFormState extends State<RegisterCardForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: AppCard(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        child: Column(
-          children: [
-            RegisterFields(
-              shopController: shopController,
-              nameController: nameController,
-              emailController: emailController,
-              passwordController: passwordController,
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        // register success go to email verification screen
+        if (state is AuthEmailVerificationSentState) {
+          GoRouter.of(context).push(
+            AppRoutes.emailVerification,
+            extra: emailController.text.trim(),
+          );
+        } else if (state is AuthErrorState) {
+          // snackbar
+        }
+      },
+      builder: (context, state) {
+        final isLoading = state is AuthLoadingState;
+        return Form(
+          key: formKey,
+          child: AppCard(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            child: Column(
+              children: [
+                RegisterFields(
+                  shopController: shopController,
+                  nameController: nameController,
+                  emailController: emailController,
+                  passwordController: passwordController,
+                ),
+                const SizedBox(height: 16),
+                const SizedBox(height: 24),
+                CustomButton(
+                  buttonName: S.of(context).registerButton,
+                  isLoading: isLoading,
+                  onPressed: isLoading
+                      ? null
+                      : () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<AuthCubit>().register(
+                              email: emailController.text.trim(),
+                              password: passwordController.text,
+                              displayName: nameController.text.trim(),
+                            );
+                          }
+                        },
+                ),
+                const SizedBox(height: 24),
+              ],
             ),
-            const SizedBox(height: 16),
-            const SizedBox(height: 24),
-            CustomButton(
-              buttonName: S.of(context).registerButton,
-              isLoading: false,
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  GoRouter.of(context).push(
-                    AppRoutes.emailVerification,
-                    extra: emailController.text,
-                  );
-                }
-              },
-            ),
-            const SizedBox(height: 24),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
