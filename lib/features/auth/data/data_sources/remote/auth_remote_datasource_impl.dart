@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/auth/data/data_sources/remote/auth_remote_datasource.dart';
 import 'package:stock_mate/features/auth/data/models/user_model.dart';
 
@@ -39,13 +40,13 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
     await userCredential.user!.updateDisplayName(displayName);
     //  Save shopName in Firestore
     await FirebaseFirestore.instance
-        .collection('users')
+        .collection(kUsersCollection)
         .doc(userCredential.user!.uid)
         .set({
-          'shopName': shopName,
-          'displayName': displayName,
-          'email': email,
-          'createdAt': FieldValue.serverTimestamp(),
+          kShopName: shopName,
+          kDisplayName: displayName,
+          kEmail: email,
+          kCreatedAt: FieldValue.serverTimestamp(),
         });
     await userCredential.user!.sendEmailVerification();
     return UserModel.fromFirebase(userCredential.user!, shopName: shopName);
