@@ -1,15 +1,34 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/auth/data/data_sources/remote/auth_remote_datasource.dart';
 import 'package:stock_mate/features/auth/data/models/user_model.dart';
 
 class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
   final FirebaseAuth firebaseAuth;
+  final GoogleSignIn googleSignIn;
 
-  AuthRemoteDatasourceImpl({required this.firebaseAuth});
+  AuthRemoteDatasourceImpl({
+    required this.firebaseAuth,
+    required this.googleSignIn,
+  });
+
+  @override
+  Future<UserModel> signInWithGoogle() async {
+    final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+    final credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+    );
+    final userCredential = await firebaseAuth.signInWithCredential(credential);
+    return UserModel.fromFirebase(userCredential.user!);
+  }
+
   @override
   Future<bool> checkEmailVerified() async {
+    await firebaseAuth.currentUser?.reload();
     return firebaseAuth.currentUser?.emailVerified ?? false;
   }
 
@@ -25,6 +44,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> logout() async {
+    await googleSignIn.signOut();
     await firebaseAuth.signOut();
   }
 

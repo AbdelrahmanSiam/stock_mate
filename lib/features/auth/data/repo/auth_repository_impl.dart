@@ -59,4 +59,11 @@ class AuthRepositoryImpl implements AuthRepository {
       () => remoteDataSource.sendPasswordResetEmail(email: email),
     );
   }
+  
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() {
+    return handleRequest(
+      () => remoteDataSource.signInWithGoogle(),
+    );
+  }
 }

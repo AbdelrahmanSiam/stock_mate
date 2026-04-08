@@ -54,6 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "fullNameExample": MessageLookupByLibrary.simpleMessage("عبد الرحمن أحمد"),
+    "googleSigninCanceled": MessageLookupByLibrary.simpleMessage(
+      "تم إلغاء تسجيل الدخول إلى Google",
+    ),
     "haveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟ ",
     ),

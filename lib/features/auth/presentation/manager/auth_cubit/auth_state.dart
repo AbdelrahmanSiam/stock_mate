@@ -29,3 +29,5 @@ final class AuthErrorState extends AuthState {
   final String errMessage;
   AuthErrorState(this.errMessage);
 }
+
+final class AuthLoggedOutState extends AuthState {}

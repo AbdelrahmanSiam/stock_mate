@@ -4,11 +4,13 @@ import 'package:stock_mate/features/auth/domain/entities/user_entity.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/check_email_verified_usecase/check_email_verified_usecase.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/login_use_case/login_parameters.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/login_use_case/login_use_case.dart';
+import 'package:stock_mate/features/auth/domain/use_cases/logout_use_case/logout_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/register_use_case/register_parameters.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/register_use_case/register_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_email_verification_usecase/send_email_verification_usecase.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_password_reset_usecase/send_password_reset_parameters.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_password_reset_usecase/send_password_reset_usecase.dart';
+import 'package:stock_mate/features/auth/domain/use_cases/sign_in_with_google_use_case/sign_in_with_google_use_case.dart';
 
 part 'auth_state.dart';
 
@@ -19,12 +21,16 @@ class AuthCubit extends Cubit<AuthState> {
     this.sendEmailVerificationUseCase,
     this.checkEmailVerifiedUseCase,
     this.sendPasswordResetUseCase,
+    this.signInWithGoogleUseCase,
+    this.logoutUseCase,
   ) : super(AuthInitialState());
   final LoginUseCase loginUseCase;
   final RegisterUseCase registerUseCase;
   final SendEmailVerificationUseCase sendEmailVerificationUseCase;
   final CheckEmailVerifiedUseCase checkEmailVerifiedUseCase;
   final SendPasswordResetUseCase sendPasswordResetUseCase;
+  final SignInWithGoogleUseCase signInWithGoogleUseCase;
+  final LogoutUseCase logoutUseCase;
 
   Future<void> login({required String email, required String password}) async {
     emit(AuthLoadingState());
@@ -62,7 +68,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  // called each 3 sec from Email Verification screen
+  // called each 3 sec from Email Verification screen using timer controller
   Future<void> checkEmailVerified() async {
     final result = await checkEmailVerifiedUseCase.call();
     result.fold((failure) => emit(AuthErrorState(failure.errMessage)), (
@@ -91,6 +97,24 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold(
       (failure) => emit(AuthErrorState(failure.errMessage)),
       (_) => emit(AuthPasswordResetSentState()),
+    );
+  }
+
+  Future<void> signInWithGoogle() async {
+    emit(AuthLoadingState());
+    final result = await signInWithGoogleUseCase();
+    result.fold(
+      (failure) => emit(AuthErrorState(failure.errMessage)),
+      (user) => emit(AuthSuccessState(user)),
+    );
+  }
+
+  Future<void> logout() async {
+    emit(AuthLoadingState());
+    final result = await logoutUseCase();
+    result.fold(
+      (failure) => emit(AuthErrorState(failure.errMessage)),
+      (_) => emit(AuthLoggedOutState()),
     );
   }
 }

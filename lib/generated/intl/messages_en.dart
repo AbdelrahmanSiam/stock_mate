@@ -54,6 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "fullNameExample": MessageLookupByLibrary.simpleMessage(
       "Abdelrahman Ahmed",
     ),
+    "googleSigninCanceled": MessageLookupByLibrary.simpleMessage(
+      "Google sign in cancelled",
+    ),
     "haveAccount": MessageLookupByLibrary.simpleMessage(
       "Do you already have an account? ",
     ),
