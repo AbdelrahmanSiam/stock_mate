@@ -4,13 +4,12 @@ import 'package:stock_mate/core/usecases/use_case.dart';
 import 'package:stock_mate/features/auth/domain/entities/user_entity.dart';
 import 'package:stock_mate/features/auth/domain/repo/auth_repo.dart';
 
-class SignInWithGoogleUseCase implements UseCase <UserEntity , NoParameters> {
+class SignInWithGoogleUseCase implements UseCase<UserEntity, NoParameters> {
   final AuthRepository repository;
 
-  SignInWithGoogleUseCase({required this.repository});
+  SignInWithGoogleUseCase(this.repository);
   @override
   Future<Either<Failure, UserEntity>> call([NoParameters? param]) async {
     return await repository.signInWithGoogle();
   }
-
 }
