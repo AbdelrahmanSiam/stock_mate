@@ -34,7 +34,7 @@ final getIt = GetIt.instance;
 void setupServiceLocator() {
   //              Splash Feature
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
-  getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn.instance);
+  getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn());
   getIt.registerLazySingleton<SplashRemoteDatasource>(
     () => SplashRemoteDatasourceImpl(getIt<FirebaseAuth>()),
   );
@@ -76,7 +76,7 @@ void setupServiceLocator() {
     () => GetSavedLanguageUseCase(languageRepo: getIt<LanguageRepo>()),
   );
   // ── Local Cubit ─────────────────────────────────────
-  getIt.registerFactory<LocaleCubit>(
+  getIt.registerLazySingleton<LocaleCubit>(
     () => LocaleCubit(
       getIt<SaveLanguageUseCase>(),
       getIt<GetSavedLanguageUseCase>(),

@@ -34,6 +34,8 @@ class ServerFailure extends Failure{
         return const ServerFailure(errMessage: 'Account exists with different sign-in method');
       case 'invalid-credential':
         return const ServerFailure(errMessage: 'Invalid credentials provided');
+      case 'google-sign-in-cancelled':
+        return const ServerFailure(errMessage: 'Google sign in cancelled');
       
       // ── Validation Errors ──────────────────────
       case 'missing-email':

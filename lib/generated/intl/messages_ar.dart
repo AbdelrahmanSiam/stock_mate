@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟ ",
     ),
+    "haveNoAccount": MessageLookupByLibrary.simpleMessage(" ليس لديك حساب؟"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "البريد أو كلمة المرور غير صحيحة",
     ),
