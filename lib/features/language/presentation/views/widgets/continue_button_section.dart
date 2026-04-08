@@ -22,11 +22,9 @@ class ContinueButtonSection extends StatelessWidget {
           opacity: isEnabled ? 1.0 : 0.4,
           duration: const Duration(milliseconds: 200),
           child: CustomButton(
-            onPressed: () {
-              isEnabled
-                  ? () => context.read<LanguageCubit>().confirmLanguage()
-                  : null;
-            },
+            onPressed: isEnabled
+                ? () => context.read<LanguageCubit>().confirmLanguage()
+                : null,
             isLoading: isLoading,
             buttonName: S.of(context).continueButton,
           ),
