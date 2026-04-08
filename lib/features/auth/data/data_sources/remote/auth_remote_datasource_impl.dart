@@ -59,15 +59,14 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
         .createUserWithEmailAndPassword(email: email, password: password);
     await userCredential.user!.updateDisplayName(displayName);
     //  Save shopName in Firestore
+    final UserModel userModel = UserModel.fromFirebase(
+      userCredential.user!,
+      shopName: shopName,
+    );
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userCredential.user!.uid)
-        .set({
-          kShopName: shopName,
-          kDisplayName: displayName,
-          kEmail: email,
-          kCreatedAt: FieldValue.serverTimestamp(),
-        });
+        .set(userModel.toMap());
     await userCredential.user!.sendEmailVerification();
     return UserModel.fromFirebase(userCredential.user!, shopName: shopName);
   }
