@@ -14,15 +14,17 @@ class SplashView extends StatelessWidget {
     return Scaffold(
       body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
-          // If language not saved ignore state , because we handled it at startNavigation method
+          // Wait for locale to be loaded before navigating
           final localeState = context.read<LocaleCubit>().state;
-          if (localeState is! LocaleLoadedState) return;
+          // Only navigate if locale is loaded AND auth state has changed
+          if (localeState is! LocaleLoadedState) {
+            debugPrint('⏳ Waiting for locale to load...');
+            return;
+          }
           if (state is SplashAuthenticatedState) {
             context.go(AppRoutes.dashboard);
-          } else {
-            if (state is SplashUnauthenticatedState) {
-              context.go(AppRoutes.login);
-            }
+          } else if (state is SplashUnauthenticatedState) {
+            context.go(AppRoutes.login);
           }
         },
         child: SplashViewBody(),

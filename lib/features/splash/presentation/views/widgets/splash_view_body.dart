@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -26,13 +27,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
   late final Animation<double> loadingBarAnimation;
 
   bool hasNavigated = false;
+  Timer? navigationTimer;
+
+  // constants for timing configuration
+  static const int minSplashDurationMs = 2500;
+  static const int authCheckTimeoutMs = 5000;
 
   @override
   void initState() {
     super.initState();
     initAnimations();
-    startNavigation();
-    startAuthCheck();
+    // Method for properly coordinate locale loading, auth check, and navigation
+    coordinateInitialization();
   }
 
   void initAnimations() {
@@ -67,27 +73,48 @@ class _SplashViewBodyState extends State<SplashViewBody>
     loadingBarController.repeat();
   }
 
-  void startNavigation() {
-    Future.delayed(const Duration(milliseconds: 3000), () {
-      if (!hasNavigated && mounted) {
-        hasNavigated = true;
-        final localeState = context
-            .read<LocaleCubit>()
-            .state; // get current state to check it
-        if (localeState is LocaleInitialState) {
-          // this is first time to visit app so go to language View
-          context.go(AppRoutes.language);
-        }
-      }
-    });
+  // Coordinate initialization properly
+  void coordinateInitialization() {
+    // Start auth check immediately but with timeout
+    startAuthCheckWithTimeout();
+    navigationTimer = Timer(
+      const Duration(milliseconds: minSplashDurationMs),
+      handleNavigation,
+    );
   }
 
-  void startAuthCheck() {
-    context.read<SplashCubit>().checkAuthentication();
+  void startAuthCheckWithTimeout() {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (mounted) {
+        context.read<SplashCubit>().checkAuthentication();
+      }
+    }).timeout(
+      const Duration(milliseconds: authCheckTimeoutMs),
+      onTimeout: () {
+        if (mounted) {
+          debugPrint('⚠️ Auth check timeout, defaulting to login');
+        }
+      },
+    );
+  }
+
+  // Handle navigation with proper state checking
+  void handleNavigation() {
+    if (!hasNavigated && mounted) {
+      hasNavigated = true;
+      final localeState = context.read<LocaleCubit>().state;
+      // Check if this is first time user
+      if (localeState is LocaleInitialState) {
+        // First time user - go to language selection
+        context.go(AppRoutes.language);
+      }
+      // Otherwise, SplashCubit's BlocListener will handle auth state navigation
+    }
   }
 
   @override
   void dispose() {
+    navigationTimer?.cancel();
     logoController.dispose();
     taglineController.dispose();
     loadingBarController.dispose();
@@ -103,9 +130,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
             mainAxisSize: MainAxisSize.min,
             children: [
               SplashLogoWidget(logoAnimation: logoAnimation),
-              TaglineWidget(
-                taglineAnimation: taglineAnimation,
-              ), // late 800 ms than Logo and App name
+              TaglineWidget(taglineAnimation: taglineAnimation),
             ],
           ),
         ),
