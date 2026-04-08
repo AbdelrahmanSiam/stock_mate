@@ -32,6 +32,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور",
+    ),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),

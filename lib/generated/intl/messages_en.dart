@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "Check your connection",
     ),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),

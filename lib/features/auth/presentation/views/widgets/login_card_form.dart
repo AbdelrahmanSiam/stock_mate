@@ -7,6 +7,7 @@ import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/auth_navigate_row.dart';
+import 'package:stock_mate/features/auth/presentation/views/widgets/forget_password_button.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/sign_in_fields.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -55,6 +56,7 @@ class _LoginCardFormState extends State<LoginCardForm> {
                 SignInFields(
                   emailController: emailController,
                   passwordController: passwordController,
+                  extraWidget: ForgetPasswordButton(),
                 ),
                 const SizedBox(height: 24),
                 CustomButton(

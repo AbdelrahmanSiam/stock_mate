@@ -10,9 +10,11 @@ class SignInFields extends StatefulWidget {
     super.key,
     required this.emailController,
     required this.passwordController,
+    required this.extraWidget,
   });
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final Widget extraWidget;
   @override
   @override
   State<SignInFields> createState() => _SignInFieldsState();
@@ -26,7 +28,7 @@ class _SignInFieldsState extends State<SignInFields> {
       children: [
         CustomAuthTextField(
           label: S.of(context).email,
-          hint:"admin@gmail.com",
+          hint: "admin@gmail.com",
           prefixIcon: Icons.email_outlined,
           controller: widget.emailController,
           keyboardType: TextInputType.emailAddress,
@@ -44,7 +46,7 @@ class _SignInFieldsState extends State<SignInFields> {
           validator: (value) {
             return passwordVerificationMethod(value, context);
           },
-          extraWidget: ForgetPasswordButton(),
+          extraWidget: widget.extraWidget,
           suffixIcon: PasswordToggleIcon(
             isObscure: isObscureText,
             onTap: () {

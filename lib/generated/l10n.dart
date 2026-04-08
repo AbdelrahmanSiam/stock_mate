@@ -99,6 +99,16 @@ class S {
     return Intl.message('Password', name: 'password', desc: '', args: []);
   }
 
+  /// `Confirm Password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `This field is required`
   String get fieldRequired {
     return Intl.message(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
-import 'package:stock_mate/features/auth/presentation/views/widgets/forget_password_button.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/password_toggle_icon.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/sign_in_fields.dart';
 import 'package:stock_mate/generated/l10n.dart';
@@ -56,10 +55,11 @@ class _RegisterFieldsState extends State<RegisterFields> {
         SignInFields(
           emailController: widget.emailController,
           passwordController: widget.passwordController,
+          extraWidget: SizedBox(),
         ),
         const SizedBox(height: 16),
         CustomAuthTextField(
-          label: S.of(context).password,
+          label: S.of(context).confirmPassword,
           hint: '••••••••',
           prefixIcon: Icons.lock_outlined,
           controller: widget.confirmPasswordController,
@@ -67,7 +67,6 @@ class _RegisterFieldsState extends State<RegisterFields> {
           validator: (value) => value != widget.passwordController.text
               ? S.of(context).passwordNotMatch
               : null,
-          extraWidget: ForgetPasswordButton(),
           suffixIcon: PasswordToggleIcon(
             isObscure: isObscureText,
             onTap: () {

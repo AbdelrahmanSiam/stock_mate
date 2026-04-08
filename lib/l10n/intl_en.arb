@@ -6,6 +6,7 @@
     "signInButton": "SIGN IN",
     "email": "Email address",
     "password": "Password",
+    "confirmPassword" : "Confirm Password",
     "fieldRequired": "This field is required",
     "invalidEmail": "Enter a valid email",
     "invalidPassword": "Password must be at least 6 characters",
