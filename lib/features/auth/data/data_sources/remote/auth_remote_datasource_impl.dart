@@ -66,7 +66,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userCredential.user!.uid)
-        .set(userModel.toMap());
+        .set(userModel.toFirebase());
     await userCredential.user!.sendEmailVerification();
     return UserModel.fromFirebase(userCredential.user!, shopName: shopName);
   }

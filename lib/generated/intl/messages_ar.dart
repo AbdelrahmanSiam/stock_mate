@@ -69,11 +69,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidEmail": MessageLookupByLibrary.simpleMessage(
       "أدخل بريداً إلكترونياً صحيحاً",
     ),
+    "invalidEmailFormat": MessageLookupByLibrary.simpleMessage(
+      "صيغة البريد الإلكتروني غير صحيحة",
+    ),
     "invalidPassword": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور 6 أحرف على الأقل",
     ),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
+    ),
+    "networkError": MessageLookupByLibrary.simpleMessage(
+      "تحقق من اتصالك بالإنترنت",
     ),
     "openEmailApp": MessageLookupByLibrary.simpleMessage(
       "افتح تطبيق البريد الإلكتروني",
@@ -112,8 +118,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",
     ),
+    "tooManyRequests": MessageLookupByLibrary.simpleMessage(
+      "عدد محاولات كبير، حاول لاحقًا",
+    ),
+    "unknownError": MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
+    "userNotFound": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد حساب بهذا البريد الإلكتروني",
+    ),
     "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
       "أكّد بريدك الإلكتروني",
+    ),
+    "wrongPassword": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور غير صحيحة",
     ),
   };
 }

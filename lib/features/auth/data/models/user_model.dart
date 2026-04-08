@@ -13,7 +13,7 @@ class UserModel extends UserEntity {
     required super.isEmailVerified,
   });
 
-  // ── fromFirebase ──────────────────────────────────────
+  // ── fromFirebase ────────────────────────────────────── to use auth and shop name & shop url for firestore
   // from Firebase Auth User object
   factory UserModel.fromFirebase(
     User user, {
@@ -30,7 +30,7 @@ class UserModel extends UserEntity {
     );
   }
 
-  // ── fromFirestore ─────────────────────────────────────
+  // ── fromFirestore ───────────────────────────────────── All to firestore
   factory UserModel.fromFirestore(Map<String, dynamic> json) {
     return UserModel(
       id: json[kUserId] ?? '',
@@ -44,7 +44,7 @@ class UserModel extends UserEntity {
 
   // ── toMap ─────────────────────────────────────────────
   // Use it when we need to write to Firestore
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toFirebase() {
     return {
       kUserId: id,
       kEmail: email,

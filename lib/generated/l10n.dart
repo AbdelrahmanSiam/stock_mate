@@ -428,6 +428,66 @@ class S {
       args: [],
     );
   }
+
+  /// `No account with this email`
+  String get userNotFound {
+    return Intl.message(
+      'No account with this email',
+      name: 'userNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incorrect password`
+  String get wrongPassword {
+    return Intl.message(
+      'Incorrect password',
+      name: 'wrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid email format`
+  String get invalidEmailFormat {
+    return Intl.message(
+      'Invalid email format',
+      name: 'invalidEmailFormat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Too many attempts, try again later`
+  String get tooManyRequests {
+    return Intl.message(
+      'Too many attempts, try again later',
+      name: 'tooManyRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your internet connection`
+  String get networkError {
+    return Intl.message(
+      'Check your internet connection',
+      name: 'networkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong`
+  String get unknownError {
+    return Intl.message(
+      'Something went wrong',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

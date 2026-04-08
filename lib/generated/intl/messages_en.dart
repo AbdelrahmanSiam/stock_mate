@@ -68,11 +68,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "Invalid email or password",
     ),
     "invalidEmail": MessageLookupByLibrary.simpleMessage("Enter a valid email"),
+    "invalidEmailFormat": MessageLookupByLibrary.simpleMessage(
+      "Invalid email format",
+    ),
     "invalidPassword": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 6 characters",
     ),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
+    ),
+    "networkError": MessageLookupByLibrary.simpleMessage(
+      "Check your internet connection",
     ),
     "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
@@ -103,8 +109,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),
+    "tooManyRequests": MessageLookupByLibrary.simpleMessage(
+      "Too many attempts, try again later",
+    ),
+    "unknownError": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong",
+    ),
+    "userNotFound": MessageLookupByLibrary.simpleMessage(
+      "No account with this email",
+    ),
     "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
       "Verify Your Email",
     ),
+    "wrongPassword": MessageLookupByLibrary.simpleMessage("Incorrect password"),
   };
 }
