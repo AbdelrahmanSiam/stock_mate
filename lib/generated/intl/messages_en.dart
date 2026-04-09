@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
     "alert": MessageLookupByLibrary.simpleMessage("Alert"),
     "allDays": MessageLookupByLibrary.simpleMessage("Fri-Sat"),
     "appName": MessageLookupByLibrary.simpleMessage("StockMate"),
@@ -48,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerified": MessageLookupByLibrary.simpleMessage(
       "Email Verification link sent successfully",
     ),
+    "evening": MessageLookupByLibrary.simpleMessage("Good Evening"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
@@ -84,9 +86,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "lowStock": MessageLookupByLibrary.simpleMessage("Low Stock"),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("Monthly Revenue"),
+    "morning": MessageLookupByLibrary.simpleMessage("Good Morning"),
     "networkError": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection",
     ),
+    "night": MessageLookupByLibrary.simpleMessage("Good Night"),
     "noSalesYet": MessageLookupByLibrary.simpleMessage("No sales yet"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),

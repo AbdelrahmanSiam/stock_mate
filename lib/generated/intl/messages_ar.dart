@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "afternoon": MessageLookupByLibrary.simpleMessage("مساء الخير"),
     "alert": MessageLookupByLibrary.simpleMessage("تنبيه"),
     "allDays": MessageLookupByLibrary.simpleMessage("جمعة-سبت"),
     "appName": MessageLookupByLibrary.simpleMessage("زميل مخزنك"),
@@ -52,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerified": MessageLookupByLibrary.simpleMessage(
       "تم إرسال رابط رابط تأكيد بريدك الإلكتروني بنجاح",
     ),
+    "evening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "forget": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
@@ -86,9 +88,11 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "lowStock": MessageLookupByLibrary.simpleMessage("المخزون منخفض"),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("الإيرادات الشهرية"),
+    "morning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
     "networkError": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
+    "night": MessageLookupByLibrary.simpleMessage("تصبح على خير"),
     "noSalesYet": MessageLookupByLibrary.simpleMessage("لا توجد مبيعات حديثة"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage(
       "افتح تطبيق البريد الإلكتروني",

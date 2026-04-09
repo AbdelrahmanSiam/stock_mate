@@ -63,5 +63,9 @@
     "dashboard": "Dashboard",
     "products": "Products",
     "sales": "Sales",
-    "settings": "Settings"
+    "settings": "Settings",
+    "morning": "Good Morning",
+    "afternoon": "Good Afternoon",
+    "evening": "Good Evening",
+    "night": "Good Night"
 }

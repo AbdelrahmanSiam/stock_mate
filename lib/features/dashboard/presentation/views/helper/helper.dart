@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
-String getGreeting() {
+String getGreeting(BuildContext context) {
   final hour = DateTime.now().hour;
-  if (hour >= 5 && hour < 12) return 'Good morning';
-  if (hour >= 12 && hour < 17) return 'Good afternoon';
-  if (hour >= 17 && hour < 21) return 'Good evening';
-  return 'Good night';
+  if (hour >= 5 && hour < 12) return S.of(context).morning;
+  if (hour >= 12 && hour < 17) return S.of(context).afternoon;
+  if (hour >= 17 && hour < 21) return S.of(context).evening;
+  return S.of(context).night;
 }
 
 String getGreetingEmoji() {

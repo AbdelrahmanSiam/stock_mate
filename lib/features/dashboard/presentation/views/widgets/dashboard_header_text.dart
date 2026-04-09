@@ -19,7 +19,7 @@ class DashboardHeaderText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${getGreeting()}, $displayName ${getGreetingEmoji()}',
+          '${getGreeting(context)}, $displayName ${getGreetingEmoji()}',
           style: AppStyles.bodyMediumRegular14(
             context,
           ).copyWith(color: AppColorsDarkMode.textSecondary),
