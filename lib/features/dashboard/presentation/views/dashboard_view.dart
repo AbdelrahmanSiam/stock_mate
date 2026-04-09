@@ -13,9 +13,9 @@ class _DashboardViewState extends State<DashboardView> {
   int currentIndex = 0;
   final pages = [
     const DashboardViewBody(),
-    Container(color: Colors.green),
-    Container(color: Colors.blue),
-    Container(color: Colors.orange),
+    Center(child: Text("Products")),
+    Center(child: Text("Sales")),
+    Center(child: Text("Settings")),
   ];
   @override
   Widget build(BuildContext context) {
