@@ -47,5 +47,10 @@
     "tooManyRequests": "عدد محاولات كبير، حاول لاحقًا",
     "networkError": "تحقق من اتصالك بالإنترنت",
     "unknownError": "حدث خطأ غير متوقع",
-    "alert": "تنبيه"
+    "alert": "تنبيه",
+    "lowStock": "المخزون منخفض",
+    "monthlyRevenue": "الإيرادات الشهرية",
+    "todaySales": "مبيعات اليوم",
+    "totalProducts": "إجمالي المنتجات",
+    "egp": "جنيه"
 }

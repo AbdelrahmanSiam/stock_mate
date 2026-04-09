@@ -493,6 +493,46 @@ class S {
   String get alert {
     return Intl.message('Alert', name: 'alert', desc: '', args: []);
   }
+
+  /// `Low Stock`
+  String get lowStock {
+    return Intl.message('Low Stock', name: 'lowStock', desc: '', args: []);
+  }
+
+  /// `Monthly Revenue`
+  String get monthlyRevenue {
+    return Intl.message(
+      'Monthly Revenue',
+      name: 'monthlyRevenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today's Sales`
+  String get todaySales {
+    return Intl.message(
+      'Today\'s Sales',
+      name: 'todaySales',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Products`
+  String get totalProducts {
+    return Intl.message(
+      'Total Products',
+      name: 'totalProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGP`
+  String get egp {
+    return Intl.message('EGP', name: 'egp', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

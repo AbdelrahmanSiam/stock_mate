@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
       "We\'ve sent a verification link to",
@@ -78,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
     ),
+    "lowStock": MessageLookupByLibrary.simpleMessage("Low Stock"),
+    "monthlyRevenue": MessageLookupByLibrary.simpleMessage("Monthly Revenue"),
     "networkError": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection",
     ),
@@ -110,9 +113,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),
+    "todaySales": MessageLookupByLibrary.simpleMessage("Today\'s Sales"),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Too many attempts, try again later",
     ),
+    "totalProducts": MessageLookupByLibrary.simpleMessage("Total Products"),
     "unknownError": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),

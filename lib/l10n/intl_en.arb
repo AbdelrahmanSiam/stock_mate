@@ -47,5 +47,10 @@
     "tooManyRequests": "Too many attempts, try again later",
     "networkError": "Check your internet connection",
     "unknownError": "Something went wrong",
-    "alert": "Alert"
+    "alert": "Alert",
+    "lowStock": "Low Stock",
+    "monthlyRevenue": "Monthly Revenue",
+    "todaySales": "Today's Sales",
+    "totalProducts": "Total Products",
+    "egp": "EGP"
 }

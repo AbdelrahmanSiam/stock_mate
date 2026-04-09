@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
+    "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا رابط تأكيد إلى",
@@ -80,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
     ),
+    "lowStock": MessageLookupByLibrary.simpleMessage("المخزون منخفض"),
+    "monthlyRevenue": MessageLookupByLibrary.simpleMessage("الإيرادات الشهرية"),
     "networkError": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
@@ -120,9 +123,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",
     ),
+    "todaySales": MessageLookupByLibrary.simpleMessage("مبيعات اليوم"),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "عدد محاولات كبير، حاول لاحقًا",
     ),
+    "totalProducts": MessageLookupByLibrary.simpleMessage("إجمالي المنتجات"),
     "unknownError": MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
     "userNotFound": MessageLookupByLibrary.simpleMessage(
       "لا يوجد حساب بهذا البريد الإلكتروني",
