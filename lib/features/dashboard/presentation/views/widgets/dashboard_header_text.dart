@@ -25,12 +25,7 @@ class DashboardHeaderText extends StatelessWidget {
           ).copyWith(color: AppColorsDarkMode.textSecondary),
         ),
         const SizedBox(height: 2),
-        Text(
-          shopName,
-          style: AppStyles.labelSemiBold13(
-            context,
-          ).copyWith(color: AppColorsDarkMode.primary),
-        ),
+        Text(shopName, style: AppStyles.priceBold16(context)),
       ],
     );
   }

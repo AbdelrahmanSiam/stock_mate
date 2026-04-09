@@ -13,7 +13,7 @@ class DashboardViewBody extends StatelessWidget {
         children: [
           SizedBox(height: 30),
           DashboardHeaderWidget(
-            displayName: 'Abdelrahman',
+            displayName: 'Abdul-Rahman',
             shopName: 'Al-Baraka',
           )
         ],
