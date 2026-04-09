@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "daysAgo": MessageLookupByLibrary.simpleMessage(" days ago"),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
@@ -132,5 +133,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sales This Week",
     ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage("Incorrect password"),
+    "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
   };
 }

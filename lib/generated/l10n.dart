@@ -548,6 +548,16 @@ class S {
   String get allDays {
     return Intl.message('Fri-Sat', name: 'allDays', desc: '', args: []);
   }
+
+  /// `Yesterday`
+  String get yesterday {
+    return Intl.message('Yesterday', name: 'yesterday', desc: '', args: []);
+  }
+
+  /// ` days ago`
+  String get daysAgo {
+    return Intl.message(' days ago', name: 'daysAgo', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

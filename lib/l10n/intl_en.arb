@@ -54,5 +54,7 @@
     "totalProducts": "Total Products",
     "egp": "EGP",
     "weeklySalesChartTitle": "Sales This Week",
-    "allDays": "Fri-Sat"
+    "allDays": "Fri-Sat",
+    "yesterday": "Yesterday",
+    "daysAgo": " days ago"
 }

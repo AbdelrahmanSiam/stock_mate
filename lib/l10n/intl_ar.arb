@@ -54,5 +54,7 @@
     "totalProducts": "إجمالي المنتجات",
     "egp": "جنيه",
     "weeklySalesChartTitle": "مبيعات هذا الأسبوع",
-    "allDays": "جمعة-سبت"
+    "allDays": "جمعة-سبت",
+    "yesterday": "أمس",
+    "daysAgo": " قبل أيام"
 }

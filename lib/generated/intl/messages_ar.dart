@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
+    "daysAgo": MessageLookupByLibrary.simpleMessage(" قبل أيام"),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
@@ -142,5 +143,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongPassword": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور غير صحيحة",
     ),
+    "yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
   };
 }
