@@ -6,6 +6,14 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: DashboardViewBody());
+    return Scaffold(
+      body: DashboardViewBody(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigate to add product screen
+        },
+        child: const Icon(Icons.add),
+      ),
+      );
   }
 }
