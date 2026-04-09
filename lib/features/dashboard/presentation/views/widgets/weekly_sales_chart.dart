@@ -19,7 +19,7 @@ class WeeklySalesChart extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomHeader(title: S.of(context).weeklySalesChartTitle, actionText: S.of(context).allDays),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         BarChartWidget(maxSalesValue: maxSalesValue, salesData: salesData),
       ],
     );

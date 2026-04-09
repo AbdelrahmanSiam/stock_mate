@@ -6,7 +6,7 @@ class CustomViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(

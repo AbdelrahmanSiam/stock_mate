@@ -15,6 +15,11 @@ class RecentSaleCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: AppColorsDarkMode.surface,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColorsDarkMode.border, width: 1),
+      ),
       child: Row(
         children: [
           ReceiptIcon(),

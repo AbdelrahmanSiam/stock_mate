@@ -14,11 +14,16 @@ class RecentSalesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomHeader(
-          title: S.of(context).recentSales,
-          actionText: S.of(context).viewAll,
+        GestureDetector(
+          onTap: () {
+            // Navigate to the full recent sales screen
+          },
+          child: CustomHeader(
+            title: S.of(context).recentSales,
+            actionText: S.of(context).viewAll,
+          ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         if (sales.isEmpty)
           Center(
             child: Padding(
