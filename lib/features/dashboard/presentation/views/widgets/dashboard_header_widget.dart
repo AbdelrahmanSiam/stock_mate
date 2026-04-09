@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/core/styles/app_styles.dart';
-import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/features/dashboard/presentation/views/helper/helper.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_avatar.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_header_text.dart';
+import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_notification.dart';
 
 class DashboardHeaderWidget extends StatelessWidget {
   final String displayName;
@@ -27,25 +25,10 @@ class DashboardHeaderWidget extends StatelessWidget {
             DashboardHeaderText(displayName: displayName, shopName: shopName),
           ],
         ),
-        // Notification bell
-        GestureDetector(
+        DashboardNotification(
           onTap: () {
-            // TODO: Notifications
+            // go to notifications screen
           },
-          child: Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColorsDarkMode.surface,
-              border: Border.all(color: AppColorsDarkMode.border, width: 1),
-            ),
-            child: const Icon(
-              Icons.notifications_outlined,
-              color: AppColorsDarkMode.textPrimary,
-              size: 20,
-            ),
-          ),
         ),
       ],
     );
