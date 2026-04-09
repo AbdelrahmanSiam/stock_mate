@@ -34,7 +34,7 @@ class RecentSaleCardWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${formatTime(sale.createdAt)} • ${sale.paymentMethod}',
+                  '${formatTime(context,sale.createdAt)} • ${sale.paymentMethod}',
                   style: AppStyles.bodySmallRegular12(context),
                 ),
               ],

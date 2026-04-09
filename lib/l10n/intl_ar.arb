@@ -59,5 +59,10 @@
     "daysAgo": " قبل أيام",
     "recentSales": "المبيعات الأخيرة",
     "viewAll": "عرض الكل",
-    "noSalesYet": "لا توجد مبيعات حديثة"
+    "noSalesYet": "لا توجد مبيعات حديثة",
+    "dashboard": "لوحة التحكم",
+    "products": "المنتجات",
+    "sales": "المبيعات",
+    "settings": "الإعدادات"
+
 }

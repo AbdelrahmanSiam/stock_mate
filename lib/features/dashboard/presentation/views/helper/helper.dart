@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 String getGreeting() {
@@ -24,7 +25,7 @@ List<String> get dayLabels {
 }
 
 // Convert DateTime to String
-String formatTime(DateTime date) {
+String formatTime(BuildContext context, DateTime date) {
   final now = DateTime.now();
   final diff = now.difference(
     date,
@@ -39,8 +40,8 @@ String formatTime(DateTime date) {
     return '$hour12:$minute $period';
   } else if (diff.inDays == 1) {
     // If the difference is exactly one day, show "Yesterday"
-    return S.current.yesterday;
+    return S.of(context).yesterday;
   } else {
-    return '${diff.inDays} ${S.current.daysAgo}';
+    return '${diff.inDays} ${S.of(context).daysAgo}';
   }
 }

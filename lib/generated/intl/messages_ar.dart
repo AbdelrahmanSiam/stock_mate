@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" قبل أيام"),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -103,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "يضمن لك التحقق من بريدك الإلكتروني تلقي تنبيهات تلقائية بانخفاض المخزون وملخصات المبيعات اليومية.",
     ),
+    "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
     "recentSales": MessageLookupByLibrary.simpleMessage("المبيعات الأخيرة"),
     "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
@@ -118,9 +120,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
       "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح",
     ),
+    "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",
     ),
+    "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("مثال: البركة "),
     "shopeName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),
     "signInButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),

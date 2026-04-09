@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" days ago"),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),
@@ -97,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
     ),
+    "products": MessageLookupByLibrary.simpleMessage("Products"),
     "recentSales": MessageLookupByLibrary.simpleMessage("Recent Sales"),
     "registerButton": MessageLookupByLibrary.simpleMessage("REGISTER"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
@@ -110,7 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
       "Reset password link sent successfully",
     ),
+    "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),
     "shopeName": MessageLookupByLibrary.simpleMessage("Shop Name"),
     "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),

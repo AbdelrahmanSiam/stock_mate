@@ -578,6 +578,26 @@ class S {
   String get noSalesYet {
     return Intl.message('No sales yet', name: 'noSalesYet', desc: '', args: []);
   }
+
+  /// `Dashboard`
+  String get dashboard {
+    return Intl.message('Dashboard', name: 'dashboard', desc: '', args: []);
+  }
+
+  /// `Products`
+  String get products {
+    return Intl.message('Products', name: 'products', desc: '', args: []);
+  }
+
+  /// `Sales`
+  String get sales {
+    return Intl.message('Sales', name: 'sales', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

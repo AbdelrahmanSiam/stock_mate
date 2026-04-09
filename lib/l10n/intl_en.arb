@@ -59,5 +59,9 @@
     "daysAgo": " days ago",
     "recentSales": "Recent Sales",
     "viewAll": "View All",
-    "noSalesYet": "No sales yet"
+    "noSalesYet": "No sales yet",
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "sales": "Sales",
+    "settings": "Settings"
 }
