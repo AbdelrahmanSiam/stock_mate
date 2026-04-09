@@ -13,3 +13,9 @@
     if (hour >= 17 && hour < 21) return '🌆';
     return '🌙';
   }
+    // To generate today as last day on the list
+  List<String> get dayLabels {
+    final days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    final today = DateTime.now().weekday % 7;
+    return List.generate(7, (i) => days[(today - 6 + i + 7) % 7]);
+  }
