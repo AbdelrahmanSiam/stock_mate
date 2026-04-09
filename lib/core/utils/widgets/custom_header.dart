@@ -3,8 +3,8 @@ import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
-class WeeklySalesChartHeader extends StatelessWidget {
-  const WeeklySalesChartHeader({
+class CustomHeader extends StatelessWidget {
+  const CustomHeader({
     super.key,
   });
 
@@ -15,11 +15,11 @@ class WeeklySalesChartHeader extends StatelessWidget {
       children: [
         Text(
           S.of(context).weeklySalesChartTitle,
-          style: AppStyles.sectionTitleSemiBold16(context),
+          style: AppStyles.h2Bold22(context),
         ),
         Text(
           S.of(context).allDays,
-          style: AppStyles.bodySmallRegular12(
+          style: AppStyles.bodyMediumRegular14(
             context,
           ).copyWith(color: AppColorsDarkMode.primary),
         ),

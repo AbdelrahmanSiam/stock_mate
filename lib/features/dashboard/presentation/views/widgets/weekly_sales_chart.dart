@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/bar_chart_widget.dart';
-import 'package:stock_mate/features/dashboard/presentation/views/widgets/weekly_sales_chart_header.dart';
+import 'package:stock_mate/core/utils/widgets/custom_header.dart';
 
 class WeeklySalesChart extends StatelessWidget {
   final List<double> salesData;
@@ -17,7 +17,7 @@ class WeeklySalesChart extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        WeeklySalesChartHeader(),
+        CustomHeader(),
         const SizedBox(height: 16),
         BarChartWidget(maxSalesValue: maxSalesValue, salesData: salesData),
       ],

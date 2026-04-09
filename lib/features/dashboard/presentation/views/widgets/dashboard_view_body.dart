@@ -11,30 +11,28 @@ class DashboardViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  CustomViewBody(
+    return CustomViewBody(
       widget: Column(
-          children: [
-            Spacer(),
-            DashboardHeaderWidget(
-              displayName: 'Abdul-Rahman',
-              shopName: 'Al-Baraka',
+        children: [
+          Spacer(),
+          DashboardHeaderWidget(
+            displayName: 'Abdul-Rahman',
+            shopName: 'Al-Baraka',
+          ),
+          const SizedBox(height: 24),
+          StatCardsGrid(
+            dashboard: DashboardEntity(
+              totalProducts: 150,
+              todaySales: 500,
+              monthlyRevenue: 10000,
+              lowStockCount: 10,
             ),
-            const SizedBox(height: 24),
-            StatCardsGrid(
-              dashboard: DashboardEntity(
-                totalProducts: 150,
-                todaySales: 500,
-                monthlyRevenue: 10000,
-                lowStockCount: 10,
-              ),
-            ),
-            const SizedBox(height: 24),
-            WeeklySalesChart(
-              salesData: [300, 450, 600, 550, 700, 800, 900],
-            ),
-            const SizedBox(height: 24),
-            Spacer(),
-          ],
+          ),
+          const SizedBox(height: 24),
+          WeeklySalesChart(salesData: [300, 450, 600, 550, 700, 800, 900]),
+          const SizedBox(height: 24),
+          Spacer(),
+        ],
       ),
     );
   }
