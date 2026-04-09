@@ -1,8 +1,5 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:stock_mate/core/styles/app_styles.dart';
-import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/features/dashboard/presentation/views/helper/helper.dart';
+import 'package:stock_mate/features/dashboard/presentation/views/widgets/bar_chart_widget.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/weekly_sales_chart_header.dart';
 
 class WeeklySalesChart extends StatelessWidget {
@@ -22,72 +19,7 @@ class WeeklySalesChart extends StatelessWidget {
       children: [
         WeeklySalesChartHeader(),
         const SizedBox(height: 16),
-        SizedBox(
-          height: 180,
-          child: BarChart(
-            BarChartData(
-              maxY: maxSalesValue,
-              minY: 0,
-              gridData: FlGridData(
-                show: true,
-                drawVerticalLine: false,
-                horizontalInterval: maxSalesValue / 4,
-                getDrawingHorizontalLine: (value) =>
-                    FlLine(color: AppColorsDarkMode.border, strokeWidth: 0.5),
-              ),
-              borderData: FlBorderData(show: false),
-              titlesData: FlTitlesData(
-                // only down is shown and the rest is hidden
-                topTitles: const AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-                rightTitles: const AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-                bottomTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    getTitlesWidget: (value, meta) {
-                      final index = value.toInt();
-                      if (index < 0 || index >= dayLabels.length) {
-                        return const SizedBox();
-                      }
-                      return Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: Text(
-                          dayLabels[index],
-                          style: AppStyles.captionRegular10(context),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                leftTitles: const AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-              ),
-              barGroups: List.generate(
-                salesData.length,
-                (index) => BarChartGroupData(
-                  x: index,
-                  barRods: [
-                    BarChartRodData(
-                      toY: salesData[index],
-                      // today is primary color and the rest of the days is border color
-                      color: index == salesData.length - 1
-                          ? AppColorsDarkMode.primary
-                          : AppColorsDarkMode.border,
-                      width: 22,
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(6),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+        BarChartWidget(maxSalesValue: maxSalesValue, salesData: salesData),
       ],
     );
   }
