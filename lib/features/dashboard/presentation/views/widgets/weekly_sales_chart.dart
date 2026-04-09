@@ -22,7 +22,6 @@ class WeeklySalesChart extends StatelessWidget {
       children: [
         WeeklySalesChartHeader(),
         const SizedBox(height: 16),
-
         SizedBox(
           height: 180,
           child: BarChart(
@@ -38,14 +37,13 @@ class WeeklySalesChart extends StatelessWidget {
               ),
               borderData: FlBorderData(show: false),
               titlesData: FlTitlesData(
-                // فوق وعلى اليمين: مخفيين
+                // only down is shown and the rest is hidden
                 topTitles: const AxisTitles(
                   sideTitles: SideTitles(showTitles: false),
                 ),
                 rightTitles: const AxisTitles(
                   sideTitles: SideTitles(showTitles: false),
                 ),
-                // تحت: أيام الأسبوع
                 bottomTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,
@@ -64,7 +62,6 @@ class WeeklySalesChart extends StatelessWidget {
                     },
                   ),
                 ),
-                // شمال: مخفي
                 leftTitles: const AxisTitles(
                   sideTitles: SideTitles(showTitles: false),
                 ),
@@ -76,8 +73,7 @@ class WeeklySalesChart extends StatelessWidget {
                   barRods: [
                     BarChartRodData(
                       toY: salesData[index],
-                      // اليوم الأخير (اليوم الحالي) بيبقى primary
-                      // الباقي border color
+                      // today is primary color and the rest of the days is border color
                       color: index == salesData.length - 1
                           ? AppColorsDarkMode.primary
                           : AppColorsDarkMode.border,
