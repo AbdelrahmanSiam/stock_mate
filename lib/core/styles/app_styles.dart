@@ -34,7 +34,7 @@ abstract class AppStyles {
   static TextStyle languageRegular16(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 16),
     fontWeight: FontWeight.w400,
-    color: Color(0XFFE2BFB3),
+    color: AppColorsDarkMode.textSecondary,
     letterSpacing: 3.0,
     fontFamily: 'Inter',
   );
