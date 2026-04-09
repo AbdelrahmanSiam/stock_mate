@@ -52,5 +52,7 @@
     "monthlyRevenue": "الإيرادات الشهرية",
     "todaySales": "مبيعات اليوم",
     "totalProducts": "إجمالي المنتجات",
-    "egp": "جنيه"
+    "egp": "جنيه",
+    "weeklySalesChartTitle": "مبيعات هذا الأسبوع",
+    "allDays": "جمعة-سبت"
 }

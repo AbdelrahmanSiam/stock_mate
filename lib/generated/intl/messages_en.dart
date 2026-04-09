@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "alert": MessageLookupByLibrary.simpleMessage("Alert"),
+    "allDays": MessageLookupByLibrary.simpleMessage("Fri-Sat"),
     "appName": MessageLookupByLibrary.simpleMessage("StockMate"),
     "appTagline": MessageLookupByLibrary.simpleMessage(
       "PREMIUM INVENTORY & SALES",
@@ -126,6 +127,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
       "Verify Your Email",
+    ),
+    "weeklySalesChartTitle": MessageLookupByLibrary.simpleMessage(
+      "Sales This Week",
     ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage("Incorrect password"),
   };

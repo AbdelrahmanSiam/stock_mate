@@ -533,6 +533,21 @@ class S {
   String get egp {
     return Intl.message('EGP', name: 'egp', desc: '', args: []);
   }
+
+  /// `Sales This Week`
+  String get weeklySalesChartTitle {
+    return Intl.message(
+      'Sales This Week',
+      name: 'weeklySalesChartTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fri-Sat`
+  String get allDays {
+    return Intl.message('Fri-Sat', name: 'allDays', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

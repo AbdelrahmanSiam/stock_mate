@@ -52,5 +52,7 @@
     "monthlyRevenue": "Monthly Revenue",
     "todaySales": "Today's Sales",
     "totalProducts": "Total Products",
-    "egp": "EGP"
+    "egp": "EGP",
+    "weeklySalesChartTitle": "Sales This Week",
+    "allDays": "Fri-Sat"
 }
