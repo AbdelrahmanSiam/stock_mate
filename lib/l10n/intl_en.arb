@@ -46,5 +46,6 @@
     "invalidEmailFormat": "Invalid email format",
     "tooManyRequests": "Too many attempts, try again later",
     "networkError": "Check your internet connection",
-    "unknownError": "Something went wrong"
+    "unknownError": "Something went wrong",
+    "alert": "Alert"
 }
