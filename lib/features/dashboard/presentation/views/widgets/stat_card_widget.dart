@@ -38,7 +38,13 @@ class StatCardWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(icon, color: AppColorsDarkMode.primary, size: 22),
+                Icon(
+                  icon,
+                  color: showAlertBadge
+                      ? AppColorsDarkMode.error
+                      : AppColorsDarkMode.primary,
+                  size: 22,
+                ),
                 if (showAlertBadge) AlertBadge(),
               ],
             ),

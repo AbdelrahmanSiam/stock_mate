@@ -11,39 +11,53 @@ class StatCardsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      crossAxisSpacing: 12,
-      mainAxisSpacing: 12,
-      childAspectRatio: 1.2,
+    return Column(
       children: [
-        StatCardWidget(
-          icon: Icons.inventory_2_outlined,
-          title: S.of(context).totalProducts,
-          value: '${dashboard.totalProducts}',
+        Row(
+          children: [
+            Expanded(
+              child: StatCardWidget(
+                icon: Icons.inventory_2_outlined,
+                title: S.of(context).totalProducts,
+                value: '${dashboard.totalProducts}',
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: StatCardWidget(
+                icon: Icons.trending_up_rounded,
+                title: S.of(context).todaySales,
+                value: '${dashboard.todaySales}',
+                valueColor: AppColorsDarkMode.success,
+              ),
+            ),
+          ],
         ),
-        StatCardWidget(
-          icon: Icons.trending_up_rounded,
-          title: S.of(context).todaySales,
-          value: '${dashboard.todaySales}',
-          valueColor: AppColorsDarkMode.success,
-        ),
-        StatCardWidget(
-          icon: Icons.account_balance_wallet_outlined,
-          title: S.of(context).monthlyRevenue,
-          value: '${dashboard.monthlyRevenue.toStringAsFixed(0)} ${S.of(context).egp}',
-        ),
-        StatCardWidget(
-          icon: Icons.warning_amber_rounded,
-          title: S.of(context).lowStock,
-          value: '${dashboard.lowStockCount}',
-          valueColor: AppColorsDarkMode.error,
-          showAlertBadge: dashboard.lowStockCount > 0,
-          onTap: () {
-            // go to products screen with low stock filter
-          },
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: StatCardWidget(
+                icon: Icons.account_balance_wallet_outlined,
+                title: S.of(context).monthlyRevenue,
+                value:
+                    '${dashboard.monthlyRevenue.toStringAsFixed(0)} ${S.of(context).egp}',
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: StatCardWidget(
+                icon: Icons.warning_amber_rounded,
+                title: S.of(context).lowStock,
+                value: '${dashboard.lowStockCount}',
+                valueColor: AppColorsDarkMode.error,
+                showAlertBadge: dashboard.lowStockCount > 0,
+                onTap: () {
+                  // go to products screen with low stock filter
+                },
+              ),
+            ),
+          ],
         ),
       ],
     );
