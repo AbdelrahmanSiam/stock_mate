@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkError": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
+    "noSalesYet": MessageLookupByLibrary.simpleMessage("لا توجد مبيعات حديثة"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage(
       "افتح تطبيق البريد الإلكتروني",
     ),
@@ -102,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "يضمن لك التحقق من بريدك الإلكتروني تلقي تنبيهات تلقائية بانخفاض المخزون وملخصات المبيعات اليومية.",
     ),
+    "recentSales": MessageLookupByLibrary.simpleMessage("المبيعات الأخيرة"),
     "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
@@ -137,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
       "أكّد بريدك الإلكتروني",
     ),
+    "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "weeklySalesChartTitle": MessageLookupByLibrary.simpleMessage(
       "مبيعات هذا الأسبوع",
     ),

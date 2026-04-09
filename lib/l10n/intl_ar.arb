@@ -56,5 +56,8 @@
     "weeklySalesChartTitle": "مبيعات هذا الأسبوع",
     "allDays": "جمعة-سبت",
     "yesterday": "أمس",
-    "daysAgo": " قبل أيام"
+    "daysAgo": " قبل أيام",
+    "recentSales": "المبيعات الأخيرة",
+    "viewAll": "عرض الكل",
+    "noSalesYet": "لا توجد مبيعات حديثة"
 }

@@ -86,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkError": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection",
     ),
+    "noSalesYet": MessageLookupByLibrary.simpleMessage("No sales yet"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -96,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
     ),
+    "recentSales": MessageLookupByLibrary.simpleMessage("Recent Sales"),
     "registerButton": MessageLookupByLibrary.simpleMessage("REGISTER"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
@@ -129,6 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "verifyYourEmail": MessageLookupByLibrary.simpleMessage(
       "Verify Your Email",
     ),
+    "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
     "weeklySalesChartTitle": MessageLookupByLibrary.simpleMessage(
       "Sales This Week",
     ),

@@ -558,6 +558,26 @@ class S {
   String get daysAgo {
     return Intl.message(' days ago', name: 'daysAgo', desc: '', args: []);
   }
+
+  /// `Recent Sales`
+  String get recentSales {
+    return Intl.message(
+      'Recent Sales',
+      name: 'recentSales',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View All`
+  String get viewAll {
+    return Intl.message('View All', name: 'viewAll', desc: '', args: []);
+  }
+
+  /// `No sales yet`
+  String get noSalesYet {
+    return Intl.message('No sales yet', name: 'noSalesYet', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
