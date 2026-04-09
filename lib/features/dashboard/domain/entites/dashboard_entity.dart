@@ -1,16 +1,18 @@
 // lib/features/dashboard/domain/entities/dashboard_entity.dart
 
+import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
+
 class DashboardEntity {
   final int totalProducts;
   final int todaySales;
   final double monthlyRevenue;
   final int lowStockCount;
 
-  // // آخر 7 أيام للـ chart
-  // // index 0 = أقدم يوم | index 6 = اليوم
+  // // Last 7 days for the chart
+  // // index 0 = oldest day | index 6 = today
   // final List<double> weeklySalesAmounts;
 
-  // // آخر 3 مبيعات
+  // Last 3 sales
   // final List<RecentSaleEntity> recentSales;
 
   const DashboardEntity({

@@ -31,6 +31,7 @@ class DashboardViewBody extends StatelessWidget {
           const SizedBox(height: 24),
           WeeklySalesChart(salesData: [300, 450, 600, 550, 700, 800, 900]),
           const SizedBox(height: 24),
+          
           Spacer(),
         ],
       ),
