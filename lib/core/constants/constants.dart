@@ -4,6 +4,8 @@ const String kLanguageKey = 'selected_language';
 const String kLanguageInstanceName = 'languageBox'; // because if i have more than on box
 // Firestore Collections
 const String kUsersCollection = 'users';
+const String kProductsCollection = 'products';
+const String kSalesCollection    = 'sales';
 // Firestore User Fields
 const String kUserId          = 'id';
 const String kEmail           = 'email';
