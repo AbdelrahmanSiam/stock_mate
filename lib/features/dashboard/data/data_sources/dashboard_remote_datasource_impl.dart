@@ -83,4 +83,22 @@ class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
     }
     return count;
   }
+
+  Future<List<double>> getWeeklySales(DateTime weekStart) async {
+    final snapshot = await firestore
+        .collection(kSalesCollection)
+        .where(
+          kCreatedAt,
+          isGreaterThanOrEqualTo: Timestamp.fromDate(weekStart),
+        )
+        .get();
+    final Map<int , double> salesByDay = {};
+    for (final doc in snapshot.docs) {
+      final data = doc.data();
+      final DateTime date = (data[kCreatedAt] as Timestamp).toDate();
+      final int dayIndex = date.difference(weekStart).inDays;
+      salesByDay[dayIndex] = (salesByDay[dayIndex] ?? 0) + (data[kTotalAmount] as num).toDouble();
+    }
+    return List.generate(7, (index) => salesByDay[index] ?? 0);
+  }
 }
