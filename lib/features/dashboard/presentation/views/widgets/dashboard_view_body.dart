@@ -42,7 +42,7 @@ class DashboardViewBody extends StatelessWidget {
               ],
             );
           } else {
-            return const Center(child: Text("Dashboard data not available"));
+            return const SizedBox();
           }
         },
       ),

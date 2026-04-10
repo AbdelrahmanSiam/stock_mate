@@ -47,7 +47,7 @@ Future<List<double>> getWeeklySales(
     salesByDay[dayIndex] =
         (salesByDay[dayIndex] ?? 0) + (data[kTotalAmount] as num).toDouble();
   }
-  return List.generate(7, (index) => salesByDay[index] ?? 0);
+  return List.generate(7, (index) => salesByDay[index] ?? 1);
 }
 
 Future<List<RecentSaleEntity>> getRecentSales(

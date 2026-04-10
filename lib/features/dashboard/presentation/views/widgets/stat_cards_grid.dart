@@ -51,7 +51,7 @@ class StatCardsGrid extends StatelessWidget {
                 title: S.of(context).lowStock,
                 value: '${dashboard.lowStockCount}',
                 valueColor: AppColorsDarkMode.error,
-                showAlertBadge: dashboard.lowStockCount > 0,
+                showAlertBadge: dashboard.lowStockCount < 5,
                 onTap: () {
                   // go to products screen with low stock filter
                 },
