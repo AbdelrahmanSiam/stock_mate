@@ -62,9 +62,25 @@ class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
         )
         .get();
     double total = 0;
-    for (var doc in snapshot.docs) {
-      total += (doc.data()[kTotalAmount] as num).toDouble();
+    for (final doc in snapshot.docs) {
+      final data = doc.data();
+      total += (data[kTotalAmount] as num).toDouble();
     }
     return total;
+  }
+
+  Future<int> getLowStockCount() async {
+    final snapshot = await firestore.collection(kProductsCollection).get();
+
+    int count = 0;
+    for (final doc in snapshot.docs) {
+      final data = doc.data();
+      final quantity = (data[kQuantity] as num).toInt();
+      final threshold = (data[kThreshold] as num).toInt();
+      if (quantity <= threshold) {
+        count++;
+      }
+    }
+    return count;
   }
 }
