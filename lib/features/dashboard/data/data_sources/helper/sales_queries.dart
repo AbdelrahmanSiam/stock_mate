@@ -3,7 +3,7 @@ import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/dashboard/data/models/recent_sale_model.dart';
 import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
 
-Future getTodaySalesCount(
+Future<int> getTodaySalesCount(
   FirebaseFirestore firestore,
   DateTime todayStart,
 ) async {
@@ -56,7 +56,7 @@ Future<List<RecentSaleEntity>> getRecentSales(
   final snapshot = await firestore
       .collection(kSalesCollection)
       .orderBy(kCreatedAt, descending: true)
-      .limit(5)
+      .limit(3)
       .get();
   return snapshot.docs
       .map((doc) => RecentSaleModel.fromFirestore(doc.data()))
