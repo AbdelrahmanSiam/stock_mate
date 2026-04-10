@@ -9,7 +9,7 @@ Future<Either<Failure, T>> handleRequest<T>(
     final result = await request();
     return Right(result);
   } on FirebaseAuthException catch (e) {
-    return Left(ServerFailure.fromFirebaseAuth(e.code));
+    return Left(ServerFailure.fromFirebaseAuth(e));
   } catch (e) {
     return Left(ServerFailure(errMessage: e.toString()));
   }
