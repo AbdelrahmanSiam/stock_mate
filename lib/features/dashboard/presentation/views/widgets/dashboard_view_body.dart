@@ -31,10 +31,7 @@ class DashboardViewBody extends StatelessWidget {
             return Column(
               children: [
                 Spacer(),
-                DashboardHeaderWidget(
-                  displayName: 'Abdul-Rahman',
-                  shopName: 'Al-Baraka',
-                ),
+                DashboardHeaderWidget(),
                 const SizedBox(height: 30),
                 StatCardsGrid(dashboard: dashboard),
                 const SizedBox(height: 30),
@@ -45,7 +42,7 @@ class DashboardViewBody extends StatelessWidget {
               ],
             );
           } else {
-            return const SizedBox();
+            return const Center(child: Text("Dashboard data not available"));
           }
         },
       ),

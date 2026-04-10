@@ -21,7 +21,7 @@ void main() async {
 }
 
 class StockMate extends StatelessWidget {
-  const StockMate({super.key});
+const StockMate({super.key});
 
   @override
   Widget build(BuildContext context) {
