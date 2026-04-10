@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "AM": MessageLookupByLibrary.simpleMessage("AM"),
+    "PM": MessageLookupByLibrary.simpleMessage("PM"),
     "afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
     "alert": MessageLookupByLibrary.simpleMessage("Alert"),
     "allDays": MessageLookupByLibrary.simpleMessage("Fri-Sat"),
@@ -120,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "shop": MessageLookupByLibrary.simpleMessage("User\'s Shop"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),
     "shopeName": MessageLookupByLibrary.simpleMessage("Shop Name"),
     "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),
@@ -134,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unknownError": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),
+    "user": MessageLookupByLibrary.simpleMessage("User"),
     "userNotFound": MessageLookupByLibrary.simpleMessage(
       "No account with this email",
     ),

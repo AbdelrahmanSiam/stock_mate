@@ -68,5 +68,9 @@
     "afternoon": "Good Afternoon",
     "evening": "Good Evening",
     "night": "Good Night",
-    "retry": "Retry"
+    "retry": "Retry",
+    "user": "User",
+    "shop": "User's Shop",
+    "PM": "PM",
+    "AM": "AM"
 }

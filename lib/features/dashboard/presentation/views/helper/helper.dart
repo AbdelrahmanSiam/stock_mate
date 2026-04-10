@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/features/dashboard/domain/entites/dashboard_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 String getGreeting(BuildContext context) {
@@ -35,8 +37,10 @@ String formatTime(BuildContext context, DateTime date) {
     // If the difference is less than a day (now and date are the same day), show the time in hours and minutes with AM/PM
     final hour = date.hour;
     final minute = date.minute.toString().padLeft(2, '0'); // 5 => 05
-    final period = hour >= 12 ? 'PM' : 'AM';
-    final hour12 = hour > 12 ? hour - 12 : (hour == 0 ? 12 : hour); // Convert 24-hour format to 12-hour format
+    final period = hour >= 12 ? S.of(context).PM : S.of(context).AM;
+    final hour12 = hour > 12
+        ? hour - 12
+        : (hour == 0 ? 12 : hour); // Convert 24-hour format to 12-hour format
     return '$hour12:$minute $period';
   } else if (diff.inDays == 1) {
     // If the difference is exactly one day, show "Yesterday"
@@ -44,4 +48,27 @@ String formatTime(BuildContext context, DateTime date) {
   } else {
     return '${diff.inDays} ${S.of(context).daysAgo}';
   }
+}
+
+dynamic fakeDashboard() {
+  return DashboardEntity(
+    totalProducts: 120,
+    todaySales: 10,
+    monthlyRevenue: 5000.0,
+    lowStockCount: 5,
+    weeklySalesAmounts: List.filled(7, 100.0),
+    recentSales: fakeSales(),
+  );
+}
+
+dynamic fakeSales() {
+  return List.generate(
+    5,
+    (index) => RecentSaleEntity(
+      invoiceNumber: 'INV-$index',
+      paymentMethod: 'Cash',
+      totalAmount: (index + 1) * 20.0,
+      createdAt: DateTime.now().subtract(Duration(days: index)),
+    ),
+  );
 }

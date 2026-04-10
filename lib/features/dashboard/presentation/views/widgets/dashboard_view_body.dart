@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
+import 'package:stock_mate/features/dashboard/domain/entites/dashboard_entity.dart';
 import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashboard_cubit/dashboard_cubit.dart';
+import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_content.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_error_view.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_header_widget.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/recent_sales_section.dart';
@@ -16,33 +19,14 @@ class DashboardViewBody extends StatelessWidget {
     return CustomViewBody(
       widget: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
-          if (state is DashboardLoadingState) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: AppColorsDarkMode.primary,
-              ),
-            );
-          }
           if (state is DashboardErrorState) {
             return DashboardErrorView(errMessage: state.errMessage);
           }
           if (state is DashboardLoadedState) {
             final dashboard = state.dashboard;
-            return Column(
-              children: [
-                Spacer(),
-                DashboardHeaderWidget(),
-                const SizedBox(height: 30),
-                StatCardsGrid(dashboard: dashboard),
-                const SizedBox(height: 30),
-                WeeklySalesChart(salesData: dashboard.weeklySalesAmounts),
-                const SizedBox(height: 30),
-                RecentSalesSection(sales: dashboard.recentSales),
-                Spacer(),
-              ],
-            );
+            return DashboardContent(isLoading: false, dashboard: dashboard);
           } else {
-            return const SizedBox();
+            return const DashboardContent(isLoading: true ,);
           }
         },
       ),

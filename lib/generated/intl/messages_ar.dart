@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "AM": MessageLookupByLibrary.simpleMessage("ص"),
+    "PM": MessageLookupByLibrary.simpleMessage("م"),
     "afternoon": MessageLookupByLibrary.simpleMessage("مساء الخير"),
     "alert": MessageLookupByLibrary.simpleMessage("تنبيه"),
     "allDays": MessageLookupByLibrary.simpleMessage("جمعة-سبت"),
@@ -130,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "إرسال رابط إعادة التعيين",
     ),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "shop": MessageLookupByLibrary.simpleMessage("متجر المستخدم"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("مثال: البركة "),
     "shopeName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),
     "signInButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -142,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "totalProducts": MessageLookupByLibrary.simpleMessage("إجمالي المنتجات"),
     "unknownError": MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
+    "user": MessageLookupByLibrary.simpleMessage("المستخدم"),
     "userNotFound": MessageLookupByLibrary.simpleMessage(
       "لا يوجد حساب بهذا البريد الإلكتروني",
     ),

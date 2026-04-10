@@ -628,6 +628,26 @@ class S {
   String get retry {
     return Intl.message('Retry', name: 'retry', desc: '', args: []);
   }
+
+  /// `User`
+  String get user {
+    return Intl.message('User', name: 'user', desc: '', args: []);
+  }
+
+  /// `User's Shop`
+  String get shop {
+    return Intl.message('User\'s Shop', name: 'shop', desc: '', args: []);
+  }
+
+  /// `PM`
+  String get PM {
+    return Intl.message('PM', name: 'PM', desc: '', args: []);
+  }
+
+  /// `AM`
+  String get AM {
+    return Intl.message('AM', name: 'AM', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
