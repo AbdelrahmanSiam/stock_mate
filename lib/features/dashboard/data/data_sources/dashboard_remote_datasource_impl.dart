@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/dashboard/data/data_sources/dashboard_remote_datasource.dart';
 import 'package:stock_mate/features/dashboard/data/models/dashboard_model.dart';
+import 'package:stock_mate/features/dashboard/data/models/recent_sale_model.dart';
 import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
 
 class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
@@ -92,13 +93,25 @@ class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
           isGreaterThanOrEqualTo: Timestamp.fromDate(weekStart),
         )
         .get();
-    final Map<int , double> salesByDay = {};
+    final Map<int, double> salesByDay = {};
     for (final doc in snapshot.docs) {
       final data = doc.data();
       final DateTime date = (data[kCreatedAt] as Timestamp).toDate();
       final int dayIndex = date.difference(weekStart).inDays;
-      salesByDay[dayIndex] = (salesByDay[dayIndex] ?? 0) + (data[kTotalAmount] as num).toDouble();
+      salesByDay[dayIndex] =
+          (salesByDay[dayIndex] ?? 0) + (data[kTotalAmount] as num).toDouble();
     }
     return List.generate(7, (index) => salesByDay[index] ?? 0);
+  }
+
+  Future<List<RecentSaleEntity>> getRecentSales() async {
+    final snapshot = await firestore
+        .collection(kSalesCollection)
+        .orderBy(kCreatedAt, descending: true)
+        .limit(5)
+        .get();
+    return snapshot.docs
+        .map((doc) => RecentSaleModel.fromFirestore(doc.data()))
+        .toList();
   }
 }
