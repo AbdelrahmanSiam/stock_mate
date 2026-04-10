@@ -5,6 +5,7 @@ import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cu
 import 'package:stock_mate/features/auth/presentation/views/email_verification_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/forget_password_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/register_view.dart';
+import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashboard_cubit/dashboard_cubit.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/features/language/presentation/views/language_view.dart';
@@ -76,7 +77,10 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.dashboard,
-      builder: (context, state) => const DashboardView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => getIt<DashboardCubit>(),
+        child: const DashboardView(),
+      ),
     ),
   ],
 );
