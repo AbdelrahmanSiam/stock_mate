@@ -34,15 +34,37 @@ class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
   }
 
   Future getTotalProducts() async {
-    final snapshot = await firestore.collection(kProductsCollection).count().get();
-    return snapshot.count ?? 0;
-  }
-  Future getTodaySalesCount(DateTime todayStart) async {
     final snapshot = await firestore
-        .collection(kSalesCollection)
-        .where(kCreatedAt, isGreaterThanOrEqualTo: Timestamp.fromDate(todayStart))
+        .collection(kProductsCollection)
         .count()
         .get();
     return snapshot.count ?? 0;
+  }
+
+  Future getTodaySalesCount(DateTime todayStart) async {
+    final snapshot = await firestore
+        .collection(kSalesCollection)
+        .where(
+          kCreatedAt,
+          isGreaterThanOrEqualTo: Timestamp.fromDate(todayStart),
+        )
+        .count()
+        .get();
+    return snapshot.count ?? 0;
+  }
+
+  Future<double> getMonthlyRevenue(DateTime monthStart) async {
+    final snapshot = await firestore
+        .collection(kSalesCollection)
+        .where(
+          kCreatedAt,
+          isGreaterThanOrEqualTo: Timestamp.fromDate(monthStart),
+        )
+        .get();
+    double total = 0;
+    for (var doc in snapshot.docs) {
+      total += (doc.data()[kTotalAmount] as num).toDouble();
+    }
+    return total;
   }
 }

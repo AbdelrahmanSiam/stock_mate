@@ -18,3 +18,6 @@ const String kIsEmailVerified = 'isEmailVerified';
 const String kInvoiceNumber  = 'invoiceNumber';
 const String kPaymentMethod  = 'paymentMethod';
 const String kTotalAmount    = 'totalAmount';
+// Product Fields
+const String kQuantity  = 'quantity';
+const String kThreshold = 'threshold';
