@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/dashboard/data/data_sources/dashboard_remote_datasource.dart';
+import 'package:stock_mate/features/dashboard/data/data_sources/helper/products_queries.dart';
+import 'package:stock_mate/features/dashboard/data/data_sources/helper/sales_queries.dart';
 import 'package:stock_mate/features/dashboard/data/models/dashboard_model.dart';
-import 'package:stock_mate/features/dashboard/data/models/recent_sale_model.dart';
 import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
 
 class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
@@ -17,12 +17,12 @@ class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
     final weekStart = now.subtract(const Duration(days: 6));
 
     final result = await Future.wait([
-      getTotalProducts(),
-      getTodaySalesCount(todayStart),
-      getMonthlyRevenue(monthStart),
-      getLowStockCount(),
-      getWeeklySales(weekStart),
-      getRecentSales(),
+      getTotalProducts(firestore),
+      getTodaySalesCount(firestore, todayStart),
+      getMonthlyRevenue(firestore, monthStart),
+      getLowStockCount(firestore),
+      getWeeklySales(firestore, weekStart),
+      getRecentSales(firestore),
     ]);
     return DashboardModel(
       totalProducts: result[0] as int,
@@ -32,86 +32,5 @@ class DashboardRemoteDatasourceImpl implements DashboardRemoteDataSource {
       weeklySalesAmounts: result[4] as List<double>,
       recentSales: result[5] as List<RecentSaleEntity>,
     );
-  }
-
-  Future getTotalProducts() async {
-    final snapshot = await firestore
-        .collection(kProductsCollection)
-        .count()
-        .get();
-    return snapshot.count ?? 0;
-  }
-
-  Future getTodaySalesCount(DateTime todayStart) async {
-    final snapshot = await firestore
-        .collection(kSalesCollection)
-        .where(
-          kCreatedAt,
-          isGreaterThanOrEqualTo: Timestamp.fromDate(todayStart),
-        )
-        .count()
-        .get();
-    return snapshot.count ?? 0;
-  }
-
-  Future<double> getMonthlyRevenue(DateTime monthStart) async {
-    final snapshot = await firestore
-        .collection(kSalesCollection)
-        .where(
-          kCreatedAt,
-          isGreaterThanOrEqualTo: Timestamp.fromDate(monthStart),
-        )
-        .get();
-    double total = 0;
-    for (final doc in snapshot.docs) {
-      final data = doc.data();
-      total += (data[kTotalAmount] as num).toDouble();
-    }
-    return total;
-  }
-
-  Future<int> getLowStockCount() async {
-    final snapshot = await firestore.collection(kProductsCollection).get();
-
-    int count = 0;
-    for (final doc in snapshot.docs) {
-      final data = doc.data();
-      final quantity = (data[kQuantity] as num).toInt();
-      final threshold = (data[kThreshold] as num).toInt();
-      if (quantity <= threshold) {
-        count++;
-      }
-    }
-    return count;
-  }
-
-  Future<List<double>> getWeeklySales(DateTime weekStart) async {
-    final snapshot = await firestore
-        .collection(kSalesCollection)
-        .where(
-          kCreatedAt,
-          isGreaterThanOrEqualTo: Timestamp.fromDate(weekStart),
-        )
-        .get();
-    final Map<int, double> salesByDay = {};
-    for (final doc in snapshot.docs) {
-      final data = doc.data();
-      final DateTime date = (data[kCreatedAt] as Timestamp).toDate();
-      final int dayIndex = date.difference(weekStart).inDays;
-      salesByDay[dayIndex] =
-          (salesByDay[dayIndex] ?? 0) + (data[kTotalAmount] as num).toDouble();
-    }
-    return List.generate(7, (index) => salesByDay[index] ?? 0);
-  }
-
-  Future<List<RecentSaleEntity>> getRecentSales() async {
-    final snapshot = await firestore
-        .collection(kSalesCollection)
-        .orderBy(kCreatedAt, descending: true)
-        .limit(5)
-        .get();
-    return snapshot.docs
-        .map((doc) => RecentSaleModel.fromFirestore(doc.data()))
-        .toList();
   }
 }
