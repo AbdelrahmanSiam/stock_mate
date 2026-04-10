@@ -15,7 +15,7 @@ import 'package:stock_mate/features/auth/domain/use_cases/logout_use_case/logout
 import 'package:stock_mate/features/auth/domain/use_cases/register_use_case/register_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_email_verification_usecase/send_email_verification_usecase.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_password_reset_usecase/send_password_reset_usecase.dart';
-import 'package:stock_mate/features/auth/domain/use_cases/sign_in_with_google_use_case/sign_in_with_google_use_case.dart';
+import 'package:stock_mate/features/auth/domain/use_cases/get_current_user_use_case/get_current_user_use_case.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/dashboard/data/data_sources/dashboard_remote_datasource.dart';
 import 'package:stock_mate/features/dashboard/data/data_sources/dashboard_remote_datasource_impl.dart';
@@ -135,6 +135,9 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<LogoutUseCase>(
     () => LogoutUseCase(getIt<AuthRepository>()),
   );
+  getIt.registerLazySingleton<GetCurrentUserUseCase>(
+    () => GetCurrentUserUseCase(getIt<AuthRepository>()),
+  );
 
   // ── Auth Cubit ─────────────────────────────────────────────
   getIt.registerFactory<AuthCubit>(
@@ -146,6 +149,7 @@ void setupServiceLocator() {
       getIt<SendPasswordResetUseCase>(),
       getIt<SignInWithGoogleUseCase>(),
       getIt<LogoutUseCase>(),
+      getIt<GetCurrentUserUseCase>(),
     ),
   );
 

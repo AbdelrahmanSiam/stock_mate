@@ -90,4 +90,16 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
   Future<void> sendPasswordResetEmail({required String email}) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
   }
+
+  @override
+  Future<UserModel?> getCurrentUser() async {
+    final user = firebaseAuth.currentUser;
+    if (user == null) return null;
+    final doc = await FirebaseFirestore.instance.collection(kUsersCollection).doc(user.uid).get();
+    if (doc.exists) {
+      return UserModel.fromFirestore(doc.data()!);
+    } else {
+      return UserModel.fromFirebase(user);
+    }
+  }
 }

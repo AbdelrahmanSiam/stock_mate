@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:stock_mate/features/auth/domain/entities/user_entity.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/check_email_verified_usecase/check_email_verified_usecase.dart';
+import 'package:stock_mate/features/auth/domain/use_cases/get_current_user_use_case/get_current_user_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/login_use_case/login_parameters.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/login_use_case/login_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/logout_use_case/logout_use_case.dart';
@@ -23,6 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
     this.sendPasswordResetUseCase,
     this.signInWithGoogleUseCase,
     this.logoutUseCase,
+    this.getCurrentUserUseCase,
   ) : super(AuthInitialState());
   final LoginUseCase loginUseCase;
   final RegisterUseCase registerUseCase;
@@ -31,6 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
   final SendPasswordResetUseCase sendPasswordResetUseCase;
   final SignInWithGoogleUseCase signInWithGoogleUseCase;
   final LogoutUseCase logoutUseCase;
+  final GetCurrentUserUseCase getCurrentUserUseCase;
 
   Future<void> login({required String email, required String password}) async {
     emit(AuthLoadingState());
@@ -115,6 +118,20 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold(
       (failure) => emit(AuthErrorState(failure.errMessage)),
       (_) => emit(AuthLoggedOutState()),
+    );
+  }
+
+  Future<void> getCurrentUser() async {
+    final result = await getCurrentUserUseCase();
+    result.fold(
+      (failure) => emit(AuthErrorState(failure.errMessage)),
+      (user) {
+        if (user != null) {
+          emit(AuthSuccessState(user));
+        } else {
+          emit(AuthLoggedOutState());
+        }
+      },
     );
   }
 }

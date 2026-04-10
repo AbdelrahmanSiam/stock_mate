@@ -66,4 +66,11 @@ class AuthRepositoryImpl implements AuthRepository {
       () => remoteDataSource.signInWithGoogle(),
     );
   }
+
+  @override
+  Future<Either<Failure, UserEntity?>> getCurrentUser() {
+    return handleRequest(
+      () => remoteDataSource.getCurrentUser(),
+    );
+  }
 }
