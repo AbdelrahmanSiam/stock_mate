@@ -124,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
       "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح",
     ),
+    "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",

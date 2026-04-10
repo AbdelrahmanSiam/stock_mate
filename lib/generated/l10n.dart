@@ -623,6 +623,11 @@ class S {
   String get night {
     return Intl.message('Good Night', name: 'night', desc: '', args: []);
   }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

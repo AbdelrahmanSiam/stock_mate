@@ -116,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
       "Reset password link sent successfully",
     ),
+    "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),

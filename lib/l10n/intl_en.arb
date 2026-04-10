@@ -67,5 +67,6 @@
     "morning": "Good Morning",
     "afternoon": "Good Afternoon",
     "evening": "Good Evening",
-    "night": "Good Night"
+    "night": "Good Night",
+    "retry": "Retry"
 }
