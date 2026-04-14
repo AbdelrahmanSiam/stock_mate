@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/products_view_header.dart';
 
 class ProductsViewBody extends StatelessWidget {
   const ProductsViewBody({super.key});
@@ -9,7 +10,9 @@ class ProductsViewBody extends StatelessWidget {
     return CustomViewBody(
       widget: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        
+        children: [
+          ProductsViewHeader(),
+        ],
       ),
     );
   }
