@@ -8,6 +8,7 @@ import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
 import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/theme/theme_data/app_theme_dark_mode.dart';
+import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/firebase_options.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -25,8 +26,15 @@ const StockMate({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<LocaleCubit>()..loadSavedLanguage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LocaleCubit>(
+          create: (context) => getIt<LocaleCubit>()..loadSavedLanguage(),
+        ),
+        BlocProvider<AuthCubit>(
+          create: (context) => getIt<AuthCubit>()..getCurrentUser(),
+        ),
+      ],
       child: BlocBuilder<LocaleCubit, LocaleState>(
         builder: (context, state) {
           final locale = state is LocaleLoadedState

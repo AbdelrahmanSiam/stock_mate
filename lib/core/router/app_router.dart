@@ -77,13 +77,8 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.dashboard,
-      builder: (context, state) => MultiBlocProvider(
-        providers: [
-          BlocProvider<AuthCubit>(create: (context) => getIt<AuthCubit>()),
-          BlocProvider<DashboardCubit>(
-            create: (context) => getIt<DashboardCubit>(),
-          ),
-        ],
+      builder: (context, state) => BlocProvider(
+        create: (context) => getIt<DashboardCubit>()..getDashboardData(),
         child: const DashboardView(),
       ),
     ),
