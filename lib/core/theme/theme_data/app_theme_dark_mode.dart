@@ -92,7 +92,7 @@ abstract class AppThemeDarkMode {
         ),
       ),
     ),
-
+    
     // ── InputDecoration (TextFields) ──────────────────
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
