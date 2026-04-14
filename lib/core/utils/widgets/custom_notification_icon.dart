@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 
-class DashboardNotification extends StatelessWidget {
-  const DashboardNotification({super.key, required this.onTap});
+class CustomNotificationIcon extends StatelessWidget {
+  const CustomNotificationIcon({super.key, required this.onTap});
   final void Function() onTap;
   @override
   Widget build(BuildContext context) {
