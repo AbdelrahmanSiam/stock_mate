@@ -31,14 +31,16 @@ class ProductCardWidget extends StatelessWidget {
                   children: [
                     Text(
                       productEntity.name,
-                      style: AppStyles.labelSemiBold13(context),
+                      style: AppStyles.priceBold16(
+                        context,
+                      ).copyWith(color: AppColorsDarkMode.textPrimary),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: width * 0.01),
                     Text(
                       productEntity.category,
-                      style: AppStyles.bodySmallRegular12(context),
+                      style: AppStyles.bodyMediumRegular14(context).copyWith(color: Colors.white60),
                     ),
                     SizedBox(height: width * 0.01),
                     Text(
@@ -54,9 +56,7 @@ class ProductCardWidget extends StatelessWidget {
                 children: [
                   Text(
                     '\$${productEntity.sellPrice.toStringAsFixed(2)}',
-                    style: AppStyles.labelSemiBold13(
-                      context,
-                    ).copyWith(color: AppColorsDarkMode.primary),
+                    style: AppStyles.statValueBold24(context).copyWith(color: AppColorsDarkMode.primary),
                   ),
                   SizedBox(height: width * 0.02),
                   StockBadge(product: productEntity),

@@ -10,28 +10,31 @@ class ProductsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: [
-          ProductsViewHeader(),
-          const SizedBox(height: 30),
-          ProductsSearchBar(),
-          const SizedBox(height: 30),
-          ProductFilterChips(),
-          const SizedBox(height: 30),
-          ProductCardWidget(
-            productEntity: ProductEntity(
-              id: "1",
-              name: 'Product 1',
-              barcode: '123456789',
-              category: 'Category 1',
-              buyPrice: 10.0,
-              sellPrice: 15.0,
-              quantity: 50,
-              threshold: 10,
-              imageUrl:"https://www.pexels.com/search/luxury%20watch/",
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+      child: Column(
+          children: [
+            ProductsViewHeader(),
+            const SizedBox(height: 30),
+            ProductsSearchBar(),
+            const SizedBox(height: 30),
+            ProductFilterChips(),
+            const SizedBox(height: 30),
+            ProductCardWidget(
+              productEntity: ProductEntity(
+                id: "1",
+                name: 'Product 1',
+                barcode: '123456789',
+                category: 'Category 1',
+                buyPrice: 10.0,
+                sellPrice: 15.0,
+                quantity: 50,
+                threshold: 10,
+                imageUrl:"https://img.freepik.com/free-photo/stylish-golden-watch-white-surface_181624-27078.jpg?semt=ais_hybrid&w=740&q=80",
+              ),
             ),
-          ),
-        ],
-      );
+          ],
+        ),
+    );
   }
 }

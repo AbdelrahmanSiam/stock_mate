@@ -22,7 +22,7 @@ class ProductBadge extends StatelessWidget {
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 10,
+          fontSize: 14,
           fontWeight: FontWeight.w600,
           color: textColor,
           fontFamily: 'Inter',
