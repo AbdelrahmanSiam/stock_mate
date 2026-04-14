@@ -68,10 +68,18 @@
     "afternoon": "مساء الخير",
     "evening": "مساء الخير",
     "night": "تصبح على خير",
-    "retry": "إعادة المحاولة",
     "user": "المستخدم",
     "shop": "متجر المستخدم",
     "PM": "م",
-    "AM": "ص"
-
+    "AM": "ص",
+    "searchByNameOrBarcode": "ابحث بالاسم أو الباركود",
+    "all": "الكل",
+    "outOfStock": "نفد المخزون",
+    "inStock": "متوفر",
+    "low": "منخفض",
+    "out": "نفد",
+    "retry": "أعد المحاولة",
+    "noProductsFound": "لا توجد منتجات",
+    "noProductsFoundSubtitle": "جرب البحث بكلمة مختلفة",
+    "addProduct": "إضافة منتج"
 }

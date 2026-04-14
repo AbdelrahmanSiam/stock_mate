@@ -61,7 +61,6 @@
     "viewAll": "View All",
     "noSalesYet": "No sales yet",
     "dashboard": "Dashboard",
-    "products": "Products",
     "sales": "Sales",
     "settings": "Settings",
     "morning": "Good Morning",
@@ -72,5 +71,15 @@
     "user": "User",
     "shop": "User's Shop",
     "PM": "PM",
-    "AM": "AM"
+    "AM": "AM",
+    "products": "Products",
+    "searchByNameOrBarcode": "Search by name or barcode",
+    "all": "All",
+    "outOfStock": "Out of Stock",
+    "inStock": "IN STOCK",
+    "low": "LOW",
+    "out": "OUT",
+    "noProductsFound": "No products found",
+    "noProductsFoundSubtitle": "Try searching with a different keyword",
+    "addProduct": "Add Product"
 }

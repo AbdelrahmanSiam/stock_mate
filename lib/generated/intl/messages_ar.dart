@@ -24,8 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("ص"),
     "PM": MessageLookupByLibrary.simpleMessage("م"),
+    "addProduct": MessageLookupByLibrary.simpleMessage("إضافة منتج"),
     "afternoon": MessageLookupByLibrary.simpleMessage("مساء الخير"),
     "alert": MessageLookupByLibrary.simpleMessage("تنبيه"),
+    "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "allDays": MessageLookupByLibrary.simpleMessage("جمعة-سبت"),
     "appName": MessageLookupByLibrary.simpleMessage("زميل مخزنك"),
     "appTagline": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل لديك حساب بالفعل؟ ",
     ),
     "haveNoAccount": MessageLookupByLibrary.simpleMessage(" ليس لديك حساب؟"),
+    "inStock": MessageLookupByLibrary.simpleMessage("متوفر"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "البريد أو كلمة المرور غير صحيحة",
     ),
@@ -88,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
     ),
+    "low": MessageLookupByLibrary.simpleMessage("منخفض"),
     "lowStock": MessageLookupByLibrary.simpleMessage("المخزون منخفض"),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("الإيرادات الشهرية"),
     "morning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
@@ -95,11 +99,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحقق من اتصالك بالإنترنت",
     ),
     "night": MessageLookupByLibrary.simpleMessage("تصبح على خير"),
+    "noProductsFound": MessageLookupByLibrary.simpleMessage("لا توجد منتجات"),
+    "noProductsFoundSubtitle": MessageLookupByLibrary.simpleMessage(
+      "جرب البحث بكلمة مختلفة",
+    ),
     "noSalesYet": MessageLookupByLibrary.simpleMessage("لا توجد مبيعات حديثة"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage(
       "افتح تطبيق البريد الإلكتروني",
     ),
     "orContactWith": MessageLookupByLibrary.simpleMessage("أو تابع مع"),
+    "out": MessageLookupByLibrary.simpleMessage("نفد"),
+    "outOfStock": MessageLookupByLibrary.simpleMessage("نفد المخزون"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
       "كلمات المرور غير متطابقة",
@@ -126,8 +136,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetLinkSent": MessageLookupByLibrary.simpleMessage(
       "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح",
     ),
-    "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
+    "retry": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
+    "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
+      "ابحث بالاسم أو الباركود",
+    ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",
     ),

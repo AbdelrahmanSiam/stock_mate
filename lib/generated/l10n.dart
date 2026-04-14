@@ -584,11 +584,6 @@ class S {
     return Intl.message('Dashboard', name: 'dashboard', desc: '', args: []);
   }
 
-  /// `Products`
-  String get products {
-    return Intl.message('Products', name: 'products', desc: '', args: []);
-  }
-
   /// `Sales`
   String get sales {
     return Intl.message('Sales', name: 'sales', desc: '', args: []);
@@ -647,6 +642,71 @@ class S {
   /// `AM`
   String get AM {
     return Intl.message('AM', name: 'AM', desc: '', args: []);
+  }
+
+  /// `Products`
+  String get products {
+    return Intl.message('Products', name: 'products', desc: '', args: []);
+  }
+
+  /// `Search by name or barcode`
+  String get searchByNameOrBarcode {
+    return Intl.message(
+      'Search by name or barcode',
+      name: 'searchByNameOrBarcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get all {
+    return Intl.message('All', name: 'all', desc: '', args: []);
+  }
+
+  /// `Out of Stock`
+  String get outOfStock {
+    return Intl.message('Out of Stock', name: 'outOfStock', desc: '', args: []);
+  }
+
+  /// `IN STOCK`
+  String get inStock {
+    return Intl.message('IN STOCK', name: 'inStock', desc: '', args: []);
+  }
+
+  /// `LOW`
+  String get low {
+    return Intl.message('LOW', name: 'low', desc: '', args: []);
+  }
+
+  /// `OUT`
+  String get out {
+    return Intl.message('OUT', name: 'out', desc: '', args: []);
+  }
+
+  /// `No products found`
+  String get noProductsFound {
+    return Intl.message(
+      'No products found',
+      name: 'noProductsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try searching with a different keyword`
+  String get noProductsFoundSubtitle {
+    return Intl.message(
+      'Try searching with a different keyword',
+      name: 'noProductsFoundSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Product`
+  String get addProduct {
+    return Intl.message('Add Product', name: 'addProduct', desc: '', args: []);
   }
 }
 

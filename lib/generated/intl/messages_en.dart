@@ -24,8 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("AM"),
     "PM": MessageLookupByLibrary.simpleMessage("PM"),
+    "addProduct": MessageLookupByLibrary.simpleMessage("Add Product"),
     "afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
     "alert": MessageLookupByLibrary.simpleMessage("Alert"),
+    "all": MessageLookupByLibrary.simpleMessage("All"),
     "allDays": MessageLookupByLibrary.simpleMessage("Fri-Sat"),
     "appName": MessageLookupByLibrary.simpleMessage("StockMate"),
     "appTagline": MessageLookupByLibrary.simpleMessage(
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveNoAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
+    "inStock": MessageLookupByLibrary.simpleMessage("IN STOCK"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Invalid email or password",
     ),
@@ -86,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
     ),
+    "low": MessageLookupByLibrary.simpleMessage("LOW"),
     "lowStock": MessageLookupByLibrary.simpleMessage("Low Stock"),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("Monthly Revenue"),
     "morning": MessageLookupByLibrary.simpleMessage("Good Morning"),
@@ -93,9 +97,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "Check your internet connection",
     ),
     "night": MessageLookupByLibrary.simpleMessage("Good Night"),
+    "noProductsFound": MessageLookupByLibrary.simpleMessage(
+      "No products found",
+    ),
+    "noProductsFoundSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Try searching with a different keyword",
+    ),
     "noSalesYet": MessageLookupByLibrary.simpleMessage("No sales yet"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
+    "out": MessageLookupByLibrary.simpleMessage("OUT"),
+    "outOfStock": MessageLookupByLibrary.simpleMessage("Out of Stock"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
       "Passwords do not match",
@@ -120,6 +132,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
+    "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
+      "Search by name or barcode",
+    ),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "shop": MessageLookupByLibrary.simpleMessage("User\'s Shop"),
