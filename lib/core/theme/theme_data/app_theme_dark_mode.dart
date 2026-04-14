@@ -105,6 +105,7 @@ abstract class AppThemeDarkMode {
         fontFamily: 'Inter',
         fontWeight: FontWeight.w400,
       ),
+      
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       // default Border
       enabledBorder: OutlineInputBorder(

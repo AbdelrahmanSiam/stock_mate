@@ -4,37 +4,48 @@ import 'package:stock_mate/features/products/presentation/views/widgets/product_
 import 'package:stock_mate/features/products/presentation/views/widgets/product_filter_chips.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/products_search_bar.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/products_view_header.dart';
-
 class ProductsViewBody extends StatelessWidget {
   const ProductsViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-      child: Column(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: Column(
           children: [
             ProductsViewHeader(),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             ProductsSearchBar(),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             ProductFilterChips(),
-            const SizedBox(height: 30),
-            ProductCardWidget(
-              productEntity: ProductEntity(
-                id: "1",
-                name: 'Product 1',
-                barcode: '123456789',
-                category: 'Category 1',
-                buyPrice: 10.0,
-                sellPrice: 15.0,
-                quantity: 50,
-                threshold: 10,
-                imageUrl:"https://img.freepik.com/free-photo/stylish-golden-watch-white-surface_181624-27078.jpg?semt=ais_hybrid&w=740&q=80",
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 8,
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: ProductCardWidget(
+                    productEntity: ProductEntity(
+                      id: "$index",
+                      name: 'Product $index',
+                      barcode: '123456789',
+                      category: 'Category',
+                      buyPrice: 10,
+                      sellPrice: 15,
+                      quantity: 50,
+                      threshold: 10,
+                      imageUrl:
+                          "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
         ),
+      ),
     );
   }
 }

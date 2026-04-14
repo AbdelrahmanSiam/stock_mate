@@ -11,61 +11,64 @@ class ProductCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final width = constraints.maxWidth;
-        return Container(
-          padding: EdgeInsets.all(width * 0.03),
-          decoration: BoxDecoration(
-            color: AppColorsDarkMode.surface,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColorsDarkMode.border),
-          ),
-          child: Row(
-            children: [
-              ProductImage(imageUrl: productEntity.imageUrl),
-              SizedBox(width: width * 0.03),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth;
+          return Container(
+            padding: EdgeInsets.all(width * 0.03),
+            decoration: BoxDecoration(
+              color: AppColorsDarkMode.surface,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: AppColorsDarkMode.border),
+            ),
+            child: Row(
+              children: [
+                ProductImage(imageUrl: productEntity.imageUrl),
+                SizedBox(width: width * 0.03),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        productEntity.name,
+                        style: AppStyles.priceBold16(
+                          context,
+                        ).copyWith(color: AppColorsDarkMode.textPrimary),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(height: width * 0.01),
+                      Text(
+                        productEntity.category,
+                        style: AppStyles.bodyMediumRegular14(context).copyWith(color: Colors.white60),
+                      ),
+                      SizedBox(height: width * 0.01),
+                      Text(
+                        productEntity.barcode,
+                        style: AppStyles.captionRegular10(context),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: width * 0.02),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      productEntity.name,
-                      style: AppStyles.priceBold16(
-                        context,
-                      ).copyWith(color: AppColorsDarkMode.textPrimary),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                      '\$${productEntity.sellPrice.toStringAsFixed(2)}',
+                      style: AppStyles.h2Bold22(context).copyWith(color: AppColorsDarkMode.primary),
                     ),
-                    SizedBox(height: width * 0.01),
-                    Text(
-                      productEntity.category,
-                      style: AppStyles.bodyMediumRegular14(context).copyWith(color: Colors.white60),
-                    ),
-                    SizedBox(height: width * 0.01),
-                    Text(
-                      productEntity.barcode,
-                      style: AppStyles.captionRegular10(context),
-                    ),
+                    SizedBox(height: width * 0.02),
+                    StockBadge(product: productEntity),
                   ],
                 ),
-              ),
-              SizedBox(width: width * 0.02),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    '\$${productEntity.sellPrice.toStringAsFixed(2)}',
-                    style: AppStyles.statValueBold24(context).copyWith(color: AppColorsDarkMode.primary),
-                  ),
-                  SizedBox(height: width * 0.02),
-                  StockBadge(product: productEntity),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
