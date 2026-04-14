@@ -12,7 +12,8 @@ class ProductFilterChip extends StatelessWidget {
   final String filterChipName;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 250),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       margin: const EdgeInsets.only(right: 32),
       decoration: BoxDecoration(
