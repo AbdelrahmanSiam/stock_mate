@@ -48,7 +48,7 @@ class ProfitCardWidget extends StatelessWidget {
             children: [
               Text(
                 S.of(context).estimatedProfit,
-                style: AppStyles.captionRegular10(
+                style: AppStyles.bodyMediumRegular14(
                   context,
                 ).copyWith(color: color, letterSpacing: 1),
               ),

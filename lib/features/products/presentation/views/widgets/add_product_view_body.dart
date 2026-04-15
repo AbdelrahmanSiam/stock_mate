@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_widget.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/profit_card_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/quantity_stepper_widget.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -22,6 +24,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   final TextEditingController buyPriceController = TextEditingController();
   final TextEditingController thresholdController = TextEditingController();
   int quantity = 0;
+  double sellPrice = 0.0;
+  double buyPrice = 0.0;
   @override
   Widget build(BuildContext context) {
     return CustomViewBody(
@@ -111,7 +115,15 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             ],
           ),
           const SizedBox(height: 20),
-          
+          if (buyPrice > 0 || sellPrice > 0)
+            ProfitCardWidget(buyPrice: buyPrice, sellPrice: sellPrice),
+          const SizedBox(height: 24),
+          CustomButton(
+            buttonName: S.of(context).saveProduct,
+            color: AppColorsDarkMode.textPrimary,
+            isLoading: false,
+            onPressed: () {},
+          ),
         ],
       ),
     );
