@@ -15,6 +15,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController categoryController = TextEditingController();
   final TextEditingController barcodeController = TextEditingController();
+  final TextEditingController sellPriceController = TextEditingController();
+  final TextEditingController buyPriceController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return CustomViewBody(
@@ -42,6 +44,33 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             prefixIcon: Icons.qr_code_scanner_outlined,
             controller: barcodeController,
           ),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  label: S.of(context).sellPrice,
+                  hint: '0.00',
+                  prefixIcon: Icons.attach_money_outlined,
+                  controller: sellPriceController,
+                  keyboardType: TextInputType.number,
+                  suffixText: S.of(context).egp,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: CustomTextField(
+                  label: S.of(context).buyPrice,
+                  hint: '0.00',
+                  prefixIcon: Icons.attach_money_outlined,
+                  controller: buyPriceController,
+                  keyboardType: TextInputType.number,
+                  suffixText: S.of(context).egp,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
         ],
       ),
     );

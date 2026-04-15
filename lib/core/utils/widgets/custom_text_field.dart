@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
   final Widget extraWidget;
   final bool obscureText;
   final Widget? suffixIcon;
+  final String? suffixText;
   final TextInputType keyboardType;
   final void Function(String)? onChanged;
   final TextEditingController controller;
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.validator,
     this.labelColor = AppColorsDarkMode.textSecondary,
+    this.suffixText,
   });
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,19 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
             prefixIcon: Icon(prefixIcon),
             hintText: hint,
-            suffixIcon: suffixIcon,
+            suffixIcon:
+                suffixIcon ??
+                (suffixText != null
+                    ? Center(
+                        widthFactor: 1,
+                        child: Text(
+                          suffixText!,
+                          style: Theme.of(
+                            context,
+                          ).inputDecorationTheme.suffixStyle,
+                        ),
+                      )
+                    : null),
           ),
         ),
       ],
