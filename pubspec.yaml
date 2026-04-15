@@ -32,6 +32,7 @@ dependencies:
   cloud_firestore: ^6.2.0
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
+  dotted_border: ^2.1.0
   firebase_auth: ^6.3.0
   firebase_core: ^4.6.0
   fl_chart: ^1.2.0
