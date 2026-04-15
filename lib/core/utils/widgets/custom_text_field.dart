@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 
-class CustomAuthTextField extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String label, hint;
   final IconData prefixIcon;
   final Widget extraWidget;
@@ -14,7 +14,7 @@ class CustomAuthTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Color? labelColor;
 
-  const CustomAuthTextField({
+  const CustomTextField({
     super.key,
     required this.label,
     required this.hint,

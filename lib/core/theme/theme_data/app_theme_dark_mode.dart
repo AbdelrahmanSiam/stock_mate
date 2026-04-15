@@ -97,10 +97,10 @@ abstract class AppThemeDarkMode {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColorsDarkMode.surface,
-      prefixIconColor: AppColorsDarkMode.textSecondary,
-      suffixIconColor: AppColorsDarkMode.textSecondary,
-      hintStyle: const TextStyle(
-        color: AppColorsDarkMode.textSecondary,
+      prefixIconColor: AppColorsDarkMode.textSecondary.withValues(alpha: 0.5),
+      suffixIconColor: AppColorsDarkMode.textSecondary.withValues(alpha: 0.5),
+      hintStyle:  TextStyle(
+        color: AppColorsDarkMode.textSecondary.withValues(alpha: 0.5),
         fontSize: 16,
         fontFamily: 'Inter',
         fontWeight: FontWeight.w400,

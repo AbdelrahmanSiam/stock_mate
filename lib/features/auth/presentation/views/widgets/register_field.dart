@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
-import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
+import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/password_toggle_icon.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/sign_in_fields.dart';
 import 'package:stock_mate/generated/l10n.dart';
@@ -32,7 +32,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomAuthTextField(
+        CustomTextField(
           label: S.of(context).shopeName,
           hint: S.of(context).shopNameExample,
           prefixIcon: Icons.store_outlined,
@@ -42,7 +42,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
           },
         ),
         const SizedBox(height: 16),
-        CustomAuthTextField(
+        CustomTextField(
           label: S.of(context).fullName,
           hint: S.of(context).fullNameExample,
           prefixIcon: Icons.person_outline,
@@ -58,7 +58,7 @@ class _RegisterFieldsState extends State<RegisterFields> {
           extraWidget: SizedBox(),
         ),
         const SizedBox(height: 16),
-        CustomAuthTextField(
+        CustomTextField(
           label: S.of(context).confirmPassword,
           hint: '••••••••',
           prefixIcon: Icons.lock_outlined,

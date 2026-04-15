@@ -6,7 +6,7 @@ import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
-import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
+import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class ForgetPasswordSection extends StatefulWidget {
@@ -44,7 +44,7 @@ class _ForgetPasswordSectionState extends State<ForgetPasswordSection> {
           key: formKey,
           child: Column(
             children: [
-              CustomAuthTextField(
+              CustomTextField(
                 label: S.of(context).email,
                 labelColor: AppColorsDarkMode.primary,
                 hint: "admin@gmail.com",

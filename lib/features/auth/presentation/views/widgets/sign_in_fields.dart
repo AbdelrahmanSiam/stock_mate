@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
-import 'package:stock_mate/features/auth/presentation/views/widgets/custom_auth_text_field.dart';
+import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/forget_password_button.dart';
 import 'package:stock_mate/features/auth/presentation/views/widgets/password_toggle_icon.dart';
 import 'package:stock_mate/generated/l10n.dart';
@@ -26,7 +26,7 @@ class _SignInFieldsState extends State<SignInFields> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomAuthTextField(
+        CustomTextField(
           label: S.of(context).email,
           hint: "admin@gmail.com",
           prefixIcon: Icons.email_outlined,
@@ -37,7 +37,7 @@ class _SignInFieldsState extends State<SignInFields> {
           },
         ),
         const SizedBox(height: 16),
-        CustomAuthTextField(
+        CustomTextField(
           label: S.of(context).password,
           hint: '••••••••',
           prefixIcon: Icons.lock_outlined,
