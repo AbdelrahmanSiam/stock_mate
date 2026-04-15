@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/core/styles/app_styles.dart';
+import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_widget.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/quantity_stepper_widget.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -17,6 +20,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   final TextEditingController barcodeController = TextEditingController();
   final TextEditingController sellPriceController = TextEditingController();
   final TextEditingController buyPriceController = TextEditingController();
+  final TextEditingController thresholdController = TextEditingController();
+  int quantity = 0;
   @override
   Widget build(BuildContext context) {
     return CustomViewBody(
@@ -71,6 +76,41 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
             ],
           ),
           const SizedBox(height: 16),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      S.of(context).initialQuantity,
+                      style: AppStyles.labelSemiBold13(
+                        context,
+                      ).copyWith(color: AppColorsDarkMode.textSecondary),
+                    ),
+                    const SizedBox(height: 8),
+                    QuantityStepperWidget(
+                      value: quantity,
+                      onIncrement: () => setState(() => quantity++),
+                      onDecrement: () => setState(() => quantity--),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: CustomTextField(
+                  label: S.of(context).lowStockAlert,
+                  hint: '5',
+                  prefixIcon: Icons.notifications_outlined,
+                  controller: thresholdController,
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
           
         ],
       ),

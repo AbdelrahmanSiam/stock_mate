@@ -28,15 +28,17 @@ class QuantityStepperWidget extends StatelessWidget {
             icon: Icons.remove,
             onTap: value > 0 ? onDecrement : null,
           ),
+          Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               '$value',
-              style: AppStyles.labelSemiBold13(
-                context,
-              ).copyWith(color: AppColorsDarkMode.textSecondary),
+              style: AppStyles.labelSemiBold13(context).copyWith(
+                color: AppColorsDarkMode.textSecondary.withValues(alpha: 0.5),
+              ),
             ),
           ),
+          Spacer(),
           StepperButton(icon: Icons.add, onTap: onIncrement),
         ],
       ),
