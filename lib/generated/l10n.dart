@@ -708,6 +708,191 @@ class S {
   String get addProduct {
     return Intl.message('Add Product', name: 'addProduct', desc: '', args: []);
   }
+
+  /// `Edit Product`
+  String get editProduct {
+    return Intl.message(
+      'Edit Product',
+      name: 'editProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product Name`
+  String get productName {
+    return Intl.message(
+      'Product Name',
+      name: 'productName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter product name`
+  String get productNameHint {
+    return Intl.message(
+      'Enter product name',
+      name: 'productNameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Barcode`
+  String get barcode {
+    return Intl.message('Barcode', name: 'barcode', desc: '', args: []);
+  }
+
+  /// `Scan or enter barcode`
+  String get barcodeHint {
+    return Intl.message(
+      'Scan or enter barcode',
+      name: 'barcodeHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category`
+  String get category {
+    return Intl.message('Category', name: 'category', desc: '', args: []);
+  }
+
+  /// `e.g. Electronics, Food`
+  String get categoryHint {
+    return Intl.message(
+      'e.g. Electronics, Food',
+      name: 'categoryHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buy Price`
+  String get buyPrice {
+    return Intl.message('Buy Price', name: 'buyPrice', desc: '', args: []);
+  }
+
+  /// `Sell Price`
+  String get sellPrice {
+    return Intl.message('Sell Price', name: 'sellPrice', desc: '', args: []);
+  }
+
+  /// `Initial Quantity`
+  String get initialQuantity {
+    return Intl.message(
+      'Initial Quantity',
+      name: 'initialQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Low Stock Alert`
+  String get lowStockAlert {
+    return Intl.message(
+      'Low Stock Alert',
+      name: 'lowStockAlert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ESTIMATED PROFIT`
+  String get estimatedProfit {
+    return Intl.message(
+      'ESTIMATED PROFIT',
+      name: 'estimatedProfit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SAVE PRODUCT`
+  String get saveProduct {
+    return Intl.message(
+      'SAVE PRODUCT',
+      name: 'saveProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ADD PHOTO`
+  String get addPhoto {
+    return Intl.message('ADD PHOTO', name: 'addPhoto', desc: '', args: []);
+  }
+
+  /// `Delete Product`
+  String get deleteProduct {
+    return Intl.message(
+      'Delete Product',
+      name: 'deleteProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this product?`
+  String get deleteProductConfirm {
+    return Intl.message(
+      'Are you sure you want to delete this product?',
+      name: 'deleteProductConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Selling at a loss!`
+  String get sellingAtLoss {
+    return Intl.message(
+      'Selling at a loss!',
+      name: 'sellingAtLoss',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product saved successfully`
+  String get productSavedSuccess {
+    return Intl.message(
+      'Product saved successfully',
+      name: 'productSavedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product deleted successfully`
+  String get productDeletedSuccess {
+    return Intl.message(
+      'Product deleted successfully',
+      name: 'productDeletedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to upload image`
+  String get imageUploadError {
+    return Intl.message(
+      'Failed to upload image',
+      name: 'imageUploadError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

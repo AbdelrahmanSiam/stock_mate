@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("ص"),
     "PM": MessageLookupByLibrary.simpleMessage("م"),
+    "addPhoto": MessageLookupByLibrary.simpleMessage("إضافة صورة"),
     "addProduct": MessageLookupByLibrary.simpleMessage("إضافة منتج"),
     "afternoon": MessageLookupByLibrary.simpleMessage("مساء الخير"),
     "alert": MessageLookupByLibrary.simpleMessage("تنبيه"),
@@ -36,6 +37,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "backToLogin": MessageLookupByLibrary.simpleMessage(
       "العودة إلى تسجيل الدخول",
     ),
+    "barcode": MessageLookupByLibrary.simpleMessage("الباركود"),
+    "barcodeHint": MessageLookupByLibrary.simpleMessage(
+      "امسح أو أدخل الباركود",
+    ),
+    "buyPrice": MessageLookupByLibrary.simpleMessage("سعر الشراء"),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "category": MessageLookupByLibrary.simpleMessage("الفئة"),
+    "categoryHint": MessageLookupByLibrary.simpleMessage(
+      "مثل: إلكترونيات، أغذية",
+    ),
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
@@ -46,6 +57,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
     "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" قبل أيام"),
+    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "deleteProduct": MessageLookupByLibrary.simpleMessage("حذف المنتج"),
+    "deleteProductConfirm": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من حذف هذا المنتج؟",
+    ),
+    "editProduct": MessageLookupByLibrary.simpleMessage("تعديل منتج"),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
@@ -57,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerified": MessageLookupByLibrary.simpleMessage(
       "تم إرسال رابط رابط تأكيد بريدك الإلكتروني بنجاح",
     ),
+    "estimatedProfit": MessageLookupByLibrary.simpleMessage("الربح المتوقع"),
     "evening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "forget": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -75,7 +93,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل لديك حساب بالفعل؟ ",
     ),
     "haveNoAccount": MessageLookupByLibrary.simpleMessage(" ليس لديك حساب؟"),
+    "imageUploadError": MessageLookupByLibrary.simpleMessage("فشل رفع الصورة"),
     "inStock": MessageLookupByLibrary.simpleMessage("متوفر"),
+    "initialQuantity": MessageLookupByLibrary.simpleMessage("الكمية الأولية"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "البريد أو كلمة المرور غير صحيحة",
     ),
@@ -93,6 +113,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "low": MessageLookupByLibrary.simpleMessage("منخفض"),
     "lowStock": MessageLookupByLibrary.simpleMessage("المخزون منخفض"),
+    "lowStockAlert": MessageLookupByLibrary.simpleMessage(
+      "تنبيه المخزون المنخفض",
+    ),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("الإيرادات الشهرية"),
     "morning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
     "networkError": MessageLookupByLibrary.simpleMessage(
@@ -120,6 +143,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "يضمن لك التحقق من بريدك الإلكتروني تلقي تنبيهات تلقائية بانخفاض المخزون وملخصات المبيعات اليومية.",
     ),
+    "productDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم حذف المنتج بنجاح",
+    ),
+    "productName": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
+    "productNameHint": MessageLookupByLibrary.simpleMessage("أدخل اسم المنتج"),
+    "productSavedSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم حفظ المنتج بنجاح",
+    ),
     "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
     "recentSales": MessageLookupByLibrary.simpleMessage("المبيعات الأخيرة"),
     "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
@@ -138,9 +169,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "retry": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
+    "saveProduct": MessageLookupByLibrary.simpleMessage("حفظ المنتج"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "ابحث بالاسم أو الباركود",
     ),
+    "sellPrice": MessageLookupByLibrary.simpleMessage("سعر البيع"),
+    "sellingAtLoss": MessageLookupByLibrary.simpleMessage("البيع بخسارة!"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",
     ),

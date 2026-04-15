@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("AM"),
     "PM": MessageLookupByLibrary.simpleMessage("PM"),
+    "addPhoto": MessageLookupByLibrary.simpleMessage("ADD PHOTO"),
     "addProduct": MessageLookupByLibrary.simpleMessage("Add Product"),
     "afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
     "alert": MessageLookupByLibrary.simpleMessage("Alert"),
@@ -34,6 +35,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "PREMIUM INVENTORY & SALES",
     ),
     "backToLogin": MessageLookupByLibrary.simpleMessage("Back to Login"),
+    "barcode": MessageLookupByLibrary.simpleMessage("Barcode"),
+    "barcodeHint": MessageLookupByLibrary.simpleMessage(
+      "Scan or enter barcode",
+    ),
+    "buyPrice": MessageLookupByLibrary.simpleMessage("Buy Price"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "category": MessageLookupByLibrary.simpleMessage("Category"),
+    "categoryHint": MessageLookupByLibrary.simpleMessage(
+      "e.g. Electronics, Food",
+    ),
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "Check your connection",
     ),
@@ -42,6 +53,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" days ago"),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "deleteProduct": MessageLookupByLibrary.simpleMessage("Delete Product"),
+    "deleteProductConfirm": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this product?",
+    ),
+    "editProduct": MessageLookupByLibrary.simpleMessage("Edit Product"),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
@@ -53,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "emailVerified": MessageLookupByLibrary.simpleMessage(
       "Email Verification link sent successfully",
     ),
+    "estimatedProfit": MessageLookupByLibrary.simpleMessage("ESTIMATED PROFIT"),
     "evening": MessageLookupByLibrary.simpleMessage("Good Evening"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
@@ -75,7 +93,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveNoAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account? ",
     ),
+    "imageUploadError": MessageLookupByLibrary.simpleMessage(
+      "Failed to upload image",
+    ),
     "inStock": MessageLookupByLibrary.simpleMessage("IN STOCK"),
+    "initialQuantity": MessageLookupByLibrary.simpleMessage("Initial Quantity"),
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Invalid email or password",
     ),
@@ -91,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "low": MessageLookupByLibrary.simpleMessage("LOW"),
     "lowStock": MessageLookupByLibrary.simpleMessage("Low Stock"),
+    "lowStockAlert": MessageLookupByLibrary.simpleMessage("Low Stock Alert"),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("Monthly Revenue"),
     "morning": MessageLookupByLibrary.simpleMessage("Good Morning"),
     "networkError": MessageLookupByLibrary.simpleMessage(
@@ -116,6 +139,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
     ),
+    "productDeletedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Product deleted successfully",
+    ),
+    "productName": MessageLookupByLibrary.simpleMessage("Product Name"),
+    "productNameHint": MessageLookupByLibrary.simpleMessage(
+      "Enter product name",
+    ),
+    "productSavedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Product saved successfully",
+    ),
     "products": MessageLookupByLibrary.simpleMessage("Products"),
     "recentSales": MessageLookupByLibrary.simpleMessage("Recent Sales"),
     "registerButton": MessageLookupByLibrary.simpleMessage("REGISTER"),
@@ -132,9 +165,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
+    "saveProduct": MessageLookupByLibrary.simpleMessage("SAVE PRODUCT"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "Search by name or barcode",
     ),
+    "sellPrice": MessageLookupByLibrary.simpleMessage("Sell Price"),
+    "sellingAtLoss": MessageLookupByLibrary.simpleMessage("Selling at a loss!"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "shop": MessageLookupByLibrary.simpleMessage("User\'s Shop"),

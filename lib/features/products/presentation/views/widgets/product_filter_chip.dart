@@ -18,7 +18,7 @@ class ProductFilterChip extends StatelessWidget {
       margin: const EdgeInsets.only(right: 32),
       decoration: BoxDecoration(
         color: isActive ? AppColorsDarkMode.primary : AppColorsDarkMode.surface,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: isActive
               ? AppColorsDarkMode.primary

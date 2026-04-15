@@ -9,6 +9,7 @@ import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashbo
 import 'package:stock_mate/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/features/language/presentation/views/language_view.dart';
+import 'package:stock_mate/features/products/presentation/views/add_product_view.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
 import 'package:stock_mate/features/splash/presentation/views/splash_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/login_view.dart';
@@ -22,6 +23,7 @@ abstract class AppRoutes {
   static const String forgetPassword = '/forgetPassword';
   static const String emailVerification = '/emailVerification';
   static const String dashboard = '/dashboard';
+  static const String addProducts = '/addProducts';
 }
 
 // ── Router Instance ───────────────────────────────────────────
@@ -81,6 +83,10 @@ final GoRouter appRouter = GoRouter(
         create: (context) => getIt<DashboardCubit>()..getDashboardData(),
         child: const DashboardView(),
       ),
+    ),
+    GoRoute(
+      path: AppRoutes.addProducts,
+      builder: (context, state) => const AddProductView(),
     ),
   ],
 );

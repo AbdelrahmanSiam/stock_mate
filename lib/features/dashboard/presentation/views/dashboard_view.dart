@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashboard_cubit/dashboard_cubit.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_view_body.dart';
@@ -13,7 +15,6 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-
   int currentIndex = 0;
   final pages = [
     const DashboardViewBody(),
@@ -27,7 +28,7 @@ class _DashboardViewState extends State<DashboardView> {
       body: pages[currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigate to add product screen
+          GoRouter.of(context).push(AppRoutes.addProducts);
         },
         child: const Icon(Icons.add),
       ),
