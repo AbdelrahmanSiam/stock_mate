@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
-import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
+import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/profit_card_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/quantity_stepper_widget.dart';
@@ -17,6 +17,7 @@ class AddProductViewBody extends StatefulWidget {
 }
 
 class _AddProductViewBodyState extends State<AddProductViewBody> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController categoryController = TextEditingController();
   final TextEditingController barcodeController = TextEditingController();
@@ -27,104 +28,140 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   double sellPrice = 0.0;
   double buyPrice = 0.0;
   @override
+  void dispose() {
+    nameController.dispose();
+    categoryController.dispose();
+    barcodeController.dispose();
+    sellPriceController.dispose();
+    buyPriceController.dispose();
+    thresholdController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return CustomViewBody(
-      widget: Column(
-        children: [
-          ProductImagePickerWidget(),
-          const SizedBox(height: 24),
-          CustomTextField(
-            label: S.of(context).productName,
-            hint: S.of(context).productNameHint,
-            prefixIcon: Icons.inventory_2_outlined,
-            controller: nameController,
-          ),
-          const SizedBox(height: 16),
-          CustomTextField(
-            label: S.of(context).category,
-            hint: S.of(context).categoryHint,
-            prefixIcon: Icons.category_outlined,
-            controller: categoryController,
-          ),
-          const SizedBox(height: 16),
-          CustomTextField(
-            label: S.of(context).barcode,
-            hint: S.of(context).barcodeHint,
-            prefixIcon: Icons.qr_code_scanner_outlined,
-            controller: barcodeController,
-          ),
-          const SizedBox(height: 16),
-          Row(
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Form(
+          key: formKey,
+          child: Column(
             children: [
-              Expanded(
-                child: CustomTextField(
-                  label: S.of(context).sellPrice,
-                  hint: '0.00',
-                  prefixIcon: Icons.attach_money_outlined,
-                  controller: sellPriceController,
-                  keyboardType: TextInputType.number,
-                  suffixText: S.of(context).egp,
-                ),
+              ProductImagePickerWidget(),
+              const SizedBox(height: 24),
+              CustomTextField(
+                label: S.of(context).productName,
+                hint: S.of(context).productNameHint,
+                prefixIcon: Icons.inventory_2_outlined,
+                controller: nameController,
+                validator: (value) {
+                  return fieldRequiredVerification(value, context);
+                },
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: CustomTextField(
-                  label: S.of(context).buyPrice,
-                  hint: '0.00',
-                  prefixIcon: Icons.attach_money_outlined,
-                  controller: buyPriceController,
-                  keyboardType: TextInputType.number,
-                  suffixText: S.of(context).egp,
-                ),
+              const SizedBox(height: 16),
+              CustomTextField(
+                label: S.of(context).category,
+                hint: S.of(context).categoryHint,
+                prefixIcon: Icons.category_outlined,
+                controller: categoryController,
               ),
+              const SizedBox(height: 16),
+              CustomTextField(
+                label: S.of(context).barcode,
+                hint: S.of(context).barcodeHint,
+                prefixIcon: Icons.qr_code_scanner_outlined,
+                controller: barcodeController,
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      label: S.of(context).sellPrice,
+                      hint: '0.00',
+                      prefixIcon: Icons.attach_money_outlined,
+                      controller: sellPriceController,
+                      keyboardType: TextInputType.number,
+                      suffixText: S.of(context).egp,
+                      validator: (value) {
+                        return fieldRequiredVerification(value, context);
+                      },
+                      onChanged: (v) =>
+                          setState(() => sellPrice = double.tryParse(v) ?? 0),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: CustomTextField(
+                      label: S.of(context).buyPrice,
+                      hint: '0.00',
+                      prefixIcon: Icons.attach_money_outlined,
+                      controller: buyPriceController,
+                      keyboardType: TextInputType.number,
+                      suffixText: S.of(context).egp,
+                      validator: (value) {
+                        return fieldRequiredVerification(value, context);
+                      },
+                      onChanged: (v) =>
+                          setState(() => buyPrice = double.tryParse(v) ?? 0),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.of(context).initialQuantity,
+                          style: AppStyles.labelSemiBold13(
+                            context,
+                          ).copyWith(color: AppColorsDarkMode.textSecondary),
+                        ),
+                        const SizedBox(height: 8),
+                        QuantityStepperWidget(
+                          value: quantity,
+                          onIncrement: () => setState(() => quantity++),
+                          onDecrement: () => setState(() => quantity--),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: CustomTextField(
+                      label: S.of(context).lowStockAlert,
+                      hint: '5',
+                      prefixIcon: Icons.notifications_outlined,
+                      controller: thresholdController,
+                      keyboardType: TextInputType.number,
+                      validator: (value) {
+                        return fieldRequiredVerification(value, context);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              if (buyPrice > 0 || sellPrice > 0)
+                ProfitCardWidget(buyPrice: buyPrice, sellPrice: sellPrice),
+              const SizedBox(height: 24),
+              CustomButton(
+                buttonName: S.of(context).saveProduct,
+                color: AppColorsDarkMode.textPrimary,
+                isLoading: false,
+                onPressed: () {
+                  if (!formKey.currentState!.validate()) return;
+                },
+              ),
+              const SizedBox(height: 40),
             ],
           ),
-          const SizedBox(height: 16),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      S.of(context).initialQuantity,
-                      style: AppStyles.labelSemiBold13(
-                        context,
-                      ).copyWith(color: AppColorsDarkMode.textSecondary),
-                    ),
-                    const SizedBox(height: 8),
-                    QuantityStepperWidget(
-                      value: quantity,
-                      onIncrement: () => setState(() => quantity++),
-                      onDecrement: () => setState(() => quantity--),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: CustomTextField(
-                  label: S.of(context).lowStockAlert,
-                  hint: '5',
-                  prefixIcon: Icons.notifications_outlined,
-                  controller: thresholdController,
-                  keyboardType: TextInputType.number,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          if (buyPrice > 0 || sellPrice > 0)
-            ProfitCardWidget(buyPrice: buyPrice, sellPrice: sellPrice),
-          const SizedBox(height: 24),
-          CustomButton(
-            buttonName: S.of(context).saveProduct,
-            color: AppColorsDarkMode.textPrimary,
-            isLoading: false,
-            onPressed: () {},
-          ),
-        ],
+        ),
       ),
     );
   }

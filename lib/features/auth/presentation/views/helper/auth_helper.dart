@@ -21,9 +21,10 @@ String? emailVerificationMethod(String? value, BuildContext context) {
   }
   return null;
 }
-  String? fieldRequiredVerification(String? value, BuildContext context) {
-    if (value == null || value.isEmpty) {
-      return S.of(context).fieldRequired;
-    }
-    return null;
+
+String? fieldRequiredVerification(String? value, BuildContext context) {
+  if (value == null || value.trim().isEmpty) {
+    return S.of(context).fieldRequired;
   }
+  return null;
+}
