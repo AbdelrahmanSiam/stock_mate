@@ -19,5 +19,11 @@ const String kInvoiceNumber  = 'invoiceNumber';
 const String kPaymentMethod  = 'paymentMethod';
 const String kTotalAmount    = 'totalAmount';
 // Product Fields
-const String kQuantity  = 'quantity';
-const String kThreshold = 'threshold';
+const String kProductName = 'name';
+const String kBarcode     = 'barcode';
+const String kCategory    = 'category';
+const String kBuyPrice    = 'buyPrice';
+const String kSellPrice   = 'sellPrice';
+const String kQuantity    = 'quantity';
+const String kThreshold   = 'threshold';
+const String kImageUrl    = 'imageUrl';
