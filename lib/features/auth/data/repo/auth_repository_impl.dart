@@ -11,7 +11,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, bool>> checkEmailVerified() async {
-    return handleRequest(() => remoteDataSource.checkEmailVerified());
+    return handleFirebaseAuthRequests(() => remoteDataSource.checkEmailVerified());
   }
 
   @override
@@ -19,14 +19,14 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String password,
   }) {
-    return handleRequest(
+    return handleFirebaseAuthRequests(
       () => remoteDataSource.login(email: email, password: password),
     );
   }
 
   @override
   Future<Either<Failure, void>> logout() {
-    return handleRequest(() => remoteDataSource.logout());
+    return handleFirebaseAuthRequests(() => remoteDataSource.logout());
   }
 
   @override
@@ -36,7 +36,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required String displayName,
     required String shopName,
   }) {
-    return handleRequest(
+    return handleFirebaseAuthRequests(
       () => remoteDataSource.register(
         email: email,
         password: password,
@@ -48,28 +48,28 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, void>> sendEmailVerification() {
-    return handleRequest(() => remoteDataSource.sendEmailVerification());
+    return handleFirebaseAuthRequests(() => remoteDataSource.sendEmailVerification());
   }
 
   @override
   Future<Either<Failure, void>> sendPasswordResetEmail({
     required String email,
   }) {
-    return handleRequest(
+    return handleFirebaseAuthRequests(
       () => remoteDataSource.sendPasswordResetEmail(email: email),
     );
   }
   
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() {
-    return handleRequest(
+    return handleFirebaseAuthRequests(
       () => remoteDataSource.signInWithGoogle(),
     );
   }
 
   @override
   Future<Either<Failure, UserEntity?>> getCurrentUser() {
-    return handleRequest(
+    return handleFirebaseAuthRequests(
       () => remoteDataSource.getCurrentUser(),
     );
   }
