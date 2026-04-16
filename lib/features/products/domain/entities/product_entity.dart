@@ -38,4 +38,28 @@ class ProductEntity {
     threshold: 5,
     imageUrl: '',
   );
+  // copyWith method for immutability
+  ProductEntity copyWith({
+    String? id,
+    String? name,
+    String? barcode,
+    String? category,
+    double? buyPrice,
+    double? sellPrice,
+    int? quantity,
+    int? threshold,
+    String? imageUrl,
+  }) {
+    return ProductEntity(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      barcode: barcode ?? this.barcode,
+      category: category ?? this.category,
+      buyPrice: buyPrice ?? this.buyPrice,
+      sellPrice: sellPrice ?? this.sellPrice,
+      quantity: quantity ?? this.quantity,
+      threshold: threshold ?? this.threshold,
+      imageUrl: imageUrl ?? this.imageUrl,
+    );
+  }
 }
