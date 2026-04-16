@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 
@@ -26,5 +27,19 @@ class ProductModel extends ProductEntity {
       threshold: (json[kThreshold] as num).toInt(),
       imageUrl: json[kImageUrl] ?? "",
     );
+  }
+
+  Map<String, dynamic> toFirebase() {
+    return {
+      kProductName: name,
+      kBarcode: barcode,
+      kCategory: category,
+      kBuyPrice: buyPrice,
+      kSellPrice: sellPrice,
+      kQuantity: quantity,
+      kThreshold: threshold,
+      kImageUrl: imageUrl,
+      kCreatedAt : FieldValue.serverTimestamp(),
+    };
   }
 }
