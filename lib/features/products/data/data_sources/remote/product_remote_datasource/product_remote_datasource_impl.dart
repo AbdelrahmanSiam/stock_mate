@@ -13,4 +13,17 @@ class ProductRemoteDatasourceImpl implements ProductRemoteDatasource {
         .doc(product.id)
         .set(product.toFirebase());
   }
+
+  @override
+  Future<void> deleteProduct(String id) async {
+    await firestore.collection(kProductsCollection).doc(id).delete();
+  }
+
+  @override
+  Future<void> updateProduct(ProductModel product) async {
+    await firestore
+        .collection(kProductsCollection)
+        .doc(product.id)
+        .update(product.toFirebase());
+  }
 }
