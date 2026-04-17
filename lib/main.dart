@@ -11,9 +11,15 @@ import 'package:stock_mate/core/theme/theme_data/app_theme_dark_mode.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/firebase_options.dart';
 import 'package:stock_mate/generated/l10n.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: 'https://wvmqyivwejmkihpocskd.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind2bXF5aXZ3ZWpta2locG9jc2tkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzODQ5MjMsImV4cCI6MjA5MTk2MDkyM30.PwEmKdZsw6gbai-hWENkL5QD5yLzzPVNIhxoiu1iMLU',
+  );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
   await Hive.openBox(kLanguageBox);
@@ -22,7 +28,7 @@ void main() async {
 }
 
 class StockMate extends StatelessWidget {
-const StockMate({super.key});
+  const StockMate({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +45,7 @@ const StockMate({super.key});
         builder: (context, state) {
           final locale = state is LocaleLoadedState
               ? state.locale
-              : const Locale('en');// english is default language
+              : const Locale('en'); // english is default language
           return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             locale: locale,
