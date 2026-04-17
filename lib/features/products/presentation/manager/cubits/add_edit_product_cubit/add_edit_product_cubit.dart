@@ -7,6 +7,8 @@ import 'package:stock_mate/features/products/domain/use_cases/add_product_use_ca
 import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case/add_products_use_case_parameters.dart';
 import 'package:stock_mate/features/products/domain/use_cases/delete_product_image_use_case/delete_product_image_use_case_parameters.dart';
 import 'package:stock_mate/features/products/domain/use_cases/delete_product_image_use_case/delete_product_image_usecase.dart';
+import 'package:stock_mate/features/products/domain/use_cases/delete_product_use_case/delete_product_use_case.dart';
+import 'package:stock_mate/features/products/domain/use_cases/delete_product_use_case/delete_product_use_case_parameters.dart';
 import 'package:stock_mate/features/products/domain/use_cases/update_product_use_case/update_product_use_case_parameters.dart';
 import 'package:stock_mate/features/products/domain/use_cases/update_product_use_case/update_product_usecase.dart';
 import 'package:stock_mate/features/products/domain/use_cases/upload_product_image_use_case/upload_product_image_use_case.dart';
@@ -20,11 +22,13 @@ class AddEditProductCubit extends Cubit<AddEditProductState> {
   final UpdateProductUseCase updateProductUseCase;
   final UploadProductImageUseCase uploadProductImageUseCase;
   final DeleteProductImageUseCase deleteProductImageUseCase;
+  final DeleteProductUseCase deleteProductUseCase;
   AddEditProductCubit(
     this.addProductUseCase,
     this.uploadProductImageUseCase,
     this.updateProductUseCase,
     this.deleteProductImageUseCase,
+    this.deleteProductUseCase,
   ) : super(AddEditProductInitialState());
 
   Future<void> uploadImage(File image) async {
@@ -73,8 +77,8 @@ class AddEditProductCubit extends Cubit<AddEditProductState> {
             AddProductsUseCaseParameters(product: product),
           );
     result.fold(
-      (error) {
-        emit(AddEditProductErrorState(error.errMessage));
+      (failure) {
+        emit(AddEditProductErrorState(failure.errMessage));
       },
       (_) {
         if (isEdit &&
@@ -87,6 +91,20 @@ class AddEditProductCubit extends Cubit<AddEditProductState> {
         }
         emit(AddEditProductSavedState());
       },
+    );
+  }
+
+  Future<void> deleteProduct({
+    required String id,
+    required String imageUrl,
+  }) async {
+    emit(AddEditProductDeletingState());
+    final result = await deleteProductUseCase(
+      DeleteProductUseCaseParameters(id: id, imageUrl: imageUrl),
+    );
+    result.fold(
+      (failure) => emit(AddEditProductErrorState(failure.errMessage)),
+      (_) => emit(AddEditProductDeletedState()),
     );
   }
 }
