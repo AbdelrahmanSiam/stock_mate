@@ -31,6 +31,12 @@ import 'package:stock_mate/features/language/domain/repo/language_repo.dart';
 import 'package:stock_mate/features/language/domain/usecases/get_saved_language_use_case.dart';
 import 'package:stock_mate/features/language/domain/usecases/save_language_use_case.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
+import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource.dart';
+import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource_impl.dart';
+import 'package:stock_mate/features/products/data/repo/product_repository_impl.dart';
+import 'package:stock_mate/features/products/domain/repo/product_repository.dart';
+import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case.dart';
+import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
 import 'package:stock_mate/features/splash/data/repo/splash_repo_impl.dart';
@@ -172,5 +178,21 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<DashboardCubit>(
     () => DashboardCubit(getDashboardUseCase: getIt<GetDashboardUseCase>()),
+  );
+
+  //                                         Add / Edit Product Feature
+  getIt.registerLazySingleton<ProductRemoteDatasource>(
+    () => ProductRemoteDatasourceImpl(getIt<FirebaseFirestore>()),
+  );
+  getIt.registerLazySingleton<ProductRepository>(
+    () => ProductRepositoryImpl(
+      remoteDatasource: getIt<ProductRemoteDatasource>(),
+    ),
+  );
+  getIt.registerLazySingleton<AddProductUseCase>(
+    () => AddProductUseCase(getIt<ProductRepository>()),
+  );
+  getIt.registerFactory<AddEditProductCubit>(
+    () => AddEditProductCubit(getIt<AddProductUseCase>()),
   );
 }
