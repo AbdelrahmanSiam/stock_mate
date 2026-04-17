@@ -5,6 +5,17 @@ sealed class AddEditProductState {}
 
 final class AddEditProductInitialState extends AddEditProductState {}
 
+final class AddEditProductImageUploadingState extends AddEditProductState {}
+
+final class AddEditProductImageUploadedState extends AddEditProductState {
+  final String imageUrl;
+  AddEditProductImageUploadedState(this.imageUrl);
+}
+
+final class AddEditProductDeletingState extends AddEditProductState {}
+
+final class AddEditProductDeletedState extends AddEditProductState {}
+
 final class AddEditProductSavingState extends AddEditProductState {}
 
 final class AddEditProductSavedState extends AddEditProductState {}
