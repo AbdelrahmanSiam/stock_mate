@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
-import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case.dart';
-import 'package:stock_mate/features/products/domain/use_cases/add_products_use_case_parameters.dart';
+import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case/add_product_use_case.dart';
+import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case/add_products_use_case_parameters.dart';
 import 'package:uuid/uuid.dart';
 
 part 'add_edit_product_state.dart';

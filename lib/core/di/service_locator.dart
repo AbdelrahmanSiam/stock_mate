@@ -35,7 +35,7 @@ import 'package:stock_mate/features/products/data/data_sources/remote/product_re
 import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource_impl.dart';
 import 'package:stock_mate/features/products/data/repo/product_repository_impl.dart';
 import 'package:stock_mate/features/products/domain/repo/product_repository.dart';
-import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case.dart';
+import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case/add_product_use_case.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
