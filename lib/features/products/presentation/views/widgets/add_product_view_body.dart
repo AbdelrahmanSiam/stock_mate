@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
@@ -10,10 +9,11 @@ import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
-import 'package:stock_mate/features/products/presentation/views/widgets/product_delete_dialog.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/delete_product_button.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_widget.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/product_prices_section.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/product_stock_section.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/profit_card_widget.dart';
-import 'package:stock_mate/features/products/presentation/views/widgets/quantity_stepper_widget.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -161,81 +161,29 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     controller: barcodeController,
                   ),
                   const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          label: S.of(context).sellPrice,
-                          hint: '0.00',
-                          prefixIcon: Icons.attach_money_outlined,
-                          controller: sellPriceController,
-                          keyboardType: TextInputType.number,
-                          suffixText: S.of(context).egp,
-                          validator: (value) {
-                            return fieldRequiredVerification(value, context);
-                          },
-                          onChanged: (v) => setState(
-                            () => sellPrice = double.tryParse(v) ?? 0,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: CustomTextField(
-                          label: S.of(context).buyPrice,
-                          hint: '0.00',
-                          prefixIcon: Icons.attach_money_outlined,
-                          controller: buyPriceController,
-                          keyboardType: TextInputType.number,
-                          suffixText: S.of(context).egp,
-                          validator: (value) {
-                            return fieldRequiredVerification(value, context);
-                          },
-                          onChanged: (v) => setState(
-                            () => buyPrice = double.tryParse(v) ?? 0,
-                          ),
-                        ),
-                      ),
-                    ],
+                  ProductPricesSection(
+                    sellPriceController: sellPriceController,
+                    buyPriceController: buyPriceController,
+                    onSellChanged: (v) {
+                      setState(() => sellPrice = double.tryParse(v) ?? 0);
+                    },
+                    onBuyChanged: (v) {
+                      setState(() => buyPrice = double.tryParse(v) ?? 0);
+                    },
+                    validator: (value) {
+                      return fieldRequiredVerification(value, context);
+                    },
                   ),
-                  const SizedBox(height: 16),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              S.of(context).initialQuantity,
-                              style: AppStyles.labelSemiBold13(context)
-                                  .copyWith(
-                                    color: AppColorsDarkMode.textSecondary,
-                                  ),
-                            ),
-                            const SizedBox(height: 8),
-                            QuantityStepperWidget(
-                              value: quantity,
-                              onIncrement: () => setState(() => quantity++),
-                              onDecrement: () => setState(() => quantity--),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: CustomTextField(
-                          label: S.of(context).lowStockAlert,
-                          hint: '5',
-                          prefixIcon: Icons.notifications_outlined,
-                          controller: thresholdController,
-                          keyboardType: TextInputType.number,
-                          validator: (value) {
-                            return fieldRequiredVerification(value, context);
-                          },
-                        ),
-                      ),
-                    ],
+                  ProductStockSection(
+                    quantity: quantity,
+                    onIncrement: () => setState(() => quantity++),
+                    onDecrement: () => setState(() {
+                      if (quantity > 0) quantity--;
+                    }),
+                    thresholdController: thresholdController,
+                    validator: (value) {
+                      return fieldRequiredVerification(value, context);
+                    },
                   ),
                   const SizedBox(height: 20),
                   if (buyPrice > 0 || sellPrice > 0)
@@ -250,20 +198,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   // ── Delete Button — Edit only ──────────
                   if (isEditMode) ...[
                     const SizedBox(height: 12),
-                    CustomButton(
-                      onPressed: isDeleting
-                          ? null
-                          : () => showDialog(
-                              context: context,
-                              builder: (_) => ProductDeleteDialog(
-                                id: widget.product!.id,
-                                imageUrl: widget.product!.imageUrl,
-                              ),
-                            ),
-                      isLoading: isDeleting,
-                      buttonName: S.of(context).deleteProduct,
-                      color: Colors.white,
-                    ),
+                    DeleteProductButton(isDeleting: isDeleting, widget: widget),
                   ],
                   const SizedBox(height: 40),
                 ],
