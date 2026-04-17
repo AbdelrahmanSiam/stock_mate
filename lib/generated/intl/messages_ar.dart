@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "امسح أو أدخل الباركود",
     ),
     "buyPrice": MessageLookupByLibrary.simpleMessage("سعر الشراء"),
+    "camera": MessageLookupByLibrary.simpleMessage("كاميرا"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "category": MessageLookupByLibrary.simpleMessage("الفئة"),
     "categoryHint": MessageLookupByLibrary.simpleMessage(
@@ -86,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "fullNameExample": MessageLookupByLibrary.simpleMessage("عبد الرحمن أحمد"),
+    "gallery": MessageLookupByLibrary.simpleMessage("معرض الصور"),
     "googleSigninCanceled": MessageLookupByLibrary.simpleMessage(
       "تم إلغاء تسجيل الدخول إلى Google",
     ),

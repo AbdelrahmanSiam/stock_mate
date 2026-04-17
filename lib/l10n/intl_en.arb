@@ -103,5 +103,7 @@
     "sellingAtLoss": "Selling at a loss!",
     "productSavedSuccess": "Product saved successfully",
     "productDeletedSuccess": "Product deleted successfully",
-    "imageUploadError": "Failed to upload image"
+    "imageUploadError": "Failed to upload image",
+    "gallery" : "Gallery",
+    "camera" : "Camera"
 }

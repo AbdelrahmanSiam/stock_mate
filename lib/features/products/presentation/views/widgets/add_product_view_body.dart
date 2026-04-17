@@ -70,7 +70,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               key: formKey,
               child: Column(
                 children: [
-                  ProductImagePickerWidget(),
+                  ProductImagePickerWidget(existingImageUrl: '', isUploading: null, onImageSelected: (File value) {  },),
                   const SizedBox(height: 24),
                   CustomTextField(
                     label: S.of(context).productName,

@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Scan or enter barcode",
     ),
     "buyPrice": MessageLookupByLibrary.simpleMessage("Buy Price"),
+    "camera": MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
     "categoryHint": MessageLookupByLibrary.simpleMessage(
@@ -84,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fullNameExample": MessageLookupByLibrary.simpleMessage(
       "Abdelrahman Ahmed",
     ),
+    "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
     "googleSigninCanceled": MessageLookupByLibrary.simpleMessage(
       "Google sign in cancelled",
     ),

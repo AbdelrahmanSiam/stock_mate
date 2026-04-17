@@ -103,5 +103,7 @@
     "sellingAtLoss": "البيع بخسارة!",
     "productSavedSuccess": "تم حفظ المنتج بنجاح",
     "productDeletedSuccess": "تم حذف المنتج بنجاح",
-    "imageUploadError": "فشل رفع الصورة"
+    "imageUploadError": "فشل رفع الصورة",
+    "gallery" : "معرض الصور",
+    "camera" : "كاميرا"
 }
