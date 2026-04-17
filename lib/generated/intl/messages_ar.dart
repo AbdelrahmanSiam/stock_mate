@@ -145,11 +145,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "يضمن لك التحقق من بريدك الإلكتروني تلقي تنبيهات تلقائية بانخفاض المخزون وملخصات المبيعات اليومية.",
     ),
+    "productDeleted": MessageLookupByLibrary.simpleMessage(
+      "تم حذف المنتج بنجاح",
+    ),
     "productDeletedSuccess": MessageLookupByLibrary.simpleMessage(
       "تم حذف المنتج بنجاح",
     ),
     "productName": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
     "productNameHint": MessageLookupByLibrary.simpleMessage("أدخل اسم المنتج"),
+    "productSaved": MessageLookupByLibrary.simpleMessage("تم حفظ المنتج بنجاح"),
     "productSavedSuccess": MessageLookupByLibrary.simpleMessage(
       "تم حفظ المنتج بنجاح",
     ),

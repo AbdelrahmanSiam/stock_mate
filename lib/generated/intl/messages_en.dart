@@ -141,12 +141,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
     ),
+    "productDeleted": MessageLookupByLibrary.simpleMessage(
+      "Product deleted successfully",
+    ),
     "productDeletedSuccess": MessageLookupByLibrary.simpleMessage(
       "Product deleted successfully",
     ),
     "productName": MessageLookupByLibrary.simpleMessage("Product Name"),
     "productNameHint": MessageLookupByLibrary.simpleMessage(
       "Enter product name",
+    ),
+    "productSaved": MessageLookupByLibrary.simpleMessage(
+      "Product saved successfully",
     ),
     "productSavedSuccess": MessageLookupByLibrary.simpleMessage(
       "Product saved successfully",

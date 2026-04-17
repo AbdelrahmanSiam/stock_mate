@@ -903,6 +903,26 @@ class S {
   String get camera {
     return Intl.message('Camera', name: 'camera', desc: '', args: []);
   }
+
+  /// `Product saved successfully`
+  String get productSaved {
+    return Intl.message(
+      'Product saved successfully',
+      name: 'productSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product deleted successfully`
+  String get productDeleted {
+    return Intl.message(
+      'Product deleted successfully',
+      name: 'productDeleted',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

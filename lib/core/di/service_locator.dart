@@ -31,17 +31,24 @@ import 'package:stock_mate/features/language/domain/repo/language_repo.dart';
 import 'package:stock_mate/features/language/domain/usecases/get_saved_language_use_case.dart';
 import 'package:stock_mate/features/language/domain/usecases/save_language_use_case.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
+import 'package:stock_mate/features/products/data/data_sources/remote/product_image_datasource/product_image_datasource.dart';
+import 'package:stock_mate/features/products/data/data_sources/remote/product_image_datasource/product_image_datasource_impl.dart';
 import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource/product_remote_datasource.dart';
 import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource/product_remote_datasource_impl.dart';
 import 'package:stock_mate/features/products/data/repo/product_repository_impl.dart';
 import 'package:stock_mate/features/products/domain/repo/product_repository.dart';
 import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case/add_product_use_case.dart';
+import 'package:stock_mate/features/products/domain/use_cases/delete_product_image_use_case/delete_product_image_usecase.dart';
+import 'package:stock_mate/features/products/domain/use_cases/delete_product_use_case/delete_product_use_case.dart';
+import 'package:stock_mate/features/products/domain/use_cases/update_product_use_case/update_product_usecase.dart';
+import 'package:stock_mate/features/products/domain/use_cases/upload_product_image_use_case/upload_product_image_use_case.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
 import 'package:stock_mate/features/splash/data/repo/splash_repo_impl.dart';
 import 'package:stock_mate/features/splash/domain/usecase/check_auth_use_case.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final getIt = GetIt.instance;
 
@@ -181,18 +188,47 @@ void setupServiceLocator() {
   );
 
   //                                         Add / Edit Product Feature
+  
+  // ── Supabase ───────────────────────────────────────────────
+  getIt.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
+  // ── Product DataSources ────────────────────────────────────
   getIt.registerLazySingleton<ProductRemoteDatasource>(
-    () => ProductRemoteDatasourceImpl(getIt<FirebaseFirestore>()),
+    () => ProductRemoteDatasourceImpl(FirebaseFirestore.instance),
   );
+  getIt.registerLazySingleton<ProductImageDataSource>(
+    () => ProductImageDataSourceImpl(getIt<SupabaseClient>()),
+  );
+  // ── Product Repository ─────────────────────────────────────
   getIt.registerLazySingleton<ProductRepository>(
     () => ProductRepositoryImpl(
       remoteDatasource: getIt<ProductRemoteDatasource>(),
+      productImageDataSource: getIt<ProductImageDataSource>(),
     ),
   );
+  // ── Product UseCases ───────────────────────────────────────
   getIt.registerLazySingleton<AddProductUseCase>(
     () => AddProductUseCase(getIt<ProductRepository>()),
   );
+  getIt.registerLazySingleton<UpdateProductUseCase>(
+    () => UpdateProductUseCase(getIt<ProductRepository>()),
+  );
+  getIt.registerLazySingleton<DeleteProductUseCase>(
+    () => DeleteProductUseCase(getIt<ProductRepository>()),
+  );
+  getIt.registerLazySingleton<UploadProductImageUseCase>(
+    () => UploadProductImageUseCase(getIt<ProductRepository>()),
+  );
+  getIt.registerLazySingleton<DeleteProductImageUseCase>(
+    () => DeleteProductImageUseCase(getIt<ProductRepository>()),
+  );
+  // ── AddEditProduct Cubit ───────────────────────────────────
   getIt.registerFactory<AddEditProductCubit>(
-    () => AddEditProductCubit(getIt<AddProductUseCase>()),
+    () => AddEditProductCubit(
+      getIt<AddProductUseCase>(),
+      getIt<UploadProductImageUseCase>(),
+      getIt<UpdateProductUseCase>(),
+      getIt<DeleteProductImageUseCase>(),
+      getIt<DeleteProductUseCase>(),
+    ),
   );
 }

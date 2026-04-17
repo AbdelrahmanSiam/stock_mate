@@ -104,6 +104,8 @@
     "productSavedSuccess": "Product saved successfully",
     "productDeletedSuccess": "Product deleted successfully",
     "imageUploadError": "Failed to upload image",
-    "gallery" : "Gallery",
-    "camera" : "Camera"
+    "gallery": "Gallery",
+    "camera": "Camera",
+    "productSaved": "Product saved successfully",
+    "productDeleted": "Product deleted successfully"
 }

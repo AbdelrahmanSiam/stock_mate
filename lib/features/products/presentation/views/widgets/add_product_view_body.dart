@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
+import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/profit_card_widget.dart';
@@ -12,8 +17,8 @@ import 'package:stock_mate/features/products/presentation/views/widgets/quantity
 import 'package:stock_mate/generated/l10n.dart';
 
 class AddProductViewBody extends StatefulWidget {
-  const AddProductViewBody({super.key});
-
+  const AddProductViewBody(this.product, {super.key});
+  final ProductEntity? product;
   @override
   State<AddProductViewBody> createState() => _AddProductViewBodyState();
 }
@@ -29,6 +34,34 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   int quantity = 0;
   double sellPrice = 0.0;
   double buyPrice = 0.0;
+  File? selectedImage;
+  String currentImageUrl = '';
+  bool get isEditMode => widget.product != null;
+
+  @override
+  void initState() {
+    initControllers();
+    super.initState();
+  }
+
+  void initControllers() {
+    if (isEditMode) {
+      final p = widget.product!;
+      nameController.text = p.name;
+      barcodeController.text = p.barcode;
+      categoryController.text = p.category;
+      buyPriceController.text = p.buyPrice.toString();
+      sellPriceController.text = p.sellPrice.toString();
+      thresholdController.text = p.threshold.toString();
+      quantity = p.quantity;
+      currentImageUrl = p.imageUrl;
+      buyPrice = p.buyPrice;
+      sellPrice = p.sellPrice;
+    } else {
+      thresholdController.text = '5';
+    }
+  }
+
   @override
   void dispose() {
     nameController.dispose();
@@ -43,15 +76,16 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   void onSave() {
     if (!formKey.currentState!.validate()) return;
     context.read<AddEditProductCubit>().saveProduct(
-      existingId: null,
-      name: nameController.text,
-      barcode: barcodeController.text,
-      category: categoryController.text,
+      existingId: widget.product?.id,
+      name: nameController.text.trim(),
+      barcode: barcodeController.text.trim(),
+      category: categoryController.text.trim(),
       buyPrice: double.tryParse(barcodeController.text) ?? 0,
       sellPrice: double.tryParse(sellPriceController.text) ?? 0,
       quantity: quantity,
       threshold: int.tryParse(thresholdController.text) ?? 5,
-      imageUrl: "imageUrl",
+      imageUrl: currentImageUrl,
+      oldImageUrl: widget.product?.imageUrl,
     );
   }
 
@@ -59,10 +93,34 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
   Widget build(BuildContext context) {
     return BlocConsumer<AddEditProductCubit, AddEditProductState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is AddEditProductImageUploadedState) {
+          setState(() => currentImageUrl = state.imageUrl);
+        } else if (state is AddEditProductSavedState) {
+          AppSnackBar.show(
+            context,
+            message: S.of(context).productSaved,
+            type: SnackBarType.success,
+          );
+          context.pop();
+        } else if (state is AddEditProductDeletedState) {
+          AppSnackBar.show(
+            context,
+            message: S.of(context).productDeleted,
+            type: SnackBarType.success,
+          );
+          context.pop();
+        } else if (state is AddEditProductErrorState) {
+          AppSnackBar.show(
+            context,
+            message: state.errMessage,
+            type: SnackBarType.error,
+          );
+        }
       },
       builder: (context, state) {
         final isSaving = state is AddEditProductSavingState;
+        final isDeleting = state is AddEditProductDeletingState;
+        final isUploading = state is AddEditProductImageUploadingState;
         return SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -70,7 +128,14 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               key: formKey,
               child: Column(
                 children: [
-                  ProductImagePickerWidget(existingImageUrl: '', isUploading: null, onImageSelected: (File value) {  },),
+                  ProductImagePickerWidget(
+                    existingImageUrl: currentImageUrl,
+                    isUploading: isUploading,
+                    onImageSelected: (file) {
+                      setState(() => selectedImage = file);
+                      context.read<AddEditProductCubit>().uploadImage(file);
+                    },
+                  ),
                   const SizedBox(height: 24),
                   CustomTextField(
                     label: S.of(context).productName,
@@ -182,6 +247,24 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     isLoading: isSaving,
                     onPressed: isSaving ? null : onSave,
                   ),
+                  // ── Delete Button — Edit only ──────────
+                  if (isEditMode) ...[
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                        onPressed: isDeleting
+                            ? null
+                            : () => _showDeleteDialog(context),
+                        child: Text(
+                          S.of(context).deleteProduct,
+                          style: AppStyles.bodyMediumRegular14(
+                            context,
+                          ).copyWith(color: AppColorsDarkMode.error),
+                        ),
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: 40),
                 ],
               ),
@@ -189,6 +272,42 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
           ),
         );
       },
+    );
+  }
+
+  void _showDeleteDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        backgroundColor: AppColorsDarkMode.surface,
+        title: Text(
+          S.of(context).deleteProduct,
+          style: AppStyles.sectionTitleSemiBold16(context),
+        ),
+        content: Text(
+          S.of(context).deleteProductConfirm,
+          style: AppStyles.bodyMediumRegular14(context),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(S.of(context).cancel),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              context.read<AddEditProductCubit>().deleteProduct(
+                id: widget.product!.id,
+                imageUrl: widget.product!.imageUrl,
+              );
+            },
+            child: Text(
+              S.of(context).delete,
+              style: TextStyle(color: AppColorsDarkMode.error),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

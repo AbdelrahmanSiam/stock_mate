@@ -9,6 +9,7 @@ import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashbo
 import 'package:stock_mate/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
 import 'package:stock_mate/features/language/presentation/views/language_view.dart';
+import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/add_product_view.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
@@ -87,10 +88,13 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.addProducts,
-      builder: (context, state) => BlocProvider(
-        create: (context) => getIt<AddEditProductCubit>(),
-        child: const AddProductView(),
-      ),
+      builder: (context, state) {
+        final product = state.extra as ProductEntity?;
+        return BlocProvider(
+          create: (context) => getIt<AddEditProductCubit>(),
+          child: AddProductView(product: product,),
+        );
+      },
     ),
   ],
 );
