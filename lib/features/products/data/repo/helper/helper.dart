@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:stock_mate/core/errors/failure.dart';
+import 'package:stock_mate/features/products/data/models/product_model.dart';
+import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 
 Future<Either<Failure, T>> handleFirebaseFirestoreRequests<T>(
   Future<T> Function() request,
@@ -13,4 +15,17 @@ Future<Either<Failure, T>> handleFirebaseFirestoreRequests<T>(
   } catch (e) {
     return Left(ServerFailure(errMessage: e.toString()));
   }
+}
+ProductModel entityToModel(ProductEntity entity) {
+  return ProductModel(
+    id:        entity.id,
+    name:      entity.name,
+    barcode:   entity.barcode,
+    category:  entity.category,
+    buyPrice:  entity.buyPrice,
+    sellPrice: entity.sellPrice,
+    quantity:  entity.quantity,
+    threshold: entity.threshold,
+    imageUrl:  entity.imageUrl,
+  );
 }

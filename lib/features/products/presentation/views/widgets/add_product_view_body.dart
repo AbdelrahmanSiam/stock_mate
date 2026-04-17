@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +10,7 @@ import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/product_delete_dialog.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/profit_card_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/quantity_stepper_widget.dart';
@@ -80,7 +80,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
       name: nameController.text.trim(),
       barcode: barcodeController.text.trim(),
       category: categoryController.text.trim(),
-      buyPrice: double.tryParse(barcodeController.text) ?? 0,
+      buyPrice: double.tryParse(buyPriceController.text) ?? 0,
       sellPrice: double.tryParse(sellPriceController.text) ?? 0,
       quantity: quantity,
       threshold: int.tryParse(thresholdController.text) ?? 5,
@@ -250,19 +250,19 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   // ── Delete Button — Edit only ──────────
                   if (isEditMode) ...[
                     const SizedBox(height: 12),
-                    SizedBox(
-                      width: double.infinity,
-                      child: TextButton(
-                        onPressed: isDeleting
-                            ? null
-                            : () => _showDeleteDialog(context),
-                        child: Text(
-                          S.of(context).deleteProduct,
-                          style: AppStyles.bodyMediumRegular14(
-                            context,
-                          ).copyWith(color: AppColorsDarkMode.error),
-                        ),
-                      ),
+                    CustomButton(
+                      onPressed: isDeleting
+                          ? null
+                          : () => showDialog(
+                              context: context,
+                              builder: (_) => ProductDeleteDialog(
+                                id: widget.product!.id,
+                                imageUrl: widget.product!.imageUrl,
+                              ),
+                            ),
+                      isLoading: isDeleting,
+                      buttonName: S.of(context).deleteProduct,
+                      color: Colors.white,
                     ),
                   ],
                   const SizedBox(height: 40),
@@ -272,42 +272,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
           ),
         );
       },
-    );
-  }
-
-  void _showDeleteDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: AppColorsDarkMode.surface,
-        title: Text(
-          S.of(context).deleteProduct,
-          style: AppStyles.sectionTitleSemiBold16(context),
-        ),
-        content: Text(
-          S.of(context).deleteProductConfirm,
-          style: AppStyles.bodyMediumRegular14(context),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(S.of(context).cancel),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              context.read<AddEditProductCubit>().deleteProduct(
-                id: widget.product!.id,
-                imageUrl: widget.product!.imageUrl,
-              );
-            },
-            child: Text(
-              S.of(context).delete,
-              style: TextStyle(color: AppColorsDarkMode.error),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

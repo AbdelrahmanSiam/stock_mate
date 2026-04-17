@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:stock_mate/core/errors/failure.dart';
 import 'package:stock_mate/features/products/data/data_sources/remote/product_image_datasource/product_image_datasource.dart';
 import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource/product_remote_datasource.dart';
-import 'package:stock_mate/features/products/data/models/product_model.dart';
 import 'package:stock_mate/features/products/data/repo/helper/helper.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/domain/repo/product_repository.dart';
@@ -20,7 +19,7 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<Either<Failure, void>> addProduct(ProductEntity product) {
     return handleFirebaseFirestoreRequests(
-      () => remoteDatasource.addProduct(product as ProductModel),
+      () => remoteDatasource.addProduct(entityToModel(product)),
     );
   }
 
@@ -43,7 +42,7 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<Either<Failure, void>> updateProduct(ProductEntity product) {
     return handleFirebaseFirestoreRequests(
-      () => remoteDatasource.updateProduct(product as ProductModel),
+      () => remoteDatasource.updateProduct(entityToModel(product)),
     );
   }
 
