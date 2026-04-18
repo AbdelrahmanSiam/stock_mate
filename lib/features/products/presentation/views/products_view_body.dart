@@ -4,6 +4,7 @@ import 'package:stock_mate/features/products/presentation/views/widgets/product_
 import 'package:stock_mate/features/products/presentation/views/widgets/product_filter_chips.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/products_search_bar.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/products_view_header.dart';
+
 class ProductsViewBody extends StatelessWidget {
   const ProductsViewBody({super.key});
 
@@ -17,7 +18,10 @@ class ProductsViewBody extends StatelessWidget {
           children: [
             ProductsViewHeader(),
             const SizedBox(height: 20),
-            ProductsSearchBar(),
+            ProductsSearchBar(
+              onChanged: (String value) {},
+              onBarcodeScanned: (String value) {},
+            ),
             const SizedBox(height: 20),
             ProductFilterChips(),
             const SizedBox(height: 20),
