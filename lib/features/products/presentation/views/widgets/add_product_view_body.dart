@@ -9,6 +9,7 @@ import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/features/auth/presentation/views/helper/auth_helper.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/barcode_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/delete_product_button.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_widget.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_prices_section.dart';
@@ -159,6 +160,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     hint: S.of(context).barcodeHint,
                     prefixIcon: Icons.qr_code_scanner_outlined,
                     controller: barcodeController,
+                    suffixIcon: BarcodeWidget(onTap: (){}),
                   ),
                   const SizedBox(height: 16),
                   ProductPricesSection(

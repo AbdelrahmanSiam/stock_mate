@@ -29,36 +29,45 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.all(20),
         child: BlocBuilder<ProductsCubit, ProductsState>(
           builder: (context, state) {
-            return Column(
-              children: [
-                ProductsViewHeader(),
-                const SizedBox(height: 20),
-                ProductsSearchBar(
-                  onChanged: (String nameQuery) {
-                    (context).read<ProductsCubit>().search(nameQuery);
-                  },
-                  onBarcodeScanned: (String barcodeQuery) {
-                    (context).read<ProductsCubit>().search(barcodeQuery);
-                  },
-                ),
-                const SizedBox(height: 20),
-                if (state is ProductsSuccessState) ...[
-                  ProductFilterChips(
-                    activeFilter: state.activeFilter,
-                    onFilterChanged: (f) =>
-                        context.read<ProductsCubit>().setFilter(f),
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(child: ProductsViewHeader()),
+                const SliverToBoxAdapter(child: SizedBox(height: 20)),
+                SliverToBoxAdapter(
+                  child: ProductsSearchBar(
+                    onChanged: (value) {
+                      context.read<ProductsCubit>().search(value);
+                    },
+                    onBarcodeScanned: (value) {
+                      context.read<ProductsCubit>().search(value);
+                    },
                   ),
-                  const SizedBox(height: 20),
-                ],
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 20)),
+                if (state is ProductsSuccessState)
+                  SliverToBoxAdapter(
+                    child: ProductFilterChips(
+                      activeFilter: state.activeFilter,
+                      onFilterChanged: (f) {
+                        context.read<ProductsCubit>().setFilter(f);
+                      },
+                    ),
+                  ),
+                const SliverToBoxAdapter(child: SizedBox(height: 20)),
                 if (state is ProductsLoadingState)
-                  const ProductSkeletonWidget()
+                  const SliverToBoxAdapter(child: ProductSkeletonWidget())
                 else if (state is ProductsFailureState)
-                  ProductsErrorState(message: state.errMessage)
+                  SliverToBoxAdapter(
+                    child: ProductsErrorState(message: state.errMessage),
+                  )
                 else if (state is ProductsSuccessState)
-                  ProductsViewContent(state: state),
+                  ProductsViewContent(
+                    state: state,
+                    isLoading: state is ProductsLoadingState,
+                  ),
               ],
             );
           },

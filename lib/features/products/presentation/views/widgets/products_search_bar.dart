@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/barcode_widget.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class ProductsSearchBar extends StatelessWidget {
@@ -44,14 +45,7 @@ class ProductsSearchBar extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: const Icon(
-              Icons.qr_code_scanner,
-              color: AppColorsDarkMode.textSecondary,
-              size: 22,
-            ),
-          ),
+          BarcodeWidget(onTap: (){},),
         ],
       ),
     );
