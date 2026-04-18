@@ -5,7 +5,8 @@ import 'package:stock_mate/core/errors/failure.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 
 abstract class ProductRepository {
-  Future<Either<Failure , void>> addProduct(ProductEntity product);
+  Stream<Either<Failure, List<ProductEntity>>> getProducts();
+  Future<Either<Failure, void>> addProduct(ProductEntity product);
   Future<Either<Failure, void>> updateProduct(ProductEntity product);
   Future<Either<Failure, void>> deleteProduct(String id);
   Future<Either<Failure, String>> uploadProductImage(File image);
