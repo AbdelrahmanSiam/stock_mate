@@ -11,6 +11,7 @@ part 'products_state.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
   final GetProductsUseCase getProductsUseCase;
+  Timer? debounce;
   StreamSubscription? streamSubscription;
   ProductsCubit(this.getProductsUseCase) : super(ProductsInitialState());
 
@@ -48,21 +49,28 @@ class ProductsCubit extends Cubit<ProductsState> {
   }
 
   void search(String query) {
-    if (state is! ProductsSuccessState) return;
-    final availableState = state as ProductsSuccessState;
-    emit(
-      ProductsSuccessState(
-        allProducts: availableState.allProducts,
-        filteredProducts: applyFilters(
-          products: availableState.allProducts,
-          filter: availableState.activeFilter,
-          query: query,
+  debounce?.cancel();
+  debounce = Timer(
+    const Duration(milliseconds: 400),
+    () {
+      if (state is! ProductsSuccessState) return;
+      final current =
+          state as ProductsSuccessState;
+      emit(
+        ProductsSuccessState(
+          allProducts: current.allProducts,
+          filteredProducts: applyFilters(
+            products: current.allProducts,
+            filter: current.activeFilter,
+            query: query,
+          ),
+          activeFilter: current.activeFilter,
+          searchQuery: query,
         ),
-        activeFilter: availableState.activeFilter,
-        searchQuery: query,
-      ),
-    );
-  }
+      );
+    },
+  );
+}
 
   void setFilter(ProductFilter filter) {
     if (state is! ProductsSuccessState) return;
@@ -83,6 +91,7 @@ class ProductsCubit extends Cubit<ProductsState> {
 
   @override
   Future<void> close() {
+    debounce?.cancel();
     streamSubscription?.cancel();
     return super.close();
   }
