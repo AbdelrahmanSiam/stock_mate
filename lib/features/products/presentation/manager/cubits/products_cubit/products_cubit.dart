@@ -14,7 +14,7 @@ class ProductsCubit extends Cubit<ProductsState> {
   StreamSubscription? streamSubscription;
   ProductsCubit(this.getProductsUseCase) : super(ProductsInitialState());
 
-  void allProducts({String? initialFilter}) {
+  void getProducts({String? initialFilter}) {
     emit(ProductsLoadingState());
     streamSubscription = getProductsUseCase.call().listen(
       (result) {
