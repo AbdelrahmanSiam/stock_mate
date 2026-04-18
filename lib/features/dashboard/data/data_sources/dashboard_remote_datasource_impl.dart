@@ -1,42 +1,48 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/dashboard/data/data_sources/dashboard_remote_datasource.dart';
-import 'package:stock_mate/features/dashboard/data/data_sources/helper/products_queries.dart';
-import 'package:stock_mate/features/dashboard/data/data_sources/helper/sales_queries.dart';
+import 'package:stock_mate/features/dashboard/data/data_sources/helper.dart';
 import 'package:stock_mate/features/dashboard/data/models/dashboard_model.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
 
 class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
   final FirebaseFirestore firestore;
 
-  DashboardRemoteDataSourceImpl({required this.firestore});
+  const DashboardRemoteDataSourceImpl({required this.firestore});
 
   @override
-  Stream<DashboardModel> getDashboardData() async* {
+  Stream<DashboardModel> getDashboardData() {
     final now = DateTime.now();
     final todayStart = DateTime(now.year, now.month, now.day);
     final monthStart = DateTime(now.year, now.month, 1);
     final weekStart = todayStart.subtract(const Duration(days: 6));
 
-    while (true) {
-      final result = await Future.wait([
-        getTotalProducts(firestore),
-        getTodaySalesCount(firestore, todayStart),
-        getMonthlyRevenue(firestore, monthStart),
-        getLowStockCount(firestore),
-        getWeeklySales(firestore, weekStart),
-        getRecentSales(firestore),
-      ]);
+    // Products realtime stream
+    final productsStream = firestore
+        .collection(kProductsCollection)
+        .snapshots();
+    // Sales realtime stream
+    final salesStream = firestore
+        .collection(kSalesCollection)
+        .where(
+          kCreatedAt,
+          isGreaterThanOrEqualTo: Timestamp.fromDate(weekStart),
+        )
+        .orderBy(kCreatedAt, descending: true)
+        .snapshots();
 
-      yield DashboardModel(
-        totalProducts: result[0] as int,
-        todaySales: result[1] as int,
-        monthlyRevenue: result[2] as double,
-        lowStockCount: result[3] as int,
-        weeklySalesAmounts: result[4] as List<double>,
-        recentSales: result[5] as List<RecentSaleEntity>,
+    // Combine both streams using Rx dart
+    return Rx.combineLatest2(productsStream, salesStream, (
+      QuerySnapshot<Map<String, dynamic>> productsSnapshot,
+      QuerySnapshot<Map<String, dynamic>> salesSnapshot,
+    ) {
+      return buildDashboard(
+        productsSnapshot: productsSnapshot,
+        salesSnapshot: salesSnapshot,
+        todayStart: todayStart,
+        monthStart: monthStart,
+        weekStart: weekStart,
       );
-
-      await Future.delayed(const Duration(seconds: 2));
-    }
+    });
   }
 }
