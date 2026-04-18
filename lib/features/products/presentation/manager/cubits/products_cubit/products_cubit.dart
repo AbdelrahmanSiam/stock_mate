@@ -47,6 +47,23 @@ class ProductsCubit extends Cubit<ProductsState> {
     );
   }
 
+  void search(String query) {
+    if (state is! ProductsSuccessState) return;
+    final availableState = state as ProductsSuccessState;
+    emit(
+      ProductsSuccessState(
+        allProducts: availableState.allProducts,
+        filteredProducts: applyFilters(
+          products: availableState.allProducts,
+          filter: availableState.activeFilter,
+          query: query,
+        ),
+        activeFilter: availableState.activeFilter,
+        searchQuery: query,
+      ),
+    );
+  }
+
   @override
   Future<void> close() {
     streamSubscription?.cancel();
