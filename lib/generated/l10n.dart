@@ -923,6 +923,36 @@ class S {
       args: [],
     );
   }
+
+  /// `No products yet`
+  String get noProductsYet {
+    return Intl.message(
+      'No products yet',
+      name: 'noProductsYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap + to add your first product`
+  String get noProductsYetSubtitle {
+    return Intl.message(
+      'Tap + to add your first product',
+      name: 'noProductsYetSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No results for this search`
+  String get noSearchResults {
+    return Intl.message(
+      'No results for this search',
+      name: 'noSearchResults',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

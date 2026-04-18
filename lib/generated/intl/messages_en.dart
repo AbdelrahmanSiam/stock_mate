@@ -128,7 +128,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "noProductsFoundSubtitle": MessageLookupByLibrary.simpleMessage(
       "Try searching with a different keyword",
     ),
+    "noProductsYet": MessageLookupByLibrary.simpleMessage("No products yet"),
+    "noProductsYetSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Tap + to add your first product",
+    ),
     "noSalesYet": MessageLookupByLibrary.simpleMessage("No sales yet"),
+    "noSearchResults": MessageLookupByLibrary.simpleMessage(
+      "No results for this search",
+    ),
     "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
     "out": MessageLookupByLibrary.simpleMessage("OUT"),

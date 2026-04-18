@@ -107,5 +107,8 @@
     "gallery": "Gallery",
     "camera": "Camera",
     "productSaved": "Product saved successfully",
-    "productDeleted": "Product deleted successfully"
+    "productDeleted": "Product deleted successfully",
+    "noProductsYet": "No products yet",
+    "noProductsYetSubtitle": "Tap + to add your first product",
+    "noSearchResults": "No results for this search"
 }

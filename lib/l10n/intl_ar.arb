@@ -107,5 +107,8 @@
     "gallery": "معرض الصور",
     "camera": "كاميرا",
     "productSaved": "تم حفظ المنتج بنجاح",
-    "productDeleted": "تم حذف المنتج بنجاح"
+    "productDeleted": "تم حذف المنتج بنجاح",
+    "noProductsYet": "لا توجد منتجات بعد",
+    "noProductsYetSubtitle": "اضغط + لإضافة أول منتج",
+    "noSearchResults": "لا نتائج لهذا البحث"
 }
