@@ -9,14 +9,14 @@ class DashboardRepositoryImpl implements DashboardRepository {
   final DashboardRemoteDataSource remoteDataSource;
   DashboardRepositoryImpl({required this.remoteDataSource});
   @override
-  Future<Either<Failure, DashboardEntity>> getDashboardData() async {
-    try {
-      final result = await remoteDataSource.getDashboardData();
-      return Right(result);
-    } on FirebaseException catch (e) {
-      return Left(ServerFailure.fromFirebaseFirestore(e));
-    } catch (e) {
-      return Left(ServerFailure(errMessage: e.toString()));
-    }
+  Stream<Either<Failure, DashboardEntity>> getDashboardData() {
+    return remoteDataSource
+        .getDashboardData()
+        .map((data) => Right<Failure, DashboardEntity>(data))
+        .handleError(
+          (error) => Left<Failure, DashboardEntity>(
+            ServerFailure(errMessage: error.toString()),
+          ),
+        );
   }
 }

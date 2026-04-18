@@ -9,28 +9,34 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
   final FirebaseFirestore firestore;
 
   DashboardRemoteDataSourceImpl({required this.firestore});
+
   @override
-  Future<DashboardModel> getDashboardData() async {
+  Stream<DashboardModel> getDashboardData() async* {
     final now = DateTime.now();
     final todayStart = DateTime(now.year, now.month, now.day);
     final monthStart = DateTime(now.year, now.month, 1);
     final weekStart = todayStart.subtract(const Duration(days: 6));
 
-    final result = await Future.wait([
-      getTotalProducts(firestore),
-      getTodaySalesCount(firestore, todayStart),
-      getMonthlyRevenue(firestore, monthStart),
-      getLowStockCount(firestore),
-      getWeeklySales(firestore, weekStart),
-      getRecentSales(firestore),
-    ]);
-    return DashboardModel(
-      totalProducts: result[0] as int,
-      todaySales: result[1] as int,
-      monthlyRevenue: result[2] as double,
-      lowStockCount: result[3] as int,
-      weeklySalesAmounts: result[4] as List<double>,
-      recentSales: result[5] as List<RecentSaleEntity>,
-    );
+    while (true) {
+      final result = await Future.wait([
+        getTotalProducts(firestore),
+        getTodaySalesCount(firestore, todayStart),
+        getMonthlyRevenue(firestore, monthStart),
+        getLowStockCount(firestore),
+        getWeeklySales(firestore, weekStart),
+        getRecentSales(firestore),
+      ]);
+
+      yield DashboardModel(
+        totalProducts: result[0] as int,
+        todaySales: result[1] as int,
+        monthlyRevenue: result[2] as double,
+        lowStockCount: result[3] as int,
+        weeklySalesAmounts: result[4] as List<double>,
+        recentSales: result[5] as List<RecentSaleEntity>,
+      );
+
+      await Future.delayed(const Duration(seconds: 2));
+    }
   }
 }
