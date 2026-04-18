@@ -25,7 +25,7 @@ abstract class AppRoutes {
   static const String forgetPassword = '/forgetPassword';
   static const String emailVerification = '/emailVerification';
   static const String dashboard = '/dashboard';
-  static const String addProducts = '/addProducts';
+  static const String addEditProducts = '/addEditProducts';
 }
 
 // ── Router Instance ───────────────────────────────────────────
@@ -87,7 +87,7 @@ final GoRouter appRouter = GoRouter(
       ),
     ),
     GoRoute(
-      path: AppRoutes.addProducts,
+      path: AppRoutes.addEditProducts,
       builder: (context, state) {
         final product = state.extra as ProductEntity?;
         return BlocProvider(

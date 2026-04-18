@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
-import 'package:stock_mate/features/products/presentation/views/widgets/product_card_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stock_mate/features/products/presentation/manager/cubits/products_cubit/products_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/product_filter_chips.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/product_skeleton_widget.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/products_error_state.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/products_search_bar.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/products_view_content.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/products_view_header.dart';
 
 class ProductsViewBody extends StatelessWidget {
@@ -14,40 +17,38 @@ class ProductsViewBody extends StatelessWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          children: [
-            ProductsViewHeader(),
-            const SizedBox(height: 20),
-            ProductsSearchBar(
-              onChanged: (String value) {},
-              onBarcodeScanned: (String value) {},
-            ),
-            const SizedBox(height: 20),
-            ProductFilterChips(),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 8,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: ProductCardWidget(
-                    productEntity: ProductEntity(
-                      id: "$index",
-                      name: 'Product $index',
-                      barcode: '123456789',
-                      category: 'Category',
-                      buyPrice: 10,
-                      sellPrice: 15,
-                      quantity: 50,
-                      threshold: 10,
-                      imageUrl:
-                          "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
-                    ),
-                  ),
+        child: BlocBuilder<ProductsCubit, ProductsState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                ProductsViewHeader(),
+                const SizedBox(height: 20),
+                ProductsSearchBar(
+                  onChanged: (String nameQuery) {
+                    (context).read<ProductsCubit>().search(nameQuery);
+                  },
+                  onBarcodeScanned: (String barcodeQuery) {
+                    (context).read<ProductsCubit>().search(barcodeQuery);
+                  },
                 ),
-              ),
-            ),
-          ],
+                const SizedBox(height: 20),
+                if (state is ProductsSuccessState) ...[
+                  ProductFilterChips(
+                    activeFilter: state.activeFilter,
+                    onFilterChanged: (f) =>
+                        context.read<ProductsCubit>().setFilter(f),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+                if (state is ProductsLoadingState)
+                  const ProductSkeletonWidget()
+                else if (state is ProductsFailureState)
+                  ProductsErrorState(message: state.errMessage)
+                else if (state is ProductsSuccessState)
+                  ProductsViewContent(state: state),
+              ],
+            );
+          },
         ),
       ),
     );

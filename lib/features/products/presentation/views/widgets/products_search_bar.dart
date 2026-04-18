@@ -44,7 +44,6 @@ class ProductsSearchBar extends StatelessWidget {
               ),
             ),
           ),
-          // ✅ Barcode scan icon
           GestureDetector(
             onTap: () {},
             child: const Icon(

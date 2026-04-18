@@ -28,7 +28,7 @@ class _DashboardViewState extends State<DashboardView> {
       body: pages[currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          GoRouter.of(context).push(AppRoutes.addProducts);
+          GoRouter.of(context).push(AppRoutes.addEditProducts);
         },
         child: const Icon(Icons.add),
       ),
