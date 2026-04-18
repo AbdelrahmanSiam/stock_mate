@@ -27,4 +27,4 @@ final class ProductsFailureState extends ProductsState {
   ProductsFailureState({required this.errMessage});
 }
 
-enum ProductFilter { all, lowStack, outOfStack }
+enum ProductFilter { all, lowStock, outOfStock }
