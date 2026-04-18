@@ -40,9 +40,11 @@ import 'package:stock_mate/features/products/domain/repo/product_repository.dart
 import 'package:stock_mate/features/products/domain/use_cases/add_product_use_case/add_product_use_case.dart';
 import 'package:stock_mate/features/products/domain/use_cases/delete_product_image_use_case/delete_product_image_usecase.dart';
 import 'package:stock_mate/features/products/domain/use_cases/delete_product_use_case/delete_product_use_case.dart';
+import 'package:stock_mate/features/products/domain/use_cases/get_products_use_case/get_products_use_case.dart';
 import 'package:stock_mate/features/products/domain/use_cases/update_product_use_case/update_product_usecase.dart';
 import 'package:stock_mate/features/products/domain/use_cases/upload_product_image_use_case/upload_product_image_use_case.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
+import 'package:stock_mate/features/products/presentation/manager/cubits/products_cubit/products_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
 import 'package:stock_mate/features/splash/data/repo/splash_repo_impl.dart';
@@ -188,7 +190,7 @@ void setupServiceLocator() {
   );
 
   //                                         Add / Edit Product Feature
-  
+
   // ── Supabase ───────────────────────────────────────────────
   getIt.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
   // ── Product DataSources ────────────────────────────────────
@@ -230,5 +232,15 @@ void setupServiceLocator() {
       getIt<DeleteProductImageUseCase>(),
       getIt<DeleteProductUseCase>(),
     ),
+  );
+  //                                          Products Feature
+  // UseCases
+  getIt.registerLazySingleton<GetProductsUseCase>(
+    () => GetProductsUseCase(productRepository: getIt<ProductRepository>()),
+  );
+
+  // ProductCubit
+  getIt.registerFactory<ProductsCubit>(
+    () => ProductsCubit( getIt<GetProductsUseCase>()),
   );
 }

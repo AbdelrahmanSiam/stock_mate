@@ -8,8 +8,21 @@ import 'package:stock_mate/features/products/presentation/views/widgets/products
 import 'package:stock_mate/features/products/presentation/views/widgets/products_view_content.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/products_view_header.dart';
 
-class ProductsViewBody extends StatelessWidget {
-  const ProductsViewBody({super.key});
+class ProductsViewBody extends StatefulWidget {
+  const ProductsViewBody({super.key, this.initialFilter});
+  final String? initialFilter;
+  @override
+  State<ProductsViewBody> createState() => _ProductsViewBodyState();
+}
+
+class _ProductsViewBodyState extends State<ProductsViewBody> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<ProductsCubit>().getProducts(
+      initialFilter: widget.initialFilter,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

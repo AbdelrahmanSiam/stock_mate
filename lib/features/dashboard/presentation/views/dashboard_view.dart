@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:stock_mate/core/di/service_locator.dart';
 import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashboard_cubit/dashboard_cubit.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_view_body.dart';
+import 'package:stock_mate/features/products/presentation/manager/cubits/products_cubit/products_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/products_view_body.dart';
 
 class DashboardView extends StatefulWidget {
-  const DashboardView({super.key});
+  const DashboardView({super.key, this.productsInitialFilter});
 
+  final String? productsInitialFilter;
   @override
   State<DashboardView> createState() => _DashboardViewState();
 }
@@ -18,7 +21,10 @@ class _DashboardViewState extends State<DashboardView> {
   int currentIndex = 0;
   final pages = [
     const DashboardViewBody(),
-    ProductsViewBody(),
+    BlocProvider(
+      create: (context) => getIt<ProductsCubit>(),
+      child: ProductsViewBody(),
+    ),
     Center(child: Text("Sales")),
     Center(child: Text("Settings")),
   ];
