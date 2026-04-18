@@ -65,7 +65,7 @@ class ProductsCubit extends Cubit<ProductsState> {
   }
 
   void setFilter(ProductFilter filter) {
-    if (state is ProductsSuccessState) return;
+    if (state is! ProductsSuccessState) return;
     final currentState = state as ProductsSuccessState;
     emit(
       ProductsSuccessState(

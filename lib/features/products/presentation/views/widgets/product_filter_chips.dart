@@ -27,7 +27,7 @@ class ProductFilterChips extends StatelessWidget {
       child: Row(
         children: filters.map((entry) {
           final (filter, label) = entry;
-          final bool isActive   = activeFilter == filter;
+          final bool isActive  = activeFilter == filter;
 
           return Padding(
             padding: const EdgeInsets.only(right: 10),

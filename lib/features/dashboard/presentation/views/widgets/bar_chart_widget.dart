@@ -14,6 +14,16 @@ class BarChartWidget extends StatelessWidget {
   final double maxSalesValue;
   final List<double> salesData;
 
+  double get safeMaxY {
+    if (maxSalesValue <= 0) return 10;
+    return maxSalesValue;
+  }
+
+  double get safeInterval {
+    if (maxSalesValue <= 0) return 1;
+    return (safeMaxY / 4).ceilToDouble();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -23,69 +33,94 @@ class BarChartWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColorsDarkMode.surface,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColorsDarkMode.border, width: 1),
+          border: Border.all(
+            color: AppColorsDarkMode.border,
+            width: 1,
+          ),
         ),
         child: BarChart(
           BarChartData(
-            maxY: maxSalesValue,
             minY: 0,
+            maxY: safeMaxY,
+
             gridData: FlGridData(
               show: true,
               drawVerticalLine: false,
               drawHorizontalLine: false,
-              horizontalInterval: maxSalesValue / 4,
-              getDrawingHorizontalLine: (value) =>
-                  FlLine(color: AppColorsDarkMode.border, strokeWidth: 0.5),
+              horizontalInterval: safeInterval,
+              getDrawingHorizontalLine: (value) {
+                return FlLine(
+                  color: AppColorsDarkMode.border,
+                  strokeWidth: .5,
+                );
+              },
             ),
+
             borderData: FlBorderData(show: false),
+
             titlesData: FlTitlesData(
-              // only down is shown and the rest is hidden
               topTitles: const AxisTitles(
                 sideTitles: SideTitles(showTitles: false),
               ),
+
               rightTitles: const AxisTitles(
                 sideTitles: SideTitles(showTitles: false),
               ),
+
+              leftTitles: const AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
+
               bottomTitles: AxisTitles(
                 sideTitles: SideTitles(
                   showTitles: true,
                   getTitlesWidget: (value, meta) {
                     final index = value.toInt();
-                    if (index < 0 || index >= dayLabels.length) {
+
+                    if (index < 0 ||
+                        index >= dayLabels.length) {
                       return const SizedBox();
                     }
+
                     return Padding(
                       padding: const EdgeInsets.only(top: 8),
                       child: Text(
                         dayLabels[index],
-                        style: AppStyles.captionRegular10(context),
+                        style:
+                            AppStyles.captionRegular10(
+                              context,
+                            ),
                       ),
                     );
                   },
                 ),
               ),
-              leftTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
-              ),
             ),
+
             barGroups: List.generate(
               salesData.length,
-              (index) => BarChartGroupData(
-                x: index,
-                barRods: [
-                  BarChartRodData(
-                    toY: salesData[index],
-                    // today is primary color and the rest of the days is border color
-                    color: index == salesData.length - 1
-                        ? AppColorsDarkMode.primary
-                        : AppColorsDarkMode.border,
-                    width: 22,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(6),
+              (index) {
+                return BarChartGroupData(
+                  x: index,
+                  barRods: [
+                    BarChartRodData(
+                      toY: salesData[index],
+
+                      color: index ==
+                              salesData.length - 1
+                          ? AppColorsDarkMode.primary
+                          : AppColorsDarkMode.border,
+
+                      width: 22,
+
+                      borderRadius:
+                          const BorderRadius.vertical(
+                        top: Radius.circular(6),
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                );
+              },
             ),
           ),
         ),

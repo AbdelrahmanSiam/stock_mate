@@ -47,7 +47,7 @@ class ProductsSearchBar extends StatelessWidget {
           GestureDetector(
             onTap: () {},
             child: const Icon(
-              Icons.barcode_reader,
+              Icons.qr_code_scanner,
               color: AppColorsDarkMode.textSecondary,
               size: 22,
             ),

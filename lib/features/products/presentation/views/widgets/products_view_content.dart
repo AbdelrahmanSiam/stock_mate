@@ -20,7 +20,7 @@ class ProductsViewContent extends StatelessWidget {
     }
     return Expanded(
       child: ListView.builder(
-        itemCount: 8,
+        itemCount: currentState.filteredProducts.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: GestureDetector(
