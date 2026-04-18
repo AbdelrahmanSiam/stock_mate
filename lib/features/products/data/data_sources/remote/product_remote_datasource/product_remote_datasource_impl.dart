@@ -26,4 +26,17 @@ class ProductRemoteDatasourceImpl implements ProductRemoteDatasource {
         .doc(product.id)
         .update(product.toFirebase());
   }
+
+  @override
+  Stream<List<ProductModel>> getProducts() {
+    return firestore
+        .collection(kProductsCollection)
+        .orderBy(kCreatedAt, descending: true)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => ProductModel.fromFirebase(doc.data(), doc.id))
+              .toList(),
+        );
+  }
 }

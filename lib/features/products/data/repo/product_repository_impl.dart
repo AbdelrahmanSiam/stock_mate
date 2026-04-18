@@ -54,4 +54,16 @@ class ProductRepositoryImpl implements ProductRepository {
       return Left(ServerFailure(errMessage: e.toString()));
     }
   }
+
+  @override
+  Stream<Either<Failure, List<ProductEntity>>> getProducts() {
+    return remoteDatasource
+        .getProducts()
+        .map((products) => Right<Failure, List<ProductEntity>>(products))
+        .handleError(
+          (error) => Left<Failure, List<ProductEntity>>(
+            ServerFailure(errMessage: error.toString()),
+          ),
+        );
+  }
 }
