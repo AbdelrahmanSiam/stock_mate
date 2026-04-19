@@ -50,5 +50,7 @@
 			<string>en</string>
 			<string>ar</string>
 		</array>
+		<key>NSCameraUsageDescription</key>
+		<string>Camera is needed to scan product barcodes</string>
 	</dict>
 </plist>

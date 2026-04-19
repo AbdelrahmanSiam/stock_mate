@@ -113,6 +113,5 @@
     "noSearchResults": "No results for this search",
     "scanBarcode" :"Scan Barcode",
     "pointAtProductBarcode":"Point at product barcode",
-    "pointAtBarcodeToSearch" : "Point at barcode to search",
-    "search" : "Search"
+    "pointAtBarcodeToSearch" : "Point at barcode to search"
 }

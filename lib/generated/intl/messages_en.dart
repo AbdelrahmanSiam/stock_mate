@@ -188,7 +188,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("SAVE PRODUCT"),
     "scanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
-    "search": MessageLookupByLibrary.simpleMessage("Search"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "Search by name or barcode",
     ),

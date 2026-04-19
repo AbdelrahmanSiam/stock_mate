@@ -109,7 +109,7 @@ class _BarcodeScannerViewState extends State<BarcodeScannerView> {
             right: 0,
             child: Center(
               child: ScannerHintWidget(
-                hint: widget.scanContext == S.of(context).products
+                hint: widget.scanContext == "product"
                     ? S.of(context).pointAtProductBarcode
                     : S.of(context).pointAtBarcodeToSearch,
               ),

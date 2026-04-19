@@ -190,7 +190,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("حفظ المنتج"),
     "scanBarcode": MessageLookupByLibrary.simpleMessage("مسح الرمز الشريطي"),
-    "search": MessageLookupByLibrary.simpleMessage("بحث"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "ابحث بالاسم أو الباركود",
     ),

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/app_snack_bar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
@@ -160,7 +161,17 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     hint: S.of(context).barcodeHint,
                     prefixIcon: Icons.qr_code_scanner_outlined,
                     controller: barcodeController,
-                    suffixIcon: BarcodeWidget(onTap: (){}),
+                    suffixIcon: BarcodeWidget(
+                      onTap: () async {
+                        final String? scanned = await context.push<String>(
+                          AppRoutes.barcodeScanner,
+                          extra: 'product',
+                        );
+                        if (scanned != null) {
+                          barcodeController.text = scanned;
+                        }
+                      },
+                    ),
                   ),
                   const SizedBox(height: 16),
                   ProductPricesSection(

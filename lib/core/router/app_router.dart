@@ -102,7 +102,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.barcodeScanner,
       builder: (context, state) {
-        final scanContext = state.extra as String? ?? S.of(context).search;
+        final scanContext = state.extra as String? ?? "search";
         return BarcodeScannerView(scanContext: scanContext);
       },
     ),
