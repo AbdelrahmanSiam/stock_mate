@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:stock_mate/core/constants/constants.dart';
@@ -15,10 +16,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Supabase.initialize(
-    url: 'https://wvmqyivwejmkihpocskd.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind2bXF5aXZ3ZWpta2locG9jc2tkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzODQ5MjMsImV4cCI6MjA5MTk2MDkyM30.PwEmKdZsw6gbai-hWENkL5QD5yLzzPVNIhxoiu1iMLU',
+    url: dotenv.env["SUPABASE_URL"]!,
+    anonKey: dotenv.env["SUPABASE_ANON_KEY"]!,
   );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
