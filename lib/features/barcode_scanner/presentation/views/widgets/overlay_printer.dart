@@ -15,7 +15,7 @@ class OverlayPainter extends CustomPainter {
       height: scanSize,
     );
 
-    // overlay with  in the middle
+    // overlay with hole in the middle
     canvas.drawPath(
       Path.combine(
         PathOperation.difference,

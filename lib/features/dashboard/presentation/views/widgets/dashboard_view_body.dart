@@ -7,8 +7,13 @@ import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboa
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_error_view.dart';
 
 class DashboardViewBody extends StatefulWidget {
-  const DashboardViewBody({super.key});
-
+  const DashboardViewBody({
+    super.key,
+    required this.onLowStockTapped,
+    required this.onAllProductsTapped,
+  });
+  final void Function() onLowStockTapped;
+  final void Function() onAllProductsTapped;
   @override
   State<DashboardViewBody> createState() => _DashboardViewBodyState();
 }
@@ -34,9 +39,18 @@ class _DashboardViewBodyState extends State<DashboardViewBody> {
           }
           if (state is DashboardLoadedState) {
             final dashboard = state.dashboard;
-            return DashboardContent(isLoading: false, dashboard: dashboard);
+            return DashboardContent(
+              isLoading: false,
+              dashboard: dashboard,
+              onLowStockTapped: widget.onLowStockTapped,
+              onAllProductsTapped: widget.onAllProductsTapped,
+            );
           } else {
-            return const DashboardContent(isLoading: true);
+            return DashboardContent(
+              isLoading: true,
+              onLowStockTapped: widget.onLowStockTapped,
+              onAllProductsTapped: widget.onAllProductsTapped,
+            );
           }
         },
       ),

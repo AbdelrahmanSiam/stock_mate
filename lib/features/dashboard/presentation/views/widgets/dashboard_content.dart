@@ -7,10 +7,18 @@ import 'package:stock_mate/features/dashboard/presentation/views/widgets/stat_ca
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/weekly_sales_chart.dart';
 
 class DashboardContent extends StatelessWidget {
-  const DashboardContent({super.key, this.dashboard, required this.isLoading});
+  const DashboardContent({
+    super.key,
+    this.dashboard,
+    required this.isLoading,
+    required this.onLowStockTapped,
+    required this.onAllProductsTapped,
+  });
 
   final dynamic dashboard;
   final bool isLoading;
+  final void Function() onLowStockTapped;
+  final void Function() onAllProductsTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,11 @@ class DashboardContent extends StatelessWidget {
           Spacer(),
           DashboardHeaderWidget(),
           const SizedBox(height: 30),
-          StatCardsGrid(dashboard: isLoading ? fakeDashboard() : dashboard),
+          StatCardsGrid(
+            dashboard: isLoading ? fakeDashboard() : dashboard,
+            onLowStockTapped: onLowStockTapped,
+            onAllProductsTapped: onAllProductsTapped,
+          ),
           const SizedBox(height: 30),
           WeeklySalesChart(
             salesData: isLoading

@@ -6,8 +6,15 @@ import 'stat_card_widget.dart';
 
 class StatCardsGrid extends StatelessWidget {
   final DashboardEntity dashboard;
+  final void Function() onLowStockTapped;
+  final void Function() onAllProductsTapped;
 
-  const StatCardsGrid({super.key, required this.dashboard});
+  const StatCardsGrid({
+    super.key,
+    required this.dashboard,
+    required this.onLowStockTapped,
+    required this.onAllProductsTapped,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +27,7 @@ class StatCardsGrid extends StatelessWidget {
                 icon: Icons.inventory_2_outlined,
                 title: S.of(context).totalProducts,
                 value: '${dashboard.totalProducts}',
+                onTap: onAllProductsTapped,
               ),
             ),
             const SizedBox(width: 12),
@@ -52,9 +60,7 @@ class StatCardsGrid extends StatelessWidget {
                 value: '${dashboard.lowStockCount}',
                 valueColor: AppColorsDarkMode.error,
                 showAlertBadge: dashboard.lowStockCount < 5,
-                onTap: () {
-                  // go to products screen with low stock filter
-                },
+                onTap: onLowStockTapped,
               ),
             ),
           ],
