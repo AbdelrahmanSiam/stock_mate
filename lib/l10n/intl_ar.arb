@@ -113,5 +113,6 @@
     "noSearchResults": "لا نتائج لهذا البحث",
     "scanBarcode": "مسح الرمز الشريطي",
     "pointAtProductBarcode": "أشر إلى رمز المنتج الشريطي.",
-    "pointAtBarcodeToSearch": "وجّه المؤشر نحو الرمز الشريطي للبحث"
+    "pointAtBarcodeToSearch": "وجّه المؤشر نحو الرمز الشريطي للبحث",
+    "search" : "بحث"
 }

@@ -69,7 +69,7 @@ class _BarcodeScannerViewState extends State<BarcodeScannerView> {
           onPressed: () => context.pop(null),
         ),
         title: Text(
-          'Scan Barcode',
+          S.of(context).scanBarcode,
           style: AppStyles.sectionTitleSemiBold16(
             context,
           ).copyWith(color: Colors.white),

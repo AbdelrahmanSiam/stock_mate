@@ -5,6 +5,7 @@ import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cu
 import 'package:stock_mate/features/auth/presentation/views/email_verification_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/forget_password_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/register_view.dart';
+import 'package:stock_mate/features/barcode_scanner/presentation/views/barcode_scanner_view.dart';
 import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashboard_cubit/dashboard_cubit.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/dashboard_view.dart';
 import 'package:stock_mate/features/language/presentation/cubits/language_cubit/language_cubit.dart';
@@ -15,6 +16,7 @@ import 'package:stock_mate/features/products/presentation/views/add_product_view
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
 import 'package:stock_mate/features/splash/presentation/views/splash_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/login_view.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 // ── Route Names ──────────────────────────────────────────────
 abstract class AppRoutes {
@@ -26,6 +28,7 @@ abstract class AppRoutes {
   static const String emailVerification = '/emailVerification';
   static const String dashboard = '/dashboard';
   static const String addEditProducts = '/addEditProducts';
+  static const String barcodeScanner = '/barcode-scanner';
 }
 
 // ── Router Instance ───────────────────────────────────────────
@@ -92,8 +95,15 @@ final GoRouter appRouter = GoRouter(
         final product = state.extra as ProductEntity?;
         return BlocProvider(
           create: (context) => getIt<AddEditProductCubit>(),
-          child: AddProductView(product: product,),
+          child: AddProductView(product: product),
         );
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.barcodeScanner,
+      builder: (context, state) {
+        final scanContext = state.extra as String? ?? S.of(context).search;
+        return BarcodeScannerView(scanContext: scanContext);
       },
     ),
   ],
