@@ -146,6 +146,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
       "كلمات المرور غير متطابقة",
     ),
+    "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
+      "وجّه المؤشر نحو الرمز الشريطي للبحث",
+    ),
+    "pointAtProductBarcode": MessageLookupByLibrary.simpleMessage(
+      "أشر إلى رمز المنتج الشريطي.",
+    ),
     "proTip": MessageLookupByLibrary.simpleMessage(
       "نصيحة احترافية من ستوك ميت",
     ),
@@ -183,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("حفظ المنتج"),
+    "scanBarcode": MessageLookupByLibrary.simpleMessage("مسح الرمز الشريطي"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "ابحث بالاسم أو الباركود",
     ),

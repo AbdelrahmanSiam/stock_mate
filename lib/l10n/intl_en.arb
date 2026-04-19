@@ -110,5 +110,8 @@
     "productDeleted": "Product deleted successfully",
     "noProductsYet": "No products yet",
     "noProductsYetSubtitle": "Tap + to add your first product",
-    "noSearchResults": "No results for this search"
+    "noSearchResults": "No results for this search",
+    "scanBarcode" :"Scan Barcode",
+    "pointAtProductBarcode":"Point at product barcode",
+    "pointAtBarcodeToSearch" : "Point at barcode to search"
 }

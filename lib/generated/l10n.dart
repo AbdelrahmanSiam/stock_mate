@@ -953,6 +953,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Scan Barcode`
+  String get scanBarcode {
+    return Intl.message(
+      'Scan Barcode',
+      name: 'scanBarcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Point at product barcode`
+  String get pointAtProductBarcode {
+    return Intl.message(
+      'Point at product barcode',
+      name: 'pointAtProductBarcode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Point at barcode to search`
+  String get pointAtBarcodeToSearch {
+    return Intl.message(
+      'Point at barcode to search',
+      name: 'pointAtBarcodeToSearch',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -144,6 +144,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
       "Passwords do not match",
     ),
+    "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
+      "Point at barcode to search",
+    ),
+    "pointAtProductBarcode": MessageLookupByLibrary.simpleMessage(
+      "Point at product barcode",
+    ),
     "proTip": MessageLookupByLibrary.simpleMessage("StockMate Pro Tip"),
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
@@ -181,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("SAVE PRODUCT"),
+    "scanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "Search by name or barcode",
     ),

@@ -110,5 +110,8 @@
     "productDeleted": "تم حذف المنتج بنجاح",
     "noProductsYet": "لا توجد منتجات بعد",
     "noProductsYetSubtitle": "اضغط + لإضافة أول منتج",
-    "noSearchResults": "لا نتائج لهذا البحث"
+    "noSearchResults": "لا نتائج لهذا البحث",
+    "scanBarcode": "مسح الرمز الشريطي",
+    "pointAtProductBarcode": "أشر إلى رمز المنتج الشريطي.",
+    "pointAtBarcodeToSearch": "وجّه المؤشر نحو الرمز الشريطي للبحث"
 }
