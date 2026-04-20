@@ -20,6 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(count, total) => "Sell ${count} items for ${total} EGP?";
+
+  static String m1(count) => "Only ${count} available";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("AM"),
@@ -42,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "buyPrice": MessageLookupByLibrary.simpleMessage("Buy Price"),
     "camera": MessageLookupByLibrary.simpleMessage("Camera"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cash": MessageLookupByLibrary.simpleMessage("Cash"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
     "categoryHint": MessageLookupByLibrary.simpleMessage(
       "e.g. Electronics, Food",
@@ -50,6 +55,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Check your connection",
     ),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "confirmSale": MessageLookupByLibrary.simpleMessage("Confirm Sale"),
+    "confirmSaleMessage": m0,
+    "confirmSaleTitle": MessageLookupByLibrary.simpleMessage("Confirm Sale"),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
@@ -58,6 +66,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteProduct": MessageLookupByLibrary.simpleMessage("Delete Product"),
     "deleteProductConfirm": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to delete this product?",
+    ),
+    "discard": MessageLookupByLibrary.simpleMessage("Discard"),
+    "discardSale": MessageLookupByLibrary.simpleMessage("Discard Sale?"),
+    "discardSaleMessage": MessageLookupByLibrary.simpleMessage(
+      "Your invoice will be lost",
     ),
     "editProduct": MessageLookupByLibrary.simpleMessage("Edit Product"),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
@@ -70,6 +83,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailVerified": MessageLookupByLibrary.simpleMessage(
       "Email Verification link sent successfully",
+    ),
+    "emptyInvoice": MessageLookupByLibrary.simpleMessage(
+      "Add at least one product",
     ),
     "estimatedProfit": MessageLookupByLibrary.simpleMessage("ESTIMATED PROFIT"),
     "evening": MessageLookupByLibrary.simpleMessage("Good Evening"),
@@ -100,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "inStock": MessageLookupByLibrary.simpleMessage("IN STOCK"),
     "initialQuantity": MessageLookupByLibrary.simpleMessage("Initial Quantity"),
+    "insufficientStock": m1,
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "Invalid email or password",
     ),
@@ -110,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPassword": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 6 characters",
     ),
+    "items": MessageLookupByLibrary.simpleMessage("Items"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
     ),
@@ -121,7 +139,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkError": MessageLookupByLibrary.simpleMessage(
       "Check your internet connection",
     ),
+    "newSale": MessageLookupByLibrary.simpleMessage("New Sale"),
     "night": MessageLookupByLibrary.simpleMessage("Good Night"),
+    "noItemsAdded": MessageLookupByLibrary.simpleMessage("No items added yet"),
+    "noItemsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Search or scan a product to add it",
+    ),
     "noProductsFound": MessageLookupByLibrary.simpleMessage(
       "No products found",
     ),
@@ -144,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
       "Passwords do not match",
     ),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "perUnit": MessageLookupByLibrary.simpleMessage("EGP / unit"),
     "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
       "Point at barcode to search",
     ),
@@ -185,12 +210,19 @@ class MessageLookup extends MessageLookupByLibrary {
       "Reset password link sent successfully",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+    "saleConfirmed": MessageLookupByLibrary.simpleMessage(
+      "Sale confirmed successfully!",
+    ),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("SAVE PRODUCT"),
     "scanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "Search by name or barcode",
     ),
+    "searchProductOrSku": MessageLookupByLibrary.simpleMessage(
+      "Search product name or SKU...",
+    ),
+    "selectedItems": MessageLookupByLibrary.simpleMessage("SELECTED ITEMS"),
     "sellPrice": MessageLookupByLibrary.simpleMessage("Sell Price"),
     "sellingAtLoss": MessageLookupByLibrary.simpleMessage("Selling at a loss!"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
@@ -202,10 +234,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),
+    "subtotal": MessageLookupByLibrary.simpleMessage("Subtotal"),
     "todaySales": MessageLookupByLibrary.simpleMessage("Today\'s Sales"),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "Too many attempts, try again later",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("Total"),
     "totalProducts": MessageLookupByLibrary.simpleMessage("Total Products"),
     "unknownError": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
@@ -218,6 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Verify Your Email",
     ),
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
+    "visa": MessageLookupByLibrary.simpleMessage("Visa"),
     "weeklySalesChartTitle": MessageLookupByLibrary.simpleMessage(
       "Sales This Week",
     ),

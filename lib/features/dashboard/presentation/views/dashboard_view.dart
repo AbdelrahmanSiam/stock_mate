@@ -20,6 +20,7 @@ class _DashboardViewState extends State<DashboardView> {
   int currentIndex = 0;
   late final ProductsCubit productsCubit;
   String? productsFilter;
+
   @override
   void initState() {
     productsCubit = getIt<ProductsCubit>();

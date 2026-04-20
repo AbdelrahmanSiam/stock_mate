@@ -20,6 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
+  static String m0(count, total) => "بيع ${count} منتجات بـ ${total} جنيه؟";
+
+  static String m1(count) => "متاح ${count} فقط";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("ص"),
@@ -44,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "buyPrice": MessageLookupByLibrary.simpleMessage("سعر الشراء"),
     "camera": MessageLookupByLibrary.simpleMessage("كاميرا"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "cash": MessageLookupByLibrary.simpleMessage("كاش"),
     "category": MessageLookupByLibrary.simpleMessage("الفئة"),
     "categoryHint": MessageLookupByLibrary.simpleMessage(
       "مثل: إلكترونيات، أغذية",
@@ -54,6 +59,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
+    "confirmSale": MessageLookupByLibrary.simpleMessage("تأكيد البيع"),
+    "confirmSaleMessage": m0,
+    "confirmSaleTitle": MessageLookupByLibrary.simpleMessage("تأكيد البيع"),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
     "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
@@ -62,6 +70,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteProduct": MessageLookupByLibrary.simpleMessage("حذف المنتج"),
     "deleteProductConfirm": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد من حذف هذا المنتج؟",
+    ),
+    "discard": MessageLookupByLibrary.simpleMessage("تجاهل"),
+    "discardSale": MessageLookupByLibrary.simpleMessage("تجاهل البيع؟"),
+    "discardSaleMessage": MessageLookupByLibrary.simpleMessage(
+      "سيتم فقد الفاتورة",
     ),
     "editProduct": MessageLookupByLibrary.simpleMessage("تعديل منتج"),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
@@ -74,6 +87,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "emailVerified": MessageLookupByLibrary.simpleMessage(
       "تم إرسال رابط رابط تأكيد بريدك الإلكتروني بنجاح",
+    ),
+    "emptyInvoice": MessageLookupByLibrary.simpleMessage(
+      "أضف منتجاً واحداً على الأقل",
     ),
     "estimatedProfit": MessageLookupByLibrary.simpleMessage("الربح المتوقع"),
     "evening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
@@ -98,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "imageUploadError": MessageLookupByLibrary.simpleMessage("فشل رفع الصورة"),
     "inStock": MessageLookupByLibrary.simpleMessage("متوفر"),
     "initialQuantity": MessageLookupByLibrary.simpleMessage("الكمية الأولية"),
+    "insufficientStock": m1,
     "invalidCredentials": MessageLookupByLibrary.simpleMessage(
       "البريد أو كلمة المرور غير صحيحة",
     ),
@@ -110,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPassword": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور 6 أحرف على الأقل",
     ),
+    "items": MessageLookupByLibrary.simpleMessage("منتجات"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
     ),
@@ -123,7 +141,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "networkError": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
+    "newSale": MessageLookupByLibrary.simpleMessage("بيع جديد"),
     "night": MessageLookupByLibrary.simpleMessage("تصبح على خير"),
+    "noItemsAdded": MessageLookupByLibrary.simpleMessage(
+      "لم تُضف أي منتجات بعد",
+    ),
+    "noItemsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "ابحث أو امسح منتجاً لإضافته",
+    ),
     "noProductsFound": MessageLookupByLibrary.simpleMessage("لا توجد منتجات"),
     "noProductsFoundSubtitle": MessageLookupByLibrary.simpleMessage(
       "جرب البحث بكلمة مختلفة",
@@ -146,6 +171,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
       "كلمات المرور غير متطابقة",
     ),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "perUnit": MessageLookupByLibrary.simpleMessage("جنيه / وحدة"),
     "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
       "وجّه المؤشر نحو الرمز الشريطي للبحث",
     ),
@@ -187,12 +214,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
+    "saleConfirmed": MessageLookupByLibrary.simpleMessage("تم البيع بنجاح!"),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("حفظ المنتج"),
     "scanBarcode": MessageLookupByLibrary.simpleMessage("مسح الرمز الشريطي"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
       "ابحث بالاسم أو الباركود",
     ),
+    "searchProductOrSku": MessageLookupByLibrary.simpleMessage(
+      "ابحث باسم المنتج أو الكود...",
+    ),
+    "selectedItems": MessageLookupByLibrary.simpleMessage("المنتجات المضافة"),
     "sellPrice": MessageLookupByLibrary.simpleMessage("سعر البيع"),
     "sellingAtLoss": MessageLookupByLibrary.simpleMessage("البيع بخسارة!"),
     "sendResetLink": MessageLookupByLibrary.simpleMessage(
@@ -206,10 +238,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",
     ),
+    "subtotal": MessageLookupByLibrary.simpleMessage("المجموع"),
     "todaySales": MessageLookupByLibrary.simpleMessage("مبيعات اليوم"),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "عدد محاولات كبير، حاول لاحقًا",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "totalProducts": MessageLookupByLibrary.simpleMessage("إجمالي المنتجات"),
     "unknownError": MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
     "user": MessageLookupByLibrary.simpleMessage("المستخدم"),
@@ -220,6 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "أكّد بريدك الإلكتروني",
     ),
     "viewAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
+    "visa": MessageLookupByLibrary.simpleMessage("فيزا"),
     "weeklySalesChartTitle": MessageLookupByLibrary.simpleMessage(
       "مبيعات هذا الأسبوع",
     ),

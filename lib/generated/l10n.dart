@@ -983,6 +983,176 @@ class S {
       args: [],
     );
   }
+
+  /// `New Sale`
+  String get newSale {
+    return Intl.message('New Sale', name: 'newSale', desc: '', args: []);
+  }
+
+  /// `Search product name or SKU...`
+  String get searchProductOrSku {
+    return Intl.message(
+      'Search product name or SKU...',
+      name: 'searchProductOrSku',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SELECTED ITEMS`
+  String get selectedItems {
+    return Intl.message(
+      'SELECTED ITEMS',
+      name: 'selectedItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items`
+  String get items {
+    return Intl.message('Items', name: 'items', desc: '', args: []);
+  }
+
+  /// `Subtotal`
+  String get subtotal {
+    return Intl.message('Subtotal', name: 'subtotal', desc: '', args: []);
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message('Total', name: 'total', desc: '', args: []);
+  }
+
+  /// `Confirm Sale`
+  String get confirmSale {
+    return Intl.message(
+      'Confirm Sale',
+      name: 'confirmSale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No items added yet`
+  String get noItemsAdded {
+    return Intl.message(
+      'No items added yet',
+      name: 'noItemsAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search or scan a product to add it`
+  String get noItemsSubtitle {
+    return Intl.message(
+      'Search or scan a product to add it',
+      name: 'noItemsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Sale`
+  String get confirmSaleTitle {
+    return Intl.message(
+      'Confirm Sale',
+      name: 'confirmSaleTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sell {count} items for {total} EGP?`
+  String confirmSaleMessage(Object count, Object total) {
+    return Intl.message(
+      'Sell $count items for $total EGP?',
+      name: 'confirmSaleMessage',
+      desc: '',
+      args: [count, total],
+    );
+  }
+
+  /// `Sale confirmed successfully!`
+  String get saleConfirmed {
+    return Intl.message(
+      'Sale confirmed successfully!',
+      name: 'saleConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Only {count} available`
+  String insufficientStock(Object count) {
+    return Intl.message(
+      'Only $count available',
+      name: 'insufficientStock',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Add at least one product`
+  String get emptyInvoice {
+    return Intl.message(
+      'Add at least one product',
+      name: 'emptyInvoice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discard Sale?`
+  String get discardSale {
+    return Intl.message(
+      'Discard Sale?',
+      name: 'discardSale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your invoice will be lost`
+  String get discardSaleMessage {
+    return Intl.message(
+      'Your invoice will be lost',
+      name: 'discardSaleMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discard`
+  String get discard {
+    return Intl.message('Discard', name: 'discard', desc: '', args: []);
+  }
+
+  /// `EGP / unit`
+  String get perUnit {
+    return Intl.message('EGP / unit', name: 'perUnit', desc: '', args: []);
+  }
+
+  /// `Payment Method`
+  String get paymentMethod {
+    return Intl.message(
+      'Payment Method',
+      name: 'paymentMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash`
+  String get cash {
+    return Intl.message('Cash', name: 'cash', desc: '', args: []);
+  }
+
+  /// `Visa`
+  String get visa {
+    return Intl.message('Visa', name: 'visa', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
