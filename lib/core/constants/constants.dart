@@ -27,3 +27,16 @@ const String kSellPrice   = 'sellPrice';
 const String kQuantity    = 'quantity';
 const String kThreshold   = 'threshold';
 const String kImageUrl    = 'imageUrl';
+
+// Sale Fields
+// const String kInvoiceNumber  = 'invoiceNumber';
+// const String kPaymentMethod  = 'paymentMethod';
+// const String kTotalAmount    = 'totalAmount';
+const String kItemsCount     = 'itemsCount';
+const String kItems          = 'items';
+
+// Invoice Item Fields
+const String kProductId       = 'productId';
+const String kProductImageUrl = 'productImageUrl';
+const String kUnitPrice       = 'unitPrice';
+const String kTotalPrice      = 'totalPrice';
