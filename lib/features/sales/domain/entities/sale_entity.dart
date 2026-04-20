@@ -1,4 +1,4 @@
-import 'package:stock_mate/features/sales/domain/entites/invoice_item_entity.dart';
+import 'package:stock_mate/features/sales/domain/entities/invoice_item_entity.dart';
 
 class SaleEntity {
   final String id;
