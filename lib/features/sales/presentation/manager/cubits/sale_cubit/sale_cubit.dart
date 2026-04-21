@@ -106,11 +106,28 @@ class SaleCubit extends Cubit<SaleState> {
     } else {
       updated[productId] = item.copyWith(quantity: item.quantity - 1);
     }
-    emit(SaleItemsUpdatedState(
-      invoiceItems:  updated,
-      searchResults: current.searchResults,
-      searchQuery:   current.searchQuery,
-      paymentMethod: current.paymentMethod,
-    ));
+    emit(
+      SaleItemsUpdatedState(
+        invoiceItems: updated,
+        searchResults: current.searchResults,
+        searchQuery: current.searchQuery,
+        paymentMethod: current.paymentMethod,
+      ),
+    );
+  }
+
+  void removeItem(String productId) {
+    if (state is! SaleItemsUpdatedState) return;
+    final current = state as SaleItemsUpdatedState;
+    final updated = Map<String, InvoiceItemEntity>.from(current.invoiceItems)
+      ..remove(productId);
+    emit(
+      SaleItemsUpdatedState(
+        invoiceItems: updated,
+        searchResults: current.searchResults,
+        searchQuery: current.searchQuery,
+        paymentMethod: current.paymentMethod,
+      ),
+    );
   }
 }
