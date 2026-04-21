@@ -46,7 +46,7 @@ class SaleCubit extends Cubit<SaleState> {
     );
   }
 
-  // when i will add product to sales i will get this product.id and check if exist before in sales or not if yes check if canIncrement(quantity > th) increase quantity variable of this item by one , if not check first if this item quantity more than zero and then add this item to items in sales collection
+  // We add this method to add product to sales collection but we check fist it it there so : when i will add product to sales i will get this product.id and check if exist before in sales or not if yes check if canIncrement(quantity > th) increase quantity variable of this item by one , if not check first if this item quantity more than zero and then add this item to items in sales collection
   void addProduct(ProductEntity product) {
     if (state is! SaleItemsUploadedState) return;
     final current = state as SaleItemsUploadedState;
@@ -68,5 +68,14 @@ class SaleCubit extends Cubit<SaleState> {
         );
       }
     }
+    emit(
+      SaleItemsUploadedState(
+        invoiceItems: updated,
+        searchResults: [],
+        searchQuery: '',
+        paymentMethod: current.paymentMethod,
+      ),
+    );
   }
+
 }
