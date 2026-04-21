@@ -78,4 +78,20 @@ class SaleCubit extends Cubit<SaleState> {
     );
   }
 
+  void incrementItem(String productId) {
+    if (state is! SaleItemsUploadedState) return;
+    final current = state as SaleItemsUploadedState;
+    final item = current.invoiceItems[productId];
+    if (item == null || !item.canIncrement) return;
+    final updated = Map<String, InvoiceItemEntity>.from(current.invoiceItems);
+    updated[productId] = item.copyWith(quantity: item.quantity + 1);
+    emit(
+      SaleItemsUploadedState(
+        invoiceItems: updated,
+        searchResults: current.searchResults,
+        searchQuery: current.searchQuery,
+        paymentMethod: current.paymentMethod,
+      ),
+    );
+  }
 }
