@@ -23,4 +23,26 @@ class SaleCubit extends Cubit<SaleState> {
       ),
     );
   }
+
+  void search(String query) {
+    if (state is! SaleItemsUploadedState) return;
+    final current = state as SaleItemsUploadedState;
+    final results = query.isEmpty
+        ? <ProductEntity>[]
+        : allProducts
+              .where(
+                (p) =>
+                    p.name.toLowerCase().contains(query.toLowerCase()) ||
+                    p.barcode.toLowerCase().contains(query.toLowerCase()),
+              )
+              .toList();
+    emit(
+      SaleItemsUploadedState(
+        invoiceItems: current.invoiceItems,
+        searchResults: results,
+        searchQuery: query,
+        paymentMethod: current.paymentMethod,
+      ),
+    );
+  }
 }
