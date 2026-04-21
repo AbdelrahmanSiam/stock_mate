@@ -45,4 +45,28 @@ class SaleCubit extends Cubit<SaleState> {
       ),
     );
   }
+
+  // when i will add product to sales i will get this product.id and check if exist before in sales or not if yes check if canIncrement(quantity > th) increase quantity variable of this item by one , if not check first if this item quantity more than zero and then add this item to items in sales collection
+  void addProduct(ProductEntity product) {
+    if (state is! SaleItemsUploadedState) return;
+    final current = state as SaleItemsUploadedState;
+    Map<String, InvoiceItemEntity> updated = Map.from(current.invoiceItems);
+    final existing =
+        updated[product
+            .id]!; // to know if product will added is existing or not
+    if (existing.canIncrement) {
+      updated[product.id] = existing.copyWith(quantity: existing.quantity + 1);
+    } else {
+      if (product.quantity > 0) {
+        updated[product.id] = InvoiceItemEntity(
+          productId: product.id,
+          productName: product.name,
+          productImageUrl: product.imageUrl,
+          unitPrice: product.sellPrice,
+          quantity: 1,
+          availableStock: product.quantity,
+        );
+      }
+    }
+  }
 }
