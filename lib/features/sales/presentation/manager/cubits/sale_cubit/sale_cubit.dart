@@ -15,7 +15,7 @@ class SaleCubit extends Cubit<SaleState> {
   void init(List<ProductEntity> products) {
     allProducts = products;
     emit(
-      SaleItemsUploadedState(
+      SaleItemsUpdatedState(
         invoiceItems: {},
         searchResults: [],
         searchQuery: "",
@@ -25,8 +25,8 @@ class SaleCubit extends Cubit<SaleState> {
   }
 
   void search(String query) {
-    if (state is! SaleItemsUploadedState) return;
-    final current = state as SaleItemsUploadedState;
+    if (state is! SaleItemsUpdatedState) return;
+    final current = state as SaleItemsUpdatedState;
     final results = query.isEmpty
         ? <ProductEntity>[]
         : allProducts
@@ -37,7 +37,7 @@ class SaleCubit extends Cubit<SaleState> {
               )
               .toList();
     emit(
-      SaleItemsUploadedState(
+      SaleItemsUpdatedState(
         invoiceItems: current.invoiceItems,
         searchResults: results,
         searchQuery: query,
@@ -48,8 +48,8 @@ class SaleCubit extends Cubit<SaleState> {
 
   // We add this method to add product to sales collection but we check fist it it there so : when i will add product to sales i will get this product.id and check if exist before in sales or not if yes check if canIncrement(quantity > th) increase quantity variable of this item by one , if not check first if this item quantity more than zero and then add this item to items in sales collection
   void addProduct(ProductEntity product) {
-    if (state is! SaleItemsUploadedState) return;
-    final current = state as SaleItemsUploadedState;
+    if (state is! SaleItemsUpdatedState) return;
+    final current = state as SaleItemsUpdatedState;
     Map<String, InvoiceItemEntity> updated = Map.from(current.invoiceItems);
     final existing =
         updated[product
@@ -69,7 +69,7 @@ class SaleCubit extends Cubit<SaleState> {
       }
     }
     emit(
-      SaleItemsUploadedState(
+      SaleItemsUpdatedState(
         invoiceItems: updated,
         searchResults: [],
         searchQuery: '',
@@ -79,19 +79,38 @@ class SaleCubit extends Cubit<SaleState> {
   }
 
   void incrementItem(String productId) {
-    if (state is! SaleItemsUploadedState) return;
-    final current = state as SaleItemsUploadedState;
+    if (state is! SaleItemsUpdatedState) return;
+    final current = state as SaleItemsUpdatedState;
     final item = current.invoiceItems[productId];
     if (item == null || !item.canIncrement) return;
     final updated = Map<String, InvoiceItemEntity>.from(current.invoiceItems);
     updated[productId] = item.copyWith(quantity: item.quantity + 1);
     emit(
-      SaleItemsUploadedState(
+      SaleItemsUpdatedState(
         invoiceItems: updated,
         searchResults: current.searchResults,
         searchQuery: current.searchQuery,
         paymentMethod: current.paymentMethod,
       ),
     );
+  }
+
+  void decrementItem(String productId) {
+    if (state is! SaleItemsUpdatedState) return;
+    final current = state as SaleItemsUpdatedState;
+    final item = current.invoiceItems[productId];
+    if (item == null) return;
+    final updated = Map<String, InvoiceItemEntity>.from(current.invoiceItems);
+    if (item.quantity <= 1) {
+      updated.remove(productId);
+    } else {
+      updated[productId] = item.copyWith(quantity: item.quantity - 1);
+    }
+    emit(SaleItemsUpdatedState(
+      invoiceItems:  updated,
+      searchResults: current.searchResults,
+      searchQuery:   current.searchQuery,
+      paymentMethod: current.paymentMethod,
+    ));
   }
 }

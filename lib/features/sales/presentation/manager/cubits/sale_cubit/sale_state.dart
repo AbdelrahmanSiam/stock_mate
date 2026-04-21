@@ -7,13 +7,13 @@ final class SaleInitialState extends SaleState {}
 
 final class SaleConfirmingState extends SaleState {}
 
-final class SaleItemsUploadedState extends SaleState {
+final class SaleItemsUpdatedState extends SaleState {
   final Map<String, InvoiceItemEntity> invoiceItems;
   final List<ProductEntity> searchResults;
   final String searchQuery;
   final String paymentMethod;
 
-  SaleItemsUploadedState({
+  SaleItemsUpdatedState({
     required this.invoiceItems,
     required this.searchResults,
     required this.searchQuery,
