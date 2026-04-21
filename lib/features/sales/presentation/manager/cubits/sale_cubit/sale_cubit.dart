@@ -130,4 +130,17 @@ class SaleCubit extends Cubit<SaleState> {
       ),
     );
   }
+
+  void setPaymentMethod(String method) {
+    if (state is! SaleItemsUpdatedState) return;
+    final current = state as SaleItemsUpdatedState;
+    emit(
+      SaleItemsUpdatedState(
+        invoiceItems: current.invoiceItems,
+        searchResults: current.searchResults,
+        searchQuery: current.searchQuery,
+        paymentMethod: method,
+      ),
+    );
+  }
 }
