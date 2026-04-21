@@ -4,6 +4,7 @@ import 'package:stock_mate/features/products/domain/entities/product_entity.dart
 import 'package:stock_mate/features/sales/domain/entities/invoice_item_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/use_case/create_sale_use_case/create_sale_use_case.dart';
+import 'package:stock_mate/features/sales/domain/use_case/create_sale_use_case/create_sale_use_case_parameters.dart';
 
 part 'sale_state.dart';
 
@@ -141,6 +142,24 @@ class SaleCubit extends Cubit<SaleState> {
         searchQuery: current.searchQuery,
         paymentMethod: method,
       ),
+    );
+  }
+
+  Future<void> confirmSale() async {
+    if (state is! SaleItemsUpdatedState) return;
+    final current = state as SaleItemsUpdatedState;
+
+    if (current.isEmpty) return;
+    emit(SaleConfirmingState());
+    final result = await createSaleUseCase.call(
+      CreateSaleUseCaseParameters(
+        items: current.itemsList,
+        paymentMethod: current.paymentMethod,
+      ),
+    );
+    result.fold(
+      (failure) => emit(SaleErrorState(errMessage: failure.errMessage)),
+      (sale) => emit(SaleSuccessState(sale: sale)),
     );
   }
 }
