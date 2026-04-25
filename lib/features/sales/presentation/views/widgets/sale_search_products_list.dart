@@ -7,12 +7,10 @@ class SaleSearchProductsList extends StatelessWidget {
   const SaleSearchProductsList({
     super.key,
     required this.results,
-    required this.isLoading,
     required this.onProductSelected,
   });
 
   final List<ProductEntity> results;
-  final bool isLoading;
   final ValueChanged<ProductEntity> onProductSelected;
 
   @override
@@ -27,7 +25,6 @@ class SaleSearchProductsList extends StatelessWidget {
         final product = results[index];
         return SaleProductItem(
           product: product,
-          isLoading: isLoading,
           onProductSelected: onProductSelected,
         );
       },

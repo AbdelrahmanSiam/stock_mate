@@ -6,9 +6,8 @@ import 'package:stock_mate/features/products/presentation/views/widgets/product_
 import 'package:stock_mate/features/products/presentation/views/widgets/products_empty_state.dart';
 
 class ProductsViewContent extends StatelessWidget {
-  const ProductsViewContent({super.key, required this.state, required this.isLoading});
+  const ProductsViewContent({super.key, required this.state});
   final ProductsState state;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,6 @@ class ProductsViewContent extends StatelessWidget {
             },
             child: ProductCardWidget(
               productEntity: product,
-              isLoading:isLoading,
             ),
           ),
         );

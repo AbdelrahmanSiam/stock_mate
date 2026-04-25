@@ -45,6 +45,12 @@ import 'package:stock_mate/features/products/domain/use_cases/update_product_use
 import 'package:stock_mate/features/products/domain/use_cases/upload_product_image_use_case/upload_product_image_use_case.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/products_cubit/products_cubit.dart';
+import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sale_remote_datasource.dart';
+import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sale_remote_datasource_impl.dart';
+import 'package:stock_mate/features/sales/data/repo/sale_repository_impl.dart';
+import 'package:stock_mate/features/sales/domain/repo/sale_repository.dart';
+import 'package:stock_mate/features/sales/domain/use_case/create_sale_use_case/create_sale_use_case.dart';
+import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
 import 'package:stock_mate/features/splash/data/repo/splash_repo_impl.dart';
@@ -241,6 +247,20 @@ void setupServiceLocator() {
 
   // ProductCubit
   getIt.registerFactory<ProductsCubit>(
-    () => ProductsCubit( getIt<GetProductsUseCase>()),
+    () => ProductsCubit(getIt<GetProductsUseCase>()),
+  );
+
+  // ── Sale ──────────────────────────────────────────────────
+  getIt.registerLazySingleton<SaleRemoteDataSource>(
+    () => SaleRemoteDatasourceImpl(FirebaseFirestore.instance),
+  );
+  getIt.registerLazySingleton<SaleRepository>(
+    () => SaleRepositoryImpl(getIt<SaleRemoteDataSource>()),
+  );
+  getIt.registerLazySingleton<CreateSaleUseCase>(
+    () => CreateSaleUseCase(repository: getIt<SaleRepository>()),
+  );
+  getIt.registerFactory<SaleCubit>(
+    () => SaleCubit(getIt<CreateSaleUseCase>(), getIt<GetProductsUseCase>()),
   );
 }

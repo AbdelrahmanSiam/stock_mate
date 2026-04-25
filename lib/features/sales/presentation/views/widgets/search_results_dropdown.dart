@@ -6,13 +6,11 @@ import 'package:stock_mate/features/sales/presentation/views/widgets/sale_search
 class SearchResultsDropdown extends StatelessWidget {
   final List<ProductEntity> results;
   final ValueChanged<ProductEntity> onProductSelected;
-  final bool isLoading;
 
   const SearchResultsDropdown({
     super.key,
     required this.results,
     required this.onProductSelected,
-    required this.isLoading,
   });
 
   @override
@@ -35,7 +33,6 @@ class SearchResultsDropdown extends StatelessWidget {
       ),
       child: SaleSearchProductsList(
         results: results,
-        isLoading: isLoading,
         onProductSelected: onProductSelected,
       ),
     );

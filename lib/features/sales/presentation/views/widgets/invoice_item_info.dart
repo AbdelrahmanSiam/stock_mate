@@ -23,7 +23,7 @@ class InvoiceItemInfo extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            '${item.unitPrice.toStringAsFixed(2)} ${S.of(context).egp} / ${S.of(context).perUnit}',
+            '${item.unitPrice.toStringAsFixed(2)} ${S.of(context).perUnit}',
             style: AppStyles.bodySmallRegular12(context),
           ),
           //  Stock warning

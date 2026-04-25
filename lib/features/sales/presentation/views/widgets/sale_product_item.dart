@@ -11,12 +11,10 @@ class SaleProductItem extends StatelessWidget {
   const SaleProductItem({
     super.key,
     required this.product,
-    required this.isLoading,
     required this.onProductSelected,
   });
 
   final ProductEntity product;
-  final bool isLoading;
   final ValueChanged<ProductEntity> onProductSelected;
 
   @override
@@ -28,7 +26,6 @@ class SaleProductItem extends StatelessWidget {
       ),
       leading: ProductImage(
         imageUrl: product.imageUrl,
-        isLoading: isLoading,
       ),
       title: Text(
         product.name,

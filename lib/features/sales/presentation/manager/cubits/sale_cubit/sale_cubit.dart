@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
+import 'package:stock_mate/features/products/domain/use_cases/get_products_use_case/get_products_use_case.dart';
 import 'package:stock_mate/features/sales/domain/entities/invoice_item_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/use_case/create_sale_use_case/create_sale_use_case.dart';
@@ -10,33 +11,56 @@ part 'sale_state.dart';
 
 class SaleCubit extends Cubit<SaleState> {
   final CreateSaleUseCase createSaleUseCase;
+  final GetProductsUseCase getProductsUseCase;
   List<ProductEntity> allProducts = [];
-  SaleCubit(this.createSaleUseCase) : super(SaleInitialState());
+  SaleCubit(this.createSaleUseCase, this.getProductsUseCase)
+    : super(SaleInitialState());
 
-  void init(List<ProductEntity> products) {
-    allProducts = products;
-    emit(
-      SaleItemsUpdatedState(
-        invoiceItems: {},
-        searchResults: [],
-        searchQuery: "",
-        paymentMethod: "Cash",
-      ),
-    );
+  Future<void> init() async {
+    emit(SaleInitialState());
+
+    getProductsUseCase().listen((result) {
+      result.fold(
+        (failure) {
+          emit(SaleErrorState(errMessage: failure.errMessage));
+        },
+        (products) {
+          allProducts = products;
+
+          emit(
+            SaleItemsUpdatedState(
+              invoiceItems: {},
+              searchResults: [],
+              searchQuery: '',
+              paymentMethod: 'Cash',
+            ),
+          );
+        },
+      );
+    });
   }
 
   void search(String query) {
     if (state is! SaleItemsUpdatedState) return;
     final current = state as SaleItemsUpdatedState;
-    final results = query.isEmpty
-        ? <ProductEntity>[]
-        : allProducts
-              .where(
-                (p) =>
-                    p.name.toLowerCase().contains(query.toLowerCase()) ||
-                    p.barcode.toLowerCase().contains(query.toLowerCase()),
-              )
-              .toList();
+    if (query.trim().isEmpty) {
+      emit(
+        SaleItemsUpdatedState(
+          invoiceItems: current.invoiceItems,
+          searchResults: [],
+          searchQuery: '',
+          paymentMethod: current.paymentMethod,
+        ),
+      );
+      return;
+    }
+    final results = allProducts
+        .where(
+          (p) =>
+              p.name.toLowerCase().contains(query.toLowerCase()) ||
+              p.barcode.toLowerCase().contains(query.toLowerCase()),
+        )
+        .toList();
     emit(
       SaleItemsUpdatedState(
         invoiceItems: current.invoiceItems,
@@ -50,13 +74,18 @@ class SaleCubit extends Cubit<SaleState> {
   // We add this method to add product to sales collection but we check fist it it there so : when i will add product to sales i will get this product.id and check if exist before in sales or not if yes check if canIncrement(quantity > th) increase quantity variable of this item by one , if not check first if this item quantity more than zero and then add this item to items in sales collection
   void addProduct(ProductEntity product) {
     if (state is! SaleItemsUpdatedState) return;
+
     final current = state as SaleItemsUpdatedState;
-    Map<String, InvoiceItemEntity> updated = Map.from(current.invoiceItems);
-    final existing =
-        updated[product
-            .id]!; // to know if product will added is existing or not
-    if (existing.canIncrement) {
-      updated[product.id] = existing.copyWith(quantity: existing.quantity + 1);
+    final updated = Map<String, InvoiceItemEntity>.from(current.invoiceItems);
+
+    final existing = updated[product.id];
+
+    if (existing != null) {
+      if (existing.canIncrement) {
+        updated[product.id] = existing.copyWith(
+          quantity: existing.quantity + 1,
+        );
+      }
     } else {
       if (product.quantity > 0) {
         updated[product.id] = InvoiceItemEntity(
@@ -69,6 +98,7 @@ class SaleCubit extends Cubit<SaleState> {
         );
       }
     }
+
     emit(
       SaleItemsUpdatedState(
         invoiceItems: updated,

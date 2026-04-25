@@ -11,7 +11,6 @@ class InvoiceItemRow extends StatelessWidget {
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
   final VoidCallback onRemove;
-  final bool isLoading;
 
   const InvoiceItemRow({
     super.key,
@@ -19,7 +18,6 @@ class InvoiceItemRow extends StatelessWidget {
     required this.onIncrement,
     required this.onDecrement,
     required this.onRemove,
-    required this.isLoading,
   });
 
   @override
@@ -47,7 +45,7 @@ class InvoiceItemRow extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Row(
           children: [
-            ProductImage(imageUrl: item.productImageUrl, isLoading: isLoading),
+            ProductImage(imageUrl: item.productImageUrl),
             const SizedBox(width: 12),
             InvoiceItemInfo(item: item),
             const SizedBox(width: 12),

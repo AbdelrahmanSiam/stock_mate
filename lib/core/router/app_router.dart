@@ -13,10 +13,12 @@ import 'package:stock_mate/features/language/presentation/views/language_view.da
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/add_product_view.dart';
+import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
+import 'package:stock_mate/features/sales/presentation/views/new_sale_view.dart';
+import 'package:stock_mate/features/sales/presentation/views/sale_success_view.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
 import 'package:stock_mate/features/splash/presentation/views/splash_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/login_view.dart';
-import 'package:stock_mate/generated/l10n.dart';
 
 // ── Route Names ──────────────────────────────────────────────
 abstract class AppRoutes {
@@ -29,6 +31,8 @@ abstract class AppRoutes {
   static const String dashboard = '/dashboard';
   static const String addEditProducts = '/addEditProducts';
   static const String barcodeScanner = '/barcode-scanner';
+  static const String newSale = '/new-sale';
+  static const String saleSuccess = '/sale-success';
 }
 
 // ── Router Instance ───────────────────────────────────────────
@@ -85,7 +89,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.dashboard,
       builder: (context, state) => BlocProvider(
-        create: (context) => getIt<DashboardCubit>()..getDashboardData(),
+        create: (context) => getIt<DashboardCubit>(),
         child: const DashboardView(),
       ),
     ),
@@ -104,6 +108,21 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         final scanContext = state.extra as String? ?? "search";
         return BarcodeScannerView(scanContext: scanContext);
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.newSale,
+      builder: (context, state) {
+        return BlocProvider(
+          create: (_) => getIt<SaleCubit>(),
+          child: NewSaleView(),
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.saleSuccess,
+      builder: (context, state) {
+        return SaleSuccessView();
       },
     ),
   ],

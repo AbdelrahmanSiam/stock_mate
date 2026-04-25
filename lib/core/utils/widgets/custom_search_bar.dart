@@ -6,6 +6,8 @@ import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/features/products/presentation/views/widgets/barcode_widget.dart';
 
 class CustomSearchBar extends StatefulWidget {
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onBarcodeScanned;
   final String hintText;
@@ -17,6 +19,8 @@ class CustomSearchBar extends StatefulWidget {
     required this.onBarcodeScanned,
     required this.hintText,
     required this.barcodeScannerExtra,
+    this.controller,
+    this.focusNode,
   });
 
   @override
@@ -24,22 +28,28 @@ class CustomSearchBar extends StatefulWidget {
 }
 
 class _CustomSearchBarState extends State<CustomSearchBar> {
-  final _focusNode = FocusNode();
   bool _isFocused = false;
+  late final FocusNode _focusNode;
 
   @override
   void initState() {
+    super.initState();
+
+    _focusNode = widget.focusNode ?? FocusNode();
+
     _focusNode.addListener(() {
+      if (!mounted) return;
       setState(() {
         _isFocused = _focusNode.hasFocus;
       });
     });
-    super.initState();
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
     super.dispose();
   }
 
@@ -70,6 +80,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           const SizedBox(width: 10),
           Expanded(
             child: TextField(
+              controller: widget.controller,
               focusNode: _focusNode,
               onChanged: widget.onChanged,
               style: AppStyles.bodyMediumRegular14(context),

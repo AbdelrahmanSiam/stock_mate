@@ -1,23 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/features/products/presentation/views/widgets/product_image_loading.dart';
 
 class ProductImage extends StatelessWidget {
-  const ProductImage({
-    super.key,
-    required this.imageUrl,
-    required this.isLoading,
-  });
+  const ProductImage({super.key, required this.imageUrl});
   final String imageUrl;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context).width * 0.2;
-    if (isLoading) {
-      return ProductImageLoading(strokeWidth: 0.5,);
-    }
     return SizedBox(
       width: size,
       height: size,

@@ -16,13 +16,6 @@ class ProductsViewBody extends StatefulWidget {
 }
 
 class _ProductsViewBodyState extends State<ProductsViewBody> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<ProductsCubit>().getProducts(
-      initialFilter: widget.initialFilter,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +56,7 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
                     child: ProductsErrorState(message: state.errMessage),
                   )
                 else if (state is ProductsSuccessState)
-                  ProductsViewContent(state: state, isLoading: false),
+                  ProductsViewContent(state: state),
               ],
             ),
           );

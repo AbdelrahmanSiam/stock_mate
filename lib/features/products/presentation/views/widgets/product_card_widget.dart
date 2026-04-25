@@ -6,9 +6,8 @@ import 'package:stock_mate/features/products/presentation/views/widgets/product_
 import 'package:stock_mate/features/products/presentation/views/widgets/stock_badge.dart';
 
 class ProductCardWidget extends StatelessWidget {
-  const ProductCardWidget({super.key, required this.productEntity, required this.isLoading});
+  const ProductCardWidget({super.key, required this.productEntity});
   final ProductEntity productEntity;
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class ProductCardWidget extends StatelessWidget {
             ),
             child: Row(
               children: [
-                ProductImage(imageUrl: productEntity.imageUrl, isLoading: isLoading,),
+                ProductImage(imageUrl: productEntity.imageUrl),
                 SizedBox(width: width * 0.03),
                 Expanded(
                   child: Column(
