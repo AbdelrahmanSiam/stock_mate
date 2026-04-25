@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stock_mate/core/utils/widgets/custom_search_bar.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
-class ProductsSearchBar extends StatelessWidget {
+class SaleSearchBar extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onBarcodeScanned;
 
-  const ProductsSearchBar({
+  const SaleSearchBar({
     super.key,
     required this.onChanged,
     required this.onBarcodeScanned,
@@ -17,8 +17,8 @@ class ProductsSearchBar extends StatelessWidget {
     return CustomSearchBar(
       onChanged: onChanged,
       onBarcodeScanned: onBarcodeScanned,
-      hintText: S.of(context).searchByNameOrBarcode,
-      barcodeScannerExtra: "search",
+      hintText: S.of(context).searchProductOrSku,
+      barcodeScannerExtra: "sale",
     );
   }
 }
