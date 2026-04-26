@@ -29,4 +29,13 @@ class InvoiceItemEntity {
   );
 
   bool get canIncrement => quantity < availableStock;
+  
+  factory InvoiceItemEntity.empty() => const InvoiceItemEntity(
+    productId: 'id',
+    productName: 'Product Name Here',
+    productImageUrl: '',
+    unitPrice: 199.00,
+    quantity: 2,
+    availableStock: 10,
+  );
 }
