@@ -26,7 +26,6 @@ class SaleCubit extends Cubit<SaleState> {
         },
         (products) {
           allProducts = products;
-
           emit(
             SaleItemsUpdatedState(
               invoiceItems: {},
