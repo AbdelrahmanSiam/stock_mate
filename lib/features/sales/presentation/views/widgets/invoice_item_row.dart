@@ -39,10 +39,20 @@ class InvoiceItemRow extends StatelessWidget {
           size: 24,
         ),
       ),
-      child: AppCard(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
+      child: Container(
         padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: AppColorsDarkMode.surface,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppColorsDarkMode.border),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.3),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         child: Row(
           children: [
             ProductImage(imageUrl: item.productImageUrl),

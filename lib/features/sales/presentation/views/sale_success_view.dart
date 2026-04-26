@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/sale_success_view_body.dart';
 
 class SaleSuccessView extends StatelessWidget {
   const SaleSuccessView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("Sale Success", style: TextStyle(fontSize: 100)),
-    );
+    return Scaffold(body: SaleSuccessViewBody());
   }
 }
