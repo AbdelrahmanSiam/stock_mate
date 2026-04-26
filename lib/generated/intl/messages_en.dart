@@ -102,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Abdelrahman Ahmed",
     ),
     "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+    "goToDashboard": MessageLookupByLibrary.simpleMessage("Go to Dashboard"),
     "googleSigninCanceled": MessageLookupByLibrary.simpleMessage(
       "Google sign in cancelled",
     ),
@@ -128,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password must be at least 6 characters",
     ),
     "items": MessageLookupByLibrary.simpleMessage("Items"),
+    "itemsLabel": MessageLookupByLibrary.simpleMessage("ITEMS"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
     ),
@@ -140,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Check your internet connection",
     ),
     "newSale": MessageLookupByLibrary.simpleMessage("New Sale"),
+    "newSaleButton": MessageLookupByLibrary.simpleMessage("New Sale"),
     "night": MessageLookupByLibrary.simpleMessage("Good Night"),
     "noItemsAdded": MessageLookupByLibrary.simpleMessage("No items added yet"),
     "noItemsSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -196,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Product saved successfully",
     ),
     "products": MessageLookupByLibrary.simpleMessage("Products"),
+    "receiptId": MessageLookupByLibrary.simpleMessage("RECEIPT ID"),
     "recentSales": MessageLookupByLibrary.simpleMessage("Recent Sales"),
     "registerButton": MessageLookupByLibrary.simpleMessage("REGISTER"),
     "registerHere": MessageLookupByLibrary.simpleMessage("Register here"),
@@ -212,6 +216,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "saleConfirmed": MessageLookupByLibrary.simpleMessage(
       "Sale confirmed successfully!",
+    ),
+    "saleConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Sale Confirmed Successfully",
     ),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("SAVE PRODUCT"),
@@ -240,7 +247,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Too many attempts, try again later",
     ),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "totalAmount": MessageLookupByLibrary.simpleMessage("TOTAL AMOUNT"),
     "totalProducts": MessageLookupByLibrary.simpleMessage("Total Products"),
+    "transactionLogged": MessageLookupByLibrary.simpleMessage(
+      "TRANSACTION LOGGED SECURELY",
+    ),
+    "units": MessageLookupByLibrary.simpleMessage("Units"),
     "unknownError": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),

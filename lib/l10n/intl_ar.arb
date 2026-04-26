@@ -134,5 +134,13 @@
     "perUnit": "جنيه / وحدة",
     "paymentMethod": "طريقة الدفع",
     "cash": "كاش",
-    "visa": "فيزا"
+    "visa": "فيزا",
+    "saleConfirmedSubtitle": "تم البيع بنجاح!",
+    "totalAmount": "إجمالي المبلغ",
+    "itemsLabel": "المنتجات",
+    "receiptId": "رقم الفاتورة",
+    "units": "وحدة",
+    "newSaleButton": "بيع جديد",
+    "goToDashboard": "الرئيسية",
+    "transactionLogged": "تم تسجيل العملية بأمان"
 }

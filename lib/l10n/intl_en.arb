@@ -134,5 +134,13 @@
     "perUnit": "EGP / unit",
     "paymentMethod": "Payment Method",
     "cash": "Cash",
-    "visa": "Visa"
+    "visa": "Visa",
+    "saleConfirmedSubtitle": "Sale Confirmed Successfully",
+    "totalAmount": "TOTAL AMOUNT",
+    "itemsLabel": "ITEMS",
+    "receiptId": "RECEIPT ID",
+    "units": "Units",
+    "newSaleButton": "New Sale",
+    "goToDashboard": "Go to Dashboard",
+    "transactionLogged": "TRANSACTION LOGGED SECURELY"
 }

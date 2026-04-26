@@ -1153,6 +1153,66 @@ class S {
   String get visa {
     return Intl.message('Visa', name: 'visa', desc: '', args: []);
   }
+
+  /// `Sale Confirmed Successfully`
+  String get saleConfirmedSubtitle {
+    return Intl.message(
+      'Sale Confirmed Successfully',
+      name: 'saleConfirmedSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TOTAL AMOUNT`
+  String get totalAmount {
+    return Intl.message(
+      'TOTAL AMOUNT',
+      name: 'totalAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ITEMS`
+  String get itemsLabel {
+    return Intl.message('ITEMS', name: 'itemsLabel', desc: '', args: []);
+  }
+
+  /// `RECEIPT ID`
+  String get receiptId {
+    return Intl.message('RECEIPT ID', name: 'receiptId', desc: '', args: []);
+  }
+
+  /// `Units`
+  String get units {
+    return Intl.message('Units', name: 'units', desc: '', args: []);
+  }
+
+  /// `New Sale`
+  String get newSaleButton {
+    return Intl.message('New Sale', name: 'newSaleButton', desc: '', args: []);
+  }
+
+  /// `Go to Dashboard`
+  String get goToDashboard {
+    return Intl.message(
+      'Go to Dashboard',
+      name: 'goToDashboard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TRANSACTION LOGGED SECURELY`
+  String get transactionLogged {
+    return Intl.message(
+      'TRANSACTION LOGGED SECURELY',
+      name: 'transactionLogged',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
