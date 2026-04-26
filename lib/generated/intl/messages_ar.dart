@@ -128,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "invalidPassword": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور 6 أحرف على الأقل",
     ),
+    "invoiceNumberCopied": MessageLookupByLibrary.simpleMessage(
+      "تم نسخ رقم الفاتورة!",
+    ),
     "items": MessageLookupByLibrary.simpleMessage("منتجات"),
     "itemsLabel": MessageLookupByLibrary.simpleMessage("المنتجات"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(

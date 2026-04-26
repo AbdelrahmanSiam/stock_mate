@@ -44,7 +44,6 @@ class DeleteProductButton extends StatelessWidget {
             ),
       isLoading: isDeleting,
       buttonName: S.of(context).deleteProduct,
-      color: Colors.white,
     );
   }
 }

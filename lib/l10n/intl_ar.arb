@@ -142,5 +142,6 @@
     "units": "وحدة",
     "newSaleButton": "بيع جديد",
     "goToDashboard": "الرئيسية",
-    "transactionLogged": "تم تسجيل العملية بأمان"
+    "transactionLogged": "تم تسجيل العملية بأمان",
+    "invoiceNumberCopied": "تم نسخ رقم الفاتورة!"
 }

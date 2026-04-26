@@ -21,7 +21,6 @@ class OpenEmailButton extends StatelessWidget {
       onPressed: openEmailApp,
       isLoading: false,
       buttonName: S.of(context).openEmailApp,
-      color: Colors.white,
     );
   }
 }

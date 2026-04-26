@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/pulse_ring.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/success_check_icon.dart';
 
 class SaleSuccessCheckWidget extends StatefulWidget {
@@ -66,14 +66,7 @@ class _SaleSuccessCheckWidgetState extends State<SaleSuccessCheckWidget>
             children: [
               Transform.scale(
                 scale: _pulseAnimation.value,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColorsDarkMode.success.withValues(alpha: 0.15),
-                  ),
-                ),
+                child: PulseRing(),
               ),
               SuccessCheckIcon(),
             ],
@@ -83,3 +76,5 @@ class _SaleSuccessCheckWidgetState extends State<SaleSuccessCheckWidget>
     );
   }
 }
+
+

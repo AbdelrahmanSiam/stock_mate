@@ -142,5 +142,6 @@
     "units": "Units",
     "newSaleButton": "New Sale",
     "goToDashboard": "Go to Dashboard",
-    "transactionLogged": "TRANSACTION LOGGED SECURELY"
+    "transactionLogged": "TRANSACTION LOGGED SECURELY",
+    "invoiceNumberCopied": "Invoice number copied!"
 }

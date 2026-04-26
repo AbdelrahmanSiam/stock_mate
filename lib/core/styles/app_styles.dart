@@ -109,7 +109,6 @@ abstract class AppStyles {
   static TextStyle buttonSemiBold15(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 15),
     fontWeight: FontWeight.w600,
-    color: AppColorsDarkMode.textPrimary,
     fontFamily: 'Inter',
   );
 

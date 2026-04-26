@@ -13,6 +13,7 @@ import 'package:stock_mate/features/language/presentation/views/language_view.da
 import 'package:stock_mate/features/products/domain/entities/product_entity.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/add_product_view.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/new_sale_view.dart';
 import 'package:stock_mate/features/sales/presentation/views/sale_success_view.dart';
@@ -122,7 +123,8 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.saleSuccess,
       builder: (context, state) {
-        return SaleSuccessView();
+        final sale = state.extra as SaleEntity;
+        return SaleSuccessView(sale: sale);
       },
     ),
   ],

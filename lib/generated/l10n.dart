@@ -1213,6 +1213,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Invoice number copied!`
+  String get invoiceNumberCopied {
+    return Intl.message(
+      'Invoice number copied!',
+      name: 'invoiceNumberCopied',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

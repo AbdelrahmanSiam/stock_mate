@@ -204,7 +204,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   const SizedBox(height: 24),
                   CustomButton(
                     buttonName: S.of(context).saveProduct,
-                    color: AppColorsDarkMode.textPrimary,
                     isLoading: isSaving,
                     onPressed: isSaving ? null : onSave,
                   ),

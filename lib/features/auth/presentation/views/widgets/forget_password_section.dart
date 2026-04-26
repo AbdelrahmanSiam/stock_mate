@@ -67,7 +67,6 @@ class _ForgetPasswordSectionState extends State<ForgetPasswordSection> {
                       },
                 isLoading: isLoading,
                 buttonName: S.of(context).sendResetLink,
-                color: Colors.white,
               ),
             ],
           ),
