@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/new_sale_error_widget.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/new_sale_initial_body.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/new_sale_invoice_items.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/selected_items_text.dart';
 import 'new_sale_empty_state.dart';
@@ -19,9 +19,7 @@ class NewSaleViewBody extends StatelessWidget {
     return BlocBuilder<SaleCubit, SaleState>(
       builder: (context, state) {
         if (state is SaleInitialState) {
-          return const Center(
-            child: CircularProgressIndicator(color: AppColorsDarkMode.primary),
-          );
+          return NewSaleInitialBody();
         }
         if (state is SaleErrorState) {
           return NewSaleErrorWidget(errMessage: state.errMessage);
