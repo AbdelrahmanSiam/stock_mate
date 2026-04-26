@@ -15,19 +15,24 @@ class SaleSearchProductsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: results.length > 5 ? 5 : results.length,
-      separatorBuilder: (_, __) =>
-          Divider(height: 1, color: AppColorsDarkMode.border),
-      itemBuilder: (_, index) {
-        final product = results[index];
-        return SaleProductItem(
-          product: product,
-          onProductSelected: onProductSelected,
-        );
-      },
+    final visibleCount = results.length > 5 ? 5 : results.length;
+
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 300),
+      child: ListView.separated(
+        shrinkWrap: true,
+        itemCount: visibleCount,
+        separatorBuilder: (_, __) =>
+            Divider(height: 1, color: AppColorsDarkMode.border),
+        itemBuilder: (_, index) {
+          final product = results[index];
+
+          return SaleProductItem(
+            product: product,
+            onProductSelected: onProductSelected,
+          );
+        },
+      ),
     );
   }
 }

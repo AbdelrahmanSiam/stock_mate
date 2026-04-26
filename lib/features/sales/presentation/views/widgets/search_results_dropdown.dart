@@ -19,6 +19,9 @@ class SearchResultsDropdown extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.only(top: 4),
+      constraints: BoxConstraints(
+        maxHeight: 300,
+      ),
       decoration: BoxDecoration(
         color: AppColorsDarkMode.surface,
         borderRadius: BorderRadius.circular(12),

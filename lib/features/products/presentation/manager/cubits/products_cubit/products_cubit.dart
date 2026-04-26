@@ -24,9 +24,11 @@ class ProductsCubit extends Cubit<ProductsState> {
             emit(ProductsFailureState(errMessage: failure.errMessage));
           },
           (products) {
-            final filter = initialFilter == "lowStock"
-                ? ProductFilter.lowStock
-                : ProductFilter.all;
+            final filter = switch(initialFilter) {
+              "lowStock" => ProductFilter.lowStock,
+              "outOfStock" => ProductFilter.outOfStock,
+              _ => ProductFilter.all,
+            };
             emit(
               ProductsSuccessState(
                 allProducts: products,

@@ -7,13 +7,20 @@ List<ProductEntity> applyFilters({
   required String query,
 }) {
   List<ProductEntity> filteredProducts = products;
-  filteredProducts = switch (filter) {
-    ProductFilter.all => filteredProducts,
-    ProductFilter.lowStock =>
-      filteredProducts.where(((p) => p.isLowStock)).toList(),
-    ProductFilter.outOfStock =>
-      filteredProducts.where(((p) => p.isOutOfStock)).toList(),
-  };
+  
+  try {
+    filteredProducts = switch (filter) {
+      ProductFilter.all => filteredProducts,
+      ProductFilter.lowStock =>
+        filteredProducts.where((p) => p.isLowStock).toList(),
+      ProductFilter.outOfStock =>
+        filteredProducts.where((p) => p.isOutOfStock).toList(),
+    };
+  } catch (e) {
+    // Fallback to all products if filter fails
+    filteredProducts = products;
+  }
+  
   if (query.isNotEmpty) {
     filteredProducts = filteredProducts
         .where(

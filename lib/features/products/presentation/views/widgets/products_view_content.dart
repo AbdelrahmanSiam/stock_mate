@@ -13,10 +13,14 @@ class ProductsViewContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentState = state as ProductsSuccessState;
     if (currentState.allProducts.isEmpty) {
-      return const ProductsEmptyState(isSearch: false);
+      return SliverToBoxAdapter(
+        child: ProductsEmptyState(isSearch: false),
+      );
     }
     if (currentState.filteredProducts.isEmpty) {
-      return const ProductsEmptyState(isSearch: true);
+      return SliverToBoxAdapter(
+        child: ProductsEmptyState(isSearch: true),
+      );
     }
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {

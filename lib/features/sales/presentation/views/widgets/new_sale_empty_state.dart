@@ -9,23 +9,26 @@ class NewSaleEmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.shopping_cart_outlined,
-              size: 72, color: AppColorsDarkMode.textSecondary),
-          const SizedBox(height: 20),
-          Text(
-            S.of(context).noItemsAdded,
-            style: AppStyles.sectionTitleSemiBold16(context),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            S.of(context).noItemsSubtitle,
-            style: AppStyles.bodySmallRegular12(context),
-            textAlign: TextAlign.center,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(height: MediaQuery.sizeOf(context).height*0.2,),
+            Icon(Icons.shopping_cart_outlined,
+                size: 72, color: AppColorsDarkMode.textSecondary),
+            const SizedBox(height: 20),
+            Text(
+              S.of(context).noItemsAdded,
+              style: AppStyles.sectionTitleSemiBold16(context),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              S.of(context).noItemsSubtitle,
+              style: AppStyles.bodySmallRegular12(context),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }

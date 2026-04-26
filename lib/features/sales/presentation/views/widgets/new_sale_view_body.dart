@@ -25,38 +25,53 @@ class NewSaleViewBody extends StatelessWidget {
           return NewSaleErrorWidget(errMessage: state.errMessage);
         }
         if (state is! SaleItemsUpdatedState) return const SizedBox();
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+        return SafeArea(
+          child: Stack(
+            children: [
+              Column(
                 children: [
-                  SaleSearchBar(
-                    onChanged: (q) => context.read<SaleCubit>().search(q),
-                    onBarcodeScanned: (barcode) =>
-                        context.read<SaleCubit>().search(barcode),
-                  ),
-                  if (state.searchResults.isNotEmpty)
-                    SearchResultsDropdown(
-                      results: state.searchResults,
-                      onProductSelected: (product) =>
-                          context.read<SaleCubit>().addProduct(product),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                    child: SaleSearchBar(
+                      onChanged: (q) => context.read<SaleCubit>().search(q),
+                      onBarcodeScanned: (barcode) =>
+                          context.read<SaleCubit>().search(barcode),
                     ),
+                  ),
+
+                  if (state.itemsList.isNotEmpty) const SelectedItemsText(),
+
+                  Expanded(
+                    child: state.itemsList.isEmpty
+                        ? const NewSaleEmptyState()
+                        : NewSaleInvoiceItems(itemsList: state.itemsList),
+                  ),
+
+                  SaleSummaryWidget(state: state, onConfirm: onConfirmTapped),
                 ],
               ),
-            ),
 
-            if (state.itemsList.isNotEmpty) SelectedItemsText(),
-
-            Expanded(
-              child: state.itemsList.isEmpty
-                  ? const NewSaleEmptyState()
-                  : NewSaleInvoiceItems(itemsList: state.itemsList),
-            ),
-
-            SaleSummaryWidget(state: state, onConfirm: onConfirmTapped),
-          ],
+              if (state.searchResults.isNotEmpty)
+                Positioned(
+                  top: 72,
+                  left: 16,
+                  right: 16,
+                  child: Material(
+                    elevation: 10,
+                    borderRadius: BorderRadius.circular(16),
+                    child: ConstrainedBox(
+                      constraints:  BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height*0.3),
+                      child: SearchResultsDropdown(
+                        results: state.searchResults,
+                        onProductSelected: (product) {
+                          context.read<SaleCubit>().addProduct(product);
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
         );
       },
     );
