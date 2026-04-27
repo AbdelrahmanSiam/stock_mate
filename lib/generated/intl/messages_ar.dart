@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
+    "completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -108,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "googleSigninCanceled": MessageLookupByLibrary.simpleMessage(
       "تم إلغاء تسجيل الدخول إلى Google",
     ),
+    "grossRevenue": MessageLookupByLibrary.simpleMessage("إجمالي الإيرادات"),
     "haveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟ ",
     ),
@@ -163,6 +165,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noProductsYetSubtitle": MessageLookupByLibrary.simpleMessage(
       "اضغط + لإضافة أول منتج",
     ),
+    "noSalesInPeriod": MessageLookupByLibrary.simpleMessage(
+      "لا توجد مبيعات في هذه الفترة",
+    ),
+    "noSalesSubtitle": MessageLookupByLibrary.simpleMessage(
+      "أكمل عملية بيع لترى النتائج هنا",
+    ),
     "noSalesYet": MessageLookupByLibrary.simpleMessage("لا توجد مبيعات حديثة"),
     "noSearchResults": MessageLookupByLibrary.simpleMessage(
       "لا نتائج لهذا البحث",
@@ -206,6 +214,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
     "receiptId": MessageLookupByLibrary.simpleMessage("رقم الفاتورة"),
     "recentSales": MessageLookupByLibrary.simpleMessage("المبيعات الأخيرة"),
+    "recentTransactions": MessageLookupByLibrary.simpleMessage(
+      "المعاملات الأخيرة",
+    ),
     "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل حساب"),
     "registerHere": MessageLookupByLibrary.simpleMessage("سجل هنا"),
     "registerTagline": MessageLookupByLibrary.simpleMessage(
@@ -226,6 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم البيع بنجاح!",
     ),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
+    "salesHistory": MessageLookupByLibrary.simpleMessage("سجل المبيعات"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("حفظ المنتج"),
     "scanBarcode": MessageLookupByLibrary.simpleMessage("مسح الرمز الشريطي"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
@@ -249,6 +261,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "حدث خطأ غير متوقع",
     ),
     "subtotal": MessageLookupByLibrary.simpleMessage("المجموع"),
+    "thisMonth": MessageLookupByLibrary.simpleMessage("هذا الشهر"),
+    "thisWeek": MessageLookupByLibrary.simpleMessage("هذا الأسبوع"),
+    "today": MessageLookupByLibrary.simpleMessage("اليوم"),
     "todaySales": MessageLookupByLibrary.simpleMessage("مبيعات اليوم"),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(
       "عدد محاولات كبير، حاول لاحقًا",
@@ -259,6 +274,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "transactionLogged": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل العملية بأمان",
     ),
+    "transactionVolume": MessageLookupByLibrary.simpleMessage("حجم المعاملات"),
     "units": MessageLookupByLibrary.simpleMessage("وحدة"),
     "unknownError": MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
     "user": MessageLookupByLibrary.simpleMessage("المستخدم"),

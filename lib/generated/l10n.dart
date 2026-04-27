@@ -1223,6 +1223,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Sales History`
+  String get salesHistory {
+    return Intl.message(
+      'Sales History',
+      name: 'salesHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today`
+  String get today {
+    return Intl.message('Today', name: 'today', desc: '', args: []);
+  }
+
+  /// `This Week`
+  String get thisWeek {
+    return Intl.message('This Week', name: 'thisWeek', desc: '', args: []);
+  }
+
+  /// `This Month`
+  String get thisMonth {
+    return Intl.message('This Month', name: 'thisMonth', desc: '', args: []);
+  }
+
+  /// `TRANSACTION VOLUME`
+  String get transactionVolume {
+    return Intl.message(
+      'TRANSACTION VOLUME',
+      name: 'transactionVolume',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `GROSS REVENUE`
+  String get grossRevenue {
+    return Intl.message(
+      'GROSS REVENUE',
+      name: 'grossRevenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RECENT TRANSACTIONS`
+  String get recentTransactions {
+    return Intl.message(
+      'RECENT TRANSACTIONS',
+      name: 'recentTransactions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COMPLETED`
+  String get completed {
+    return Intl.message('COMPLETED', name: 'completed', desc: '', args: []);
+  }
+
+  /// `No sales in this period`
+  String get noSalesInPeriod {
+    return Intl.message(
+      'No sales in this period',
+      name: 'noSalesInPeriod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete a sale to see it here`
+  String get noSalesSubtitle {
+    return Intl.message(
+      'Complete a sale to see it here',
+      name: 'noSalesSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

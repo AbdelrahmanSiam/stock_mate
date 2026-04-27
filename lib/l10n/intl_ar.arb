@@ -143,5 +143,15 @@
     "newSaleButton": "بيع جديد",
     "goToDashboard": "الرئيسية",
     "transactionLogged": "تم تسجيل العملية بأمان",
-    "invoiceNumberCopied": "تم نسخ رقم الفاتورة!"
+    "invoiceNumberCopied": "تم نسخ رقم الفاتورة!",
+    "salesHistory": "سجل المبيعات",
+    "today": "اليوم",
+    "thisWeek": "هذا الأسبوع",
+    "thisMonth": "هذا الشهر",
+    "transactionVolume": "حجم المعاملات",
+    "grossRevenue": "إجمالي الإيرادات",
+    "recentTransactions": "المعاملات الأخيرة",
+    "completed": "مكتملة",
+    "noSalesInPeriod": "لا توجد مبيعات في هذه الفترة",
+    "noSalesSubtitle": "أكمل عملية بيع لترى النتائج هنا"
 }

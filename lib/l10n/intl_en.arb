@@ -143,5 +143,15 @@
     "newSaleButton": "New Sale",
     "goToDashboard": "Go to Dashboard",
     "transactionLogged": "TRANSACTION LOGGED SECURELY",
-    "invoiceNumberCopied": "Invoice number copied!"
+    "invoiceNumberCopied": "Invoice number copied!",
+    "salesHistory": "Sales History",
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "transactionVolume": "TRANSACTION VOLUME",
+    "grossRevenue": "GROSS REVENUE",
+    "recentTransactions": "RECENT TRANSACTIONS",
+    "completed": "COMPLETED",
+    "noSalesInPeriod": "No sales in this period",
+    "noSalesSubtitle": "Complete a sale to see it here"
 }
