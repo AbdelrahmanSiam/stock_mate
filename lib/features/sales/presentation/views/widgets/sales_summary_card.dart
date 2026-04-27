@@ -15,20 +15,32 @@ class SalesSummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppCard(
-      begin: Alignment.centerRight,
-      end: Alignment.centerLeft,
-      child: Row(
-        children: [
-          Expanded(
-            child: SalesHistoryTransactionVolumeSection(totalSales: totalSales),
-          ),
-          Container(width: 1, height: 50, color: AppColorsDarkMode.border),
-          const SizedBox(width: 20),
-          Expanded(
-            child: SalesHistoryGrossRevenueSection(grossRevenue: grossRevenue),
-          ),
-        ],
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: AppColorsDarkMode.primary.withValues(alpha: 0.5),
+        ),
+      ),
+      child: AppCard(
+        begin: Alignment.centerRight,
+        end: Alignment.centerLeft,
+        child: Row(
+          children: [
+            Expanded(
+              child: SalesHistoryTransactionVolumeSection(
+                totalSales: totalSales,
+              ),
+            ),
+            Container(width: 1, height: 50, color: AppColorsDarkMode.border),
+            const SizedBox(width: 20),
+            Expanded(
+              child: SalesHistoryGrossRevenueSection(
+                grossRevenue: grossRevenue,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
