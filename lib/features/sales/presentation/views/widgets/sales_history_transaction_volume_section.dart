@@ -15,6 +15,7 @@ class SalesHistoryTransactionVolumeSection extends StatelessWidget {
       children: [
         Text(
           S.of(context).transactionVolume,
+          maxLines: 1,
           style: AppStyles.bodySmallRegular12(context),
         ),
         SizedBox(height: 5),

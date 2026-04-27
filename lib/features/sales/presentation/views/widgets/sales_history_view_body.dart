@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/core/styles/app_styles.dart';
-import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_filter_tabs.dart';
-import 'package:stock_mate/features/sales/presentation/views/widgets/sales_history_transaction_volume_section.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/sales_summary_card.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class SalesHistoryViewBody extends StatelessWidget {
@@ -19,11 +17,7 @@ class SalesHistoryViewBody extends StatelessWidget {
             onFilterChanged: (value) {},
           ),
           const SizedBox(height: 20),
-          AppCard(
-            child: Row(
-              children: [SalesHistoryTransactionVolumeSection(totalSales: 24)],
-            ),
-          ),
+          SalesSummaryCard(totalSales: 40, grossRevenue: 4200),
         ],
       ),
     );
