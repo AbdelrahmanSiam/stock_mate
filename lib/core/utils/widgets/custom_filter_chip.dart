@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 
-class ProductFilterChip extends StatelessWidget {
-  const ProductFilterChip({
+class CustomFilterChip extends StatelessWidget {
+  const CustomFilterChip({
     super.key,
     required this.isActive,
     required this.filterChipName,
