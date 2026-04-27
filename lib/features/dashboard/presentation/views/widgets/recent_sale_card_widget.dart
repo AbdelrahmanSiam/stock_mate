@@ -30,11 +30,14 @@ class RecentSaleCardWidget extends StatelessWidget {
               children: [
                 Text(
                   sale.invoiceNumber,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.end,
                   style: AppStyles.labelSemiBold13(context),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${formatTime(context,sale.createdAt)} • ${sale.paymentMethod}',
+                  '${formatTime(context, sale.createdAt)} • ${sale.paymentMethod}',
                   style: AppStyles.bodySmallRegular12(context),
                 ),
               ],

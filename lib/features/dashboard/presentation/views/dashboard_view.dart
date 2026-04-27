@@ -9,6 +9,7 @@ import 'package:stock_mate/features/dashboard/presentation/views/widgets/custom_
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_view_body.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/products_cubit/products_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/products_view_body.dart';
+import 'package:stock_mate/features/sales/presentation/views/sales_history_view.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key, this.productsInitialFilter});
@@ -38,9 +39,7 @@ class _DashboardViewState extends State<DashboardView> {
       if (widget.productsInitialFilter != null) {
         currentIndex = 1;
         productsFilter = widget.productsInitialFilter;
-        productsCubit.getProducts(
-          initialFilter: widget.productsInitialFilter,
-        );
+        productsCubit.getProducts(initialFilter: widget.productsInitialFilter);
       } else {
         productsCubit.getProducts();
       }
@@ -68,25 +67,18 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     final pages = [
       DashboardViewBody(
-        onLowStockTapped: () =>
-            navigateToProductsWithFilter("lowStock"),
-        onAllProductsTapped: () =>
-            navigateToProductsWithFilter("all"),
+        onLowStockTapped: () => navigateToProductsWithFilter("lowStock"),
+        onAllProductsTapped: () => navigateToProductsWithFilter("all"),
       ),
 
-      BlocProvider.value(
-        value: productsCubit,
-        child: ProductsViewBody(),
-      ),
+      BlocProvider.value(value: productsCubit, child: ProductsViewBody()),
 
-      const Center(child: Text("Sales")),
+      SalesHistoryView(),
       const Center(child: Text("Settings")),
     ];
 
     return MultiBlocProvider(
-      providers: [
-        BlocProvider.value(value: productsCubit),
-      ],
+      providers: [BlocProvider.value(value: productsCubit)],
       child: Scaffold(
         body: pages[currentIndex],
 
@@ -101,9 +93,7 @@ class _DashboardViewState extends State<DashboardView> {
               if (productsCubit.state is ProductsInitialState) {
                 productsCubit.getProducts();
               } else if (productsFilter != null) {
-                productsCubit.getProducts(
-                  initialFilter: productsFilter!,
-                );
+                productsCubit.getProducts(initialFilter: productsFilter!);
               }
             }
           },
