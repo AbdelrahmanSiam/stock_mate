@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:stock_mate/core/errors/failure.dart';
-import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/invoice_item_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
@@ -10,7 +9,7 @@ abstract class SaleRepository {
     required List<InvoiceItemEntity> items,
     required String paymentMethod,
   });
-  Stream<Either<Failure, List<RecentSaleEntity>>> getRecentSales({
+  Stream<Either<Failure, List<SaleEntity>>> getRecentSales({
     required SaleFilter filter,
   });
 }

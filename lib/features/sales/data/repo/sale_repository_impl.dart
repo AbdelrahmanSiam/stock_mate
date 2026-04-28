@@ -1,11 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:stock_mate/core/errors/failure.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sale_remote_datasource.dart';
 import 'package:stock_mate/features/sales/data/models/invoice_item_model.dart';
 import 'package:stock_mate/features/sales/data/repo/helper.dart';
 import 'package:stock_mate/features/sales/domain/entities/invoice_item_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 import 'package:stock_mate/features/sales/domain/repo/sale_repository.dart';
 
 class SaleRepositoryImpl implements SaleRepository {
@@ -33,5 +35,21 @@ class SaleRepositoryImpl implements SaleRepository {
     } catch (e) {
       return Left(ServerFailure.fromException(e));
     }
+  }
+
+  @override
+  Stream<Either<Failure, List<SaleEntity>>> getRecentSales({
+    required SaleFilter filter,
+  }) {
+    return remoteDataSource
+        .getRecentSales(filter: filter)
+        .map((sales) => Right<Failure, List<SaleEntity>>(sales))
+        .handleError(
+          (error) => Left<Failure, List<SaleEntity>>(
+            error is FirebaseException
+                ? ServerFailure.fromFirebaseFirestore(error)
+                : ServerFailure(errMessage: error.toString()),
+          ),
+        );
   }
 }
