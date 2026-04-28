@@ -4,6 +4,7 @@ import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/recent_sale_card_widget.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_filter_tabs.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/sales_history_list.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_summary_card.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -13,29 +14,44 @@ class SalesHistoryViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SalesFilterTabs(
-            activeFilter: S.of(context).thisWeek,
-            onFilterChanged: (value) {},
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            floating: true,
+            snap: true,
+            toolbarHeight: 70,
+            elevation: 0,
+            backgroundColor: AppColorsDarkMode.background,
+            automaticallyImplyLeading: false,
+            titleSpacing: 0,
+            title: SalesFilterTabs(
+              activeFilter: S.of(context).thisWeek,
+              onFilterChanged: (value) {},
+            ),
           ),
-          const SizedBox(height: 40),
-          SalesSummaryCard(totalSales: 40, grossRevenue: 4200),
-          const SizedBox(height: 40),
-          Text(
-            S.of(context).recentTransactions,
-            style: AppStyles.labelSemiBold13(
-              context,
-            ).copyWith(color: AppColorsDarkMode.textSecondary),
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 24),
+                SalesSummaryCard(totalSales: 40, grossRevenue: 4200),
+                const SizedBox(height: 32),
+                Text(
+                  S.of(context).recentTransactions,
+                  style: AppStyles.labelSemiBold13(
+                    context,
+                  ).copyWith(color: AppColorsDarkMode.textSecondary),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
-          const SizedBox(height: 20),
-          RecentSaleCardWidget(
-            showCompletedBadge: true,
+          SalesHistoryList(
             sale: RecentSaleEntity(
-              invoiceNumber: "invoiceNumber",
-              paymentMethod: "paymentMethod",
+              invoiceNumber: "INV-10index",
+              paymentMethod: "Cash",
               totalAmount: 200,
               createdAt: DateTime.now(),
             ),
