@@ -17,7 +17,6 @@ class SalesHistoryGrossRevenueSection extends StatelessWidget {
       children: [
         Text(
           S.of(context).grossRevenue,
-          maxLines: 1,
           style: AppStyles.labelSemiBold13(
             context,
           ).copyWith(color: AppColorsDarkMode.primary),

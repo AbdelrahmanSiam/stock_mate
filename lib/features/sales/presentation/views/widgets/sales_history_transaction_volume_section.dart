@@ -13,10 +13,11 @@ class SalesHistoryTransactionVolumeSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          S.of(context).transactionVolume,
-          maxLines: 1,
-          style: AppStyles.bodySmallRegular12(context),
+        FittedBox(
+          child: Text(
+            S.of(context).transactionVolume,
+            style: AppStyles.bodySmallRegular12(context),
+          ),
         ),
         SizedBox(height: 5),
         Row(

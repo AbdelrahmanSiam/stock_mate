@@ -14,6 +14,7 @@ class DashboardContent extends StatelessWidget {
     required this.onLowStockTapped,
     required this.onAllProductsTapped,
     required this.onViewAllSalesTapped,
+    required this.onViewMonthlyRevenueTapped,
   });
 
   final dynamic dashboard;
@@ -21,6 +22,7 @@ class DashboardContent extends StatelessWidget {
   final void Function() onLowStockTapped;
   final void Function() onAllProductsTapped;
   final void Function() onViewAllSalesTapped;
+  final void Function() onViewMonthlyRevenueTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,8 @@ class DashboardContent extends StatelessWidget {
             dashboard: isLoading ? fakeDashboard() : dashboard,
             onLowStockTapped: onLowStockTapped,
             onAllProductsTapped: onAllProductsTapped,
+            onViewAllSalesTapped: onViewAllSalesTapped,
+            onViewMonthlyRevenueTapped: onViewMonthlyRevenueTapped,
           ),
           const SizedBox(height: 30),
           WeeklySalesChart(

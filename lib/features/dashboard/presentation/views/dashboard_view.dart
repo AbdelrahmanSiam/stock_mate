@@ -9,6 +9,7 @@ import 'package:stock_mate/features/dashboard/presentation/views/widgets/custom_
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_view_body.dart';
 import 'package:stock_mate/features/products/presentation/manager/cubits/products_cubit/products_cubit.dart';
 import 'package:stock_mate/features/products/presentation/views/products_view_body.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/sales_history_view.dart';
 
@@ -24,13 +25,16 @@ class DashboardView extends StatefulWidget {
 class _DashboardViewState extends State<DashboardView> {
   int currentIndex = 0;
   late final ProductsCubit productsCubit;
+  late final SalesHistoryCubit salesHistoryCubit;
   String? productsFilter;
+  SaleFilter? saleFilter;
 
   @override
   void initState() {
     super.initState();
 
     productsCubit = getIt<ProductsCubit>();
+    salesHistoryCubit = getIt<SalesHistoryCubit>()..getRecentSales();
 
     // Dashboard data
     context.read<DashboardCubit>().getDashboardData();
@@ -64,6 +68,17 @@ class _DashboardViewState extends State<DashboardView> {
     });
   }
 
+  void navigateToMonthlyRevenue() {
+    setState(() {
+      currentIndex = 2;
+      saleFilter = SaleFilter.thisMonth;
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      salesHistoryCubit.getRecentSales(filter: SaleFilter.thisMonth);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final pages = [
@@ -71,14 +86,12 @@ class _DashboardViewState extends State<DashboardView> {
         onLowStockTapped: () => navigateToProductsWithFilter("lowStock"),
         onAllProductsTapped: () => navigateToProductsWithFilter("all"),
         onViewAllSalesTapped: () => setState(() => currentIndex = 2),
+        onViewMonthlyRevenueTapped: () => navigateToMonthlyRevenue(),
       ),
 
       BlocProvider.value(value: productsCubit, child: ProductsViewBody()),
 
-      BlocProvider(
-        create: (context) => getIt<SalesHistoryCubit>()..getRecentSales(),
-        child: SalesHistoryView(),
-      ),
+      BlocProvider.value(value: salesHistoryCubit, child: SalesHistoryView()),
       const Center(child: Text("Settings")),
     ];
 

@@ -8,13 +8,16 @@ class StatCardsGrid extends StatelessWidget {
   final DashboardEntity dashboard;
   final void Function() onLowStockTapped;
   final void Function() onAllProductsTapped;
-  
+  final void Function() onViewAllSalesTapped;
+  final void Function() onViewMonthlyRevenueTapped;
 
   const StatCardsGrid({
     super.key,
     required this.dashboard,
     required this.onLowStockTapped,
     required this.onAllProductsTapped,
+    required this.onViewAllSalesTapped,
+    required this.onViewMonthlyRevenueTapped,
   });
 
   @override
@@ -38,6 +41,7 @@ class StatCardsGrid extends StatelessWidget {
                 title: S.of(context).todaySales,
                 value: '${dashboard.todaySales}',
                 valueColor: AppColorsDarkMode.success,
+                onTap: onViewAllSalesTapped,
               ),
             ),
           ],
@@ -51,6 +55,7 @@ class StatCardsGrid extends StatelessWidget {
                 title: S.of(context).monthlyRevenue,
                 value:
                     '${dashboard.monthlyRevenue.toStringAsFixed(0)} ${S.of(context).egp}',
+                onTap: onViewMonthlyRevenueTapped,
               ),
             ),
             const SizedBox(width: 12),

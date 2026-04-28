@@ -9,7 +9,7 @@ class SalesSummaryCard extends StatelessWidget {
   final double grossRevenue;
   const SalesSummaryCard({
     super.key,
-    required this.totalSales,
+  required this.totalSales,
     required this.grossRevenue,
   });
 
@@ -32,6 +32,7 @@ class SalesSummaryCard extends StatelessWidget {
                 totalSales: totalSales,
               ),
             ),
+            const SizedBox(width: 5),
             Container(width: 1, height: 50, color: AppColorsDarkMode.border),
             const SizedBox(width: 20),
             Expanded(
