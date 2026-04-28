@@ -10,7 +10,7 @@ abstract class SaleRepository {
     required List<InvoiceItemEntity> items,
     required String paymentMethod,
   });
-  Stream<Either<Failure, RecentSaleEntity>> getRecentSales({
+  Stream<Either<Failure, List<RecentSaleEntity>>> getRecentSales({
     required SaleFilter filter,
   });
 }
