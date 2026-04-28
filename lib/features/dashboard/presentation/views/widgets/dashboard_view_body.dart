@@ -11,9 +11,11 @@ class DashboardViewBody extends StatefulWidget {
     super.key,
     required this.onLowStockTapped,
     required this.onAllProductsTapped,
+    required this.onViewAllSalesTapped,
   });
   final void Function() onLowStockTapped;
   final void Function() onAllProductsTapped;
+  final void Function() onViewAllSalesTapped;
   @override
   State<DashboardViewBody> createState() => _DashboardViewBodyState();
 }
@@ -44,12 +46,14 @@ class _DashboardViewBodyState extends State<DashboardViewBody> {
               dashboard: dashboard,
               onLowStockTapped: widget.onLowStockTapped,
               onAllProductsTapped: widget.onAllProductsTapped,
+              onViewAllSalesTapped: widget.onViewAllSalesTapped,
             );
           } else {
             return DashboardContent(
               isLoading: true,
               onLowStockTapped: widget.onLowStockTapped,
               onAllProductsTapped: widget.onAllProductsTapped,
+              onViewAllSalesTapped: widget.onViewAllSalesTapped,
             );
           }
         },

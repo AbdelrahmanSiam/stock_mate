@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';

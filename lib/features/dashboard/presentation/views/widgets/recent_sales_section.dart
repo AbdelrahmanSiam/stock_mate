@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/utils/widgets/custom_header.dart';
 import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
@@ -7,17 +9,21 @@ import 'recent_sale_card_widget.dart';
 
 class RecentSalesSection extends StatelessWidget {
   final List<RecentSaleEntity> sales;
+  final void Function() onViewAllSalesTapped;
 
-  const RecentSalesSection({super.key, required this.sales});
+  const RecentSalesSection({
+    super.key,
+    required this.sales,
+    required this.onViewAllSalesTapped,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
-          onTap: () {
-            // Navigate to the full recent sales screen
-          },
+          onTap: onViewAllSalesTapped,
+
           child: CustomHeader(
             title: S.of(context).recentSales,
             actionText: S.of(context).viewAll,

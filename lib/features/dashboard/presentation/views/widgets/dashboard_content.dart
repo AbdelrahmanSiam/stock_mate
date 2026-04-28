@@ -13,12 +13,14 @@ class DashboardContent extends StatelessWidget {
     required this.isLoading,
     required this.onLowStockTapped,
     required this.onAllProductsTapped,
+    required this.onViewAllSalesTapped,
   });
 
   final dynamic dashboard;
   final bool isLoading;
   final void Function() onLowStockTapped;
   final void Function() onAllProductsTapped;
+  final void Function() onViewAllSalesTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class DashboardContent extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           RecentSalesSection(
+            onViewAllSalesTapped: onViewAllSalesTapped,
             sales: isLoading
                 ? fakeDashboard().recentSales
                 : dashboard.recentSales,

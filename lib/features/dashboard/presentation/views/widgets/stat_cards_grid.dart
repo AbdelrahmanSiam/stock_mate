@@ -8,6 +8,7 @@ class StatCardsGrid extends StatelessWidget {
   final DashboardEntity dashboard;
   final void Function() onLowStockTapped;
   final void Function() onAllProductsTapped;
+  
 
   const StatCardsGrid({
     super.key,
@@ -59,7 +60,7 @@ class StatCardsGrid extends StatelessWidget {
                 title: S.of(context).lowStock,
                 value: '${dashboard.lowStockCount}',
                 valueColor: AppColorsDarkMode.error,
-                showAlertBadge: dashboard.lowStockCount < 5,
+                showAlertBadge: dashboard.lowStockCount > 2,
                 onTap: onLowStockTapped,
               ),
             ),
