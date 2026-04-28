@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/core/utils/widgets/completed_badge.dart';
 import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/helper/helper.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/receipt_icon.dart';
@@ -8,8 +9,13 @@ import 'package:stock_mate/generated/l10n.dart';
 
 class RecentSaleCardWidget extends StatelessWidget {
   final RecentSaleEntity sale;
+  final bool showCompletedBadge;
 
-  const RecentSaleCardWidget({super.key, required this.sale});
+  const RecentSaleCardWidget({
+    super.key,
+    required this.sale,
+    this.showCompletedBadge = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +49,28 @@ class RecentSaleCardWidget extends StatelessWidget {
               ],
             ),
           ),
-          Text(
-            '${sale.totalAmount.toStringAsFixed(0)} ${S.of(context).egp}',
-            style: AppStyles.labelSemiBold13(
-              context,
-            ).copyWith(color: AppColorsDarkMode.textPrimary),
+          Column(
+            children: [
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: sale.totalAmount.toStringAsFixed(0),
+                      style: AppStyles.h2Bold22(context),
+                    ),
+                    const TextSpan(text: ' '),
+                    TextSpan(
+                      text: S.of(context).egp,
+                      style: AppStyles.labelSemiBold13(
+                        context,
+                      ).copyWith(color: AppColorsDarkMode.textPrimary),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 6),
+              showCompletedBadge ? CompletedBadge() : SizedBox(),
+            ],
           ),
         ],
       ),
