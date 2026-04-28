@@ -4,6 +4,7 @@ import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_da
 import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sales_remote_datasource_helper.dart';
 import 'package:stock_mate/features/sales/data/models/invoice_item_model.dart';
 import 'package:stock_mate/features/sales/data/models/sale_model.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 import 'package:uuid/uuid.dart';
 
 class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
@@ -40,9 +41,26 @@ class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
       batch.update(
         firestore.collection(kProductsCollection).doc(item.productId),
         {kQuantity: FieldValue.increment(-item.quantity)},
-      );// update only quantity field on each product
+      ); // update only quantity field on each product
     }
     await batch.commit();
     return sale;
+  }
+
+  @override
+  Stream<List<SaleModel>> getRecentSales({required SaleFilter filter}) {
+    return firestore
+        .collection(kSalesCollection)
+        .where(
+          kCreatedAt,
+          isGreaterThanOrEqualTo: Timestamp.fromDate(filter.startDate),
+        )
+        .orderBy(kCreatedAt, descending: true)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => SaleModel.formFirebase(doc.data(), saleId: doc.id))
+              .toList(),
+        );
   }
 }
