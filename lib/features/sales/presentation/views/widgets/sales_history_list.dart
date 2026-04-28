@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
-import 'package:stock_mate/features/dashboard/presentation/views/widgets/recent_sale_card_widget.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/sale_history_card.dart';
 
 class SalesHistoryList extends StatelessWidget {
-  const SalesHistoryList({super.key, required this.sale});
-  final RecentSaleEntity sale;
+  const SalesHistoryList({super.key, required this.sale, required this.onTap});
+  final SaleEntity sale;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class SalesHistoryList extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 12),
-          child: RecentSaleCardWidget(showCompletedBadge: true, sale: sale),
+          child: SaleHistoryCard(sale: sale, onTap: onTap),
         );
       },
     );

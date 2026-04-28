@@ -30,6 +30,16 @@ class SaleModel extends SaleEntity {
       createdAt: (json[kCreatedAt] as Timestamp).toDate(),
     );
   }
+  factory SaleModel.fromFirestore(Map<String, dynamic> json, String id) =>
+      SaleModel(
+        id: id,
+        invoiceNumber: json[kInvoiceNumber] ?? '',
+        paymentMethod: json[kPaymentMethod] ?? '',
+        totalAmount: (json[kTotalAmount] as num).toDouble(),
+        itemsCount: (json[kItemsCount] as num).toInt(),
+        createdAt: (json[kCreatedAt] as Timestamp).toDate(),
+        items: [],
+      );
 
   Map<String, dynamic> toFireStore() {
     return {

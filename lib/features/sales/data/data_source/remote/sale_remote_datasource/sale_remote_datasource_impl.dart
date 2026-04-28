@@ -59,7 +59,7 @@ class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
         .snapshots()
         .map(
           (snapshot) => snapshot.docs
-              .map((doc) => SaleModel.formFirebase(doc.data(), saleId: doc.id))
+              .map((doc) => SaleModel.fromFirestore(doc.data(), doc.id))
               .toList(),
         );
   }

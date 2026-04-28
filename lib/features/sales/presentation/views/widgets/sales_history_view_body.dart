@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_filter_tabs.dart';
@@ -58,12 +58,16 @@ class SalesHistoryViewBody extends StatelessWidget {
                 ),
               ),
               SalesHistoryList(
-                sale: RecentSaleEntity(
-                  invoiceNumber: "INV-10index",
-                  paymentMethod: "Cash",
+                sale: SaleEntity(
+                  id: "id",
+                  invoiceNumber: "invoiceNumber",
+                  paymentMethod: "paymentMethod",
                   totalAmount: 200,
+                  itemsCount: 3,
+                  items: [],
                   createdAt: DateTime.now(),
                 ),
+                onTap: () {},
               ),
             ],
           ),
