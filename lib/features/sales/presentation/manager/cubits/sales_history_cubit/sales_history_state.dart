@@ -16,8 +16,8 @@ final class SalesHistorySuccessState extends SalesHistoryState {
   double get grossRevenue => sales.fold(0, (sum, s) => sum + s.totalAmount);
 }
 
-final class SalesHistoryFailureState extends SalesHistoryState {
+final class SalesHistoryErrorState extends SalesHistoryState {
   final String errMessage;
 
-  SalesHistoryFailureState({required this.errMessage});
+  SalesHistoryErrorState({required this.errMessage});
 }
