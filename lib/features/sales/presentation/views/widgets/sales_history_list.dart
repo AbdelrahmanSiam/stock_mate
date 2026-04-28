@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/recent_sale_card_widget.dart';
 
 class SalesHistoryList extends StatelessWidget {

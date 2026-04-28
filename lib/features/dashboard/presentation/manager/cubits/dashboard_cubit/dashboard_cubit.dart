@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/dashboard_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/dashboard_entity.dart';
 import 'package:stock_mate/features/dashboard/domain/use_case/get_dashboard_usecase.dart';
 
 part 'dashboard_state.dart';

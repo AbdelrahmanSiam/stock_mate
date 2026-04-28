@@ -1,4 +1,4 @@
-import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 
 class DashboardEntity {
   final int totalProducts;

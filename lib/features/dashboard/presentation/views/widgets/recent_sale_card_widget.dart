@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/completed_badge.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/helper/helper.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/receipt_icon.dart';
 import 'package:stock_mate/generated/l10n.dart';

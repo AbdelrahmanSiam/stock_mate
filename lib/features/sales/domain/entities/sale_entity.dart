@@ -18,4 +18,14 @@ class SaleEntity {
     required this.items,
     required this.createdAt,
   });
+  // Skeleton loading
+  factory SaleEntity.empty() => SaleEntity(
+    id: 'id',
+    invoiceNumber: 'INV-20240410-1042',
+    paymentMethod: 'Cash',
+    totalAmount: 450.00,
+    itemsCount: 3,
+    items: [],
+    createdAt: DateTime.now(),
+  );
 }

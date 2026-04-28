@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/dashboard_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/dashboard_entity.dart';
 import 'package:stock_mate/generated/l10n.dart';
 import 'stat_card_widget.dart';
 

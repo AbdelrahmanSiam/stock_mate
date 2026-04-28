@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/dashboard_entity.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/dashboard_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 String getGreeting(BuildContext context) {

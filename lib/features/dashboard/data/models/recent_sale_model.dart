@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stock_mate/core/constants/constants.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 
 class RecentSaleModel extends RecentSaleEntity {
   const RecentSaleModel({

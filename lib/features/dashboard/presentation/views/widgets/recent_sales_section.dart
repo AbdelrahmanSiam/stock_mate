@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/utils/widgets/custom_header.dart';
-import 'package:stock_mate/features/dashboard/domain/entites/recent_sale_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 import 'package:stock_mate/generated/l10n.dart';
 import 'recent_sale_card_widget.dart';
 

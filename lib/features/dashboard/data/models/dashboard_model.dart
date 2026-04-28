@@ -1,4 +1,4 @@
-import 'package:stock_mate/features/dashboard/domain/entites/dashboard_entity.dart';
+import 'package:stock_mate/features/dashboard/domain/entities/dashboard_entity.dart';
 
 class DashboardModel extends DashboardEntity {
   DashboardModel({
