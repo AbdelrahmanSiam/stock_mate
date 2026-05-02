@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_detail_cubit/sale_detail_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_view_body.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 class SaleDetailsView extends StatelessWidget {
   const SaleDetailsView({super.key});
@@ -16,9 +19,19 @@ class SaleDetailsView extends StatelessWidget {
           },
           icon: Icon(Icons.arrow_back, color: AppColorsDarkMode.primary),
         ),
-        title: Text(
-          "INV-834789419",
-          style: AppStyles.buttonSemiBold15(context),
+        title: BlocBuilder<SaleDetailCubit, SaleDetailState>(
+          builder: (context, state) {
+            if (state is SaleDetailSuccessState) {
+              return Text(
+                state.sale.invoiceNumber,
+                style: AppStyles.sectionTitleSemiBold16(context),
+              );
+            }
+            return Text(
+              S.of(context).saleDetail,
+              style: AppStyles.sectionTitleSemiBold16(context),
+            );
+          },
         ),
         actions: [
           IconButton(

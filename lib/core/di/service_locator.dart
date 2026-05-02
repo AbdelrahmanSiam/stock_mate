@@ -51,7 +51,9 @@ import 'package:stock_mate/features/sales/data/repo/sale_repository_impl.dart';
 import 'package:stock_mate/features/sales/domain/repo/sale_repository.dart';
 import 'package:stock_mate/features/sales/domain/use_case/create_sale_use_case/create_sale_use_case.dart';
 import 'package:stock_mate/features/sales/domain/use_case/get_recent_sales_use_case/get_recent_sales_use_case.dart';
+import 'package:stock_mate/features/sales/domain/use_case/get_sale_by_id_use_case/get_sale_by_id_use_case.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
+import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_detail_cubit/sale_detail_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
@@ -252,7 +254,7 @@ void setupServiceLocator() {
     () => ProductsCubit(getIt<GetProductsUseCase>()),
   );
 
-  //                                                  Sale Feature 
+  //                                                  Sale Feature
   getIt.registerLazySingleton<SaleRemoteDataSource>(
     () => SaleRemoteDatasourceImpl(FirebaseFirestore.instance),
   );
@@ -273,5 +275,14 @@ void setupServiceLocator() {
   // ── SalesHistory Cubit ─────────────────────────────────────
   getIt.registerFactory<SalesHistoryCubit>(
     () => SalesHistoryCubit(getIt<GetRecentSalesUseCase>()),
+  );
+
+  //                                                 Sale Detail Feature
+  getIt.registerLazySingleton<GetSaleByIdUseCase>(
+    () => GetSaleByIdUseCase(getIt<SaleRepository>()),
+  );
+
+  getIt.registerFactory<SaleDetailCubit>(
+    () => SaleDetailCubit(getIt<GetSaleByIdUseCase>()),
   );
 }

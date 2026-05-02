@@ -15,6 +15,7 @@ import 'package:stock_mate/features/products/presentation/manager/cubits/add_edi
 import 'package:stock_mate/features/products/presentation/views/add_product_view.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
+import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_detail_cubit/sale_detail_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/new_sale_view.dart';
 import 'package:stock_mate/features/sales/presentation/views/sale_details_view.dart';
@@ -141,7 +142,13 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.saleDetails,
-      builder: (context, state) => const SaleDetailsView(),
+      builder: (context, state) {
+        final saleId = state.extra as String;
+        return BlocProvider(
+          create: (_) => getIt<SaleDetailCubit>()..getSale(saleId),
+          child: SaleDetailsView(),
+        );
+      },
     ),
   ],
 );
