@@ -6,8 +6,20 @@ import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_detai
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_view_body.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
-class SaleDetailsView extends StatelessWidget {
-  const SaleDetailsView({super.key});
+class SaleDetailsView extends StatefulWidget {
+  final String saleId;
+  const SaleDetailsView({super.key, required this.saleId});
+
+  @override
+  State<SaleDetailsView> createState() => _SaleDetailsViewState();
+}
+
+class _SaleDetailsViewState extends State<SaleDetailsView> {
+  @override
+  void initState() {
+    context.read<SaleDetailCubit>().getSale(widget.saleId);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

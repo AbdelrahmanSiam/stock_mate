@@ -21,6 +21,7 @@ import 'package:stock_mate/features/sales/presentation/views/new_sale_view.dart'
 import 'package:stock_mate/features/sales/presentation/views/sale_details_view.dart';
 import 'package:stock_mate/features/sales/presentation/views/sale_success_view.dart';
 import 'package:stock_mate/features/sales/presentation/views/sales_history_view.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/invalid-sale_id.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
 import 'package:stock_mate/features/splash/presentation/views/splash_view.dart';
 import 'package:stock_mate/features/auth/presentation/views/login_view.dart';
@@ -143,10 +144,14 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.saleDetails,
       builder: (context, state) {
-        final saleId = state.extra as String;
+        final saleId = state.extra;
+
+        if (saleId is! String) {
+          return InvalidSaleId();
+        }
         return BlocProvider(
-          create: (_) => getIt<SaleDetailCubit>()..getSale(saleId),
-          child: SaleDetailsView(),
+          create: (_) => getIt<SaleDetailCubit>(),
+          child: SaleDetailsView(saleId: saleId),
         );
       },
     ),

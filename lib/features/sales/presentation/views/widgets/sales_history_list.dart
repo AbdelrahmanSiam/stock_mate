@@ -5,7 +5,7 @@ import 'package:stock_mate/features/sales/presentation/views/widgets/sale_histor
 class SalesHistoryList extends StatelessWidget {
   const SalesHistoryList({super.key, required this.sales, required this.onTap});
   final List<SaleEntity> sales;
-  final void Function() onTap;
+  final void Function(SaleEntity sale) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SalesHistoryList extends StatelessWidget {
         final sale = sales[index];
         return Padding(
           padding: const EdgeInsets.only(bottom: 12),
-          child: SaleHistoryCard(sale: sale, onTap: onTap),
+          child: SaleHistoryCard(sale: sale, onTap: () => onTap(sale)),
         );
       },
     );

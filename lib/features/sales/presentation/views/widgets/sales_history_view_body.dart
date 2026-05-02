@@ -85,7 +85,7 @@ class SalesHistoryViewBody extends StatelessWidget {
                       )
                     : SalesHistoryList(
                         sales: state.sales,
-                        onTap: () => context.push(AppRoutes.saleDetails),
+                        onTap: (sale) => context.push(AppRoutes.saleDetails, extra: sale.id),
                       )
               else
                 const SalesHistoryEmptyState(isFiltered: false),
