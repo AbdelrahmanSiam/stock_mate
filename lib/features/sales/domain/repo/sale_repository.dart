@@ -12,4 +12,5 @@ abstract class SaleRepository {
   Stream<Either<Failure, List<SaleEntity>>> getRecentSales({
     required SaleFilter filter,
   });
+  Future<Either<Failure, SaleEntity>> getSaleById({required String saleId});
 }
