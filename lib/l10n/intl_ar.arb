@@ -153,5 +153,15 @@
     "recentTransactions": "المعاملات الأخيرة",
     "completed": "مكتملة",
     "noSalesInPeriod": "لا توجد مبيعات في هذه الفترة",
-    "noSalesSubtitle": "أكمل عملية بيع لترى النتائج هنا"
+    "noSalesSubtitle": "أكمل عملية بيع لترى النتائج هنا",
+    "saleDetail": "تفاصيل البيع",
+    "dateAndTime": "التاريخ والوقت",
+    "completedBadge": "مكتملة",
+    "paymentMethodLabel": "طريقة الدفع",
+    "terminalLabel": "الجهاز",
+    "mainRegister": "السجل الرئيسي 01",
+    "purchasedItems": "المنتجات المشتراة",
+    "exportPdf": "تصدير PDF",
+    "comingSoon": "قريباً",
+    "sku": "الكود"
 }

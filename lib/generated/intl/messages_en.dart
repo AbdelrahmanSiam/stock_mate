@@ -54,7 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "Check your connection",
     ),
+    "comingSoon": MessageLookupByLibrary.simpleMessage("COMING SOON"),
     "completed": MessageLookupByLibrary.simpleMessage("COMPLETED"),
+    "completedBadge": MessageLookupByLibrary.simpleMessage("COMPLETED"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "confirmSale": MessageLookupByLibrary.simpleMessage("Confirm Sale"),
     "confirmSaleMessage": m0,
@@ -62,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
+    "dateAndTime": MessageLookupByLibrary.simpleMessage("DATE & TIME"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" days ago"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteProduct": MessageLookupByLibrary.simpleMessage("Delete Product"),
@@ -90,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "estimatedProfit": MessageLookupByLibrary.simpleMessage("ESTIMATED PROFIT"),
     "evening": MessageLookupByLibrary.simpleMessage("Good Evening"),
+    "exportPdf": MessageLookupByLibrary.simpleMessage("Export PDF"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage(
       "This field is required",
     ),
@@ -141,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "low": MessageLookupByLibrary.simpleMessage("LOW"),
     "lowStock": MessageLookupByLibrary.simpleMessage("Low Stock"),
     "lowStockAlert": MessageLookupByLibrary.simpleMessage("Low Stock Alert"),
+    "mainRegister": MessageLookupByLibrary.simpleMessage("Main Register 01"),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("Monthly Revenue"),
     "morning": MessageLookupByLibrary.simpleMessage("Good Morning"),
     "networkError": MessageLookupByLibrary.simpleMessage(
@@ -182,6 +187,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Passwords do not match",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "paymentMethodLabel": MessageLookupByLibrary.simpleMessage(
+      "PAYMENT METHOD",
+    ),
     "perUnit": MessageLookupByLibrary.simpleMessage("EGP / unit"),
     "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
       "Point at barcode to search",
@@ -210,6 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Product saved successfully",
     ),
     "products": MessageLookupByLibrary.simpleMessage("Products"),
+    "purchasedItems": MessageLookupByLibrary.simpleMessage("PURCHASED ITEMS"),
     "receiptId": MessageLookupByLibrary.simpleMessage("RECEIPT ID"),
     "recentSales": MessageLookupByLibrary.simpleMessage("Recent Sales"),
     "recentTransactions": MessageLookupByLibrary.simpleMessage(
@@ -234,6 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saleConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
       "Sale Confirmed Successfully",
     ),
+    "saleDetail": MessageLookupByLibrary.simpleMessage("Sale Detail"),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "salesHistory": MessageLookupByLibrary.simpleMessage("Sales History"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("SAVE PRODUCT"),
@@ -253,10 +263,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),
     "shopeName": MessageLookupByLibrary.simpleMessage("Shop Name"),
     "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),
+    "sku": MessageLookupByLibrary.simpleMessage("SKU"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "Something went wrong",
     ),
     "subtotal": MessageLookupByLibrary.simpleMessage("Subtotal"),
+    "terminalLabel": MessageLookupByLibrary.simpleMessage("TERMINAL"),
     "thisMonth": MessageLookupByLibrary.simpleMessage("This Month"),
     "thisWeek": MessageLookupByLibrary.simpleMessage("This Week"),
     "today": MessageLookupByLibrary.simpleMessage("Today"),

@@ -56,7 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
+    "comingSoon": MessageLookupByLibrary.simpleMessage("قريباً"),
     "completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
+    "completedBadge": MessageLookupByLibrary.simpleMessage("مكتملة"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -66,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
     "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
+    "dateAndTime": MessageLookupByLibrary.simpleMessage("التاريخ والوقت"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" قبل أيام"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteProduct": MessageLookupByLibrary.simpleMessage("حذف المنتج"),
@@ -94,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "estimatedProfit": MessageLookupByLibrary.simpleMessage("الربح المتوقع"),
     "evening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
+    "exportPdf": MessageLookupByLibrary.simpleMessage("تصدير PDF"),
     "fieldRequired": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "forget": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage(
@@ -143,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lowStockAlert": MessageLookupByLibrary.simpleMessage(
       "تنبيه المخزون المنخفض",
     ),
+    "mainRegister": MessageLookupByLibrary.simpleMessage("السجل الرئيسي 01"),
     "monthlyRevenue": MessageLookupByLibrary.simpleMessage("الإيرادات الشهرية"),
     "morning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
     "networkError": MessageLookupByLibrary.simpleMessage(
@@ -186,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمات المرور غير متطابقة",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "paymentMethodLabel": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "perUnit": MessageLookupByLibrary.simpleMessage("جنيه / وحدة"),
     "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
       "وجّه المؤشر نحو الرمز الشريطي للبحث",
@@ -212,6 +218,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم حفظ المنتج بنجاح",
     ),
     "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
+    "purchasedItems": MessageLookupByLibrary.simpleMessage("المنتجات المشتراة"),
     "receiptId": MessageLookupByLibrary.simpleMessage("رقم الفاتورة"),
     "recentSales": MessageLookupByLibrary.simpleMessage("المبيعات الأخيرة"),
     "recentTransactions": MessageLookupByLibrary.simpleMessage(
@@ -236,6 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saleConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
       "تم البيع بنجاح!",
     ),
+    "saleDetail": MessageLookupByLibrary.simpleMessage("تفاصيل البيع"),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
     "salesHistory": MessageLookupByLibrary.simpleMessage("سجل المبيعات"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("حفظ المنتج"),
@@ -257,10 +265,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "shopNameExample": MessageLookupByLibrary.simpleMessage("مثال: البركة "),
     "shopeName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),
     "signInButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "sku": MessageLookupByLibrary.simpleMessage("الكود"),
     "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ غير متوقع",
     ),
     "subtotal": MessageLookupByLibrary.simpleMessage("المجموع"),
+    "terminalLabel": MessageLookupByLibrary.simpleMessage("الجهاز"),
     "thisMonth": MessageLookupByLibrary.simpleMessage("هذا الشهر"),
     "thisWeek": MessageLookupByLibrary.simpleMessage("هذا الأسبوع"),
     "today": MessageLookupByLibrary.simpleMessage("اليوم"),

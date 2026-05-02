@@ -1303,6 +1303,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Sale Detail`
+  String get saleDetail {
+    return Intl.message('Sale Detail', name: 'saleDetail', desc: '', args: []);
+  }
+
+  /// `DATE & TIME`
+  String get dateAndTime {
+    return Intl.message('DATE & TIME', name: 'dateAndTime', desc: '', args: []);
+  }
+
+  /// `COMPLETED`
+  String get completedBadge {
+    return Intl.message(
+      'COMPLETED',
+      name: 'completedBadge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PAYMENT METHOD`
+  String get paymentMethodLabel {
+    return Intl.message(
+      'PAYMENT METHOD',
+      name: 'paymentMethodLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TERMINAL`
+  String get terminalLabel {
+    return Intl.message('TERMINAL', name: 'terminalLabel', desc: '', args: []);
+  }
+
+  /// `Main Register 01`
+  String get mainRegister {
+    return Intl.message(
+      'Main Register 01',
+      name: 'mainRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PURCHASED ITEMS`
+  String get purchasedItems {
+    return Intl.message(
+      'PURCHASED ITEMS',
+      name: 'purchasedItems',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export PDF`
+  String get exportPdf {
+    return Intl.message('Export PDF', name: 'exportPdf', desc: '', args: []);
+  }
+
+  /// `COMING SOON`
+  String get comingSoon {
+    return Intl.message('COMING SOON', name: 'comingSoon', desc: '', args: []);
+  }
+
+  /// `SKU`
+  String get sku {
+    return Intl.message('SKU', name: 'sku', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -153,5 +153,15 @@
     "recentTransactions": "RECENT TRANSACTIONS",
     "completed": "COMPLETED",
     "noSalesInPeriod": "No sales in this period",
-    "noSalesSubtitle": "Complete a sale to see it here"
+    "noSalesSubtitle": "Complete a sale to see it here",
+    "saleDetail": "Sale Detail",
+    "dateAndTime": "DATE & TIME",
+    "completedBadge": "COMPLETED",
+    "paymentMethodLabel": "PAYMENT METHOD",
+    "terminalLabel": "TERMINAL",
+    "mainRegister": "Main Register 01",
+    "purchasedItems": "PURCHASED ITEMS",
+    "exportPdf": "Export PDF",
+    "comingSoon": "COMING SOON",
+    "sku": "SKU"
 }
