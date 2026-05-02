@@ -4,6 +4,7 @@ import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/features/sales/domain/entities/invoice_item_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_header_card.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_totals_section.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_purchased_item_list.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_purchased_item_row.dart';
 import 'package:stock_mate/generated/l10n.dart';
@@ -38,6 +39,8 @@ class SaleDetailViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           SalePurchasedItemList(),
+          const SizedBox(height: 20),
+          SaleDetailTotalsSection(totalAmount: 120), // sale.totalAmount
         ],
       ),
     );
