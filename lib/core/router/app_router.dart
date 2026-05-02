@@ -17,6 +17,7 @@ import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/new_sale_view.dart';
+import 'package:stock_mate/features/sales/presentation/views/sale_details_view.dart';
 import 'package:stock_mate/features/sales/presentation/views/sale_success_view.dart';
 import 'package:stock_mate/features/sales/presentation/views/sales_history_view.dart';
 import 'package:stock_mate/features/splash/presentation/manager/cubits/splash_cubit/splash_cubit.dart';
@@ -37,7 +38,7 @@ abstract class AppRoutes {
   static const String newSale = '/new-sale';
   static const String saleSuccess = '/sale-success';
   static const String salesHistory = '/sales-history';
-  static const String saleDetail = '/sale-detail';
+  static const String saleDetails = '/sale-details';
 }
 
 // ── Router Instance ───────────────────────────────────────────
@@ -137,6 +138,10 @@ final GoRouter appRouter = GoRouter(
         create: (_) => getIt<SalesHistoryCubit>(),
         child: const SalesHistoryView(),
       ),
+    ),
+    GoRoute(
+      path: AppRoutes.saleDetails,
+      builder: (context, state) => const SaleDetailsView(),
     ),
   ],
 );
