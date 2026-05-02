@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:stock_mate/core/errors/failure.dart';
-import 'package:stock_mate/features/dashboard/domain/entities/recent_sale_entity.dart';
 import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sale_remote_datasource.dart';
 import 'package:stock_mate/features/sales/data/models/invoice_item_model.dart';
 import 'package:stock_mate/features/sales/data/repo/helper.dart';
@@ -51,5 +50,19 @@ class SaleRepositoryImpl implements SaleRepository {
                 : ServerFailure(errMessage: error.toString()),
           ),
         );
+  }
+
+  @override
+  Future<Either<Failure, SaleEntity>> getSaleById({
+    required String saleId,
+  }) async {
+    try {
+      final result = await remoteDataSource.getSaleById(saleId: saleId);
+      return Right(result);
+    } on FirebaseException catch (e) {
+      return Left(ServerFailure.fromFirebaseFirestore(e));
+    } catch (e) {
+      return Left(ServerFailure.fromException(e));
+    }
   }
 }
