@@ -10,6 +10,10 @@ class SaleHistorySkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Skeletonizer(
       enabled: true,
+      effect: const ShimmerEffect(
+        highlightColor: Colors.grey,
+        baseColor: Colors.black12,
+      ),
       child: ListView.separated(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
