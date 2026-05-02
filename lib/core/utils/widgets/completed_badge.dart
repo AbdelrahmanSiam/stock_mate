@@ -22,6 +22,7 @@ class CompletedBadge extends StatelessWidget {
         style: AppStyles.captionRegular10(context).copyWith(
           color: AppColorsDarkMode.success,
           fontWeight: FontWeight.w600,
+          letterSpacing: 1,
         ),
       ),
     );
