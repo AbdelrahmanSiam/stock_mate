@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_view_body.dart';
 
 class SaleDetailsView extends StatelessWidget {
   const SaleDetailsView({super.key});
@@ -31,6 +32,7 @@ class SaleDetailsView extends StatelessWidget {
           ),
         ],
       ),
+      body: SaleDetailViewBody(),
     );
   }
 }
