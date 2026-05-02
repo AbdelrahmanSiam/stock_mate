@@ -4,6 +4,7 @@ import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_da
 import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sales_remote_datasource_helper.dart';
 import 'package:stock_mate/features/sales/data/models/invoice_item_model.dart';
 import 'package:stock_mate/features/sales/data/models/sale_model.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 import 'package:uuid/uuid.dart';
 
@@ -62,5 +63,14 @@ class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
               .map((doc) => SaleModel.fromFirestore(doc.data(), doc.id))
               .toList(),
         );
+  }
+
+  @override
+  Future<SaleEntity> getSaleById({required String saleId}) async {
+    final doc = await firestore.collection(kSalesCollection).doc(saleId).get();
+    if (!doc.exists || doc.data() == null) {
+      throw Exception('Sale not found');
+    }
+    return SaleModel.formFirebase(doc.data()!, saleId: doc.id);
   }
 }

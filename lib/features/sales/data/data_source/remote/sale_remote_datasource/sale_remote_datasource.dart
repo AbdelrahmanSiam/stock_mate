@@ -1,5 +1,6 @@
 import 'package:stock_mate/features/sales/data/models/invoice_item_model.dart';
 import 'package:stock_mate/features/sales/data/models/sale_model.dart';
+import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 
 abstract class SaleRemoteDataSource {
@@ -8,4 +9,5 @@ abstract class SaleRemoteDataSource {
     required String paymentMethod,
   });
   Stream<List<SaleModel>> getRecentSales({required SaleFilter filter});
+  Future<SaleEntity> getSaleById({required String saleId});
 }
