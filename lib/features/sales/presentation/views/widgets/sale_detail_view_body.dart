@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stock_mate/core/styles/app_styles.dart';
+import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_header_card.dart';
+import 'package:stock_mate/generated/l10n.dart';
 
 class SaleDetailViewBody extends StatelessWidget {
   const SaleDetailViewBody({super.key});
@@ -10,6 +13,7 @@ class SaleDetailViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SaleDetailHeaderCard(
             sale: SaleEntity(
@@ -22,6 +26,14 @@ class SaleDetailViewBody extends StatelessWidget {
               createdAt: DateTime.now(),
             ),
           ),
+          const SizedBox(height: 32),
+          Text(
+            S.of(context).purchasedItems,
+            style: AppStyles.labelSemiBold13(
+              context,
+            ).copyWith(color: AppColorsDarkMode.textSecondary),
+          ),
+          const SizedBox(height: 20),
         ],
       ),
     );
