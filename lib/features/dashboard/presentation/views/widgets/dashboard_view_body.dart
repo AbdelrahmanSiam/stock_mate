@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stock_mate/core/utils/widgets/custom_error_state_widget.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:stock_mate/features/dashboard/presentation/manager/cubits/dashboard_cubit/dashboard_cubit.dart';
 import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_content.dart';
-import 'package:stock_mate/features/dashboard/presentation/views/widgets/dashboard_error_view.dart';
 
 class DashboardViewBody extends StatefulWidget {
   const DashboardViewBody({
@@ -39,7 +39,11 @@ class _DashboardViewBodyState extends State<DashboardViewBody> {
       widget: BlocBuilder<DashboardCubit, DashboardState>(
         builder: (context, state) {
           if (state is DashboardErrorState) {
-            return DashboardErrorView(errMessage: state.errMessage);
+            return CustomErrorStateWidget(
+              errMessage: state.errMessage,
+              onPressed: () =>
+                  context.read<DashboardCubit>().getDashboardData(),
+            );
           }
           if (state is DashboardLoadedState) {
             final dashboard = state.dashboard;

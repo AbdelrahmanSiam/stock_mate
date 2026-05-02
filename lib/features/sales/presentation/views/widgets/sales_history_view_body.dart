@@ -4,12 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/core/utils/widgets/custom_error_state_widget.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_history_skeleton.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_filter_tabs.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_history_empty_state.dart';
-import 'package:stock_mate/features/sales/presentation/views/widgets/sales_history_failure_widget.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_history_list.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_summary_card.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sales_summary_card_skeletonizer.dart';
@@ -72,8 +72,10 @@ class SalesHistoryViewBody extends StatelessWidget {
                 SliverToBoxAdapter(child: const SaleHistorySkeleton())
               else if (state is SalesHistoryErrorState)
                 SliverToBoxAdapter(
-                  child: SalesHistoryFailureWidget(
+                  child: CustomErrorStateWidget(
                     errMessage: state.errMessage,
+                    onPressed: () =>
+                        context.read<SalesHistoryCubit>().getRecentSales(),
                   ),
                 )
               else if (state is SalesHistorySuccessState)

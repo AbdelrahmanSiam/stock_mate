@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stock_mate/core/utils/widgets/custom_error_state_widget.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
-import 'package:stock_mate/features/sales/presentation/views/widgets/new_sale_error_widget.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/new_sale_initial_body.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/new_sale_invoice_items.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/selected_items_text.dart';
@@ -22,7 +22,10 @@ class NewSaleViewBody extends StatelessWidget {
           return NewSaleInitialBody();
         }
         if (state is SaleErrorState) {
-          return NewSaleErrorWidget(errMessage: state.errMessage);
+          return CustomErrorStateWidget(
+            errMessage: state.errMessage,
+            onPressed: () => context.read<SaleCubit>().init(),
+          );
         }
         if (state is! SaleItemsUpdatedState) return const SizedBox();
         return SafeArea(
@@ -60,7 +63,9 @@ class NewSaleViewBody extends StatelessWidget {
                     elevation: 10,
                     borderRadius: BorderRadius.circular(16),
                     child: ConstrainedBox(
-                      constraints:  BoxConstraints(maxHeight: MediaQuery.sizeOf(context).height*0.3),
+                      constraints: BoxConstraints(
+                        maxHeight: MediaQuery.sizeOf(context).height * 0.3,
+                      ),
                       child: SearchResultsDropdown(
                         results: state.searchResults,
                         onProductSelected: (product) {

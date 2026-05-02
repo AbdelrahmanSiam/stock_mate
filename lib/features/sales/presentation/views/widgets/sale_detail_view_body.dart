@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
+import 'package:stock_mate/core/utils/widgets/custom_error_state_widget.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_detail_cubit/sale_detail_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_header_card.dart';
@@ -22,26 +23,9 @@ class SaleDetailViewBody extends StatelessWidget {
           return const SaleDetailSkeleton();
         }
         if (state is SaleDetailErrorState) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(40),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.error_outline,
-                    color: AppColorsDarkMode.error,
-                    size: 48,
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    state.errMessage,
-                    style: AppStyles.bodyMediumRegular14(context),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
+          return CustomErrorStateWidget(
+            errMessage: state.errMessage,
+            onPressed: () {},
           );
         }
         return Padding(
