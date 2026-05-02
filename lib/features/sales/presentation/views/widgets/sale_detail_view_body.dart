@@ -4,7 +4,6 @@ import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/core/utils/widgets/custom_error_state_widget.dart';
-import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_detail_cubit/sale_detail_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_header_card.dart';
 import 'package:stock_mate/features/sales/presentation/views/widgets/sale_detail_skeleton.dart';
@@ -28,23 +27,14 @@ class SaleDetailViewBody extends StatelessWidget {
             onPressed: () {},
           );
         }
-        return Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
+        if (state is SaleDetailSuccessState) {
+          final sale = state.sale;
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SaleDetailHeaderCard(
-                  sale: SaleEntity(
-                    id: "1",
-                    invoiceNumber: "invoiceNumber",
-                    paymentMethod: "paymentMethod",
-                    totalAmount: 100,
-                    itemsCount: 2,
-                    items: [],
-                    createdAt: DateTime.now(),
-                  ),
-                ),
+                SaleDetailHeaderCard(sale: sale),
                 const SizedBox(height: 32),
                 Text(
                   S.of(context).purchasedItems,
@@ -53,9 +43,11 @@ class SaleDetailViewBody extends StatelessWidget {
                   ).copyWith(color: AppColorsDarkMode.textSecondary),
                 ),
                 const SizedBox(height: 20),
-                SalePurchasedItemList(),
+                SalePurchasedItemList(items: sale.items),
                 const SizedBox(height: 20),
-                SaleDetailTotalsSection(totalAmount: 120), // sale.totalAmount
+                SaleDetailTotalsSection(
+                  totalAmount: sale.totalAmount,
+                ), // sale.totalAmount
                 const SizedBox(height: 20),
                 CustomButton(
                   onPressed: () {},
@@ -66,8 +58,9 @@ class SaleDetailViewBody extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        );
+          );
+        }
+        return const SizedBox();
       },
     );
   }
