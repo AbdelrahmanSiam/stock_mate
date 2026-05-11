@@ -58,9 +58,16 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
   }
 
   @override
-  Future<void> updateDisplayName(String displayName) {
-    // TODO: implement updateDisplayName
-    throw UnimplementedError();
+  Future<void> updateDisplayName(String displayName) async {
+    final User? user = firebaseAuth.currentUser;
+    if (user == null) return;
+    // Update the display name in Firebase Auth and Firestore at the same time
+    await Future.wait([
+      user.updateDisplayName(displayName),
+      firestore.collection(kUsersCollection).doc(user.uid).update({
+        kDisplayName: displayName,
+      }),
+    ]);
   }
 
   @override
