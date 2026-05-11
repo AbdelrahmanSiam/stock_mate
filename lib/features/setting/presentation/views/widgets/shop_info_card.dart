@@ -22,7 +22,7 @@ class ShopInfoCard extends StatelessWidget {
             context,
           ).copyWith(color: AppColorsDarkMode.textSecondary),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 15),
         AppCard(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,

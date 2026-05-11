@@ -6,6 +6,7 @@ import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/core/utils/widgets/custom_user_avatar.dart';
+import 'package:stock_mate/features/setting/presentation/views/widgets/account_card.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/setting_view_header.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/shop_info_card.dart';
 import 'package:stock_mate/generated/l10n.dart';
@@ -35,6 +36,7 @@ class _SettingViewBodyState extends State<SettingViewBody> {
           SettingViewHeader(),
           const SizedBox(height: 20),
           ShopInfoCard(controller: controller),
+          AccountCard(),
         ],
       ),
     );
