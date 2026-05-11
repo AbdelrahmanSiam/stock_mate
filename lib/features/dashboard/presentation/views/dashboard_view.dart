@@ -12,6 +12,7 @@ import 'package:stock_mate/features/products/presentation/views/products_view_bo
 import 'package:stock_mate/features/sales/domain/entities/sale_filter.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/views/sales_history_view.dart';
+import 'package:stock_mate/features/setting/presentation/views/setting_view.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key, this.productsInitialFilter});
@@ -88,11 +89,9 @@ class _DashboardViewState extends State<DashboardView> {
         onViewAllSalesTapped: () => setState(() => currentIndex = 2),
         onViewMonthlyRevenueTapped: () => navigateToMonthlyRevenue(),
       ),
-
       BlocProvider.value(value: productsCubit, child: ProductsViewBody()),
-
       BlocProvider.value(value: salesHistoryCubit, child: SalesHistoryView()),
-      const Center(child: Text("Settings")),
+      SettingView(),
     ];
 
     return MultiBlocProvider(
