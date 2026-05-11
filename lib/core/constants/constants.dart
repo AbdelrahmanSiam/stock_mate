@@ -14,6 +14,7 @@ const String kShopName        = 'shopName';
 const String kShopLogoUrl     = 'shopLogoUrl';
 const String kCreatedAt       = 'createdAt';
 const String kIsEmailVerified = 'isEmailVerified';
+const String kShopId          = 'shopId';
 // Sale Fields
 const String kInvoiceNumber  = 'invoiceNumber';
 const String kPaymentMethod  = 'paymentMethod';
