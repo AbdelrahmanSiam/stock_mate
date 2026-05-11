@@ -36,7 +36,7 @@ class AccountCard extends StatelessWidget {
               SizedBox(height: 10),
               CustomListTile(
                 leadingIcon: Icons.email,
-                trailingIcon: Icons.close,
+                trailingIcon: Icons.lock_outlined,
                 title: S.of(context).emailReadOnly,
                 subTitle: "abdelrahman@example.com",
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/core/utils/widgets/cusotm_icon_with_container.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
@@ -16,13 +17,9 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: AppColorsDarkMode.textSecondary.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Icon(leadingIcon, color: AppColorsDarkMode.textSecondary),
+      leading: CustomIconWithContainer(
+        leadingIcon: leadingIcon,
+        color: AppColorsDarkMode.textSecondary,
       ),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
