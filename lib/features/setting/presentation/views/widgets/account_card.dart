@@ -10,6 +10,7 @@ class AccountCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           S.of(context).account,
@@ -17,7 +18,7 @@ class AccountCard extends StatelessWidget {
             context,
           ).copyWith(color: AppColorsDarkMode.textSecondary),
         ),
-        SizedBox(height: 15),
+        SizedBox(height: 10),
         Container(
           decoration: BoxDecoration(
             color: AppColorsDarkMode.surface,
@@ -31,6 +32,13 @@ class AccountCard extends StatelessWidget {
                 trailingIcon: Icons.arrow_forward_ios,
                 title: S.of(context).displayName,
                 subTitle: "Abdelrahman",
+              ),
+              SizedBox(height: 10),
+              CustomListTile(
+                leadingIcon: Icons.email,
+                trailingIcon: Icons.close,
+                title: S.of(context).emailReadOnly,
+                subTitle: "abdelrahman@example.com",
               ),
             ],
           ),

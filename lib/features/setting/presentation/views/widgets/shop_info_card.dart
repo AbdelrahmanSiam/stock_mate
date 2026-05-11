@@ -15,6 +15,7 @@ class ShopInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           S.of(context).shopInfo,
@@ -22,7 +23,7 @@ class ShopInfoCard extends StatelessWidget {
             context,
           ).copyWith(color: AppColorsDarkMode.textSecondary),
         ),
-        SizedBox(height: 15),
+        SizedBox(height: 10),
         AppCard(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,

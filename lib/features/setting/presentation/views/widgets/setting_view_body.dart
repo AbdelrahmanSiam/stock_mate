@@ -6,6 +6,7 @@ import 'package:stock_mate/core/utils/widgets/app_card.dart';
 import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/core/utils/widgets/custom_user_avatar.dart';
+import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/account_card.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/setting_view_header.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/shop_info_card.dart';
@@ -28,14 +29,14 @@ class _SettingViewBodyState extends State<SettingViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
+    return CustomViewBody(
+      widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SettingViewHeader(),
           const SizedBox(height: 20),
           ShopInfoCard(controller: controller),
+          const SizedBox(height: 20),
           AccountCard(),
         ],
       ),
