@@ -1373,6 +1373,16 @@ class S {
   String get sku {
     return Intl.message('SKU', name: 'sku', desc: '', args: []);
   }
+
+  /// `PDF ready to share!`
+  String get pdfReadyToShare {
+    return Intl.message(
+      'PDF ready to share!',
+      name: 'pdfReadyToShare',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

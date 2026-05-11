@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:share_plus/share_plus.dart';
@@ -10,6 +11,7 @@ part 'sale_detail_state.dart';
 
 class SaleDetailCubit extends Cubit<SaleDetailState> {
   final GetSaleByIdUseCase getSaleByIdUseCase;
+
   SaleDetailCubit(this.getSaleByIdUseCase) : super(SaleDetailInitialState());
 
   // ── getSale ────────────────────────────────────────────────
@@ -49,8 +51,11 @@ class SaleDetailCubit extends Cubit<SaleDetailState> {
       // pdf is ready, we can share it
       final readyState = state as SaleDetailPdfReadyState;
       await Share.shareXFiles([
-        XFile(readyState.filePath),
-      ], subject: 'Invoice ${readyState.sale.invoiceNumber}');
+        XFile(readyState.filePath, mimeType: 'application/pdf'),
+      ],
+        subject: 'Invoice ${readyState.sale.invoiceNumber}',
+        text: 'StockMate invoice ${readyState.sale.invoiceNumber}',
+      );
       return;
     }
     // If pdf is not ready, we can try to generate and share it immediately
@@ -61,8 +66,11 @@ class SaleDetailCubit extends Cubit<SaleDetailState> {
       final file = await SalePdfGenerator.generate(sale);
       emit(SaleDetailPdfReadyState(sale: sale, filePath: file.path));
       await Share.shareXFiles([
-        XFile(file.path),
-      ], subject: 'Invoice ${sale.invoiceNumber}');
+        XFile(file.path, mimeType: 'application/pdf'),
+      ],
+        subject: 'Invoice ${sale.invoiceNumber}',
+        text: 'StockMate invoice ${sale.invoiceNumber}',
+      );
     } catch (e) {
       emit(
         SaleDetailPdfErrorState(

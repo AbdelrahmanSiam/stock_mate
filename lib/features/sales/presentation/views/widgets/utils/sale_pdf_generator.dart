@@ -20,14 +20,30 @@ abstract class SalePdfGenerator {
       ),
     );
 
-    // Save to temp directory
-    // The temp directory is automatically cleared by the system
-    // We don't need to clear it manually
-    final Directory tempDir = await getTemporaryDirectory();
+    // Save to the best available output folder for the current platform.
+    Directory? outputDir;
+    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+      outputDir = await getDownloadsDirectory();
+    } else if (Platform.isAndroid) {
+      final downloadsDirs = await getExternalStorageDirectories(
+        type: StorageDirectory.downloads,
+      );
+      outputDir = downloadsDirs?.first;
+      if (outputDir == null || !(await outputDir.exists())) {
+        final externalDir = await getExternalStorageDirectory();
+        if (externalDir != null) {
+          outputDir = Directory('${externalDir.path}/Download');
+        }
+      }
+    } else if (Platform.isIOS) {
+      outputDir = await getApplicationDocumentsDirectory();
+    }
+    outputDir ??= await getTemporaryDirectory();
+
     final String fileName =
         'StockMate_${sale.invoiceNumber}_${DateTime.now().millisecondsSinceEpoch}.pdf';
-    final File file = File('${tempDir.path}/$fileName');
-
+    final File file = File('${outputDir.path}/$fileName');
+    await file.create(recursive: true);
     await file.writeAsBytes(await pdf.save());
     return file;
   }

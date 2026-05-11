@@ -163,5 +163,6 @@
     "purchasedItems": "PURCHASED ITEMS",
     "exportPdf": "Export PDF",
     "comingSoon": "COMING SOON",
-    "sku": "SKU"
+    "sku": "SKU",
+    "pdfReadyToShare": "PDF ready to share!"
 }

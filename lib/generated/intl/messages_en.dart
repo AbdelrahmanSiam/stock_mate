@@ -190,6 +190,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethodLabel": MessageLookupByLibrary.simpleMessage(
       "PAYMENT METHOD",
     ),
+    "pdfReadyToShare": MessageLookupByLibrary.simpleMessage(
+      "PDF ready to share!",
+    ),
     "perUnit": MessageLookupByLibrary.simpleMessage("EGP / unit"),
     "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
       "Point at barcode to search",

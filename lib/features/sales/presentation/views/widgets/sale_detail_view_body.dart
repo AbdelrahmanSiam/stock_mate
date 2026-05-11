@@ -49,12 +49,22 @@ class SaleDetailViewBody extends StatelessWidget {
                   totalAmount: sale.totalAmount,
                 ), // sale.totalAmount
                 const SizedBox(height: 20),
-                CustomButton(
-                  onPressed: () {},
-                  isLoading: false,
-                  buttonName: S.of(context).exportPdf,
-                  iconButton: Icons.picture_as_pdf,
-                  changeColors: true,
+                BlocBuilder<SaleDetailCubit, SaleDetailState>(
+                  builder: (context, state) {
+                    final bool isGenerating =
+                        state is SaleDetailPdfGeneratingState;
+                    final bool isPdfReady = state is SaleDetailPdfReadyState;
+                    return CustomButton(
+                      onPressed: () =>
+                          context.read<SaleDetailCubit>().exportPdf(),
+                      isLoading: isGenerating,
+                      buttonName: S.of(context).exportPdf,
+                      iconButton: isPdfReady
+                          ? Icons.check_circle_outline
+                          : Icons.picture_as_pdf_outlined,
+                      changeColors: true,
+                    );
+                  },
                 ),
               ],
             ),
