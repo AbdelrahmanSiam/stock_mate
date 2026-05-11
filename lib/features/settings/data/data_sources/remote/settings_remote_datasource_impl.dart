@@ -71,9 +71,16 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
   }
 
   @override
-  Future<void> updateShopLogoUrl(String url) {
-    // TODO: implement updateShopLogoUrl
-    throw UnimplementedError();
+  Future<void> updateShopLogoUrl(String url) async {
+    final User? user = firebaseAuth.currentUser;
+    if (user == null) return;
+    // Update the shop logo url in Firebase Auth and Firestore at the same time
+    await Future.wait([
+      user.updatePhotoURL(url),
+      firestore.collection(kUsersCollection).doc(user.uid).update({
+        kShopLogoUrl: url,
+      }),
+    ]);
   }
 
   @override
@@ -85,8 +92,22 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
   }
 
   @override
-  Future<String> uploadShopLogo(File image) {
-    // TODO: implement uploadShopLogo
-    throw UnimplementedError();
+  Future<String> uploadShopLogo(File image) async {
+    final String uid = firebaseAuth.currentUser!.uid;
+    final String path = 'avatars/$uid.jpg';
+
+    await supabase.storage
+        .from('avatars')
+        .upload(
+          path,
+          image,
+          fileOptions: const FileOptions(
+            contentType: 'image/jpeg',
+            upsert:
+                true, // This will overwrite the existing file with the same name, so we don't have to worry about deleting the old logo from storage
+          ),
+        );
+
+    return supabase.storage.from('avatars').getPublicUrl(path);
   }
 }
