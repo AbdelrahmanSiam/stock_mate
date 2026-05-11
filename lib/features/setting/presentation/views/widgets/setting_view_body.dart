@@ -8,6 +8,7 @@ import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/core/utils/widgets/custom_user_avatar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/account_card.dart';
+import 'package:stock_mate/features/setting/presentation/views/widgets/danger_zone.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/preferences_card.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/setting_view_header.dart';
 import 'package:stock_mate/features/setting/presentation/views/widgets/shop_info_card.dart';
@@ -43,6 +44,8 @@ class _SettingViewBodyState extends State<SettingViewBody> {
             AccountCard(),
             const SizedBox(height: 20),
             PreferencesCard(),
+            const SizedBox(height: 20),
+            DangerZone(),
           ],
         ),
       ),
