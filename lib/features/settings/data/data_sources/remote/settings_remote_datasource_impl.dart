@@ -70,9 +70,11 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
   }
 
   @override
-  Future<void> updateShopName(String shopName) {
-    // TODO: implement updateShopName
-    throw UnimplementedError();
+  Future<void> updateShopName(String shopName) async {
+    final String uid = firebaseAuth.currentUser!.uid;
+    await firestore.collection(kUsersCollection).doc(uid).update({
+      kShopName: shopName,
+    });
   }
 
   @override
