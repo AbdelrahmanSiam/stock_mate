@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:stock_mate/features/sales/domain/entities/sale_entity.dart';
 import 'package:stock_mate/features/sales/domain/use_case/get_sale_by_id_use_case/get_sale_by_id_use_case.dart';
 import 'package:stock_mate/features/sales/domain/use_case/get_sale_by_id_use_case/get_sale_by_id_use_case_parameters.dart';
@@ -37,6 +38,36 @@ class SaleDetailCubit extends Cubit<SaleDetailState> {
         SaleDetailPdfErrorState(
           sale: sale,
           errMessage: 'Failed to generate PDF: ${e.toString()}',
+        ),
+      );
+    }
+  }
+
+  // ── sharePdf ────────────────────────────────────────────────
+  Future<void> sharePdf() async {
+    if (state is SaleDetailPdfReadyState) {
+      // pdf is ready, we can share it
+      final readyState = state as SaleDetailPdfReadyState;
+      await Share.shareXFiles([
+        XFile(readyState.filePath),
+      ], subject: 'Invoice ${readyState.sale.invoiceNumber}');
+      return;
+    }
+    // If pdf is not ready, we can try to generate and share it immediately
+    final SaleEntity? sale = _getCurrentSale();
+    if (sale == null) return;
+    emit(SaleDetailPdfGeneratingState(sale));
+    try {
+      final file = await SalePdfGenerator.generate(sale);
+      emit(SaleDetailPdfReadyState(sale: sale, filePath: file.path));
+      await Share.shareXFiles([
+        XFile(file.path),
+      ], subject: 'Invoice ${sale.invoiceNumber}');
+    } catch (e) {
+      emit(
+        SaleDetailPdfErrorState(
+          sale: sale,
+          errMessage: 'Failed to share PDF: ${e.toString()}',
         ),
       );
     }
