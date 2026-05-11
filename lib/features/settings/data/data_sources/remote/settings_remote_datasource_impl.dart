@@ -52,9 +52,11 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+  Future<void> logout() async {
+    if (await googleSignIn.isSignedIn()) {
+      await googleSignIn.signOut();
+    }
+    await firebaseAuth.signOut();
   }
 
   @override
