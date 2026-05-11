@@ -24,10 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(count) => "Only ${count} available";
 
+  static String m2(id) => "ID: ${id}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("AM"),
     "PM": MessageLookupByLibrary.simpleMessage("PM"),
+    "account": MessageLookupByLibrary.simpleMessage("ACCOUNT"),
     "addPhoto": MessageLookupByLibrary.simpleMessage("ADD PHOTO"),
     "addProduct": MessageLookupByLibrary.simpleMessage("Add Product"),
     "afternoon": MessageLookupByLibrary.simpleMessage("Good Afternoon"),
@@ -51,6 +54,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "categoryHint": MessageLookupByLibrary.simpleMessage(
       "e.g. Electronics, Food",
     ),
+    "changesSaved": MessageLookupByLibrary.simpleMessage(
+      "Changes saved successfully",
+    ),
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "Check your connection",
     ),
@@ -63,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmSaleTitle": MessageLookupByLibrary.simpleMessage("Confirm Sale"),
     "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "currency": MessageLookupByLibrary.simpleMessage("Currency"),
+    "dangerZone": MessageLookupByLibrary.simpleMessage("DANGER ZONE"),
     "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
     "dateAndTime": MessageLookupByLibrary.simpleMessage("DATE & TIME"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" days ago"),
@@ -76,9 +84,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "discardSaleMessage": MessageLookupByLibrary.simpleMessage(
       "Your invoice will be lost",
     ),
+    "displayName": MessageLookupByLibrary.simpleMessage("Display Name"),
+    "displayNameUpdated": MessageLookupByLibrary.simpleMessage(
+      "Display name updated",
+    ),
+    "editDisplayName": MessageLookupByLibrary.simpleMessage(
+      "Edit Display Name",
+    ),
     "editProduct": MessageLookupByLibrary.simpleMessage("Edit Product"),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "email": MessageLookupByLibrary.simpleMessage("Email address"),
+    "emailReadOnly": MessageLookupByLibrary.simpleMessage(
+      "Email Address (Read-only)",
+    ),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
       "We\'ve sent a verification link to",
     ),
@@ -139,9 +157,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "items": MessageLookupByLibrary.simpleMessage("Items"),
     "itemsLabel": MessageLookupByLibrary.simpleMessage("ITEMS"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
     ),
+    "logoUpdated": MessageLookupByLibrary.simpleMessage("Shop logo updated"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to logout?",
+    ),
+    "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("Logout?"),
     "low": MessageLookupByLibrary.simpleMessage("LOW"),
     "lowStock": MessageLookupByLibrary.simpleMessage("Low Stock"),
     "lowStockAlert": MessageLookupByLibrary.simpleMessage("Low Stock Alert"),
@@ -190,9 +215,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethodLabel": MessageLookupByLibrary.simpleMessage(
       "PAYMENT METHOD",
     ),
-    "pdfReadyToShare": MessageLookupByLibrary.simpleMessage(
-      "PDF ready to share!",
-    ),
     "perUnit": MessageLookupByLibrary.simpleMessage("EGP / unit"),
     "pointAtBarcodeToSearch": MessageLookupByLibrary.simpleMessage(
       "Point at barcode to search",
@@ -200,6 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pointAtProductBarcode": MessageLookupByLibrary.simpleMessage(
       "Point at product barcode",
     ),
+    "preferences": MessageLookupByLibrary.simpleMessage("PREFERENCES"),
     "proTip": MessageLookupByLibrary.simpleMessage("StockMate Pro Tip"),
     "proTipTagline": MessageLookupByLibrary.simpleMessage(
       "Verifying your email ensures you receive automated stock-low alerts and daily sales summaries.",
@@ -249,6 +272,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "saleDetail": MessageLookupByLibrary.simpleMessage("Sale Detail"),
     "sales": MessageLookupByLibrary.simpleMessage("Sales"),
     "salesHistory": MessageLookupByLibrary.simpleMessage("Sales History"),
+    "save": MessageLookupByLibrary.simpleMessage("Save"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("SAVE PRODUCT"),
     "scanBarcode": MessageLookupByLibrary.simpleMessage("Scan Barcode"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
@@ -263,7 +288,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "sendResetLink": MessageLookupByLibrary.simpleMessage("Send Reset Link"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "shop": MessageLookupByLibrary.simpleMessage("User\'s Shop"),
+    "shopId": m2,
+    "shopInfo": MessageLookupByLibrary.simpleMessage("SHOP INFO"),
+    "shopName": MessageLookupByLibrary.simpleMessage("Shop Name"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("e.g. Al-Barakah"),
+    "shopNameUpdated": MessageLookupByLibrary.simpleMessage(
+      "Shop name updated",
+    ),
     "shopeName": MessageLookupByLibrary.simpleMessage("Shop Name"),
     "signInButton": MessageLookupByLibrary.simpleMessage("SIGN IN"),
     "sku": MessageLookupByLibrary.simpleMessage("SKU"),

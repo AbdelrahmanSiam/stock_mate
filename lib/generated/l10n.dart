@@ -1374,11 +1374,151 @@ class S {
     return Intl.message('SKU', name: 'sku', desc: '', args: []);
   }
 
-  /// `PDF ready to share!`
-  String get pdfReadyToShare {
+  /// `SHOP INFO`
+  String get shopInfo {
+    return Intl.message('SHOP INFO', name: 'shopInfo', desc: '', args: []);
+  }
+
+  /// `ID: {id}`
+  String shopId(Object id) {
+    return Intl.message('ID: $id', name: 'shopId', desc: '', args: [id]);
+  }
+
+  /// `Shop Name`
+  String get shopName {
+    return Intl.message('Shop Name', name: 'shopName', desc: '', args: []);
+  }
+
+  /// `Save Changes`
+  String get saveChanges {
     return Intl.message(
-      'PDF ready to share!',
-      name: 'pdfReadyToShare',
+      'Save Changes',
+      name: 'saveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACCOUNT`
+  String get account {
+    return Intl.message('ACCOUNT', name: 'account', desc: '', args: []);
+  }
+
+  /// `Display Name`
+  String get displayName {
+    return Intl.message(
+      'Display Name',
+      name: 'displayName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Address (Read-only)`
+  String get emailReadOnly {
+    return Intl.message(
+      'Email Address (Read-only)',
+      name: 'emailReadOnly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PREFERENCES`
+  String get preferences {
+    return Intl.message('PREFERENCES', name: 'preferences', desc: '', args: []);
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
+
+  /// `Currency`
+  String get currency {
+    return Intl.message('Currency', name: 'currency', desc: '', args: []);
+  }
+
+  /// `DANGER ZONE`
+  String get dangerZone {
+    return Intl.message('DANGER ZONE', name: 'dangerZone', desc: '', args: []);
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Logout?`
+  String get logoutConfirmTitle {
+    return Intl.message(
+      'Logout?',
+      name: 'logoutConfirmTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to logout?`
+  String get logoutConfirmMessage {
+    return Intl.message(
+      'Are you sure you want to logout?',
+      name: 'logoutConfirmMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes saved successfully`
+  String get changesSaved {
+    return Intl.message(
+      'Changes saved successfully',
+      name: 'changesSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Display Name`
+  String get editDisplayName {
+    return Intl.message(
+      'Edit Display Name',
+      name: 'editDisplayName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
+
+  /// `Shop name updated`
+  String get shopNameUpdated {
+    return Intl.message(
+      'Shop name updated',
+      name: 'shopNameUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Display name updated`
+  String get displayNameUpdated {
+    return Intl.message(
+      'Display name updated',
+      name: 'displayNameUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shop logo updated`
+  String get logoUpdated {
+    return Intl.message(
+      'Shop logo updated',
+      name: 'logoUpdated',
       desc: '',
       args: [],
     );

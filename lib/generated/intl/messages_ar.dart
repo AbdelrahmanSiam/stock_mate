@@ -24,10 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(count) => "متاح ${count} فقط";
 
+  static String m2(id) => "المعرف: ${id}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AM": MessageLookupByLibrary.simpleMessage("ص"),
     "PM": MessageLookupByLibrary.simpleMessage("م"),
+    "account": MessageLookupByLibrary.simpleMessage("الحساب"),
     "addPhoto": MessageLookupByLibrary.simpleMessage("إضافة صورة"),
     "addProduct": MessageLookupByLibrary.simpleMessage("إضافة منتج"),
     "afternoon": MessageLookupByLibrary.simpleMessage("مساء الخير"),
@@ -53,6 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "categoryHint": MessageLookupByLibrary.simpleMessage(
       "مثل: إلكترونيات، أغذية",
     ),
+    "changesSaved": MessageLookupByLibrary.simpleMessage(
+      "تم حفظ التغييرات بنجاح",
+    ),
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
@@ -67,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirmSaleTitle": MessageLookupByLibrary.simpleMessage("تأكيد البيع"),
     "continueButton": MessageLookupByLibrary.simpleMessage("متابعة"),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب؟"),
+    "currency": MessageLookupByLibrary.simpleMessage("العملة"),
+    "dangerZone": MessageLookupByLibrary.simpleMessage("منطقة الخطورة"),
     "dashboard": MessageLookupByLibrary.simpleMessage("لوحة التحكم"),
     "dateAndTime": MessageLookupByLibrary.simpleMessage("التاريخ والوقت"),
     "daysAgo": MessageLookupByLibrary.simpleMessage(" قبل أيام"),
@@ -80,9 +88,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "discardSaleMessage": MessageLookupByLibrary.simpleMessage(
       "سيتم فقد الفاتورة",
     ),
+    "displayName": MessageLookupByLibrary.simpleMessage("الاسم المعروض"),
+    "displayNameUpdated": MessageLookupByLibrary.simpleMessage(
+      "تم تحديث الاسم المعروض",
+    ),
+    "editDisplayName": MessageLookupByLibrary.simpleMessage(
+      "تعديل الاسم المعروض",
+    ),
     "editProduct": MessageLookupByLibrary.simpleMessage("تعديل منتج"),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "emailReadOnly": MessageLookupByLibrary.simpleMessage(
+      "عنوان البريد الإلكتروني (للقراءة فقط)",
+    ),
     "emailVerificationHeader1": MessageLookupByLibrary.simpleMessage(
       "لقد أرسلنا رابط تأكيد إلى",
     ),
@@ -139,9 +157,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "items": MessageLookupByLibrary.simpleMessage("منتجات"),
     "itemsLabel": MessageLookupByLibrary.simpleMessage("المنتجات"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
     ),
+    "logoUpdated": MessageLookupByLibrary.simpleMessage("تم تحديث شعار المتجر"),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من رغبتك في تسجيل الخروج?",
+    ),
+    "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج?"),
     "low": MessageLookupByLibrary.simpleMessage("منخفض"),
     "lowStock": MessageLookupByLibrary.simpleMessage("المخزون منخفض"),
     "lowStockAlert": MessageLookupByLibrary.simpleMessage(
@@ -199,6 +224,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pointAtProductBarcode": MessageLookupByLibrary.simpleMessage(
       "أشر إلى رمز المنتج الشريطي.",
     ),
+    "preferences": MessageLookupByLibrary.simpleMessage("التفضيلات"),
     "proTip": MessageLookupByLibrary.simpleMessage(
       "نصيحة احترافية من ستوك ميت",
     ),
@@ -246,6 +272,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "saleDetail": MessageLookupByLibrary.simpleMessage("تفاصيل البيع"),
     "sales": MessageLookupByLibrary.simpleMessage("المبيعات"),
     "salesHistory": MessageLookupByLibrary.simpleMessage("سجل المبيعات"),
+    "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
     "saveProduct": MessageLookupByLibrary.simpleMessage("حفظ المنتج"),
     "scanBarcode": MessageLookupByLibrary.simpleMessage("مسح الرمز الشريطي"),
     "searchByNameOrBarcode": MessageLookupByLibrary.simpleMessage(
@@ -262,7 +290,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "shop": MessageLookupByLibrary.simpleMessage("متجر المستخدم"),
+    "shopId": m2,
+    "shopInfo": MessageLookupByLibrary.simpleMessage("معلومات المتجر"),
+    "shopName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),
     "shopNameExample": MessageLookupByLibrary.simpleMessage("مثال: البركة "),
+    "shopNameUpdated": MessageLookupByLibrary.simpleMessage(
+      "تم تحديث اسم المتجر",
+    ),
     "shopeName": MessageLookupByLibrary.simpleMessage("اسم المتجر"),
     "signInButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "sku": MessageLookupByLibrary.simpleMessage("الكود"),

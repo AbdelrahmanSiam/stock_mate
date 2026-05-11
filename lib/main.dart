@@ -13,7 +13,6 @@ import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cu
 import 'package:stock_mate/firebase_options.dart';
 import 'package:stock_mate/generated/l10n.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
