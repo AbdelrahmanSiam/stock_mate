@@ -8,7 +8,7 @@ abstract class SettingsRepository {
   Future<Either<Failure, SettingsUserEntity>> getUserData();
   Future<Either<Failure, void>> updateShopName(String shopName);
   Future<Either<Failure, void>> updateDisplayName(String displayName);
-  Future<Either<Failure, String>> uploadShopLogo(File image);
+  Future<Either<Failure, String>> uploadShopLogo(File image); // returns the url of the uploaded image at supabase storage
   Future<Either<Failure, void>> updateShopLogoUrl(String url);
   Future<Either<Failure, void>> logout();
 }
