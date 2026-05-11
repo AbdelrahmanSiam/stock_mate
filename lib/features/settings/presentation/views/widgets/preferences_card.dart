@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/core/utils/widgets/cusotm_icon_with_container.dart';
-import 'package:stock_mate/features/setting/presentation/views/widgets/preferences_row.dart';
+import 'package:stock_mate/features/settings/presentation/views/widgets/preferences_row.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class PreferencesCard extends StatelessWidget {

@@ -7,11 +7,11 @@ import 'package:stock_mate/core/utils/widgets/custom_button.dart';
 import 'package:stock_mate/core/utils/widgets/custom_text_field.dart';
 import 'package:stock_mate/core/utils/widgets/custom_user_avatar.dart';
 import 'package:stock_mate/core/utils/widgets/custom_view_body.dart';
-import 'package:stock_mate/features/setting/presentation/views/widgets/account_card.dart';
-import 'package:stock_mate/features/setting/presentation/views/widgets/danger_zone.dart';
-import 'package:stock_mate/features/setting/presentation/views/widgets/preferences_card.dart';
-import 'package:stock_mate/features/setting/presentation/views/widgets/setting_view_header.dart';
-import 'package:stock_mate/features/setting/presentation/views/widgets/shop_info_card.dart';
+import 'package:stock_mate/features/settings/presentation/views/widgets/account_card.dart';
+import 'package:stock_mate/features/settings/presentation/views/widgets/danger_zone.dart';
+import 'package:stock_mate/features/settings/presentation/views/widgets/preferences_card.dart';
+import 'package:stock_mate/features/settings/presentation/views/widgets/setting_view_header.dart';
+import 'package:stock_mate/features/settings/presentation/views/widgets/shop_info_card.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
 class SettingViewBody extends StatefulWidget {
