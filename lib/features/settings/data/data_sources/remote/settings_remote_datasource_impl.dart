@@ -109,7 +109,6 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
                 true, // This will overwrite the existing file with the same name, so we don't have to worry about deleting the old logo from storage
           ),
         );
-
     return supabase.storage.from('avatars').getPublicUrl(path);
   }
 }
