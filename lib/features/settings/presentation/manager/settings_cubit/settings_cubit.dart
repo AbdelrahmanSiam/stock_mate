@@ -5,6 +5,7 @@ import 'package:stock_mate/features/auth/domain/use_cases/logout_use_case/logout
 import 'package:stock_mate/features/settings/domain/enitites/settings_user_entity.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/get_user_data_use_case/get_user_data_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_display_name_use_case/update_display_name_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/update_display_name_use_case/update_display_name_use_case_parameters.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case_parameters.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_use_case/upload_shop_logo_use_case.dart';
@@ -45,6 +46,7 @@ class SettingsCubit extends Cubit<SettingsState> {
       (user) => emit(SettingsSuccessState(user)),
     );
   }
+
   // We retrieve the current user from the current state.
   // We emit `SavingState` with the user so the UI displays "loading" in the button.
   // Optimistic update: We update the user's state immediately with `copyWith`.
@@ -66,6 +68,26 @@ class SettingsCubit extends Cubit<SettingsState> {
         SettingsSavedState(
           user: updatedUser,
           message: 'Shop name updated successfully',
+        ),
+      ),
+    );
+  }
+
+  Future<void> updateDisplayName(String displayName) async {
+    final SettingsUserEntity? user = _getCurrentUser();
+    if (user == null) return;
+    final updatedUser = user.copyWith(displayName: displayName);
+    emit(SettingsSavingState(updatedUser));
+    final result = await updateDisplayNameUseCase.call(
+      UpdateDisplayNameUseCaseParameters(displayName: displayName),
+    );
+    result.fold(
+      (failure) =>
+          emit(SettingsErrorState(user: user, errMessage: failure.errMessage)),
+      (_) => emit(
+        SettingsSavedState(
+          user: updatedUser,
+          message: 'Display name updated successfully',
         ),
       ),
     );
