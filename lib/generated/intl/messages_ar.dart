@@ -337,5 +337,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمة المرور غير صحيحة",
     ),
     "yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
+    "yourShop": MessageLookupByLibrary.simpleMessage("متجرك"),
   };
 }

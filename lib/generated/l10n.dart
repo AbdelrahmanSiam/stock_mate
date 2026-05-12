@@ -1523,6 +1523,11 @@ class S {
       args: [],
     );
   }
+
+  /// `Your Shop`
+  String get yourShop {
+    return Intl.message('Your Shop', name: 'yourShop', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

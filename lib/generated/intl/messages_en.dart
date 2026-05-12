@@ -337,5 +337,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "wrongPassword": MessageLookupByLibrary.simpleMessage("Incorrect password"),
     "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
+    "yourShop": MessageLookupByLibrary.simpleMessage("Your Shop"),
   };
 }

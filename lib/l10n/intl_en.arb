@@ -183,5 +183,6 @@
     "save": "Save",
     "shopNameUpdated": "Shop name updated",
     "displayNameUpdated": "Display name updated",
-    "logoUpdated": "Shop logo updated"
+    "logoUpdated": "Shop logo updated",
+    "yourShop" : "Your Shop"
 }

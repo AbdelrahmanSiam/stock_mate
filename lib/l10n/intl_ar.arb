@@ -183,5 +183,6 @@
     "save": "حفظ",
     "shopNameUpdated": "تم تحديث اسم المتجر",
     "displayNameUpdated": "تم تحديث الاسم المعروض",
-    "logoUpdated": "تم تحديث شعار المتجر"
+    "logoUpdated": "تم تحديث شعار المتجر",
+    "yourShop" : "متجرك"
 }
