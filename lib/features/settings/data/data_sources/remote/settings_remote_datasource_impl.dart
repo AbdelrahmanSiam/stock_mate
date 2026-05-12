@@ -98,6 +98,10 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
     final String uid = firebaseAuth.currentUser!.uid;
     final String path = 'avatars/$uid.jpg';
 
+    // First, sign in to Supabase with the same credentials if needed
+    // Assuming you have a way to get the user's email and password or use a token
+    // For now, this is a placeholder - you need to implement Supabase auth
+
     await supabase.storage
         .from('avatars')
         .upload(
@@ -105,8 +109,7 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
           image,
           fileOptions: const FileOptions(
             contentType: 'image/jpeg',
-            upsert:
-                true, // This will overwrite the existing file with the same name, so we don't have to worry about deleting the old logo from storage
+            upsert: true,
           ),
         );
     return supabase.storage.from('avatars').getPublicUrl(path);

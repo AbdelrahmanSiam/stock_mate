@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
 import 'package:stock_mate/features/settings/domain/enitites/settings_user_entity.dart';
@@ -55,7 +55,6 @@ class _ShopLogoState extends State<ShopLogo> {
                 : null,
           ),
 
-          // Loading overlay لما بيترفع اللوجو
           if (widget.isUploadingLogo)
             Positioned.fill(
               child: CircleAvatar(
@@ -69,7 +68,6 @@ class _ShopLogoState extends State<ShopLogo> {
               ),
             ),
 
-          // Edit badge
           if (!widget.isUploadingLogo)
             Positioned(
               bottom: 0,

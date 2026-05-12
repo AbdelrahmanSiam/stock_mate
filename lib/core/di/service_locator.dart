@@ -55,6 +55,15 @@ import 'package:stock_mate/features/sales/domain/use_case/get_sale_by_id_use_cas
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_cubit/sale_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sale_detail_cubit/sale_detail_cubit.dart';
 import 'package:stock_mate/features/sales/presentation/manager/cubits/sales_history_cubit/sales_history_cubit.dart';
+import 'package:stock_mate/features/settings/data/data_sources/remote/settings_remote_datasource.dart';
+import 'package:stock_mate/features/settings/data/data_sources/remote/settings_remote_datasource_impl.dart';
+import 'package:stock_mate/features/settings/data/repo/settings_repository_impl.dart';
+import 'package:stock_mate/features/settings/domain/repo/settings_repository.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/get_user_data_use_case/get_user_data_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/update_display_name_use_case/update_display_name_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_use_case/upload_shop_logo_use_case.dart';
+import 'package:stock_mate/features/settings/presentation/manager/settings_cubit/settings_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
 import 'package:stock_mate/features/splash/data/repo/splash_repo_impl.dart';
@@ -157,9 +166,6 @@ void setupServiceLocator() {
   );
   getIt.registerLazySingleton<SignInWithGoogleUseCase>(
     () => SignInWithGoogleUseCase(getIt<AuthRepository>()),
-  );
-  getIt.registerLazySingleton<LogoutUseCase>(
-    () => LogoutUseCase(getIt<AuthRepository>()),
   );
   getIt.registerLazySingleton<GetCurrentUserUseCase>(
     () => GetCurrentUserUseCase(getIt<AuthRepository>()),
@@ -284,5 +290,44 @@ void setupServiceLocator() {
 
   getIt.registerFactory<SaleDetailCubit>(
     () => SaleDetailCubit(getIt<GetSaleByIdUseCase>()),
+  );
+  //                                                   Settings Feature
+  getIt.registerLazySingleton<SettingsRemoteDataSource>(
+    () => SettingsRemoteDatasourceImpl(
+      firestore: FirebaseFirestore.instance,
+      firebaseAuth: FirebaseAuth.instance,
+      supabase: Supabase.instance.client,
+      googleSignIn: GoogleSignIn(),
+    ),
+  );
+
+  getIt.registerLazySingleton<SettingsRepository>(
+    () => SettingsRepositoryImpl(getIt<SettingsRemoteDataSource>()),
+  );
+
+  getIt.registerLazySingleton<GetUserDataUseCase>(
+    () => GetUserDataUseCase(repository: getIt<SettingsRepository>()),
+  );
+  getIt.registerLazySingleton<UpdateShopNameUseCase>(
+    () => UpdateShopNameUseCase(repository: getIt<SettingsRepository>()),
+  );
+  getIt.registerLazySingleton<UpdateDisplayNameUseCase>(
+    () => UpdateDisplayNameUseCase(repository: getIt<SettingsRepository>()),
+  );
+  getIt.registerLazySingleton<UploadShopLogoUseCase>(
+    () => UploadShopLogoUseCase(repository: getIt<SettingsRepository>()),
+  );
+  getIt.registerLazySingleton<LogoutUseCase>(
+    () => LogoutUseCase(repository: getIt<SettingsRepository>()),
+  );
+
+  getIt.registerFactory<SettingsCubit>(
+    () => SettingsCubit(
+      getIt<GetUserDataUseCase>(),
+      getIt<UpdateShopNameUseCase>(),
+      getIt<UpdateDisplayNameUseCase>(),
+      getIt<UploadShopLogoUseCase>(),
+      getIt<LogoutUseCase>(),
+    ),
   );
 }

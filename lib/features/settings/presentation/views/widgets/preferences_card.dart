@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
 import 'package:stock_mate/core/styles/app_styles.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
-import 'package:stock_mate/core/utils/widgets/cusotm_icon_with_container.dart';
 import 'package:stock_mate/features/settings/presentation/views/widgets/preferences_row.dart';
 import 'package:stock_mate/generated/l10n.dart';
 
@@ -33,8 +34,9 @@ class PreferencesCard extends StatelessWidget {
                 PreferencesRow(
                   icon: Icons.language,
                   title: S.of(context).language,
-                  subTitle: S.of(context).language,
+                  subTitle: 'English',
                   color: Color(0XFFFFDB9D),
+                  onTap: () => _showLanguagePicker(context),
                 ),
                 SizedBox(height: 20),
                 PreferencesRow(
@@ -42,6 +44,7 @@ class PreferencesCard extends StatelessWidget {
                   title: S.of(context).currency,
                   subTitle: S.of(context).egp,
                   color: Color(0XFF6CD2FF),
+                  onTap: () => _showCurrencyPicker(context),
                 ),
               ],
             ),
@@ -50,4 +53,65 @@ class PreferencesCard extends StatelessWidget {
       ],
     );
   }
+}
+
+void _showLanguagePicker(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: AppColorsDarkMode.surface,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (_) {
+      final languages = [('en', 'English', '🇬🇧'), ('ar', 'العربية', '🇸🇦')];
+      return Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: languages.map((lang) {
+            final (code, name, flag) = lang;
+            return ListTile(
+              leading: Text(flag, style: const TextStyle(fontSize: 24)),
+              title: Text(name, style: AppStyles.bodyMediumRegular14(context)),
+              onTap: () {
+                Navigator.pop(context);
+                context.read<LocaleCubit>().changeLocal(code);
+              },
+            );
+          }).toList(),
+        ),
+      );
+    },
+  );
+}
+
+// ── _showCurrencyPicker ─────────────────────────────────────
+void _showCurrencyPicker(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: AppColorsDarkMode.surface,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (_) {
+      final currencies = ['EGP', 'SAR', 'USD', 'AED'];
+      return Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: currencies
+              .map(
+                (currency) => ListTile(
+                  title: Text(
+                    currency,
+                    style: AppStyles.bodyMediumRegular14(context),
+                  ),
+                  onTap: () => Navigator.pop(context),
+                ),
+              )
+              .toList(),
+        ),
+      );
+    },
+  );
 }
