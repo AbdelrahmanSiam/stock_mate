@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/logout_use_case/logout_use_case.dart';
 import 'package:stock_mate/features/settings/domain/enitites/settings_user_entity.dart';
