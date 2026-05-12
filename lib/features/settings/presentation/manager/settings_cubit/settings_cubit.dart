@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
@@ -9,6 +11,7 @@ import 'package:stock_mate/features/settings/domain/use_cases/update_display_nam
 import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case_parameters.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_use_case/upload_shop_logo_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_use_case/upload_shop_logo_use_case_parameters.dart';
 
 part 'settings_state.dart';
 
@@ -90,6 +93,50 @@ class SettingsCubit extends Cubit<SettingsState> {
           message: 'Display name updated successfully',
         ),
       ),
+    );
+  }
+
+  // We emit LogoUploadingState with the current user
+  // So the avatar displays a loading indicator while everything else remains normal
+  // We upload the image to Supabase via UploadShopLogoUseCase
+  // Which returns the public URL
+  // If the upload is successful, we send the URL to updateShopLogoUrl
+  // So it saves it to Firestore and Firebase Auth
+  // Then we emit SavedState with the updated user
+  Future<void> uploadShopLogo(File image) async {
+    final SettingsUserEntity? user = _getCurrentUser();
+    if (user == null) return;
+    emit(SettingsLogoUploadingState(user));
+    // Step 1: upload to Supabase
+    final uploadedResult = await uploadShopLogoUseCase.call(
+      UploadShopLogoUseCaseParameters(image: image),
+    );
+    uploadedResult.fold(
+      (failure) async =>
+          emit(SettingsErrorState(user: user, errMessage: failure.errMessage)),
+      (url) async {
+        // Step 2: save the URL to Firestore and Firebase Auth
+        final updateResult = await _updateLogoUrl(url);
+        updateResult.fold(
+          (failure) => emit(
+            SettingsErrorState(user: user, errMessage: failure.errMessage),
+          ),
+          (_) {
+            final updatedUser = user.copyWith(shopLogoUrl: url);
+            emit(
+              SettingsSavedState(
+                user: updatedUser,
+                message: 'Shop logo updated successfully',
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+  Future _updateLogoUrl(String url) async {
+    return await uploadShopLogoUseCase.call(
+      (state as dynamic).repository,
     );
   }
 }
