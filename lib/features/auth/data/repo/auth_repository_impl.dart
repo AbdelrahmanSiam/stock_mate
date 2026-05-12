@@ -28,11 +28,6 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, void>> logout() {
-    return handleFirebaseAuthRequests(() => remoteDataSource.logout());
-  }
-
-  @override
   Future<Either<Failure, UserEntity>> register({
     required String email,
     required String password,

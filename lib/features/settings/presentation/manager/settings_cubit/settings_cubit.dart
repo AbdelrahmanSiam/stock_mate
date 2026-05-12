@@ -2,15 +2,17 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:stock_mate/features/auth/domain/use_cases/logout_use_case/logout_use_case.dart';
 import 'package:stock_mate/features/settings/domain/enitites/settings_user_entity.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/get_user_data_use_case/get_user_data_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/logout_use_case/logout_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_display_name_use_case/update_display_name_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_display_name_use_case/update_display_name_use_case_parameters.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case_parameters.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_use_case/upload_shop_logo_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_use_case/upload_shop_logo_use_case_parameters.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_url_use_case/upload_shop_logo_url_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_url_use_case/upload_shop_logo_url_use_case_parameters.dart';
 
 part 'settings_state.dart';
 
@@ -19,12 +21,14 @@ class SettingsCubit extends Cubit<SettingsState> {
   final UpdateShopNameUseCase updateShopNameUseCase;
   final UpdateDisplayNameUseCase updateDisplayNameUseCase;
   final UploadShopLogoUseCase uploadShopLogoUseCase;
+  final UploadShopLogoUrlUseCase uploadShopLogoUrlUseCase;
   final LogoutUseCase logoutUseCase;
   SettingsCubit(
     this.getUserDataUseCase,
     this.updateShopNameUseCase,
     this.updateDisplayNameUseCase,
     this.uploadShopLogoUseCase,
+    this.uploadShopLogoUrlUseCase,
     this.logoutUseCase,
   ) : super(SettingsInitialState());
 
@@ -135,7 +139,9 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   Future _updateLogoUrl(String url) async {
-    return await uploadShopLogoUseCase.call((state as dynamic).repository);
+    return await uploadShopLogoUrlUseCase.call(
+      UploadShopLogoUrlUseCaseParameters(url: url),
+    );
   }
 
   // Call LogoutUseCase that do :

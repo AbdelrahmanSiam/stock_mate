@@ -7,6 +7,7 @@ import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/features/settings/data/data_sources/remote/settings_remote_datasource.dart';
 import 'package:stock_mate/features/settings/data/models/settings_user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide User;
+import 'package:uuid/uuid.dart';
 
 class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
   final FirebaseFirestore firestore;
@@ -96,11 +97,7 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
   @override
   Future<String> uploadShopLogo(File image) async {
     final String uid = firebaseAuth.currentUser!.uid;
-    final String path = 'avatars/$uid.jpg';
-
-    // First, sign in to Supabase with the same credentials if needed
-    // Assuming you have a way to get the user's email and password or use a token
-    // For now, this is a placeholder - you need to implement Supabase auth
+    final String path = '$uid.jpg';
 
     await supabase.storage
         .from('avatars')
@@ -112,6 +109,7 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
             upsert: true,
           ),
         );
+
     return supabase.storage.from('avatars').getPublicUrl(path);
   }
 }

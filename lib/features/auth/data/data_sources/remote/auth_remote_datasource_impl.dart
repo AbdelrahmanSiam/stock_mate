@@ -51,12 +51,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<void> logout() async {
-    await googleSignIn.signOut();
-    await firebaseAuth.signOut();
-  }
-
-  @override
   Future<UserModel> register({
     required String email,
     required String password,

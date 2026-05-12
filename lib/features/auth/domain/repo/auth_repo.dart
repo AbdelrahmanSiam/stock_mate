@@ -23,7 +23,5 @@ abstract class AuthRepository {
 
   Future<Either<Failure, void>> sendPasswordResetEmail({required String email});
 
-  Future<Either<Failure, void>> logout();
-
   Stream<Either<Failure, UserEntity?>> getCurrentUser();
 }

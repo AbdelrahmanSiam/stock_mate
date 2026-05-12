@@ -11,7 +11,6 @@ import 'package:stock_mate/features/auth/data/repo/auth_repository_impl.dart';
 import 'package:stock_mate/features/auth/domain/repo/auth_repo.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/check_email_verified_usecase/check_email_verified_usecase.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/login_use_case/login_use_case.dart';
-import 'package:stock_mate/features/auth/domain/use_cases/logout_use_case/logout_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/register_use_case/register_use_case.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_email_verification_usecase/send_email_verification_usecase.dart';
 import 'package:stock_mate/features/auth/domain/use_cases/send_password_reset_usecase/send_password_reset_usecase.dart';
@@ -60,9 +59,11 @@ import 'package:stock_mate/features/settings/data/data_sources/remote/settings_r
 import 'package:stock_mate/features/settings/data/repo/settings_repository_impl.dart';
 import 'package:stock_mate/features/settings/domain/repo/settings_repository.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/get_user_data_use_case/get_user_data_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/logout_use_case/logout_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_display_name_use_case/update_display_name_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/update_shop_name_use_case/update_shop_name_use_case.dart';
 import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_use_case/upload_shop_logo_use_case.dart';
+import 'package:stock_mate/features/settings/domain/use_cases/upload_shop_logo_url_use_case/upload_shop_logo_url_use_case.dart';
 import 'package:stock_mate/features/settings/presentation/manager/settings_cubit/settings_cubit.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource.dart';
 import 'package:stock_mate/features/splash/data/datasources/remote/splash_remote_datasource_impl.dart';
@@ -135,6 +136,9 @@ void setupServiceLocator() {
 
   //                                               other Auth Feature
 
+  // ── Supabase ───────────────────────────────────────────────
+  getIt.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
+
   // ── Auth Remote DataSource ─────────────────────────────────
   getIt.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDatasourceImpl(
@@ -180,7 +184,6 @@ void setupServiceLocator() {
       getIt<CheckEmailVerifiedUseCase>(),
       getIt<SendPasswordResetUseCase>(),
       getIt<SignInWithGoogleUseCase>(),
-      getIt<LogoutUseCase>(),
       getIt<GetCurrentUserUseCase>(),
     ),
   );
@@ -207,8 +210,6 @@ void setupServiceLocator() {
 
   //                                         Add / Edit Product Feature
 
-  // ── Supabase ───────────────────────────────────────────────
-  getIt.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
   // ── Product DataSources ────────────────────────────────────
   getIt.registerLazySingleton<ProductRemoteDatasource>(
     () => ProductRemoteDatasourceImpl(FirebaseFirestore.instance),
@@ -317,6 +318,9 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<UploadShopLogoUseCase>(
     () => UploadShopLogoUseCase(repository: getIt<SettingsRepository>()),
   );
+  getIt.registerLazySingleton<UploadShopLogoUrlUseCase>(
+    () => UploadShopLogoUrlUseCase(repository: getIt<SettingsRepository>()),
+  );
   getIt.registerLazySingleton<LogoutUseCase>(
     () => LogoutUseCase(repository: getIt<SettingsRepository>()),
   );
@@ -327,6 +331,7 @@ void setupServiceLocator() {
       getIt<UpdateShopNameUseCase>(),
       getIt<UpdateDisplayNameUseCase>(),
       getIt<UploadShopLogoUseCase>(),
+      getIt<UploadShopLogoUrlUseCase>(),
       getIt<LogoutUseCase>(),
     ),
   );
