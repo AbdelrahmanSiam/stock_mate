@@ -1,87 +1,65 @@
 import 'dart:io';
-
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:stock_mate/core/theme/app_colors/app_colors_dark_mode.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/image_picker_content.dart';
+import 'package:stock_mate/features/products/presentation/views/widgets/product_image_picker_sheet.dart';
 import 'package:stock_mate/features/settings/domain/enitites/settings_user_entity.dart';
-import 'package:stock_mate/features/settings/presentation/manager/settings_cubit/settings_cubit.dart';
+import 'package:stock_mate/features/settings/presentation/views/widgets/edit_icon.dart';
 
-class ShopLogo extends StatefulWidget {
+class ShopLogo extends StatelessWidget {
   const ShopLogo({
     super.key,
     required this.user,
     required this.isUploadingLogo,
+    this.selectedImage,
+    required this.existingImageUrl,
+    required this.onImageSelected,
   });
   final SettingsUserEntity user;
   final bool isUploadingLogo;
-
-  @override
-  State<ShopLogo> createState() => _ShopLogoState();
-}
-
-class _ShopLogoState extends State<ShopLogo> {
-  Future<void> _pickLogo() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? file = await picker.pickImage(
-      source: ImageSource.gallery,
-      imageQuality: 80,
-    );
-    if (file != null && mounted) {
-      context.read<SettingsCubit>().uploadShopLogo(File(file.path));
-    }
-  }
+  final File? selectedImage;
+  final String existingImageUrl;
+  final ValueChanged<File> onImageSelected;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context).width * 0.35;
     return GestureDetector(
-      onTap: widget.isUploadingLogo ? null : _pickLogo,
-      child: Stack(
-        children: [
-          // Avatar
-          CircleAvatar(
-            radius: 48,
-            backgroundColor: AppColorsDarkMode.border,
-            backgroundImage: widget.user.shopLogoUrl.isNotEmpty
-                ? CachedNetworkImageProvider(widget.user.shopLogoUrl)
-                : null,
-            child: widget.user.shopLogoUrl.isEmpty
-                ? const Icon(
-                    Icons.store_outlined,
-                    size: 40,
-                    color: AppColorsDarkMode.textSecondary,
-                  )
-                : null,
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          backgroundColor: AppColorsDarkMode.surface,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
           ),
-
-          if (widget.isUploadingLogo)
-            Positioned.fill(
-              child: CircleAvatar(
-                backgroundColor: AppColorsDarkMode.background.withValues(
-                  alpha: 0.7,
-                ),
-                child: const CircularProgressIndicator(
-                  color: AppColorsDarkMode.primary,
-                  strokeWidth: 2,
-                ),
+          builder: (_) =>
+              ProductImagePickerSheet(onImageSelected: onImageSelected),
+        );
+      },
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          DottedBorder(
+            borderType: BorderType.Circle,
+            dashPattern: const [6, 3], // dash shape
+            color: AppColorsDarkMode.primary.withValues(alpha: 0.5),
+            strokeWidth: 1.5,
+            child: Container(
+              height: size,
+              width: size,
+              decoration: BoxDecoration(
+                color: AppColorsDarkMode.surface,
+                shape: BoxShape.circle,
+              ),
+              child: ImagePickerContent(
+                isUploading: isUploadingLogo,
+                existingImageUrl: existingImageUrl,
+                size: size,
               ),
             ),
-
-          if (!widget.isUploadingLogo)
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Container(
-                width: 28,
-                height: 28,
-                decoration: const BoxDecoration(
-                  color: AppColorsDarkMode.primary,
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(Icons.edit, size: 14, color: Colors.white),
-              ),
-            ),
+          ),
+          Positioned(bottom: 5, right: 5, child: EditIcon()),
         ],
       ),
     );

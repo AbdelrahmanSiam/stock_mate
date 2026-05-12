@@ -30,6 +30,7 @@ class ShopInfoCard extends StatefulWidget {
 }
 
 class _ShopInfoCardState extends State<ShopInfoCard> {
+  File? selectedImage;
   late final TextEditingController _shopNameController;
   @override
   void initState() {
@@ -72,6 +73,11 @@ class _ShopInfoCardState extends State<ShopInfoCard> {
               ShopLogo(
                 user: widget.user,
                 isUploadingLogo: widget.isUploadingLogo,
+                existingImageUrl: widget.user.shopLogoUrl,
+                onImageSelected: (File file) {
+                  setState(() => selectedImage = file);
+                  context.read<SettingsCubit>().uploadShopLogo(File(file.path));
+                },
               ),
               const SizedBox(height: 30),
               Text(

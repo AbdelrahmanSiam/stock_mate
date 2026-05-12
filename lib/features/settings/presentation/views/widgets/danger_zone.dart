@@ -12,62 +12,67 @@ class DangerZone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          S.of(context).dangerZone,
-          style: AppStyles.labelSemiBold13(
-            context,
-          ).copyWith(color: Color(0XFFFFB4AB)),
-        ),
-        SizedBox(height: 10),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColorsDarkMode.error.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: AppColorsDarkMode.error.withValues(alpha: 0.3),
-            ),
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return CustomConfirmDialog(
+              title: S.of(context).logoutConfirmTitle,
+              message: S.of(context).logoutConfirmMessage,
+              onConfirm: () {
+                Navigator.pop(context);
+                context.read<SettingsCubit>().logout();
+              },
+            );
+          },
+        );
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            S.of(context).dangerZone,
+            style: AppStyles.labelSemiBold13(
+              context,
+            ).copyWith(color: Color(0XFFFFB4AB)),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              children: [
-                CustomIconWithContainer(
-                  leadingIcon: Icons.logout,
-                  color: Color(0XFFFFB4AB),
-                ),
-                SizedBox(width: 12),
-                Text(
-                  S.of(context).logout,
-                  style: AppStyles.priceBold16(
-                    context,
-                  ).copyWith(color: Color(0XFFFFB4AB)),
-                ),
-                Spacer(),
-                GestureDetector(
-                  child: Icon(
+          SizedBox(height: 10),
+          Container(
+            decoration: BoxDecoration(
+              color: AppColorsDarkMode.error.withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: AppColorsDarkMode.error.withValues(alpha: 0.3),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                children: [
+                  CustomIconWithContainer(
+                    leadingIcon: Icons.logout,
+                    color: Color(0XFFFFB4AB),
+                  ),
+                  SizedBox(width: 12),
+                  Text(
+                    S.of(context).logout,
+                    style: AppStyles.priceBold16(
+                      context,
+                    ).copyWith(color: Color(0XFFFFB4AB)),
+                  ),
+                  Spacer(),
+                  Icon(
                     Icons.arrow_forward_ios,
                     size: 16,
                     color: Color(0XFFFFB4AB),
                   ),
-                  onTap: () {
-                    CustomConfirmDialog(
-                      title: S.of(context).logoutConfirmTitle,
-                      message: S.of(context).logoutConfirmMessage,
-                      onConfirm: () {
-                        Navigator.pop(context);
-                        context.read<SettingsCubit>().logout();
-                      },
-                    );
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

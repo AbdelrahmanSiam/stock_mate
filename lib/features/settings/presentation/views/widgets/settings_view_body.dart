@@ -74,8 +74,8 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                 const SizedBox(height: 20),
                 ShopInfoCard(
                   user: user,
-                  isSaving: false,
-                  isUploadingLogo: false,
+                  isSaving: state is SettingsSavingState,
+                  isUploadingLogo: state is SettingsLogoUploadingState,
                 ),
                 const SizedBox(height: 20),
                 AccountCard(user: user),

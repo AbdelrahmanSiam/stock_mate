@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:stock_mate/core/errors/failure.dart';
 import 'package:stock_mate/features/auth/data/data_sources/remote/auth_remote_datasource.dart';
+import 'package:stock_mate/features/auth/data/models/user_model.dart';
 import 'package:stock_mate/features/auth/data/repo/helper.dart';
 import 'package:stock_mate/features/auth/domain/entities/user_entity.dart';
 import 'package:stock_mate/features/auth/domain/repo/auth_repo.dart';
@@ -11,7 +12,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, bool>> checkEmailVerified() async {
-    return handleFirebaseAuthRequests(() => remoteDataSource.checkEmailVerified());
+    return handleFirebaseAuthRequests(
+      () => remoteDataSource.checkEmailVerified(),
+    );
   }
 
   @override
@@ -48,7 +51,9 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Either<Failure, void>> sendEmailVerification() {
-    return handleFirebaseAuthRequests(() => remoteDataSource.sendEmailVerification());
+    return handleFirebaseAuthRequests(
+      () => remoteDataSource.sendEmailVerification(),
+    );
   }
 
   @override
@@ -59,7 +64,7 @@ class AuthRepositoryImpl implements AuthRepository {
       () => remoteDataSource.sendPasswordResetEmail(email: email),
     );
   }
-  
+
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() {
     return handleFirebaseAuthRequests(
@@ -68,9 +73,10 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserEntity?>> getCurrentUser() {
-    return handleFirebaseAuthRequests(
-      () => remoteDataSource.getCurrentUser(),
-    );
+  Stream<Either<Failure, UserModel?>> getCurrentUser() {
+    return remoteDataSource
+        .getCurrentUser()
+        .map((userModel) => Right<Failure, UserModel?>(userModel))
+        .handleError((error) => Left(ServerFailure.fromFirebaseAuth(error)));
   }
 }

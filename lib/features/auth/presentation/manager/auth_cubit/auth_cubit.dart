@@ -121,17 +121,18 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> getCurrentUser() async {
-    final result = await getCurrentUserUseCase();
-    result.fold(
-      (failure) => emit(AuthErrorState(failure.errMessage)),
-      (user) {
+  void getCurrentUser() {
+    final result = getCurrentUserUseCase();
+    result.listen((either) {
+      either.fold((failure) => emit(AuthErrorState(failure.errMessage)), (
+        user,
+      ) {
         if (user != null) {
           emit(AuthSuccessState(user));
         } else {
           emit(AuthLoggedOutState());
         }
-      },
-    );
+      });
+    });
   }
 }
