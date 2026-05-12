@@ -16,8 +16,8 @@ class CustomConfirmDialog extends StatelessWidget {
     required this.title,
     required this.message,
     required this.onConfirm,
-    this.confirmText = 'Confirm',
-    this.cancelText = 'Cancel',
+    required this.confirmText,
+    required this.cancelText,
     this.icon = Icons.warning_rounded,
     this.iconColor = AppColorsDarkMode.error,
     this.isLoading = false,
@@ -229,12 +229,14 @@ class _ConfirmButton extends StatelessWidget {
                   color: Colors.white,
                 ),
               )
-            : Text(
-                text,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w700,
+            : FittedBox(
+              child: Text(
+                  text,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-              ),
+            ),
       ),
     );
   }

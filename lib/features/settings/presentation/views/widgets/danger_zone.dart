@@ -20,6 +20,8 @@ class DangerZone extends StatelessWidget {
             return CustomConfirmDialog(
               title: S.of(context).logoutConfirmTitle,
               message: S.of(context).logoutConfirmMessage,
+              confirmText: S.of(context).confirmLogout,
+              cancelText: S.of(context).cancel,
               onConfirm: () {
                 context.read<SettingsCubit>().logout();
               },

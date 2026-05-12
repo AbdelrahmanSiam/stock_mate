@@ -184,5 +184,6 @@
     "shopNameUpdated": "Shop name updated",
     "displayNameUpdated": "Display name updated",
     "logoUpdated": "Shop logo updated",
-    "yourShop" : "Your Shop"
+    "yourShop" : "Your Shop",
+    "confirmLogout": "Confirm Logout"
 }

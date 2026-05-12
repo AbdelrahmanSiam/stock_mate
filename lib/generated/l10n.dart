@@ -1528,6 +1528,16 @@ class S {
   String get yourShop {
     return Intl.message('Your Shop', name: 'yourShop', desc: '', args: []);
   }
+
+  /// `Confirm Logout`
+  String get confirmLogout {
+    return Intl.message(
+      'Confirm Logout',
+      name: 'confirmLogout',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

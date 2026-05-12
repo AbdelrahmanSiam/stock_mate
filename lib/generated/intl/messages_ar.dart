@@ -65,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "comingSoon": MessageLookupByLibrary.simpleMessage("قريباً"),
     "completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
     "completedBadge": MessageLookupByLibrary.simpleMessage("مكتملة"),
+    "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -164,9 +165,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "logoUpdated": MessageLookupByLibrary.simpleMessage("تم تحديث شعار المتجر"),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "logoutConfirmMessage": MessageLookupByLibrary.simpleMessage(
-      "هل أنت متأكد من رغبتك في تسجيل الخروج?",
+      "هل أنت متأكد من رغبتك في تسجيل الخروج؟",
     ),
-    "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج?"),
+    "logoutConfirmTitle": MessageLookupByLibrary.simpleMessage("تسجيل الخروج؟"),
     "low": MessageLookupByLibrary.simpleMessage("منخفض"),
     "lowStock": MessageLookupByLibrary.simpleMessage("المخزون منخفض"),
     "lowStockAlert": MessageLookupByLibrary.simpleMessage(

@@ -176,13 +176,14 @@
     "currency": "العملة",
     "dangerZone": "منطقة الخطورة",
     "logout": "تسجيل الخروج",
-    "logoutConfirmTitle": "تسجيل الخروج?",
-    "logoutConfirmMessage": "هل أنت متأكد من رغبتك في تسجيل الخروج?",
+    "logoutConfirmTitle": "تسجيل الخروج؟",
+    "logoutConfirmMessage": "هل أنت متأكد من رغبتك في تسجيل الخروج؟",
     "changesSaved": "تم حفظ التغييرات بنجاح",
     "editDisplayName": "تعديل الاسم المعروض",
     "save": "حفظ",
     "shopNameUpdated": "تم تحديث اسم المتجر",
     "displayNameUpdated": "تم تحديث الاسم المعروض",
     "logoUpdated": "تم تحديث شعار المتجر",
-    "yourShop" : "متجرك"
+    "yourShop" : "متجرك",
+    "confirmLogout": "تأكيد تسجيل الخروج"
 }

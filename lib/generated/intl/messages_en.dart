@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "comingSoon": MessageLookupByLibrary.simpleMessage("COMING SOON"),
     "completed": MessageLookupByLibrary.simpleMessage("COMPLETED"),
     "completedBadge": MessageLookupByLibrary.simpleMessage("COMPLETED"),
+    "confirmLogout": MessageLookupByLibrary.simpleMessage("Confirm Logout"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "confirmSale": MessageLookupByLibrary.simpleMessage("Confirm Sale"),
     "confirmSaleMessage": m0,
