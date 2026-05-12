@@ -134,9 +134,21 @@ class SettingsCubit extends Cubit<SettingsState> {
       },
     );
   }
+
   Future _updateLogoUrl(String url) async {
-    return await uploadShopLogoUseCase.call(
-      (state as dynamic).repository,
+    return await uploadShopLogoUseCase.call((state as dynamic).repository);
+  }
+
+  // Call LogoutUseCase that do :
+  //   1. If user signed in with Google, sign out from GoogleSignIn
+  //   2. Firebase signOut always
+  // If success emit `LoggedOutState` that the UI listens to with BlocListener and navigate to Login
+  // BlocListener will navigate to LoginScreen when it sees `SettingsLoggedOutState`
+  Future<void> logout() async {
+    final result = await logoutUseCase();
+    result.fold(
+      (failure) => emit(SettingsErrorState(errMessage: failure.errMessage)),
+      (_) => emit(SettingsLoggedOutState()),
     );
   }
 }
