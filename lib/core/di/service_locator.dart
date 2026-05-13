@@ -5,6 +5,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/core/cubit/cubit/locale_cubit.dart';
+import 'package:stock_mate/core/services/notification_service.dart';
+import 'package:stock_mate/core/services/notification_service_impl.dart';
 import 'package:stock_mate/features/auth/data/data_sources/remote/auth_remote_datasource.dart';
 import 'package:stock_mate/features/auth/data/data_sources/remote/auth_remote_datasource_impl.dart';
 import 'package:stock_mate/features/auth/data/repo/auth_repository_impl.dart';
@@ -334,5 +336,9 @@ void setupServiceLocator() {
       getIt<UploadShopLogoUrlUseCase>(),
       getIt<LogoutUseCase>(),
     ),
+  );
+  //  Singleton — notification service only on in the app
+  getIt.registerLazySingleton<NotificationService>(
+    () => NotificationServiceImpl(),
   );
 }
