@@ -41,16 +41,17 @@ class ShopLogo extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           DottedBorder(
-            borderType: BorderType.Circle,
+            borderType: BorderType.RRect,
             dashPattern: const [6, 3], // dash shape
             color: AppColorsDarkMode.primary.withValues(alpha: 0.5),
             strokeWidth: 1.5,
+            radius: const Radius.circular(14),
             child: Container(
               height: size,
               width: size,
               decoration: BoxDecoration(
                 color: AppColorsDarkMode.surface,
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(14),
               ),
               child: ImagePickerContent(
                 isUploading: isUploadingLogo,
@@ -59,7 +60,7 @@ class ShopLogo extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(bottom: 5, right: 5, child: EditIcon()),
+          Positioned(bottom: -10, right: -10, child: EditIcon()),
         ],
       ),
     );

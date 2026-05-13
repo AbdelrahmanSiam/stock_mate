@@ -21,12 +21,12 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
     final productsStream = firestore
         .collection(kProductsCollection)
         .snapshots();
-    // Sales realtime stream
+    // Sales realtime stream for current month and weekly chart data.
     final salesStream = firestore
         .collection(kSalesCollection)
         .where(
           kCreatedAt,
-          isGreaterThanOrEqualTo: Timestamp.fromDate(weekStart),
+          isGreaterThanOrEqualTo: Timestamp.fromDate(monthStart),
         )
         .orderBy(kCreatedAt, descending: true)
         .snapshots();
