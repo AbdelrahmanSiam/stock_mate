@@ -136,12 +136,35 @@ class NotificationServiceImpl implements NotificationService {
     );
   }
 
+  // ── showSaleCompleted ──────────────────────────────────────
+  // Show notification after Batch Write succeeds
+  // Use fixed ID so that multiple sales update the same notification
   @override
   Future<void> showSaleCompleted({
     required String invoiceNumber,
     required double totalAmount,
-  }) {
-    // TODO: implement showSaleCompleted
-    throw UnimplementedError();
+  }) async {
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+          'sale_channel',
+          'Sale Notifications',
+          channelDescription: 'Notifications for completed sales',
+          importance: Importance.defaultImportance,
+          priority: Priority.defaultPriority,
+          icon: '@mipmap/ic_launcher',
+          color: Color(0xFF2ED573), // success color
+        );
+
+    const NotificationDetails details = NotificationDetails(
+      android: androidDetails,
+      iOS: DarwinNotificationDetails(presentAlert: true, presentSound: true),
+    );
+
+    await _plugin.show(
+      id: _saleCompletedId,
+      title: '✅ Sale Completed',
+      body: '$invoiceNumber — \$${totalAmount.toStringAsFixed(2)}',
+      notificationDetails: details,
+    );
   }
 }
