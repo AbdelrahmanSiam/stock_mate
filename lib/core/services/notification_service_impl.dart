@@ -91,10 +91,7 @@ class NotificationServiceImpl implements NotificationService {
   }
 
   @override
-  Future<void> cancelAll() {
-    // TODO: implement cancelAll
-    throw UnimplementedError();
-  }
+  Future<void> cancelAll() => _plugin.cancelAll();
 
   // ── showLowStockAlert ──────────────────────────────────────
   // Show notification when product stock reaches the threshold or falls below it
