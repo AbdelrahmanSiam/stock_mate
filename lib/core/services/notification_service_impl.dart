@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -6,6 +7,10 @@ import 'package:timezone/timezone.dart' as tz;
 class NotificationServiceImpl implements NotificationService {
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
+
+  // Notification IDs to ensure we can update/cancel specific notifications later
+  static const int _lowStockBaseId = 1000;
+  static const int _saleCompletedId = 2000;
 
   // ── init ───────────────────────────────────────────────────
   // Initialize the plugin with the settings for Android وiOS
@@ -91,14 +96,44 @@ class NotificationServiceImpl implements NotificationService {
     throw UnimplementedError();
   }
 
+  // ── showLowStockAlert ──────────────────────────────────────
+  // Show notification when product stock reaches the threshold or falls below it
+  // Use productName as the ID basis so each product has a unique notification
+  // If the product has been notified before, update the same notification
   @override
   Future<void> showLowStockAlert({
     required String productName,
     required int currentStock,
     required int threshold,
-  }) {
-    // TODO: implement showLowStockAlert
-    throw UnimplementedError();
+  }) async {
+    //  Make unique ID form each product in hashCode
+    final int notificationId =
+        _lowStockBaseId + productName.hashCode.abs() % 1000;
+
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+          'low_stock_channel',
+          'Low Stock Alerts',
+          channelDescription: 'Alerts when product stock is running low',
+          importance: Importance.high,
+          priority: Priority.high,
+          icon: '@mipmap/ic_launcher',
+          // Primary color for icon
+          color: Color(0xFFFF6B2C),
+          playSound: true,
+          enableVibration: true,
+        );
+
+    const NotificationDetails details = NotificationDetails(
+      android: androidDetails,
+      iOS: DarwinNotificationDetails(presentAlert: true, presentSound: true),
+    );
+    await _plugin.show(
+      id: notificationId,
+      title: '⚠️ Low Stock Alert',
+      body: '$productName — Only $currentStock left (threshold: $threshold)',
+      notificationDetails: details,
+    );
   }
 
   @override
