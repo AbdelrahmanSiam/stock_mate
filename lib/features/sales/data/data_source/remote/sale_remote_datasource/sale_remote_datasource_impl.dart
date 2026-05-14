@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stock_mate/core/constants/constants.dart';
+import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sale_remote_datasource.dart';
 import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sales_remote_datasource_helper.dart';
 import 'package:stock_mate/features/sales/data/models/invoice_item_model.dart';
@@ -10,8 +13,9 @@ import 'package:uuid/uuid.dart';
 
 class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
   final FirebaseFirestore firestore;
+  final NotificationService notificationService;
 
-  SaleRemoteDatasourceImpl(this.firestore);
+  SaleRemoteDatasourceImpl(this.firestore, this.notificationService);
   @override
   Future<SaleModel> createSale({
     required List<InvoiceItemModel> items,
@@ -45,6 +49,12 @@ class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
       ); // update only quantity field on each product
     }
     await batch.commit();
+    unawaited(
+      notificationService.showSaleCompleted(
+        invoiceNumber: sale.invoiceNumber,
+        totalAmount: sale.totalAmount,
+      ),
+    );
     return sale;
   }
 

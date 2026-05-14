@@ -1,11 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stock_mate/core/constants/constants.dart';
+import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource/product_remote_datasource.dart';
 import 'package:stock_mate/features/products/data/models/product_model.dart';
 
 class ProductRemoteDatasourceImpl implements ProductRemoteDatasource {
   final FirebaseFirestore firestore;
-  const ProductRemoteDatasourceImpl(this.firestore);
+  final NotificationService notificationService;
+  final Set<String> _notifiedProductIds = {};
+
+  ProductRemoteDatasourceImpl(this.firestore, this.notificationService);
   @override
   Future<void> addProduct(ProductModel product) async {
     await firestore
@@ -29,14 +33,38 @@ class ProductRemoteDatasourceImpl implements ProductRemoteDatasource {
 
   @override
   Stream<List<ProductModel>> getProducts() {
-    return firestore
-        .collection(kProductsCollection)
-        .orderBy(kCreatedAt, descending: true)
-        .snapshots()
-        .map(
-          (snapshot) => snapshot.docs
-              .map((doc) => ProductModel.fromFirebase(doc.data(), doc.id))
-              .toList(),
+    return firestore.collection(kProductsCollection).snapshots().map((
+      snapshot,
+    ) {
+      final products = snapshot.docs
+          .map((doc) => ProductModel.fromFirebase(doc.data(), doc.id))
+          .toList();
+      // Check low stock in background
+      _checkLowStock(products);
+      return products;
+    });
+  }
+
+  // Check for low stock and show notifications
+  // Use Future.microtask to avoid blocking the stream
+  void _checkLowStock(List<ProductModel> products) {
+    Future.microtask(() async {
+      for (final product in products) {
+        // If the product is no longer low stock, remove it from the notified set
+        // This ensures that if the stock is replenished and then goes low again, the user will receive a new notification
+        if (!product.isLowStock) {
+          _notifiedProductIds.remove(product.id);
+          continue;
+        }
+        // If we've already notified about this product, skip it to avoid spamming notifications
+        if (_notifiedProductIds.contains(product.id)) continue;
+        _notifiedProductIds.add(product.id);
+        await notificationService.showLowStockAlert(
+          productName: product.name,
+          currentStock: product.quantity,
+          threshold: product.threshold,
         );
+      }
+    });
   }
 }

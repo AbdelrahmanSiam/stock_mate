@@ -189,6 +189,10 @@ void setupServiceLocator() {
       getIt<GetCurrentUserUseCase>(),
     ),
   );
+  //                                   Notification service only on in the app
+  getIt.registerLazySingleton<NotificationService>(
+    () => NotificationServiceImpl(),
+  );
 
   //                                         Dashboard Feature
 
@@ -214,7 +218,10 @@ void setupServiceLocator() {
 
   // ── Product DataSources ────────────────────────────────────
   getIt.registerLazySingleton<ProductRemoteDatasource>(
-    () => ProductRemoteDatasourceImpl(FirebaseFirestore.instance),
+    () => ProductRemoteDatasourceImpl(
+      FirebaseFirestore.instance,
+      getIt<NotificationService>(),
+    ),
   );
   getIt.registerLazySingleton<ProductImageDataSource>(
     () => ProductImageDataSourceImpl(getIt<SupabaseClient>()),
@@ -265,7 +272,10 @@ void setupServiceLocator() {
 
   //                                                  Sale Feature
   getIt.registerLazySingleton<SaleRemoteDataSource>(
-    () => SaleRemoteDatasourceImpl(FirebaseFirestore.instance),
+    () => SaleRemoteDatasourceImpl(
+      FirebaseFirestore.instance,
+      getIt<NotificationService>(),
+    ),
   );
   getIt.registerLazySingleton<SaleRepository>(
     () => SaleRepositoryImpl(getIt<SaleRemoteDataSource>()),
@@ -336,9 +346,5 @@ void setupServiceLocator() {
       getIt<UploadShopLogoUrlUseCase>(),
       getIt<LogoutUseCase>(),
     ),
-  );
-  //  Singleton — notification service only on in the app
-  getIt.registerLazySingleton<NotificationService>(
-    () => NotificationServiceImpl(),
   );
 }
