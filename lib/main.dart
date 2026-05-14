@@ -11,6 +11,7 @@ import 'package:stock_mate/core/router/app_router.dart';
 import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:stock_mate/core/theme/theme_data/app_theme_dark_mode.dart';
 import 'package:stock_mate/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:stock_mate/features/settings/presentation/manager/settings_cubit/settings_cubit.dart';
 import 'package:stock_mate/firebase_options.dart';
 import 'package:stock_mate/generated/l10n.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -42,6 +43,9 @@ class StockMate extends StatelessWidget {
         ),
         BlocProvider<AuthCubit>(
           create: (context) => getIt<AuthCubit>()..getCurrentUser(),
+        ),
+        BlocProvider<SettingsCubit>(
+          create: (context) => getIt<SettingsCubit>(),
         ),
       ],
       child: BlocBuilder<LocaleCubit, LocaleState>(

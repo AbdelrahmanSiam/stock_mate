@@ -45,6 +45,11 @@ class _ShopInfoCardState extends State<ShopInfoCard> {
     if (oldWidget.user.shopName != widget.user.shopName) {
       _shopNameController.text = widget.user.shopName;
     }
+    // If the shopLogoUrl changes, clear the selectedImage to show the new logo from the URL
+    // This is important because after uploading a new logo, the state will update with the new shopLogoUrl, and we want to make sure the UI reflects that change by clearing the local selectedImage which is only used for showing the preview of the newly selected image before it's uploaded.
+    if (oldWidget.user.shopLogoUrl != widget.user.shopLogoUrl) {
+      setState(() => selectedImage = null);
+    }
   }
 
   @override
@@ -73,10 +78,11 @@ class _ShopInfoCardState extends State<ShopInfoCard> {
               ShopLogo(
                 user: widget.user,
                 isUploadingLogo: widget.isUploadingLogo,
+                selectedImage: selectedImage,
                 existingImageUrl: widget.user.shopLogoUrl,
                 onImageSelected: (File file) {
                   setState(() => selectedImage = file);
-                  context.read<SettingsCubit>().uploadShopLogo(File(file.path));
+                  context.read<SettingsCubit>().uploadShopLogo(file);
                 },
               ),
               const SizedBox(height: 30),

@@ -55,8 +55,14 @@ class ShopLogo extends StatelessWidget {
               ),
               child: ImagePickerContent(
                 isUploading: isUploadingLogo,
+                selectedImage: selectedImage,
                 existingImageUrl: existingImageUrl,
                 size: size,
+                fallbackLetter: user.shopName.isNotEmpty
+                    ? user.shopName[0].toUpperCase()
+                    : user.displayName.isNotEmpty
+                    ? user.displayName[0].toUpperCase()
+                    : null,
               ),
             ),
           ),

@@ -99,6 +99,12 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
     final String uid = firebaseAuth.currentUser!.uid;
     final String path = '$uid.jpg';
 
+    // Try to delete the old image first to avoid orphaned files in storage, if it doesn't exist it's not a problem because we're going to upload the new one anyway, and Supabase will overwrite it if it already exists because we're using upsert: true
+    try {
+      await supabase.storage.from('avatars').remove([path]);
+    } catch (_) {}
+
+    // Upload the new image, using the user ID as the file name to ensure uniqueness and easy retrieval, and set content type to image/jpeg for proper handling, and use upsert to overwrite if the file already exists which is useful for updating the logo
     await supabase.storage
         .from('avatars')
         .upload(
@@ -110,6 +116,8 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
           ),
         );
 
-    return supabase.storage.from('avatars').getPublicUrl(path);
+    // Add timestamp to the URL to force refresh the image in the UI after updating, because Supabase doesn't provide a way to invalidate the cache or get a new URL after uploading a new file with the same name, so we use a common trick of adding a query parameter with the current timestamp to ensure that the browser treats it as a new URL and fetches the updated image instead of using the cached one
+    final String baseUrl = supabase.storage.from('avatars').getPublicUrl(path);
+    return '$baseUrl?t=${DateTime.now().millisecondsSinceEpoch}';
   }
 }
