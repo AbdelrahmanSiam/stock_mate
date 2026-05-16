@@ -19,7 +19,7 @@ class SettingViewHeader extends StatelessWidget {
             Text(S.of(context).settings, style: AppStyles.priceBold16(context)),
           ],
         ),
-        CustomNotificationIcon(onTap: () {}),
+        CustomNotificationIcon(),
       ],
     );
   }

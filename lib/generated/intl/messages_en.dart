@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "Check your connection",
     ),
+    "clear_all": MessageLookupByLibrary.simpleMessage("Clear All"),
     "comingSoon": MessageLookupByLibrary.simpleMessage("COMING SOON"),
     "completed": MessageLookupByLibrary.simpleMessage("COMPLETED"),
     "completedBadge": MessageLookupByLibrary.simpleMessage("COMPLETED"),
@@ -205,6 +206,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "noSearchResults": MessageLookupByLibrary.simpleMessage(
       "No results for this search",
     ),
+    "no_notifications": MessageLookupByLibrary.simpleMessage(
+      "No notifications yet",
+    ),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage("Open Email App"),
     "orContactWith": MessageLookupByLibrary.simpleMessage("OR CONTINUE WITH"),
     "out": MessageLookupByLibrary.simpleMessage("OUT"),

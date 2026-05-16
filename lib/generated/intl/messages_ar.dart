@@ -62,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkConnection": MessageLookupByLibrary.simpleMessage(
       "تحقق من اتصالك بالإنترنت",
     ),
+    "clear_all": MessageLookupByLibrary.simpleMessage("مسح الكل"),
     "comingSoon": MessageLookupByLibrary.simpleMessage("قريباً"),
     "completed": MessageLookupByLibrary.simpleMessage("مكتملة"),
     "completedBadge": MessageLookupByLibrary.simpleMessage("مكتملة"),
@@ -207,6 +208,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "noSearchResults": MessageLookupByLibrary.simpleMessage(
       "لا نتائج لهذا البحث",
     ),
+    "no_notifications": MessageLookupByLibrary.simpleMessage(
+      "لا توجد إشعارات بعد",
+    ),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "openEmailApp": MessageLookupByLibrary.simpleMessage(
       "افتح تطبيق البريد الإلكتروني",
     ),

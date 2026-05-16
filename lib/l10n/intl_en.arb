@@ -188,5 +188,8 @@
     "confirmLogout": "Confirm Logout",
     "saleCompleted": "Sale Completed",
     "itemsLeft": "Items Left",
-    "threshold": "Threshold"
+    "threshold": "Threshold",
+    "notifications": "Notifications",
+    "clear_all": "Clear All",
+    "no_notifications": "No notifications yet"
 }

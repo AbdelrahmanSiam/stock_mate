@@ -188,5 +188,8 @@
     "confirmLogout": "تأكيد تسجيل الخروج",
     "saleCompleted": "تم الانتهاء من البيع",
     "itemsLeft": "المنتجات المتبقية",
-    "threshold": "الحد الأدنى"
+    "threshold": "الحد الأدنى",
+    "notifications": "الإشعارات",
+    "clear_all": "مسح الكل",
+    "no_notifications": "لا توجد إشعارات بعد"
 }

@@ -32,7 +32,7 @@ class DashboardHeaderWidget extends StatelessWidget {
             ),
           ],
         ),
-        CustomNotificationIcon(onTap: () {}),
+        CustomNotificationIcon(),
       ],
     );
   }

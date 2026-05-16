@@ -1558,6 +1558,31 @@ class S {
   String get threshold {
     return Intl.message('Threshold', name: 'threshold', desc: '', args: []);
   }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear All`
+  String get clear_all {
+    return Intl.message('Clear All', name: 'clear_all', desc: '', args: []);
+  }
+
+  /// `No notifications yet`
+  String get no_notifications {
+    return Intl.message(
+      'No notifications yet',
+      name: 'no_notifications',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

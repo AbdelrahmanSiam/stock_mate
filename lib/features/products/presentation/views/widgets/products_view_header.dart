@@ -19,7 +19,7 @@ class ProductsViewHeader extends StatelessWidget {
             Text(S.of(context).products, style: AppStyles.priceBold16(context)),
           ],
         ),
-        CustomNotificationIcon(onTap: () {}),
+        CustomNotificationIcon(),
       ],
     );
   }
