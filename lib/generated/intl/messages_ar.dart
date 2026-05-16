@@ -158,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "items": MessageLookupByLibrary.simpleMessage("منتجات"),
     "itemsLabel": MessageLookupByLibrary.simpleMessage("المنتجات"),
+    "itemsLeft": MessageLookupByLibrary.simpleMessage("المنتجات المتبقية"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "سجّل دخولك لإدارة مخزونك",
@@ -266,6 +267,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("أعد المحاولة"),
+    "saleCompleted": MessageLookupByLibrary.simpleMessage(
+      "تم الانتهاء من البيع",
+    ),
     "saleConfirmed": MessageLookupByLibrary.simpleMessage("تم البيع بنجاح!"),
     "saleConfirmedSubtitle": MessageLookupByLibrary.simpleMessage(
       "تم البيع بنجاح!",
@@ -308,6 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "terminalLabel": MessageLookupByLibrary.simpleMessage("الجهاز"),
     "thisMonth": MessageLookupByLibrary.simpleMessage("هذا الشهر"),
     "thisWeek": MessageLookupByLibrary.simpleMessage("هذا الأسبوع"),
+    "threshold": MessageLookupByLibrary.simpleMessage("الحد الأدنى"),
     "today": MessageLookupByLibrary.simpleMessage("اليوم"),
     "todaySales": MessageLookupByLibrary.simpleMessage("مبيعات اليوم"),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(

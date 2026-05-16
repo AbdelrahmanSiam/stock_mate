@@ -184,6 +184,9 @@
     "shopNameUpdated": "تم تحديث اسم المتجر",
     "displayNameUpdated": "تم تحديث الاسم المعروض",
     "logoUpdated": "تم تحديث شعار المتجر",
-    "yourShop" : "متجرك",
-    "confirmLogout": "تأكيد تسجيل الخروج"
+    "yourShop": "متجرك",
+    "confirmLogout": "تأكيد تسجيل الخروج",
+    "saleCompleted": "تم الانتهاء من البيع",
+    "itemsLeft": "المنتجات المتبقية",
+    "threshold": "الحد الأدنى"
 }

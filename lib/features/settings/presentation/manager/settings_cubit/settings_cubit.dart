@@ -44,13 +44,15 @@ class SettingsCubit extends Cubit<SettingsState> {
     };
   }
 
-  Future<void> getUserData() async {
+  void getUserData() {
     emit(SettingsLoadingState());
-    final result = await getUserDataUseCase.call();
-    result.fold(
-      (failure) => emit(SettingsErrorState(errMessage: failure.errMessage)),
-      (user) => emit(SettingsSuccessState(user)),
-    );
+    final result = getUserDataUseCase.call();
+    result.listen((either) {
+      either.fold(
+        (failure) => emit(SettingsErrorState(errMessage: failure.errMessage)),
+        (user) => emit(SettingsSuccessState(user)),
+      );
+    });
   }
 
   // We retrieve the current user from the current state.

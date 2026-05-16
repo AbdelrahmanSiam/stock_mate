@@ -1538,6 +1538,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Sale Completed`
+  String get saleCompleted {
+    return Intl.message(
+      'Sale Completed',
+      name: 'saleCompleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Items Left`
+  String get itemsLeft {
+    return Intl.message('Items Left', name: 'itemsLeft', desc: '', args: []);
+  }
+
+  /// `Threshold`
+  String get threshold {
+    return Intl.message('Threshold', name: 'threshold', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

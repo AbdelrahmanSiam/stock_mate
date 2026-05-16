@@ -10,6 +10,7 @@ class CustomUserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double size = MediaQuery.sizeOf(context).width * 0.12;
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
         final user = switch (state) {
@@ -39,6 +40,8 @@ class CustomUserAvatar extends StatelessWidget {
             child: logoUrl.isNotEmpty
                 // If there's a logo URL, try to load it, otherwise fallback to letter avatar
                 ? CachedNetworkImage(
+                  width: size,
+                  height: size,
                     imageUrl: logoUrl,
                     fit: BoxFit.cover,
                     placeholder: (_, __) => _letterAvatar(context, firstLetter),

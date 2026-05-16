@@ -23,7 +23,7 @@ class ProductNetworkImage extends StatelessWidget {
         width: size,
         height: size,
         placeholder: (_, __) => const ProductImageLoading(),
-        errorWidget: (_, __, ___) => const ProductEmptyImage(),
+        errorWidget: (_, __, ___) => ProductEmptyImage(size: size,),
       ),
     );
   }

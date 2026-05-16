@@ -158,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "items": MessageLookupByLibrary.simpleMessage("Items"),
     "itemsLabel": MessageLookupByLibrary.simpleMessage("ITEMS"),
+    "itemsLeft": MessageLookupByLibrary.simpleMessage("Items Left"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "loginTagline": MessageLookupByLibrary.simpleMessage(
       "Sign in to manage your inventory",
@@ -264,6 +265,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Reset password link sent successfully",
     ),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+    "saleCompleted": MessageLookupByLibrary.simpleMessage("Sale Completed"),
     "saleConfirmed": MessageLookupByLibrary.simpleMessage(
       "Sale confirmed successfully!",
     ),
@@ -306,6 +308,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "terminalLabel": MessageLookupByLibrary.simpleMessage("TERMINAL"),
     "thisMonth": MessageLookupByLibrary.simpleMessage("This Month"),
     "thisWeek": MessageLookupByLibrary.simpleMessage("This Week"),
+    "threshold": MessageLookupByLibrary.simpleMessage("Threshold"),
     "today": MessageLookupByLibrary.simpleMessage("Today"),
     "todaySales": MessageLookupByLibrary.simpleMessage("Today\'s Sales"),
     "tooManyRequests": MessageLookupByLibrary.simpleMessage(

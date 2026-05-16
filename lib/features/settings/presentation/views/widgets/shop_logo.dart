@@ -24,7 +24,7 @@ class ShopLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context).width * 0.35;
+    final size = MediaQuery.sizeOf(context).width * 0.18;
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(

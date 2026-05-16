@@ -45,7 +45,7 @@ class StockMate extends StatelessWidget {
           create: (context) => getIt<AuthCubit>()..getCurrentUser(),
         ),
         BlocProvider<SettingsCubit>(
-          create: (context) => getIt<SettingsCubit>(),
+          create: (context) => getIt<SettingsCubit>()..getUserData(),
         ),
       ],
       child: BlocBuilder<LocaleCubit, LocaleState>(

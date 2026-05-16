@@ -185,5 +185,8 @@
     "displayNameUpdated": "Display name updated",
     "logoUpdated": "Shop logo updated",
     "yourShop" : "Your Shop",
-    "confirmLogout": "Confirm Logout"
+    "confirmLogout": "Confirm Logout",
+    "saleCompleted": "Sale Completed",
+    "itemsLeft": "Items Left",
+    "threshold": "Threshold"
 }

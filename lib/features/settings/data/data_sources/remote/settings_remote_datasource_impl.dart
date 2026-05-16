@@ -22,34 +22,34 @@ class SettingsRemoteDatasourceImpl implements SettingsRemoteDataSource {
     required this.googleSignIn,
   });
   @override
-  Future<SettingsUserModel> getUserData() async {
+  Stream<SettingsUserModel> getUserData() {
     final User? user = firebaseAuth.currentUser;
     if (user == null) throw Exception('No user logged in');
-    final DocumentSnapshot doc = await firestore
-        .collection('users')
-        .doc(user.uid)
-        .get();
-    if (!doc.exists) {
-      // If the document doesn't exist, create a new one with data from Firebase Auth , this happen also when login with google for the first time because google doesn't provide shopName and shopLogoUrl
-      final model = SettingsUserModel(
-        id: user.uid,
-        displayName: user.displayName ?? '',
-        email: user.email ?? '',
-        shopName: '',
-        shopLogoUrl: user.photoURL ?? '',
-        shopId: 'SHOP-${user.uid.substring(0, 5).toUpperCase()}',
+    return firestore.collection(kUsersCollection).doc(user.uid).snapshots().map((
+      snapshot,
+    ) {
+      if (!snapshot.exists) {
+        // If the document doesn't exist, create a new one with data from Firebase Auth , this happen also when login with google for the first time because google doesn't provide shopName and shopLogoUrl
+        final model = SettingsUserModel(
+          id: user.uid,
+          displayName: user.displayName ?? '',
+          email: user.email ?? '',
+          shopName: '',
+          shopLogoUrl: user.photoURL ?? '',
+          shopId: 'SHOP-${user.uid.substring(0, 5).toUpperCase()}',
+        );
+        // Save the new document to Firestore
+        firestore
+            .collection(kUsersCollection)
+            .doc(user.uid)
+            .set(model.toFirestore());
+        return model;
+      }
+      return SettingsUserModel.fromFireStore(
+        snapshot.data() as Map<String, dynamic>,
+        snapshot.id,
       );
-      // Save the new document to Firestore
-      await firestore
-          .collection(kUsersCollection)
-          .doc(user.uid)
-          .set(model.toFirestore());
-      return model;
-    }
-    return SettingsUserModel.fromFireStore(
-      doc.data() as Map<String, dynamic>,
-      doc.id,
-    );
+    });
   }
 
   @override

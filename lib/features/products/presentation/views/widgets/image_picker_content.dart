@@ -46,6 +46,6 @@ class ImagePickerContent extends StatelessWidget {
         ),
       );
     }
-    return ProductEmptyImage();
+    return ProductEmptyImage(size: size);
   }
 }
