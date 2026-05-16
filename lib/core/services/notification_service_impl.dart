@@ -8,6 +8,7 @@ class NotificationServiceImpl implements NotificationService {
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
+  final List<NotificationModel> _notifications = [];
   // Notification IDs to ensure we can update/cancel specific notifications later
   static const int _lowStockBaseId = 1000;
   static const int _saleCompletedId = 2000;
@@ -133,6 +134,16 @@ class NotificationServiceImpl implements NotificationService {
       body: '$productName — Only $currentStock left (threshold: $threshold)',
       notificationDetails: details,
     );
+    _notifications.insert(
+      0,
+      NotificationModel(
+        id: '$notificationId-${DateTime.now().millisecondsSinceEpoch}',
+        type: NotificationType.lowStock,
+        title: '⚠️ Low Stock Alert',
+        body: '$productName — Only $currentStock left (threshold: $threshold)',
+        createdAt: DateTime.now(),
+      ),
+    );
   }
 
   // ── showSaleCompleted ──────────────────────────────────────
@@ -165,27 +176,37 @@ class NotificationServiceImpl implements NotificationService {
       body: '$invoiceNumber — \$${totalAmount.toStringAsFixed(2)}',
       notificationDetails: details,
     );
+    _notifications.insert(
+      0,
+      NotificationModel(
+        id: '$_saleCompletedId-${DateTime.now().millisecondsSinceEpoch}',
+        type: NotificationType.saleCompleted,
+        title: '✅ Sale Completed',
+        body: '$invoiceNumber — \$${totalAmount.toStringAsFixed(2)}',
+        createdAt: DateTime.now(),
+      ),
+    );
   }
 
   @override
   void clearAll() {
-    // TODO: implement clearAll
+    return _notifications.clear();
   }
 
   @override
   List<NotificationModel> getNotifications() {
-    // TODO: implement getNotifications
-    throw UnimplementedError();
+    return List.unmodifiable(_notifications);
   }
 
   @override
   int getUnreadCount() {
-    // TODO: implement getUnreadCount
-    throw UnimplementedError();
+    return _notifications.where((n) => !n.isRead).length;
   }
 
   @override
   void markAllAsRead() {
-    // TODO: implement markAllAsRead
+    for (final n in _notifications) {
+      n.isRead = true;
+    }
   }
 }
