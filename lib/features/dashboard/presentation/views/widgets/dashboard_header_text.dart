@@ -19,13 +19,18 @@ class DashboardHeaderText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '${getGreeting(context)}, $displayName ${getGreetingEmoji()}',
+          '${getGreeting(context)}, ${displayName.split(' ').first} ${getGreetingEmoji()}',
           style: AppStyles.bodyMediumRegular14(
             context,
           ).copyWith(color: AppColorsDarkMode.textSecondary),
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 2),
-        Text(shopName, style: AppStyles.priceBold16(context)),
+        Text(
+          shopName,
+          style: AppStyles.priceBold16(context),
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }

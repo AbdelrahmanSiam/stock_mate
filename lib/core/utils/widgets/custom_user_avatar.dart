@@ -30,7 +30,6 @@ class CustomUserAvatar extends StatelessWidget {
             : '?';
 
         return Container(
-          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: AppColorsDarkMode.surface,
