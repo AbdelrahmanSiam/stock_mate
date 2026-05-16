@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:stock_mate/core/services/models/notification_model.dart';
 import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
@@ -107,8 +108,6 @@ class NotificationServiceImpl implements NotificationService {
         _lowStockBaseId + productName.hashCode.abs() % 1000;
 
     // في showLowStockAlert و showSaleCompleted
-    // غير الـ icon من ic_launcher للـ custom icon
-
     const AndroidNotificationDetails androidDetails =
         AndroidNotificationDetails(
           'low_stock_channel',
@@ -166,5 +165,27 @@ class NotificationServiceImpl implements NotificationService {
       body: '$invoiceNumber — \$${totalAmount.toStringAsFixed(2)}',
       notificationDetails: details,
     );
+  }
+
+  @override
+  void clearAll() {
+    // TODO: implement clearAll
+  }
+
+  @override
+  List<NotificationModel> getNotifications() {
+    // TODO: implement getNotifications
+    throw UnimplementedError();
+  }
+
+  @override
+  int getUnreadCount() {
+    // TODO: implement getUnreadCount
+    throw UnimplementedError();
+  }
+
+  @override
+  void markAllAsRead() {
+    // TODO: implement markAllAsRead
   }
 }

@@ -1,3 +1,5 @@
+import 'package:stock_mate/core/services/models/notification_model.dart';
+
 abstract class NotificationService {
   Future<void> init();
   Future<void> showLowStockAlert({
@@ -9,5 +11,9 @@ abstract class NotificationService {
     required String invoiceNumber,
     required double totalAmount,
   });
+  List<NotificationModel> getNotifications();
+  int getUnreadCount();
+  void markAllAsRead();
+  void clearAll();
   Future<void> cancelAll();
 }
