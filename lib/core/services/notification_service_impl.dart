@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 
 class NotificationServiceImpl implements NotificationService {
   final FlutterLocalNotificationsPlugin _plugin =
@@ -25,7 +24,7 @@ class NotificationServiceImpl implements NotificationService {
     // ic_notification:  Name of drawable icon at res folder
     // Add icon at coming steps
     const AndroidInitializationSettings androidSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+        AndroidInitializationSettings('ic_stat_notify');
 
     // ── iOS Settings ───────────────────────────────────────
     const DarwinInitializationSettings iosSettings =
@@ -107,6 +106,9 @@ class NotificationServiceImpl implements NotificationService {
     final int notificationId =
         _lowStockBaseId + productName.hashCode.abs() % 1000;
 
+    // في showLowStockAlert و showSaleCompleted
+    // غير الـ icon من ic_launcher للـ custom icon
+
     const AndroidNotificationDetails androidDetails =
         AndroidNotificationDetails(
           'low_stock_channel',
@@ -114,11 +116,12 @@ class NotificationServiceImpl implements NotificationService {
           channelDescription: 'Alerts when product stock is running low',
           importance: Importance.high,
           priority: Priority.high,
-          icon: '@mipmap/ic_launcher',
-          // Primary color for icon
+          icon: 'ic_stat_notify',
           color: Color(0xFFFF6B2C),
           playSound: true,
           enableVibration: true,
+          ongoing: false,
+          autoCancel: true,
         );
 
     const NotificationDetails details = NotificationDetails(
@@ -148,7 +151,7 @@ class NotificationServiceImpl implements NotificationService {
           channelDescription: 'Notifications for completed sales',
           importance: Importance.defaultImportance,
           priority: Priority.defaultPriority,
-          icon: '@mipmap/ic_launcher',
+          icon: 'ic_stat_notify',
           color: Color(0xFF2ED573), // success color
         );
 
