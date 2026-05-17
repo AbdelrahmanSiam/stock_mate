@@ -39,8 +39,8 @@ class CustomUserAvatar extends StatelessWidget {
             child: logoUrl.isNotEmpty
                 // If there's a logo URL, try to load it, otherwise fallback to letter avatar
                 ? CachedNetworkImage(
-                  width: size,
-                  height: size,
+                    width: size,
+                    height: size,
                     imageUrl: logoUrl,
                     fit: BoxFit.cover,
                     placeholder: (_, __) => _letterAvatar(context, firstLetter),
@@ -57,11 +57,14 @@ class CustomUserAvatar extends StatelessWidget {
 
   Widget _letterAvatar(BuildContext context, String letter) {
     return Center(
-      child: Text(
-        letter,
-        style: AppStyles.sectionTitleSemiBold16(
-          context,
-        ).copyWith(color: AppColorsDarkMode.primary),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          letter,
+          style: AppStyles.sectionTitleSemiBold16(
+            context,
+          ).copyWith(color: AppColorsDarkMode.primary),
+        ),
       ),
     );
   }

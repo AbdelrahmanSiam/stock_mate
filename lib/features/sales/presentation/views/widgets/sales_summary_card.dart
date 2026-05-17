@@ -25,22 +25,24 @@ class SalesSummaryCard extends StatelessWidget {
       child: AppCard(
         begin: Alignment.centerRight,
         end: Alignment.centerLeft,
-        child: Row(
-          children: [
-            Expanded(
-              child: SalesHistoryTransactionVolumeSection(
-                totalSales: totalSales,
+        child: IntrinsicHeight(
+          child: Row(
+            children: [
+              Expanded(
+                child: SalesHistoryTransactionVolumeSection(
+                  totalSales: totalSales,
+                ),
               ),
-            ),
-            const SizedBox(width: 5),
-            Container(width: 1, height: 50, color: AppColorsDarkMode.border),
-            const SizedBox(width: 20),
-            Expanded(
-              child: SalesHistoryGrossRevenueSection(
-                grossRevenue: grossRevenue,
+              const SizedBox(width: 5),
+              Container(width: 1, height: 50, color: AppColorsDarkMode.border),
+              const SizedBox(width: 20),
+              Expanded(
+                child: SalesHistoryGrossRevenueSection(
+                  grossRevenue: grossRevenue,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

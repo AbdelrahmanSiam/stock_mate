@@ -16,49 +16,26 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<UserModel> signInWithGoogle() async {
-    try {
-      print('1- Start Google Sign In');
-
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-
-      print('2- Google User: $googleUser');
-
-      if (googleUser == null) {
-        throw FirebaseAuthException(
-          code: 'google-sign-in-cancelled',
-          message: 'Google sign in cancelled',
-        );
-      }
-
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-
-      print('3- Access Token: ${googleAuth.accessToken}');
-      print('4- ID Token: ${googleAuth.idToken}');
-
-      final credential = GoogleAuthProvider.credential(
-        idToken: googleAuth.idToken,
-        accessToken: googleAuth.accessToken,
+    await googleSignIn.signOut();
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    if (googleUser == null) {
+      throw FirebaseAuthException(
+        code: 'google-sign-in-cancelled',
+        message: 'Google sign in cancelled',
       );
-
-      print('5- Firebase Credential Created');
-
-      final userCredential = await firebaseAuth.signInWithCredential(
-        credential,
-      );
-
-      print('6- Firebase Login Success');
-
-      print('UID: ${userCredential.user?.uid}');
-      print('Email: ${userCredential.user?.email}');
-
-      return UserModel.fromFirebase(userCredential.user!);
-    } catch (e, stackTrace) {
-      print('GOOGLE SIGN IN ERROR: $e');
-      print(stackTrace);
-
-      rethrow;
     }
+
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+      accessToken: googleAuth.accessToken,
+    );
+
+    final userCredential = await firebaseAuth.signInWithCredential(credential);
+
+    return UserModel.fromFirebase(userCredential.user!);
   }
 
   @override

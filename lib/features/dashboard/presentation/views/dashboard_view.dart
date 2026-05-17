@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_mate/core/di/service_locator.dart';
@@ -100,24 +101,36 @@ class _DashboardViewState extends State<DashboardView> {
 
     return MultiBlocProvider(
       providers: [BlocProvider.value(value: productsCubit)],
-      child: Scaffold(
-        body: pages[currentIndex],
-
-        floatingActionButton: _buildFAB(context),
-
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: currentIndex,
-          onDestinationSelected: (index) {
-            setState(() => currentIndex = index);
-
-            if (index == 1) {
-              if (productsCubit.state is ProductsInitialState) {
-                productsCubit.getProducts();
-              } else if (productsFilter != null) {
-                productsCubit.getProducts(initialFilter: productsFilter!);
-              }
+      child: PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (didPop, result) {
+          if (!didPop) {
+            if (currentIndex != 0) {
+              setState(() => currentIndex = 0);
+            } else {
+              SystemNavigator.pop();
             }
-          },
+          }
+        },
+        child: Scaffold(
+          body: pages[currentIndex],
+
+          floatingActionButton: _buildFAB(context),
+
+          bottomNavigationBar: CustomBottomNavigationBar(
+            currentIndex: currentIndex,
+            onDestinationSelected: (index) {
+              setState(() => currentIndex = index);
+
+              if (index == 1) {
+                if (productsCubit.state is ProductsInitialState) {
+                  productsCubit.getProducts();
+                } else if (productsFilter != null) {
+                  productsCubit.getProducts(initialFilter: productsFilter!);
+                }
+              }
+            },
+          ),
         ),
       ),
     );

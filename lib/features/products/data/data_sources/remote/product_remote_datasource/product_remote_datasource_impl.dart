@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:stock_mate/features/products/data/data_sources/remote/product_remote_datasource/product_remote_datasource.dart';
@@ -12,10 +13,11 @@ class ProductRemoteDatasourceImpl implements ProductRemoteDatasource {
   ProductRemoteDatasourceImpl(this.firestore, this.notificationService);
   @override
   Future<void> addProduct(ProductModel product) async {
-    await firestore
-        .collection(kProductsCollection)
-        .doc(product.id)
-        .set(product.toFirebase());
+    final String uid = FirebaseAuth.instance.currentUser!.uid;
+    await firestore.collection(kProductsCollection).doc(product.id).set({
+      kUserId: uid,
+      ...product.toFirebase(),
+    });
   }
 
   @override
@@ -33,16 +35,20 @@ class ProductRemoteDatasourceImpl implements ProductRemoteDatasource {
 
   @override
   Stream<List<ProductModel>> getProducts() {
-    return firestore.collection(kProductsCollection).snapshots().map((
-      snapshot,
-    ) {
-      final products = snapshot.docs
-          .map((doc) => ProductModel.fromFirebase(doc.data(), doc.id))
-          .toList();
-      // Check low stock in background
-      _checkLowStock(products);
-      return products;
-    });
+    final String uid = FirebaseAuth.instance.currentUser!.uid;
+    return firestore
+        .collection(kProductsCollection)
+        .where(kUserId, isEqualTo: uid)
+        .orderBy(kCreatedAt, descending: true)
+        .snapshots()
+        .map((snapshot) {
+          final products = snapshot.docs
+              .map((doc) => ProductModel.fromFirebase(doc.data(), doc.id))
+              .toList();
+          // Check low stock in background
+          _checkLowStock(products);
+          return products;
+        });
   }
 
   // Check for low stock and show notifications

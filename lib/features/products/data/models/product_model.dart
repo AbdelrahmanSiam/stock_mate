@@ -13,6 +13,7 @@ class ProductModel extends ProductEntity {
     required super.quantity,
     required super.threshold,
     required super.imageUrl,
+    required super.userId,
   });
 
   factory ProductModel.fromFirebase(Map<String, dynamic> json, String id) {
@@ -26,6 +27,7 @@ class ProductModel extends ProductEntity {
       quantity: (json[kQuantity] as num).toInt(),
       threshold: (json[kThreshold] as num).toInt(),
       imageUrl: json[kImageUrl] ?? "",
+      userId: json[kUserId] ?? "",
     );
   }
 
@@ -39,7 +41,8 @@ class ProductModel extends ProductEntity {
       kQuantity: quantity,
       kThreshold: threshold,
       kImageUrl: imageUrl,
-      kCreatedAt : FieldValue.serverTimestamp(),
+      kUserId: userId,
+      kCreatedAt: FieldValue.serverTimestamp(),
     };
   }
 }

@@ -23,11 +23,13 @@ class SaleSuccessViewBody extends StatelessWidget {
           Spacer(),
           SaleSuccessCheckWidget(),
           SizedBox(height: 20),
-          Text(
-            S.of(context).saleConfirmedSubtitle,
-            style: AppStyles.h2Bold22(
-              context,
-            ).copyWith(color: AppColorsDarkMode.textSecondary),
+          FittedBox(
+            child: Text(
+              S.of(context).saleConfirmedSubtitle,
+              style: AppStyles.h2Bold22(
+                context,
+              ).copyWith(color: AppColorsDarkMode.textSecondary),
+            ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           SaleInfoCard(sale: sale),

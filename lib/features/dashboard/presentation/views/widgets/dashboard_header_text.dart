@@ -23,12 +23,14 @@ class DashboardHeaderText extends StatelessWidget {
           style: AppStyles.bodyMediumRegular14(
             context,
           ).copyWith(color: AppColorsDarkMode.textSecondary),
+          maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 2),
         Text(
           shopName,
           style: AppStyles.priceBold16(context),
+          maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
       ],

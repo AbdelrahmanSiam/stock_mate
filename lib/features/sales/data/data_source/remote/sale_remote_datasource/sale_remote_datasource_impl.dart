@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stock_mate/core/constants/constants.dart';
 import 'package:stock_mate/core/services/notification_service.dart';
 import 'package:stock_mate/features/sales/data/data_source/remote/sale_remote_datasource/sale_remote_datasource.dart';
@@ -23,6 +24,7 @@ class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
   }) async {
     final String saleId = const Uuid().v4();
     final String invoiceNumber = generateInvoiceNumber();
+    final String uid = FirebaseAuth.instance.currentUser!.uid;
     final double total = items.fold(
       0,
       (allSum, item) => allSum + item.totalPrice,
@@ -38,10 +40,10 @@ class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
     );
     final WriteBatch batch = firestore
         .batch(); // to make more than write to firestore at the same time , ALl success or all fail
-    batch.set(
-      firestore.collection(kSalesCollection).doc(saleId),
-      sale.toFireStore(),
-    );
+    batch.set(firestore.collection(kSalesCollection).doc(saleId), {
+      ...sale.toFireStore(),
+      kUserId: uid,
+    });
     for (var item in items) {
       batch.update(
         firestore.collection(kProductsCollection).doc(item.productId),
@@ -60,8 +62,10 @@ class SaleRemoteDatasourceImpl implements SaleRemoteDataSource {
 
   @override
   Stream<List<SaleModel>> getRecentSales({required SaleFilter filter}) {
+    final String uid = FirebaseAuth.instance.currentUser!.uid;
     return firestore
         .collection(kSalesCollection)
+        .where(kUserId, isEqualTo: uid)
         .where(
           kCreatedAt,
           isGreaterThanOrEqualTo: Timestamp.fromDate(filter.startDate),

@@ -80,7 +80,7 @@ void setupServiceLocator() {
   //                                    Splash Feature
 
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
-  getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn());
+  getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn(scopes: ['email'],));
   getIt.registerLazySingleton<SplashRemoteDatasource>(
     () => SplashRemoteDatasourceImpl(getIt<FirebaseAuth>()),
   );

@@ -16,16 +16,18 @@ Future<Either<Failure, T>> handleFirebaseFirestoreRequests<T>(
     return Left(ServerFailure(errMessage: e.toString()));
   }
 }
+
 ProductModel entityToModel(ProductEntity entity) {
   return ProductModel(
-    id:        entity.id,
-    name:      entity.name,
-    barcode:   entity.barcode,
-    category:  entity.category,
-    buyPrice:  entity.buyPrice,
+    id: entity.id,
+    name: entity.name,
+    barcode: entity.barcode,
+    category: entity.category,
+    buyPrice: entity.buyPrice,
     sellPrice: entity.sellPrice,
-    quantity:  entity.quantity,
+    quantity: entity.quantity,
     threshold: entity.threshold,
-    imageUrl:  entity.imageUrl,
+    imageUrl: entity.imageUrl,
+    userId: entity.userId,
   );
 }

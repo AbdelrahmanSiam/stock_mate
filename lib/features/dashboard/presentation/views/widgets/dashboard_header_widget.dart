@@ -14,23 +14,27 @@ class DashboardHeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            CustomUserAvatar(),
-            const SizedBox(width: 12),
-            BlocBuilder<AuthCubit, AuthState>(
-              builder: (context, state) {
-                return DashboardHeaderText(
-                  displayName: state is AuthSuccessState
-                      ? state.user.displayName
-                      : S.of(context).user,
-                  shopName: state is AuthSuccessState
-                      ? state.user.shopName
-                      : S.of(context).shop,
-                );
-              },
-            ),
-          ],
+        Expanded(
+          child: Row(
+            children: [
+              CustomUserAvatar(),
+              const SizedBox(width: 12),
+              Expanded(
+                child: BlocBuilder<AuthCubit, AuthState>(
+                  builder: (context, state) {
+                    return DashboardHeaderText(
+                      displayName: state is AuthSuccessState
+                          ? state.user.displayName
+                          : S.of(context).user,
+                      shopName: state is AuthSuccessState
+                          ? state.user.shopName
+                          : S.of(context).shop,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
         CustomNotificationIcon(),
       ],

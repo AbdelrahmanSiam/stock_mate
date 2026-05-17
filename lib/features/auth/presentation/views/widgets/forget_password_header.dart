@@ -13,11 +13,13 @@ class ForgetPasswordHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          S.of(context).forgetPassword,
-          style: AppStyles.appNameBold32(
-            context,
-          ).copyWith(color: Colors.white),
+        FittedBox(
+          child: Text(
+            S.of(context).forgetPassword,
+            style: AppStyles.appNameBold32(
+              context,
+            ).copyWith(color: Colors.white),
+          ),
         ),
         const SizedBox(height: 8),
         Text(

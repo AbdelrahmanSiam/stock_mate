@@ -66,6 +66,7 @@ class AddEditProductCubit extends Cubit<AddEditProductState> {
       quantity: quantity,
       threshold: threshold,
       imageUrl: imageUrl,
+      userId: "",
     );
     final bool isEdit =
         existingId != null; // isEdit is true when there are existing Id already

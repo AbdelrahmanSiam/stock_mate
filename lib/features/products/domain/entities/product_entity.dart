@@ -8,6 +8,7 @@ class ProductEntity {
   final int quantity;
   final int threshold;
   final String imageUrl;
+  final String userId;
 
   const ProductEntity({
     required this.id,
@@ -19,6 +20,7 @@ class ProductEntity {
     required this.quantity,
     required this.threshold,
     required this.imageUrl,
+    required this.userId,
   });
 
   // SOLID — S
@@ -37,6 +39,7 @@ class ProductEntity {
     quantity: 10,
     threshold: 5,
     imageUrl: '',
+    userId: '',
   );
   // copyWith method for immutability
   ProductEntity copyWith({
@@ -49,6 +52,7 @@ class ProductEntity {
     int? quantity,
     int? threshold,
     String? imageUrl,
+    String? userId,
   }) {
     return ProductEntity(
       id: id ?? this.id,
@@ -60,6 +64,7 @@ class ProductEntity {
       quantity: quantity ?? this.quantity,
       threshold: threshold ?? this.threshold,
       imageUrl: imageUrl ?? this.imageUrl,
+      userId: userId ?? this.userId,
     );
   }
 }

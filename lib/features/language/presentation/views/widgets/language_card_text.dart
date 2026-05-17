@@ -18,7 +18,12 @@ class LanguageCardText extends StatelessWidget {
       children: [
         Text(languageName, style: AppStyles.sectionTitleSemiBold16(context)),
         const SizedBox(height: 2),
-        Text(languageTagline, style: AppStyles.bodySmallRegular12(context)),
+        FittedBox(
+          child: Text(
+            languageTagline,
+            style: AppStyles.bodySmallRegular12(context),
+          ),
+        ),
       ],
     );
   }

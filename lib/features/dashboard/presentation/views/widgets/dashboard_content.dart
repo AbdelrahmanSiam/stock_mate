@@ -57,6 +57,7 @@ class DashboardContent extends StatelessWidget {
                 ? fakeDashboard().recentSales
                 : dashboard.recentSales,
           ),
+          const SizedBox(height: 30),
           Spacer(),
         ],
       ),
