@@ -54,11 +54,13 @@
     <td><img src="screenshots/new_sale.png" width="180"/></td>
     <td><img src="screenshots/success_sale.png" width="180"/></td>
     <td><img src="screenshots/sales_history.png" width="180"/></td>
+    <td><img src="screenshots/logout.png" width="180"/></td>
   </tr>
   <tr>
     <td align="center">New Sale</td>
     <td align="center">Sale Confirmed</td>
     <td align="center">Sales History</td>
+    <td align="center">Logout</td>
   </tr>
   <tr>
     <td><img src="screenshots/sale_detail.png" width="180"/></td>
@@ -71,12 +73,6 @@
     <td align="center">Share Invoice</td>
     <td align="center">Notifications</td>
     <td align="center">Settings</td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/logout.png" width="180"/></td>
-  </tr>
-  <tr>
-    <td align="center">Logout</td>
   </tr>
 </table>
 
