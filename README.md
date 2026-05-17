@@ -52,13 +52,11 @@
   </tr>
   <tr>
     <td><img src="screenshots/new_sale.png" width="180"/></td>
-    <td><img src="screenshots/sale_success.png" width="180"/></td>
     <td><img src="screenshots/success_sale.png" width="180"/></td>
     <td><img src="screenshots/sales_history.png" width="180"/></td>
   </tr>
   <tr>
     <td align="center">New Sale</td>
-    <td align="center">Sale Success</td>
     <td align="center">Sale Confirmed</td>
     <td align="center">Sales History</td>
   </tr>
@@ -76,15 +74,9 @@
   </tr>
   <tr>
     <td><img src="screenshots/logout.png" width="180"/></td>
-    <td></td>
-    <td></td>
-    <td></td>
   </tr>
   <tr>
     <td align="center">Logout</td>
-    <td></td>
-    <td></td>
-    <td></td>
   </tr>
 </table>
 
